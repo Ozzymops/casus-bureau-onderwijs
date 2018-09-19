@@ -1,42 +1,28 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BureauOnderwijs._Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BureauOnderwijs.WebForm1" %>
+<!DOCTYPE html>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>
+<head runat="server">
+    <title>Aaa</title>
+</head>
 
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label runat="server" ID="GreetLabel"></asp:Label>
+        </div>    
+        <p>
+            <asp:TextBox runat="server" ID="LabelChangingTextBox"></asp:TextBox>
+            <asp:Button runat="server" ID="LabelChangingButton" Height="21px" OnClick="LabelChangingButton_Click" Width="99px" />
             </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-            </p>
-        </div>
-    </div>
 
-</asp:Content>
+        <asp:DropDownList runat="server" ID="GreetList" autopostback="true" OnSelectedIndexChanged="GreetList_SelectedIndexChanged">
+            <asp:ListItem Value="Normal">Normal</asp:ListItem>
+            <asp:ListItem Value="Italic">Italic</asp:ListItem>
+            <asp:ListItem Value="Bold">Bold</asp:ListItem>
+        </asp:DropDownList>
+    </form>
+</body>
+
+</html>
