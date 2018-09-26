@@ -126,14 +126,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="old-about.aspx" />
-    <Content Include="old-contact.aspx" />
+    <Content Include="Obsolete\old-about.aspx" />
+    <Content Include="Obsolete\old-contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="old-default.aspx" />
+    <Content Include="Obsolete\old-default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -145,8 +145,9 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Default.aspx" />
+    <Content Include="Obsolete\Default.aspx" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Image\Placeholder.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -177,6 +178,9 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Views\Roosteroverzicht.aspx" />
+    <Content Include="Views\Shared\_BaseLayout.aspx" />
+    <Content Include="Views\WebForm1.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -184,26 +188,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="old-about.aspx.cs">
+    <Compile Include="Obsolete\old-about.aspx.cs">
       <DependentUpon>old-about.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="old-about.aspx.designer.cs">
+    <Compile Include="Obsolete\old-about.aspx.designer.cs">
       <DependentUpon>old-about.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="old-contact.aspx.cs">
+    <Compile Include="Obsolete\old-contact.aspx.cs">
       <DependentUpon>old-contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="old-contact.aspx.designer.cs">
+    <Compile Include="Obsolete\old-contact.aspx.designer.cs">
       <DependentUpon>old-contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="old-default.aspx.cs">
+    <Compile Include="Obsolete\old-default.aspx.cs">
       <DependentUpon>old-default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="old-default.aspx.designer.cs">
+    <Compile Include="Obsolete\old-default.aspx.designer.cs">
       <DependentUpon>old-default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -231,12 +235,33 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
+    <Compile Include="Obsolete\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
+    <Compile Include="Obsolete\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Roosteroverzicht.aspx.cs">
+      <DependentUpon>Roosteroverzicht.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Roosteroverzicht.aspx.designer.cs">
+      <DependentUpon>Roosteroverzicht.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_BaseLayout.aspx.cs">
+      <DependentUpon>_BaseLayout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\_BaseLayout.aspx.designer.cs">
+      <DependentUpon>_BaseLayout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

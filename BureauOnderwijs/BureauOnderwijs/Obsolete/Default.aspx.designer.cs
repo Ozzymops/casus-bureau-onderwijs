@@ -31,6 +31,15 @@ namespace BureauOnderwijs {
         protected global::System.Web.UI.WebControls.Label GreetLabel;
         
         /// <summary>
+        /// aaa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label aaa;
+        
+        /// <summary>
         /// LabelChangingTextBox control.
         /// </summary>
         /// <remarks>
