@@ -1,0 +1,51 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterTest.master.cs" Inherits="BureauOnderwijs.MasterTest" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+        }
+        .auto-style2 {
+            height: 48px;
+        }
+        .auto-style3 {
+            width: 48px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <table class="auto-style1">
+            <tr>
+                <td class="auto-style2" colspan="2">
+                    <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
+                        <Items>
+                            <asp:MenuItem NavigateUrl="TestDefault.aspx" Text="Home" Value="Home"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="TestContact.aspx" Text="Contact" Value="Contact"></asp:MenuItem>
+                        </Items>
+                    </asp:Menu>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style3">
+                    <asp:Image ID="Image1" runat="server" Height="48px" ImageUrl="~/Image/Placeholder.png" Width="93px" />
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style2" colspan="2">Footer tekst AAAAA</td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

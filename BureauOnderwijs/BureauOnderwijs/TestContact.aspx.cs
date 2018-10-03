@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace BureauOnderwijs.Views.Shared
+namespace BureauOnderwijs
 {
-    public partial class _BaseLayout : System.Web.UI.Page
+    public partial class TestContact : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

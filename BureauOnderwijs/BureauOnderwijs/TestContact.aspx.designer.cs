@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BureauOnderwijs.Views.Shared
+namespace BureauOnderwijs
 {
 
 
-    public partial class _BaseLayout
+    public partial class TestContact
     {
     }
 }
