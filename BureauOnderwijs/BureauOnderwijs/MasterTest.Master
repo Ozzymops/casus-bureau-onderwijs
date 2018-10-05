@@ -7,18 +7,7 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <style type="text/css">
-        .auto-style1 {
-            width: 100%;
-        }
-        .auto-style2 {
-            height: 48px;
-        }
-        .auto-style3 {
-            width: 48px;
-        }
-    </style>
-</head>
+    </head>
 <body>
     <form id="form1" runat="server">
         <div>
@@ -43,7 +32,9 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style2" colspan="2">Footer tekst AAAAA</td>
+                <td class="auto-style2" colspan="2">
+                    <asp:Label ID="lb_footer" runat="server" Text="Footer tekst aaaaaa"></asp:Label>
+                </td>
             </tr>
         </table>
     </form>
