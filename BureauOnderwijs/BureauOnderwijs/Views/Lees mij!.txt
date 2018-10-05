@@ -1,0 +1,3 @@
+﻿Let op de structuur!
+Gooi .aspx bestanden in Pages, houd de .Master bestanden in Views!
+De hiërarchie is belangrijk!

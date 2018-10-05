@@ -182,7 +182,7 @@
     <Content Include="TestContact.aspx" />
     <Content Include="TestDefault.aspx" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Views\WebForm1.aspx" />
+    <Content Include="Views\Lees mij!.txt" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -197,6 +197,38 @@
     <Compile Include="MasterTest.Master.designer.cs">
       <DependentUpon>MasterTest.Master</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin\CreateAccount.cs" />
+    <Compile Include="Models\Admin\DeleteAccount.cs" />
+    <Compile Include="Models\Admin\UpdateAccount.cs" />
+    <Compile Include="Models\Examiner\CreateModule.cs" />
+    <Compile Include="Models\Examiner\DeleteModule.cs" />
+    <Compile Include="Models\Examiner\ReadModules.cs" />
+    <Compile Include="Models\Examiner\UpdateModule.cs" />
+    <Compile Include="Models\LogIn.cs" />
+    <Compile Include="Models\RandomNumberGenerator.cs" />
+    <Compile Include="Models\ReadClassSchedule.cs" />
+    <Compile Include="Models\RecoverPassword.cs" />
+    <Compile Include="Models\Scheduler\CreateEntry.cs" />
+    <Compile Include="Models\Scheduler\DeleteEntry.cs" />
+    <Compile Include="Models\Scheduler\ExportWishlist.cs" />
+    <Compile Include="Models\Scheduler\GenerateClassSchedule.cs" />
+    <Compile Include="Models\Scheduler\ReadEntry.cs" />
+    <Compile Include="Models\Scheduler\ReadWishlist.cs" />
+    <Compile Include="Models\Scheduler\ShowConflicts.cs" />
+    <Compile Include="Models\Scheduler\UpdateEntry.cs" />
+    <Compile Include="Models\Storage\Admin.cs" />
+    <Compile Include="Models\Storage\Examiner.cs" />
+    <Compile Include="Models\Storage\Lecture.cs" />
+    <Compile Include="Models\Storage\Module.cs" />
+    <Compile Include="Models\Storage\Schedule.cs" />
+    <Compile Include="Models\Storage\Scheduler.cs" />
+    <Compile Include="Models\Storage\Teacher.cs" />
+    <Compile Include="Models\Storage\User.cs" />
+    <Compile Include="Models\Storage\Wish.cs" />
+    <Compile Include="Models\Teacher\CreateWish.cs" />
+    <Compile Include="Models\Teacher\DeleteWish.cs" />
+    <Compile Include="Models\Teacher\ReadWishes.cs" />
+    <Compile Include="Models\Teacher\UpdateWish.cs" />
     <Compile Include="Obsolete\old-about.aspx.cs">
       <DependentUpon>old-about.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -265,18 +297,11 @@
     <Compile Include="Obsolete\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Pages\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
