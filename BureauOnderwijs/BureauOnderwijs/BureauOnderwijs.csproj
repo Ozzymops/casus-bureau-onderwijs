@@ -149,6 +149,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Obsolete\Default.aspx" />
     <Content Include="BO.Master" />
+    <Content Include="Wensen.aspx" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Image\Placeholder.png" />
     <Content Include="Roosteroverzicht.aspx" />
@@ -294,6 +295,13 @@
     </Compile>
     <Compile Include="Obsolete\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Wensen.aspx.cs">
+      <DependentUpon>Wensen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wensen.aspx.designer.cs">
+      <DependentUpon>Wensen.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
