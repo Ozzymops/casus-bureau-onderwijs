@@ -14,10 +14,11 @@ namespace BureauOnderwijs.Models.Storage
         private string emailAdress;
         private int twoFactorCode;
         private int recoveryCode;
+        private int role; 
 
         public void LogIn(string userName, string password)
         {
-
+            
         }
 
         public void LogOut()
