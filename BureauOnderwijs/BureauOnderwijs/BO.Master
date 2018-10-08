@@ -26,7 +26,7 @@
                 <asp:Label ID="TitleLabel" runat="server"></asp:Label>
             </div>
 
-            <div style="margin-left: auto; margin-right:auto; width:200px;">
+            <div>
                 <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" BorderStyle="Ridge" RenderingMode="Table" CssClass="rmItem">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Homepage.aspx" Text="Homepage" Value="Homepage"></asp:MenuItem>

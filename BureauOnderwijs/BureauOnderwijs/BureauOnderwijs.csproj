@@ -238,29 +238,20 @@
     <Compile Include="Models\CC\Teacher_ReadWishes.cs" />
     <Compile Include="Models\CC\Teacher_UpdateWish.cs" />
     <Compile Include="Models\RandomNumberGenerator.cs" />
-    <Compile Include="Models\ReadClassSchedule.cs" />
-    <Compile Include="Models\RecoverPassword.cs" />
-    <Compile Include="Models\Scheduler\CreateEntry.cs" />
-    <Compile Include="Models\Scheduler\DeleteEntry.cs" />
-    <Compile Include="Models\Scheduler\ExportWishlist.cs" />
-    <Compile Include="Models\Scheduler\GenerateClassSchedule.cs" />
-    <Compile Include="Models\Scheduler\ReadEntry.cs" />
-    <Compile Include="Models\Scheduler\ReadWishlist.cs" />
-    <Compile Include="Models\Scheduler\ShowConflicts.cs" />
-    <Compile Include="Models\Scheduler\UpdateEntry.cs" />
-    <Compile Include="Models\Storage\Admin.cs" />
-    <Compile Include="Models\Storage\Examiner.cs" />
-    <Compile Include="Models\Storage\Lecture.cs" />
-    <Compile Include="Models\Storage\Module.cs" />
-    <Compile Include="Models\Storage\Schedule.cs" />
-    <Compile Include="Models\Storage\Scheduler.cs" />
-    <Compile Include="Models\Storage\Teacher.cs" />
-    <Compile Include="Models\Storage\User.cs" />
-    <Compile Include="Models\Storage\Wish.cs" />
-    <Compile Include="Models\Teacher\CreateWish.cs" />
-    <Compile Include="Models\Teacher\DeleteWish.cs" />
-    <Compile Include="Models\Teacher\ReadWishes.cs" />
-    <Compile Include="Models\Teacher\UpdateWish.cs" />
+    <Compile Include="ModuleKoppelen.aspx.cs">
+      <DependentUpon>ModuleKoppelen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModuleKoppelen.aspx.designer.cs">
+      <DependentUpon>ModuleKoppelen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules.aspx.cs">
+      <DependentUpon>Modules.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules.aspx.designer.cs">
+      <DependentUpon>Modules.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Obsolete\old-about.aspx.cs">
       <DependentUpon>old-about.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
