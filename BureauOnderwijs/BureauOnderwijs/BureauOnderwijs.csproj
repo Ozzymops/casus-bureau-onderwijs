@@ -128,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Homepage.aspx" />
+    <Content Include="Models\LagenModel.txt" />
     <Content Include="Obsolete\old-about.aspx" />
     <Content Include="Obsolete\old-contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -203,38 +204,38 @@
     <Compile Include="Homepage.aspx.designer.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admin\CreateAccount.cs" />
-    <Compile Include="Models\Admin\DeleteAccount.cs" />
-    <Compile Include="Models\Admin\UpdateAccount.cs" />
-    <Compile Include="Models\Examiner\CreateModule.cs" />
-    <Compile Include="Models\Examiner\DeleteModule.cs" />
-    <Compile Include="Models\Examiner\ReadModules.cs" />
-    <Compile Include="Models\Examiner\UpdateModule.cs" />
-    <Compile Include="Models\LogIn.cs" />
+    <Compile Include="Models\BU\Admin.cs" />
+    <Compile Include="Models\BU\Examiner.cs" />
+    <Compile Include="Models\BU\Lecture.cs" />
+    <Compile Include="Models\BU\Module.cs" />
+    <Compile Include="Models\BU\Schedule.cs" />
+    <Compile Include="Models\BU\Scheduler.cs" />
+    <Compile Include="Models\BU\Teacher.cs" />
+    <Compile Include="Models\BU\User.cs" />
+    <Compile Include="Models\BU\Wish.cs" />
+    <Compile Include="Models\CC\Admin_CreateAccount.cs" />
+    <Compile Include="Models\CC\Admin_DeleteAccount.cs" />
+    <Compile Include="Models\CC\Admin_UpdateAccount.cs" />
+    <Compile Include="Models\CC\Examiner_CreateModule.cs" />
+    <Compile Include="Models\CC\Examiner_DeleteModule.cs" />
+    <Compile Include="Models\CC\Examiner_ReadModules.cs" />
+    <Compile Include="Models\CC\Examiner_UpdateModule.cs" />
+    <Compile Include="Models\CC\LogIn.cs" />
+    <Compile Include="Models\CC\ReadClassSchedule.cs" />
+    <Compile Include="Models\CC\RecoverPassword.cs" />
+    <Compile Include="Models\CC\Scheduler_CreateEntry.cs" />
+    <Compile Include="Models\CC\Scheduler_DeleteEntry.cs" />
+    <Compile Include="Models\CC\Scheduler_ExportWishlist.cs" />
+    <Compile Include="Models\CC\Scheduler_GenerateClassSchedule.cs" />
+    <Compile Include="Models\CC\Scheduler_ReadEntry.cs" />
+    <Compile Include="Models\CC\Scheduler_ReadWishlist.cs" />
+    <Compile Include="Models\CC\Scheduler_ShowConflicts.cs" />
+    <Compile Include="Models\CC\Scheduler_UpdateEntry.cs" />
+    <Compile Include="Models\CC\Teacher_CreateWish.cs" />
+    <Compile Include="Models\CC\Teacher_DeleteWish.cs" />
+    <Compile Include="Models\CC\Teacher_ReadWishes.cs" />
+    <Compile Include="Models\CC\Teacher_UpdateWish.cs" />
     <Compile Include="Models\RandomNumberGenerator.cs" />
-    <Compile Include="Models\ReadClassSchedule.cs" />
-    <Compile Include="Models\RecoverPassword.cs" />
-    <Compile Include="Models\Scheduler\CreateEntry.cs" />
-    <Compile Include="Models\Scheduler\DeleteEntry.cs" />
-    <Compile Include="Models\Scheduler\ExportWishlist.cs" />
-    <Compile Include="Models\Scheduler\GenerateClassSchedule.cs" />
-    <Compile Include="Models\Scheduler\ReadEntry.cs" />
-    <Compile Include="Models\Scheduler\ReadWishlist.cs" />
-    <Compile Include="Models\Scheduler\ShowConflicts.cs" />
-    <Compile Include="Models\Scheduler\UpdateEntry.cs" />
-    <Compile Include="Models\Storage\Admin.cs" />
-    <Compile Include="Models\Storage\Examiner.cs" />
-    <Compile Include="Models\Storage\Lecture.cs" />
-    <Compile Include="Models\Storage\Module.cs" />
-    <Compile Include="Models\Storage\Schedule.cs" />
-    <Compile Include="Models\Storage\Scheduler.cs" />
-    <Compile Include="Models\Storage\Teacher.cs" />
-    <Compile Include="Models\Storage\User.cs" />
-    <Compile Include="Models\Storage\Wish.cs" />
-    <Compile Include="Models\Teacher\CreateWish.cs" />
-    <Compile Include="Models\Teacher\DeleteWish.cs" />
-    <Compile Include="Models\Teacher\ReadWishes.cs" />
-    <Compile Include="Models\Teacher\UpdateWish.cs" />
     <Compile Include="Obsolete\old-about.aspx.cs">
       <DependentUpon>old-about.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
