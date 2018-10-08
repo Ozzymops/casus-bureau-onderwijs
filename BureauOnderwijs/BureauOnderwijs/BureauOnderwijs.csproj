@@ -128,6 +128,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Homepage.aspx" />
+    <Content Include="ModuleKoppelen.aspx" />
+    <Content Include="Modules.aspx" />
     <Content Include="Obsolete\old-about.aspx" />
     <Content Include="Obsolete\old-contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -235,6 +237,20 @@
     <Compile Include="Models\Teacher\DeleteWish.cs" />
     <Compile Include="Models\Teacher\ReadWishes.cs" />
     <Compile Include="Models\Teacher\UpdateWish.cs" />
+    <Compile Include="ModuleKoppelen.aspx.cs">
+      <DependentUpon>ModuleKoppelen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModuleKoppelen.aspx.designer.cs">
+      <DependentUpon>ModuleKoppelen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules.aspx.cs">
+      <DependentUpon>Modules.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules.aspx.designer.cs">
+      <DependentUpon>Modules.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Obsolete\old-about.aspx.cs">
       <DependentUpon>old-about.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
