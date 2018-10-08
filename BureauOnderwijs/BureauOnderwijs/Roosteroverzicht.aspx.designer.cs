@@ -11,7 +11,7 @@ namespace BureauOnderwijs
 {
 
 
-    public partial class TestContact
+    public partial class Roosteroverzicht
     {
     }
 }

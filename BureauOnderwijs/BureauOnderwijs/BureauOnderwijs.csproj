@@ -127,6 +127,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Homepage.aspx" />
     <Content Include="Obsolete\old-about.aspx" />
     <Content Include="Obsolete\old-contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -147,9 +148,10 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Obsolete\Default.aspx" />
-    <Content Include="MasterTest.Master" />
+    <Content Include="BO.Master" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Image\Placeholder.png" />
+    <Content Include="Roosteroverzicht.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -179,23 +181,26 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
-    <Content Include="TestContact.aspx" />
-    <Content Include="TestDefault.aspx" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Views\Lees mij!.txt" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
-    <Content Include="Views\web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="MasterTest.Master.cs">
-      <DependentUpon>MasterTest.Master</DependentUpon>
+    <Compile Include="BO.Master.cs">
+      <DependentUpon>BO.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MasterTest.Master.designer.cs">
-      <DependentUpon>MasterTest.Master</DependentUpon>
+    <Compile Include="BO.Master.designer.cs">
+      <DependentUpon>BO.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Homepage.aspx.cs">
+      <DependentUpon>Homepage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Homepage.aspx.designer.cs">
+      <DependentUpon>Homepage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin\CreateAccount.cs" />
     <Compile Include="Models\Admin\DeleteAccount.cs" />
@@ -255,6 +260,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roosteroverzicht.aspx.cs">
+      <DependentUpon>Roosteroverzicht.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Roosteroverzicht.aspx.designer.cs">
+      <DependentUpon>Roosteroverzicht.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -268,20 +280,6 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
-    </Compile>
-    <Compile Include="TestContact.aspx.cs">
-      <DependentUpon>TestContact.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestContact.aspx.designer.cs">
-      <DependentUpon>TestContact.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TestDefault.aspx.cs">
-      <DependentUpon>TestDefault.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestDefault.aspx.designer.cs">
-      <DependentUpon>TestDefault.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
@@ -301,8 +299,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Views\Pages\" />
-    <Folder Include="Views\Shared\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

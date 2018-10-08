@@ -1,0 +1,48 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BO.master.cs" Inherits="BureauOnderwijs.BO" %>
+
+<!DOCTYPE html>
+
+<style type="text/css">
+    .rmItem {
+        width: 200px !important;
+        vertical-align:middle;
+    }
+
+    .rmText{
+        text-align:center !important;
+    }
+</style>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div style="margin-left: auto; margin-right: auto; text-align: center;">
+                <asp:Label ID="TitleLabel" runat="server"></asp:Label>
+            </div>
+
+            <div style="margin-left: auto; margin-right:auto; width:200px;">
+                <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" BorderStyle="Ridge" RenderingMode="Table" CssClass="rmItem">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Homepage.aspx" Text="Homepage" Value="Homepage"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Roosteroverzicht.aspx" Text="Roosteroverzicht" Value="Roosteroverzicht"></asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </div>
+
+            <asp:Label ID="HeadLabel" runat="server"></asp:Label>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+
+            <div>
+                <asp:Label ID="FootLabel" runat="server"></asp:Label>
+            </div>         
+        </div>
+    </form>
+</body>
+</html>

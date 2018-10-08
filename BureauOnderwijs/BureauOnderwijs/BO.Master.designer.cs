@@ -10,7 +10,7 @@
 namespace BureauOnderwijs {
     
     
-    public partial class MasterTest {
+    public partial class BO {
         
         /// <summary>
         /// head control.
@@ -31,13 +31,13 @@ namespace BureauOnderwijs {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// TitleLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.Label TitleLabel;
         
         /// <summary>
         /// Menu1 control.
@@ -49,21 +49,30 @@ namespace BureauOnderwijs {
         protected global::System.Web.UI.WebControls.Menu Menu1;
         
         /// <summary>
-        /// Image1 control.
+        /// HeadLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
+        protected global::System.Web.UI.WebControls.Label HeadLabel;
         
         /// <summary>
-        /// lb_footer control.
+        /// ContentPlaceHolder1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_footer;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        
+        /// <summary>
+        /// FootLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FootLabel;
     }
 }

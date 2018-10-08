@@ -11,7 +11,7 @@ namespace BureauOnderwijs
 {
 
 
-    public partial class TestDefault
+    public partial class Homepage
     {
     }
 }
