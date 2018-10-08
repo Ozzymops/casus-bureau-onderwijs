@@ -1,0 +1,6 @@
+﻿Eerste laag: GUI (graphische user interface) --> de webpagina's, .aspx: hierin wordt de doorleiding naar de CC aangeroepen;
+Tweede laag: CC (controll class) --> de CC folder met .cs bestanden: hierin worden de functies doorgeleid vanuit GUI naar BU;
+Derde laag: BU (business class) --> zie de BU folder met .cs bestanden: hierin worden de functies uitgevoerd en gereturned.
+(Vierde laag: DB (database) --> de daadwerkelijke opslag van data.)
+
+Let op de namespace!
