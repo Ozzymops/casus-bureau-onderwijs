@@ -3,14 +3,46 @@
 <!DOCTYPE html>
 
 <style type="text/css">
-    .rmItem {
-        width: 200px !important;
-        vertical-align:middle;
+/* Achtergrond navbar */
+    .navBar{
+        background-color: black;
+        overflow: hidden;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
     }
 
-    .rmText{
-        text-align:center !important;
+    .navBar li
+    {
+        border-right: 1px solid white;
+        float: left;
     }
+
+    .navBar li:last-child{
+        border-right: none;
+    }
+
+/* Style links in de navbar */
+    .navBar li a{
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px;
+        text-decoration: none;
+    }
+
+/* Style links on hover*/
+    .navBar li a:hover{
+        background-color: red;
+        color: white;
+    }
+
+/* Actieve link */
+    .navBar li a:active{
+        background-color: lightcoral;
+        color: white;
+    }
+
 </style>
 
 <html>
@@ -27,13 +59,13 @@
             </div>
 
             <div>
-                <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" BorderStyle="Ridge" RenderingMode="Table" CssClass="rmItem">
+                <asp:Menu CssClass="navBar" ID="NavMenu" runat="server" Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/Homepage.aspx" Text="Homepage" Value="Homepage"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Homepage.aspx" Text="(Home)" Value="Homepage"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Roosteroverzicht.aspx" Text="Roosteroverzicht" Value="Roosteroverzicht"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Wensen.aspx" Text="Wensen" Value="Wensen"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/ModuleKoppelen.aspx" Text="Modules koppelen" Value="Modules koppelen"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Modules.aspx" Text="Modules" Value="Modules"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/ModuleKoppelen.aspx" Text="Modules koppelen" Value="Modules koppelen"></asp:MenuItem>                                             
                     </Items>
                 </asp:Menu>
             </div>
