@@ -10,7 +10,7 @@
 namespace BureauOnderwijs {
     
     
-    public partial class ModulesMenu {
+    public partial class NestedModule {
         
         /// <summary>
         /// Panel1 control.
@@ -65,5 +65,14 @@ namespace BureauOnderwijs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonReturn;
+        
+        /// <summary>
+        /// NestedContentHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder NestedContentHolder;
     }
 }

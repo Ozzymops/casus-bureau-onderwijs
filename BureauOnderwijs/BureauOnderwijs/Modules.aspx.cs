@@ -14,29 +14,5 @@ namespace BureauOnderwijs
 
         }
 
-        protected void ButtonModuleAanpassen_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("EditModules.aspx");
-        }
-
-        protected void ButtonModuleToevoegen_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("AddModules.aspx");
-        }
-
-        protected void ButtonWeergeven_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("ReadModules.aspx");
-        }
-
-        protected void ButtonVerwijderen_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("DeleteModules.aspx");
-        }
-
-        protected void ButtonReturn_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Homepage.aspx");
-        }
     }
 }

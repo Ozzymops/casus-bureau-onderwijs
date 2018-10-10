@@ -10,6 +10,6 @@
 namespace BureauOnderwijs {
     
     
-    public partial class Modules {
+    public partial class TestNest {
     }
 }

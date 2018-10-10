@@ -157,8 +157,9 @@
     <Content Include="BO.Master" />
     <Content Include="ReadModules.aspx" />
     <Content Include="Recovery.aspx" />
+    <Content Include="TestNest.aspx" />
     <Content Include="Wensen.aspx" />
-    <Content Include="ModulesMenu.master" />
+    <Content Include="NestedModule.master" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Image\Placeholder.png" />
     <Content Include="Roosteroverzicht.aspx" />
@@ -280,12 +281,12 @@
     <Compile Include="Modules.aspx.designer.cs">
       <DependentUpon>Modules.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ModulesMenu.master.cs">
-      <DependentUpon>ModulesMenu.master</DependentUpon>
+    <Compile Include="NestedModule.master.cs">
+      <DependentUpon>NestedModule.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ModulesMenu.master.designer.cs">
-      <DependentUpon>ModulesMenu.master</DependentUpon>
+    <Compile Include="NestedModule.master.designer.cs">
+      <DependentUpon>NestedModule.master</DependentUpon>
     </Compile>
     <Compile Include="Obsolete\old-about.aspx.cs">
       <DependentUpon>old-about.aspx</DependentUpon>
@@ -347,6 +348,13 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="TestNest.aspx.cs">
+      <DependentUpon>TestNest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestNest.aspx.designer.cs">
+      <DependentUpon>TestNest.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

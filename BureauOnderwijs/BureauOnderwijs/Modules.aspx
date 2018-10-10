@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ModulesMenu.master"  AutoEventWireup="true" CodeBehind="Modules.aspx.cs" Inherits="BureauOnderwijs.Modules" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NestedModule.master" AutoEventWireup="true" CodeBehind="Modules.aspx.cs" Inherits="BureauOnderwijs.TestNest" %>
+<asp:Content ID="NestedContent" ContentPlaceHolderID="NestedContentHolder" runat="server">
+    dikke shit
 </asp:Content>
