@@ -69,9 +69,7 @@
                     </Items>
                 </asp:Menu>
             </div>
-
             <asp:Label ID="HeadLabel" runat="server"></asp:Label>
-
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
 
             <div>

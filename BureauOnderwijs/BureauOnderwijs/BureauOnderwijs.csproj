@@ -127,6 +127,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddModules.aspx" />
+    <Content Include="DeleteModules.aspx" />
+    <Content Include="EditModules.aspx" />
     <Content Include="Homepage.aspx" />
     <Content Include="Models\LagenModel.txt" />
     <Content Include="ModuleKoppelen.aspx" />
@@ -152,7 +155,9 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Obsolete\Default.aspx" />
     <Content Include="BO.Master" />
+    <Content Include="ReadModules.aspx" />
     <Content Include="Wensen.aspx" />
+    <Content Include="ModulesMenu.master" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Image\Placeholder.png" />
     <Content Include="Roosteroverzicht.aspx" />
@@ -191,6 +196,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddModules.aspx.cs">
+      <DependentUpon>AddModules.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddModules.aspx.designer.cs">
+      <DependentUpon>AddModules.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="BO.Master.cs">
       <DependentUpon>BO.Master</DependentUpon>
@@ -198,6 +210,20 @@
     </Compile>
     <Compile Include="BO.Master.designer.cs">
       <DependentUpon>BO.Master</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteModules.aspx.cs">
+      <DependentUpon>DeleteModules.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DeleteModules.aspx.designer.cs">
+      <DependentUpon>DeleteModules.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditModules.aspx.cs">
+      <DependentUpon>EditModules.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditModules.aspx.designer.cs">
+      <DependentUpon>EditModules.aspx</DependentUpon>
     </Compile>
     <Compile Include="Homepage.aspx.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
@@ -253,6 +279,13 @@
     <Compile Include="Modules.aspx.designer.cs">
       <DependentUpon>Modules.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ModulesMenu.master.cs">
+      <DependentUpon>ModulesMenu.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModulesMenu.master.designer.cs">
+      <DependentUpon>ModulesMenu.master</DependentUpon>
+    </Compile>
     <Compile Include="Obsolete\old-about.aspx.cs">
       <DependentUpon>old-about.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -279,6 +312,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReadModules.aspx.cs">
+      <DependentUpon>ReadModules.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReadModules.aspx.designer.cs">
+      <DependentUpon>ReadModules.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Roosteroverzicht.aspx.cs">
       <DependentUpon>Roosteroverzicht.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

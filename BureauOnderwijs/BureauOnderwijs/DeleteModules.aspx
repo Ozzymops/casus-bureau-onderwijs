@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ModulesMenu.master"  AutoEventWireup="true" CodeBehind="Modules.aspx.cs" Inherits="BureauOnderwijs.Modules" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BO.Master" AutoEventWireup="true" CodeBehind="DeleteModules.aspx.cs" Inherits="BureauOnderwijs.DeleteModules" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
