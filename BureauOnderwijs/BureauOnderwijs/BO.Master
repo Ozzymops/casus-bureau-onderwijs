@@ -2,10 +2,11 @@
 
 <!DOCTYPE html>
 
+<!--     CSS code    -->
 <style type="text/css">
 /* Achtergrond navbar */
     .navBar{
-        background-color: black;
+        background-color: gray;
         overflow: hidden;
         list-style-type: none;
         margin: 0;
@@ -25,7 +26,7 @@
 /* Style links in de navbar */
     .navBar li a{
         display: block;
-        color: white;
+        color: black;
         text-align: center;
         padding: 14px;
         text-decoration: none;
@@ -43,7 +44,24 @@
         color: white;
     }
 
+/* Centered top header */
+    .header{
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        text-align: center;
+        text-decoration: solid;
+    }
+/* Centered bottom footer */
+    .footer{
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        text-align: center;
+        text-decoration: wavy;
+    }
 </style>
+<!--  Eind CSS code  -->
 
 <html>
 <head runat="server">
@@ -51,13 +69,15 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
+<body style="background-color: lightgray;">
     <form id="form1" runat="server">
         <div>
-            <div style="margin-left: auto; margin-right: auto; text-align: center;">
-                <asp:Label ID="TitleLabel" runat="server"></asp:Label>
+            <!-- Title -->
+            <div style="height: 20px">
+                <asp:Label CssClass="header" ID="TitleLabel" runat="server"></asp:Label>
             </div>
 
+            <!-- Navigation bar -->
             <div>
                 <asp:Menu CssClass="navBar" ID="NavMenu" runat="server" Orientation="Horizontal">
                     <Items>
@@ -65,15 +85,20 @@
                         <asp:MenuItem NavigateUrl="~/Roosteroverzicht.aspx" Text="Roosteroverzicht" Value="Roosteroverzicht"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Wensen.aspx" Text="Wensen" Value="Wensen"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Modules.aspx" Text="Modules" Value="Modules"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/ModuleKoppelen.aspx" Text="Modules koppelen" Value="Modules koppelen"></asp:MenuItem>                                             
+                        <asp:MenuItem NavigateUrl="~/ModuleKoppelen.aspx" Text="Modules koppelen" Value="Modules koppelen"></asp:MenuItem>   
                     </Items>
                 </asp:Menu>
             </div>
+
+            <!-- Header -->
             <asp:Label ID="HeadLabel" runat="server"></asp:Label>
+
+            <!-- Child content -->
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
 
+            <!-- Footer -->
             <div>
-                <asp:Label ID="FootLabel" runat="server"></asp:Label>
+                <asp:Label CssClass="footer" ID="FootLabel" runat="server"></asp:Label>
             </div>         
         </div>
     </form>

@@ -156,6 +156,7 @@
     <Content Include="Obsolete\Default.aspx" />
     <Content Include="BO.Master" />
     <Content Include="ReadModules.aspx" />
+    <Content Include="Recovery.aspx" />
     <Content Include="Wensen.aspx" />
     <Content Include="ModulesMenu.master" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -312,6 +313,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recovery.aspx.cs">
+      <DependentUpon>Recovery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Recovery.aspx.designer.cs">
+      <DependentUpon>Recovery.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ReadModules.aspx.cs">
       <DependentUpon>ReadModules.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
