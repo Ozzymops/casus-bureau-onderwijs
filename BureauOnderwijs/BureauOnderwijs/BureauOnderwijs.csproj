@@ -128,6 +128,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Homepage.aspx" />
+    <Content Include="LogIn.aspx" />
+    <Content Include="LogIn2FaCode.aspx" />
     <Content Include="Models\LagenModel.txt" />
     <Content Include="ModuleKoppelen.aspx" />
     <Content Include="Modules.aspx" />
@@ -205,6 +207,20 @@
     </Compile>
     <Compile Include="Homepage.aspx.designer.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LogIn.aspx.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogIn.aspx.designer.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LogIn2FaCode.aspx.cs">
+      <DependentUpon>LogIn2FaCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogIn2FaCode.aspx.designer.cs">
+      <DependentUpon>LogIn2FaCode.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\BU\Admin.cs" />
     <Compile Include="Models\BU\Examiner.cs" />
