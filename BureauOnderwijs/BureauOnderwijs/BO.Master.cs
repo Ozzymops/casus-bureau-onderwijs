@@ -14,7 +14,7 @@ namespace BureauOnderwijs
             TitleLabel.Text = "Bureau Onderwijs app";
             TitleLabel.Font.Size = FontUnit.XLarge;
             HeadLabel.Text = Page.Title;
-            FootLabel.Text = "Copyright Bureau Onderwijs " + DateTime.Now.Year.ToString();
+            FootLabel.Text = "© " + DateTime.Now.Year.ToString() + " Dream Team + Youri";
             FootLabel.Font.Size = FontUnit.Small;
         }
     }
