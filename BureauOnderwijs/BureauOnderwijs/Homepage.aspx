@@ -3,7 +3,18 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
-        m eerlijk te zijn heb je een hoog IQ nodig om Bassie en Adriaan te begrijpen. De humor is extreem subtiel, en zonder een stevige kennis van acrobatiek zullen de meeste grappen door een typische kijker niet worden begrepen. Ook is er Bassie's ondeugende kijk op de wereld, die flink verweven zit in zijn persoonlijkheid - zijn persoonlijke filosofie leent bijvoorbeeld veel van Ansichten eines Clowns van Heinrich Böll. De fans snappen deze dingen; ze hebben de intellectuele capaciteit om daadwerkelijk de diepte van deze grappen te waarderen, in te zien dat ze niet slechts grappig zijn - ze zeggen iets dieps over het LEVEN. Logischerwijs zijn mensen die niet van Bassie en Adriaan houden WARE idioten - natuurlijk waarderen zij niet, bij wijze van voorbeeld, de humor in Baron van Neemweggen's existentiële motto "Drommels, drommels en nog eens drommels," wat op zichzelf een cryptische verwijzing is naar Mulisch' epos De Ontdekking van de Hemel. Ik grijns op dit moment al zelfgenoegzaam door slechts één van die warhoofdige holbewoners voor te stellen die hun hoofd krabben in verwarring terwijl Bas van Toor's geniale vernuft zich uitvouwt over hun televisieschermen. Wat een dwazen.. hoe ik met hen te doen heb. 😂
-        En ja, trouwens, ik HEB een Bassie en Adriaan-tatoeage. En nee, je mag het niet zien. Het is slechts voor de damesogen - en zelfs dan moeten ze laten zien dat ze niet meer dan 5 IQ punten van dat van mij verwijderd zijn (liever aan de lagere kant) van tevoren.
+        IK BEN EEN ZIEKE klootzak 🤢🤮 IK HOUD SNEL geslachtsgemeenschap 🍆🍑😫WOEPP !! 🤓         
+    </div>
+    <div>
+        IK BEN EEN ZIEKE klootzak 🤢🤮 IK HOUD SNEL geslachtsgemeenschap 🍆🍑😫WOEPP !! 🤓 
+    </div>
+    <div>
+        IK BEN EEN ZIEKE klootzak 🤢🤮 IK HOUD SNEL geslachtsgemeenschap 🍆🍑😫WOEPP !! 🤓 
+    </div>
+    <div>
+        IK BEN EEN ZIEKE klootzak 🤢🤮 IK HOUD SNEL geslachtsgemeenschap 🍆🍑😫WOEPP !! 🤓 
+    </div>
+    <div>
+        IK BEN EEN ZIEKE klootzak 🤢🤮 IK HOUD SNEL geslachtsgemeenschap 🍆🍑😫WOEPP !! 🤓 
     </div>
 </asp:Content>

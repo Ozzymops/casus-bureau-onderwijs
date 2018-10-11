@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -16,9 +17,38 @@ namespace BureauOnderwijs.Models.BU
         private int recoveryCode;
         private int role;
 
-        public void LogIn(string username, string password)
+        public int LogIn(string username, string password)
         {
 
+            string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQuery = "SELECT Role FROM UserAccount WHERE Username = '" + username + "' and Password = '" + password + "'";
+
+            try
+            {
+                SqlConnection con = new SqlConnection(conString);
+                SqlCommand cmd = new SqlCommand(sqlQuery, con);
+
+                con.Open();
+                int result = Convert.ToInt16(cmd.ExecuteScalar());
+                if (result == 1 || result == 2 || result == 3 || result == 4)
+                {
+                    /// login succesvol
+                    return result; 
+                }
+                else if (result == 0) 
+                {
+                    /// foutmelding laten zien dat de combinatie username en password niet voorkomt
+                    //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongelidge username en/of wachtwoord');", true);
+                    return 10;
+                }
+                con.Dispose();
+            }
+            catch (Exception)
+            {
+                /// er is iets mis gegaan met het inloggen, afhankelijk van de foutmelding die weergegeven wordt
+                return 20;
+            }
+            return 30;
         }
 
         public void LogOut()

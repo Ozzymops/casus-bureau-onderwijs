@@ -127,7 +127,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddModules.aspx" />
+    <Content Include="DeleteModules.aspx" />
+    <Content Include="EditModules.aspx" />
     <Content Include="Homepage.aspx" />
+    <Content Include="LogIn.aspx" />
+    <Content Include="LogIn2FaCode.aspx" />
     <Content Include="Models\LagenModel.txt" />
     <Content Include="ModuleKoppelen.aspx" />
     <Content Include="Modules.aspx" />
@@ -152,8 +157,11 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Obsolete\Default.aspx" />
     <Content Include="BO.Master" />
-    <Content Include="UserSettings.aspx" />
+    <Content Include="ReadModules.aspx" />
+    <Content Include="Recovery.aspx" />
+    <Content Include="TestNest.aspx" />
     <Content Include="Wensen.aspx" />
+    <Content Include="NestedModule.master" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Image\Placeholder.png" />
     <Content Include="Roosteroverzicht.aspx" />
@@ -192,6 +200,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddModules.aspx.cs">
+      <DependentUpon>AddModules.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddModules.aspx.designer.cs">
+      <DependentUpon>AddModules.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="BO.Master.cs">
       <DependentUpon>BO.Master</DependentUpon>
@@ -200,12 +215,40 @@
     <Compile Include="BO.Master.designer.cs">
       <DependentUpon>BO.Master</DependentUpon>
     </Compile>
+    <Compile Include="DeleteModules.aspx.cs">
+      <DependentUpon>DeleteModules.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DeleteModules.aspx.designer.cs">
+      <DependentUpon>DeleteModules.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditModules.aspx.cs">
+      <DependentUpon>EditModules.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditModules.aspx.designer.cs">
+      <DependentUpon>EditModules.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Homepage.aspx.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Homepage.aspx.designer.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LogIn.aspx.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogIn.aspx.designer.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LogIn2FaCode.aspx.cs">
+      <DependentUpon>LogIn2FaCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogIn2FaCode.aspx.designer.cs">
+      <DependentUpon>LogIn2FaCode.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\BU\Admin.cs" />
     <Compile Include="Models\BU\Examiner.cs" />
@@ -254,6 +297,13 @@
     <Compile Include="Modules.aspx.designer.cs">
       <DependentUpon>Modules.aspx</DependentUpon>
     </Compile>
+    <Compile Include="NestedModule.master.cs">
+      <DependentUpon>NestedModule.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NestedModule.master.designer.cs">
+      <DependentUpon>NestedModule.master</DependentUpon>
+    </Compile>
     <Compile Include="Obsolete\old-about.aspx.cs">
       <DependentUpon>old-about.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -280,6 +330,20 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recovery.aspx.cs">
+      <DependentUpon>Recovery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Recovery.aspx.designer.cs">
+      <DependentUpon>Recovery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReadModules.aspx.cs">
+      <DependentUpon>ReadModules.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReadModules.aspx.designer.cs">
+      <DependentUpon>ReadModules.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Roosteroverzicht.aspx.cs">
       <DependentUpon>Roosteroverzicht.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -301,12 +365,12 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
-    <Compile Include="UserSettings.aspx.cs">
-      <DependentUpon>UserSettings.aspx</DependentUpon>
+    <Compile Include="TestNest.aspx.cs">
+      <DependentUpon>TestNest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserSettings.aspx.designer.cs">
-      <DependentUpon>UserSettings.aspx</DependentUpon>
+    <Compile Include="TestNest.aspx.designer.cs">
+      <DependentUpon>TestNest.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
