@@ -19,43 +19,41 @@ namespace BureauOnderwijs
         {
             if (string.IsNullOrEmpty(TextBoxUsernameLogin.Text) || string.IsNullOrEmpty(TextBoxPasswordLogin.Text))
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Gebruikersnaam en of wachtwoord niet ingevuld!');", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een gebruikersnaam en wachtwoord in.');", true);
             }
             else
             {
-                
-                string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
-                string sqlQuery = "SELECT Password FROM UserAccount WHERE Username= @Username = '" + TextBoxUsernameLogin.Text + "'";
-
-                try
+                Models.CC.LogIn l = new Models.CC.LogIn();
+                int LoginRolenumber = l.LoginCC(TextBoxUsernameLogin.Text, TextBoxPasswordLogin.Text);
+                if (LoginRolenumber == 1)
                 {
-                    SqlConnection con = new SqlConnection(conString);
-                    SqlCommand cmd = new SqlCommand(sqlQuery, con);
-
-                    cmd.Parameters.AddWithValue("@Username", this.TextBoxUsernameLogin.Text);
-
-                    con.Open();
-                    var result = cmd.ExecuteScalar();
-                    if (result != null)
-                    {
-                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Geldige username');", true);
-                    }
-                    else
-                    {
-                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongelidge username');", true);
-                    }
-                    con.Dispose();
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ingelogd als Admin');", true);
                 }
-                catch (Exception ex)
+                else if (LoginRolenumber == 2)
                 {
-                    //Laat foutmelding zien
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Inlogegd als Scheduler');", true);
                 }
-                finally
+                else if (LoginRolenumber == 3)
                 {
-                    
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ingelogd als Teacher');", true);
                 }
-                //Models.CC.LogIn l = new Models.CC.LogIn();
-                //l.LoginCC(TextBoxUsernameLogin.Text, TextBoxPasswordLogin.Text);
+                else if (LoginRolenumber == 4)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ingelogd als Examinor');", true);
+                }
+                else if (LoginRolenumber == 10)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongeldige gebruikersnaam en of wachtwoord!');", true);
+                }
+                else if (LoginRolenumber == 20)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Connectie met de database problemen.');", true);
+                }
+                else if (LoginRolenumber == 30)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Kom op kerel, je code klopt voor de klote niet.');", true);
+                }
+
             }
         }
     }
