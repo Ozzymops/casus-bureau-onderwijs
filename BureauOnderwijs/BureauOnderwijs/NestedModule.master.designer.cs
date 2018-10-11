@@ -49,15 +49,6 @@ namespace BureauOnderwijs {
         protected global::System.Web.UI.WebControls.Button ButtonModuleRead;
         
         /// <summary>
-        /// ButtonModuleDelete control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonModuleDelete;
-        
-        /// <summary>
         /// ButtonReturn control.
         /// </summary>
         /// <remarks>

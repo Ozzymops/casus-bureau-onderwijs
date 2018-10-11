@@ -128,7 +128,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddModules.aspx" />
-    <Content Include="DeleteModules.aspx" />
     <Content Include="EditModules.aspx" />
     <Content Include="Homepage.aspx" />
     <Content Include="LogIn.aspx" />
@@ -214,13 +213,6 @@
     </Compile>
     <Compile Include="BO.Master.designer.cs">
       <DependentUpon>BO.Master</DependentUpon>
-    </Compile>
-    <Compile Include="DeleteModules.aspx.cs">
-      <DependentUpon>DeleteModules.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DeleteModules.aspx.designer.cs">
-      <DependentUpon>DeleteModules.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditModules.aspx.cs">
       <DependentUpon>EditModules.aspx</DependentUpon>

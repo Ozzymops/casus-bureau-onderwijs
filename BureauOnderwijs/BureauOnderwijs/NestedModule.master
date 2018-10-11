@@ -14,9 +14,6 @@
                 <asp:Button ID="ButtonModuleRead" runat="server" Text="Module Weergeven" OnClick="ButtonWeergeven_Click" Width="212px" />
             </div>
             <div>
-                <asp:Button ID="ButtonModuleDelete" runat="server" Text="Module Verwijderen" OnClick="ButtonVerwijderen_Click" Width="211px" />
-            </div>
-            <div>
                 <asp:Button ID="ButtonReturn" runat="server" Text="Terug naar hoofdpagina" OnClick="ButtonReturn_Click" Width="211px"/>
             </div>
         </asp:Panel>
