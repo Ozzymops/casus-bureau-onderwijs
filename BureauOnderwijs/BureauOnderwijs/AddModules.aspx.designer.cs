@@ -31,51 +31,6 @@ namespace BureauOnderwijs {
         protected global::System.Web.UI.WebControls.TextBox TBName;
         
         /// <summary>
-        /// LBModuleCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LBModuleCode;
-        
-        /// <summary>
-        /// TBModuleCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBModuleCode;
-        
-        /// <summary>
-        /// LBPeriod control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LBPeriod;
-        
-        /// <summary>
-        /// LBYear control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LBYear;
-        
-        /// <summary>
-        /// TextBox1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
-        
-        /// <summary>
         /// LBFaculty control.
         /// </summary>
         /// <remarks>
@@ -92,6 +47,51 @@ namespace BureauOnderwijs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TBFaculty;
+        
+        /// <summary>
+        /// LBLectureHours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LBLectureHours;
+        
+        /// <summary>
+        /// TBLectureHours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBLectureHours;
+        
+        /// <summary>
+        /// BTSend control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BTSend;
+        
+        /// <summary>
+        /// LBModuleCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LBModuleCode;
+        
+        /// <summary>
+        /// TBModuleCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBModuleCode;
         
         /// <summary>
         /// LBProfile control.
@@ -112,6 +112,51 @@ namespace BureauOnderwijs {
         protected global::System.Web.UI.WebControls.TextBox TBProfile;
         
         /// <summary>
+        /// LbPracticalHours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbPracticalHours;
+        
+        /// <summary>
+        /// TBPracticalHOurs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBPracticalHOurs;
+        
+        /// <summary>
+        /// BTCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BTCancel;
+        
+        /// <summary>
+        /// LBPeriod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LBPeriod;
+        
+        /// <summary>
+        /// TBPeriod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBPeriod;
+        
+        /// <summary>
         /// LBCredits control.
         /// </summary>
         /// <remarks>
@@ -128,42 +173,6 @@ namespace BureauOnderwijs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TBCredits;
-        
-        /// <summary>
-        /// LBExaminor control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LBExaminor;
-        
-        /// <summary>
-        /// DropDownListExaminor control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListExaminor;
-        
-        /// <summary>
-        /// LBDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LBDescription;
-        
-        /// <summary>
-        /// TBDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBDescription;
         
         /// <summary>
         /// LBGeneralModule control.
@@ -184,39 +193,57 @@ namespace BureauOnderwijs {
         protected global::System.Web.UI.WebControls.CheckBox CheckBoxGeneralModule;
         
         /// <summary>
-        /// LBLectureHours control.
+        /// LBYear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LBLectureHours;
+        protected global::System.Web.UI.WebControls.Label LBYear;
         
         /// <summary>
-        /// TBLectureHOurs control.
+        /// TBYear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBLectureHOurs;
+        protected global::System.Web.UI.WebControls.TextBox TBYear;
         
         /// <summary>
-        /// LbPracticalHours control.
+        /// LBDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LbPracticalHours;
+        protected global::System.Web.UI.WebControls.Label LBDescription;
         
         /// <summary>
-        /// TBPracticalHOurs control.
+        /// TBDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBPracticalHOurs;
+        protected global::System.Web.UI.WebControls.TextBox TBDescription;
+        
+        /// <summary>
+        /// LBExaminor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LBExaminor;
+        
+        /// <summary>
+        /// DropDownListExaminor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListExaminor;
     }
 }
