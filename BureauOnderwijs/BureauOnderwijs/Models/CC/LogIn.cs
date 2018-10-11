@@ -8,10 +8,10 @@ namespace BureauOnderwijs.Models.CC
 {
     public class LogIn
     {
-        public int LoginCC(string username, string password)
+        public int[] LoginCC(string username, string password)
         {
             User u = new User();
-            return u.LogIn(username, password);            
+            return u.LogIn(username, password);
         }
     }
 }

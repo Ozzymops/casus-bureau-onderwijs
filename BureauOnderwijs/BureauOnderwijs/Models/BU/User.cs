@@ -17,7 +17,7 @@ namespace BureauOnderwijs.Models.BU
         private int recoveryCode;
         private int role;
 
-        public int LogIn(string username, string password)
+        public int[] LogIn(string username, string password)
         {
 
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
@@ -33,22 +33,22 @@ namespace BureauOnderwijs.Models.BU
                 if (result == 1 || result == 2 || result == 3 || result == 4)
                 {
                     /// login succesvol
-                    return result; 
+                    return new int[] { result, 0}; 
                 }
                 else if (result == 0) 
                 {
                     /// foutmelding laten zien dat de combinatie username en password niet voorkomt
                     //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongelidge username en/of wachtwoord');", true);
-                    return 10;
+                    return new int[] { 10, 0 };
                 }
                 con.Dispose();
             }
             catch (Exception)
             {
                 /// er is iets mis gegaan met het inloggen, afhankelijk van de foutmelding die weergegeven wordt
-                return 20;
+                return new int[] { 20, 0 };
             }
-            return 30;
+            return new int[] { 30, 0 };
         }
 
         public void LogOut()

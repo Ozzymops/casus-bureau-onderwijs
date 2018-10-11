@@ -11,7 +11,7 @@ namespace BureauOnderwijs
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //LabelSessionNumberActive = Convert.ToString(Convert.ToInt32(Session[session]));
         }
     }
 }

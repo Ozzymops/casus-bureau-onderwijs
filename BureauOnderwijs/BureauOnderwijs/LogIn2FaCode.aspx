@@ -15,6 +15,13 @@
         <div>
             <asp:Button ID="ButtonSubmit2FaCode" runat="server" Text="Inloggen" />
         </div>
+        <div>
+
+        </div>
+        <div>   
+            <asp:Label ID="LabelSessionNumber" runat="server" Text="Sessie nummer:"></asp:Label>
+            <asp:Label ID="LabelSessionNumberActive" runat="server" Text=""></asp:Label>
+        </div>
     </form>
 </body>
 </html>
