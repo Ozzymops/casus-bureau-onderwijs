@@ -7,19 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BureauOnderwijs {
+namespace BureauOnderwijs.Views {
     
     
-    public partial class BO {
-        
-        /// <summary>
-        /// head control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+    public partial class LogIn2FaCode {
         
         /// <summary>
         /// form1 control.
@@ -31,39 +22,66 @@ namespace BureauOnderwijs {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// headLabel control.
+        /// Label2FaCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label headLabel;
+        protected global::System.Web.UI.WebControls.Label Label2FaCode;
         
         /// <summary>
-        /// navbar control.
+        /// TextBox2FaCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu navbar;
+        protected global::System.Web.UI.WebControls.TextBox TextBox2FaCode;
         
         /// <summary>
-        /// labelke control.
+        /// ButtonSubmit2FaCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelke;
+        protected global::System.Web.UI.WebControls.Button ButtonSubmit2FaCode;
         
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// LabelSessionNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.Label LabelSessionNumber;
+        
+        /// <summary>
+        /// LabelSessionNumberActive control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelSessionNumberActive;
+        
+        /// <summary>
+        /// LabelGenerated2FaCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelGenerated2FaCode;
+        
+        /// <summary>
+        /// LabelGenerated2FaCodeActive control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelGenerated2FaCodeActive;
     }
 }
