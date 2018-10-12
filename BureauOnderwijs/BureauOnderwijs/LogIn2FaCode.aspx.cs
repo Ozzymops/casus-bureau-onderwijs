@@ -11,7 +11,12 @@ namespace BureauOnderwijs
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //LabelSessionNumberActive = Convert.ToString(Convert.ToInt32(Session[session]));
+            LabelSessionNumberActive.Text = Session["UserId"].ToString();
+        }
+
+        protected void ButtonSubmit2FaCode_Click(object sender, EventArgs e)
+        {
+            //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Sessie id:"+ Session["UserId"] +"');", true);
         }
     }
 }

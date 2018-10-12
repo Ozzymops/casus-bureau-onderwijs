@@ -13,7 +13,7 @@
             <asp:TextBox ID="TextBox2FaCode" runat="server"></asp:TextBox>
         </div>
         <div>
-            <asp:Button ID="ButtonSubmit2FaCode" runat="server" Text="Inloggen" />
+            <asp:Button ID="ButtonSubmit2FaCode" runat="server" Text="Inloggen" OnClick="ButtonSubmit2FaCode_Click" />
         </div>
         <div>
 
