@@ -27,7 +27,8 @@
                         <asp:MenuItem NavigateUrl="~/Roosteroverzicht.aspx" Text="Roosteroverzicht" Value="Roosteroverzicht"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Wensen.aspx" Text="Wensen" Value="Wensen"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Modules.aspx" Text="Modules" Value="Modules"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/ModuleKoppelen.aspx" Text="Modules koppelen" Value="Modules koppelen"></asp:MenuItem>   
+                        <asp:MenuItem NavigateUrl="~/ModuleKoppelen.aspx" Text="Modules koppelen" Value="Modules koppelen"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/UserSettings.aspx" Text="Account Details" Value="Account Details"></asp:MenuItem>
                     </Items>
                 </asp:Menu>
             </div>
