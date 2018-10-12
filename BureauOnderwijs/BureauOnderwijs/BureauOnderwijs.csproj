@@ -128,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddModules.aspx" />
+    <Content Include="App_Themes\style.css" />
     <Content Include="EditModules.aspx" />
     <Content Include="Homepage.aspx" />
     <Content Include="LogIn.aspx" />
@@ -396,7 +397,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="App_Themes\" />
     <Folder Include="Controllers\" />
     <Folder Include="Views\" />
   </ItemGroup>

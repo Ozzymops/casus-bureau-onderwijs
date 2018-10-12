@@ -21,7 +21,7 @@ namespace BureauOnderwijs.Models.BU
         {
 
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
-            string sqlQuery = "SELECT Role FROM UserAccount WHERE Username = '" + username + "' and Password = '" + password + "'";
+            string sqlQuery = "SELECT Role, UserId FROM UserAccount WHERE Username = '" + username + "' and Password = '" + password + "'";
 
             try
             {
@@ -29,26 +29,41 @@ namespace BureauOnderwijs.Models.BU
                 SqlCommand cmd = new SqlCommand(sqlQuery, con);
 
                 con.Open();
-                int result = Convert.ToInt16(cmd.ExecuteScalar());
-                if (result == 1 || result == 2 || result == 3 || result == 4)
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                int[] result = { 0, 0, 0};
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        result[0] = reader.GetInt32(0);
+                        result[1] = reader.GetInt32(1);
+                    }
+                }
+
+                if (result.First() > 0 && result.First() <5)
                 {
                     /// login succesvol
-                    return new int[] { result, 0}; 
+
+                    RandomNumberGenerator r = new RandomNumberGenerator();
+                    result[2] = r.GenerateNumber(1000, 9999);
+                    return new int[] { result[0], result[1], result[2] }; 
                 }
-                else if (result == 0) 
+                else if (result.First() == 0) 
                 {
                     /// foutmelding laten zien dat de combinatie username en password niet voorkomt
                     //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongelidge username en/of wachtwoord');", true);
-                    return new int[] { 10, 0 };
+                    return new int[] { 10, 0, 0 };
                 }
                 con.Dispose();
             }
             catch (Exception)
             {
                 /// er is iets mis gegaan met het inloggen, afhankelijk van de foutmelding die weergegeven wordt
-                return new int[] { 20, 0 };
+                return new int[] { 20, 0, 0 };
             }
-            return new int[] { 30, 0 };
+            return new int[] { 30, 0, 0 };
         }
 
         public void LogOut()

@@ -11,14 +11,12 @@ namespace BureauOnderwijs
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["UserId"] = null;
         }
 
         protected void ButtonLogin_Click(object sender, EventArgs e)
         {
-            int session = 0;
             
-
             // Controle of er iets is ingevuld in de textboxen
 
             if (string.IsNullOrEmpty(TextBoxUsernameLogin.Text) || string.IsNullOrEmpty(TextBoxPasswordLogin.Text))
@@ -30,44 +28,31 @@ namespace BureauOnderwijs
 
                 /// Gaat met de ingevulde gegevens kijken of dit voorkomt in de database
                 /// krijg een array terug, met als eerste nummer de rol van de bestreffende user
-                /// en als tweede nummer de unieke userId
+                /// en als tweede nummer de unieke userId. Het unieke UserId wordt de sessie, 
+                /// hierdoor is later terug te vinden welke gebruiker ingelogd is. 
                 
                 Models.CC.LogIn l = new Models.CC.LogIn();
-                int[] LoginRolenumber = l.LoginCC(TextBoxUsernameLogin.Text, TextBoxPasswordLogin.Text);
+                int[] RoleUseridRandomNumber = l.LoginCC(TextBoxUsernameLogin.Text, TextBoxPasswordLogin.Text);
 
-                foreach (var number in LoginRolenumber)
+                if (RoleUseridRandomNumber[0] > 0 && RoleUseridRandomNumber[0] < 5)
                 {
-                    if (LoginRolenumber.First() == 1)
-                    {
-                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ingelogd als Admin');", true);
-                        session = Convert.ToInt32(Session["int"]);
-                        Response.Redirect("LogIn2FaCode.aspx");
-                    }
-                    else if (LoginRolenumber.First() == 2)
-                    {
-                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Inlogegd als Scheduler');", true);
-                    }
-                    else if (LoginRolenumber.First() == 3)
-                    {
-                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ingelogd als Teacher');", true);
-                    }
-                    else if (LoginRolenumber.First() == 4)
-                    {
-                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ingelogd als Examinor');", true);
-                    }
-                    else if (LoginRolenumber.First() == 10)
-                    {
-                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongeldige gebruikersnaam en of wachtwoord!');", true);
-                    }
-                    else if (LoginRolenumber.First() == 20)
-                    {
-                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Connectie met de database problemen.');", true);
-                    }
-                    else if (LoginRolenumber.First() == 30)
-                    {
-                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Kom op kerel, je code klopt voor de klote niet.');", true);
-                    }
+                    Session["UserId"] = RoleUseridRandomNumber[1];
+                    Session["2FaCode"] = RoleUseridRandomNumber[2];
+                    Response.Redirect("LogIn2FaCode.aspx");
                 }
+                else if (RoleUseridRandomNumber[0] == 10)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongeldige gebruikersnaam en of wachtwoord!');", true);
+                }
+                else if (RoleUseridRandomNumber[0] == 20)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Connectie met de database problemen.');", true);
+                }
+                else if (RoleUseridRandomNumber[0] == 30)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Kom op kerel, je code klopt voor de klote niet.');", true);
+                }
+
             }
         }
     }

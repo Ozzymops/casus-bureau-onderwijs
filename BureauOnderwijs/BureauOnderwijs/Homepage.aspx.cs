@@ -11,7 +11,8 @@ namespace BureauOnderwijs
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            // kills the 2FaCode session
+            Session["2FaCode"] = null;
         }
     }
 }
