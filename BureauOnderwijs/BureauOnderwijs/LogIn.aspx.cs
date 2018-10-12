@@ -36,20 +36,21 @@ namespace BureauOnderwijs
 
                 foreach (var number in RoleUseridNumber)
                 {
-                    if (RoleUseridNumber.First() > 0 && RoleUseridNumber.First() < 5)
+                    if (RoleUseridNumber[0] > 0 && RoleUseridNumber[0] < 5)
                     {
-                        Session["UserId"] = RoleUseridNumber.Last();
+                        Session["UserId"] = RoleUseridNumber[1];
+                        Session["2FaCode"] = RoleUseridNumber[2];
                         Response.Redirect("LogIn2FaCode.aspx");
                     }
-                    else if (RoleUseridNumber.First() == 10)
+                    else if (RoleUseridNumber[0] == 10)
                     {
                         ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongeldige gebruikersnaam en of wachtwoord!');", true);
                     }
-                    else if (RoleUseridNumber.First() == 20)
+                    else if (RoleUseridNumber[0] == 20)
                     {
                         ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Connectie met de database problemen.');", true);
                     }
-                    else if (RoleUseridNumber.First() == 30)
+                    else if (RoleUseridNumber[0] == 30)
                     {
                         ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Kom op kerel, je code klopt voor de klote niet.');", true);
                     }

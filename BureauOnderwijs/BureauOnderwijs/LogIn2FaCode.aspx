@@ -22,6 +22,10 @@
             <asp:Label ID="LabelSessionNumber" runat="server" Text="Sessie nummer:"></asp:Label>
             <asp:Label ID="LabelSessionNumberActive" runat="server" Text=""></asp:Label>
         </div>
+        <div>   
+            <asp:Label ID="LabelGenerated2FaCode" runat="server" Text="2Fa code:"></asp:Label>
+            <asp:Label ID="LabelGenerated2FaCodeActive" runat="server" Text=""></asp:Label>
+        </div>
     </form>
 </body>
 </html>

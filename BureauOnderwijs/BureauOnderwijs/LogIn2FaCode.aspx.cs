@@ -12,11 +12,20 @@ namespace BureauOnderwijs
         protected void Page_Load(object sender, EventArgs e)
         {
             LabelSessionNumberActive.Text = Session["UserId"].ToString();
+            LabelGenerated2FaCodeActive.Text = Session["2FaCode"].ToString();
         }
 
         protected void ButtonSubmit2FaCode_Click(object sender, EventArgs e)
         {
-            //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Sessie id:"+ Session["UserId"] +"');", true);
+            if (TextBox2FaCode.Text == Session["2FaCode"].ToString())
+            {
+                Response.Redirect("Homepage.aspx");
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongeldige 2FA Code!');", true);
+            }
+            
         }
     }
 }

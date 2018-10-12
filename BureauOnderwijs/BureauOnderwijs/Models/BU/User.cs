@@ -31,7 +31,7 @@ namespace BureauOnderwijs.Models.BU
                 con.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                int[] result = { 0, 0 };
+                int[] result = { 0, 0, 0};
 
                 if (reader.HasRows)
                 {
@@ -42,25 +42,28 @@ namespace BureauOnderwijs.Models.BU
                     }
                 }
 
-                if (result.First() == 1 || result.First() == 2 || result.First() == 3 || result.First() == 4)
+                if (result.First() > 0 && result.First() <5)
                 {
                     /// login succesvol
-                    return new int[] { result.First(), result.Last()}; 
+
+                    RandomNumberGenerator r = new RandomNumberGenerator();
+                    result[2] = r.GenerateNumber(1000, 9999);
+                    return new int[] { result[0], result[1], result[2] }; 
                 }
                 else if (result.First() == 0) 
                 {
                     /// foutmelding laten zien dat de combinatie username en password niet voorkomt
                     //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongelidge username en/of wachtwoord');", true);
-                    return new int[] { 10, 0 };
+                    return new int[] { 10, 0, 0 };
                 }
                 con.Dispose();
             }
             catch (Exception)
             {
                 /// er is iets mis gegaan met het inloggen, afhankelijk van de foutmelding die weergegeven wordt
-                return new int[] { 20, 0 };
+                return new int[] { 20, 0, 0 };
             }
-            return new int[] { 30, 0 };
+            return new int[] { 30, 0, 0 };
         }
 
         public void LogOut()
