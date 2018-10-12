@@ -31,31 +31,31 @@ namespace BureauOnderwijs {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// TitleLabel control.
+        /// headLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TitleLabel;
+        protected global::System.Web.UI.WebControls.Label headLabel;
         
         /// <summary>
-        /// NavMenu control.
+        /// navbar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu NavMenu;
+        protected global::System.Web.UI.WebControls.Menu navbar;
         
         /// <summary>
-        /// HeadLabel control.
+        /// labelke control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label HeadLabel;
+        protected global::System.Web.UI.WebControls.Label labelke;
         
         /// <summary>
         /// ContentPlaceHolder1 control.
@@ -67,12 +67,12 @@ namespace BureauOnderwijs {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
         
         /// <summary>
-        /// FootLabel control.
+        /// footLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label FootLabel;
+        protected global::System.Web.UI.WebControls.Label footLabel;
     }
 }

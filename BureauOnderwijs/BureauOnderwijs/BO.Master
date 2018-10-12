@@ -2,84 +2,26 @@
 
 <!DOCTYPE html>
 
-<!--     CSS code    -->
-<style type="text/css">
-/* Achtergrond navbar */
-    .navBar{
-        background-color: gray;
-        overflow: hidden;
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .navBar li
-    {
-        border-right: 1px solid white;
-        float: left;
-    }
-
-    .navBar li:last-child{
-        border-right: none;
-    }
-
-/* Style links in de navbar */
-    .navBar li a{
-        display: block;
-        color: black;
-        text-align: center;
-        padding: 14px;
-        text-decoration: none;
-    }
-
-/* Style links on hover*/
-    .navBar li a:hover{
-        background-color: red;
-        color: white;
-    }
-
-/* Actieve link */
-    .navBar li a:active{
-        background-color: lightcoral;
-        color: white;
-    }
-
-/* Centered top header */
-    .header{
-        position: absolute;
-        top: 0px;
-        width: 100%;
-        text-align: center;
-        text-decoration: solid;
-    }
-/* Centered bottom footer */
-    .footer{
-        position: absolute;
-        bottom: 0px;
-        width: 100%;
-        text-align: center;
-        text-decoration: wavy;
-    }
-</style>
-<!--  Eind CSS code  -->
-
 <html>
 <head runat="server">
     <title></title>
+    <link rel="stylesheet" type="text/css" href="~/App_Themes/style.css"/>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body style="background-color: lightgray;">
     <form id="form1" runat="server">
-        <div>
-            <!-- Title -->
-            <div style="height: 20px">
-                <asp:Label CssClass="header" ID="TitleLabel" runat="server"></asp:Label>
+
+        <div id="container">
+
+            <!-- Header -->
+            <div id="header">
+                <asp:Label CssClass="header" ID="headLabel" runat="server" text="Casus Bureau Onderwijs"></asp:Label>
             </div>
 
             <!-- Navigation bar -->
-            <div>
-                <asp:Menu CssClass="navBar" ID="NavMenu" runat="server" Orientation="Horizontal">
+            <div id="top">
+                <asp:Menu CssClass="navBar" ID="navbar" runat="server" Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Homepage.aspx" Text="(Home)" Value="Homepage"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Roosteroverzicht.aspx" Text="Roosteroverzicht" Value="Roosteroverzicht"></asp:MenuItem>
@@ -90,17 +32,20 @@
                 </asp:Menu>
             </div>
 
-            <!-- Header -->
-            <asp:Label ID="HeadLabel" runat="server"></asp:Label>
+            <asp:Label ID="labelke" runat="server"></asp:Label>
 
             <!-- Child content -->
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
-
+            <div id="content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+            </div>
+            
             <!-- Footer -->
-            <div>
-                <asp:Label CssClass="footer" ID="FootLabel" runat="server"></asp:Label>
-            </div>         
+            <div id="footer">
+                <asp:Label CssClass="footer" ID="footLabel" runat="server" text="Copyright &copy 2018 Dreamteam"></asp:Label>
+            </div>   
+
         </div>
+
     </form>
 </body>
 </html>
