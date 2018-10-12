@@ -1,0 +1,48 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="BureauOnderwijs.Views.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Master</title>
+    <link rel="stylesheet" type="text/css" href="~/App_Themes/stylesheet.css"/>
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="container">
+            <!-- Header -->
+            <div id="header">
+                <h2>Casus Bureau Onderwijs</h2>
+            </div>
+
+            <div id="content">
+                <!-- Navigation bar -->
+                <div class="nav">
+                    <a runat="server" href="~/Views/Homepage.aspx">Homepage</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">Administrator</button>
+                        <div class="dropdown-content">
+                            <a runat="server" href="#">Link 1</a>
+                            <a runat="server" href="#">Link 2</a>
+                        </div>
+                    </div>
+                    <a runat="server" href="~/Views/Homepage.aspx">Docent</a>
+                    <a runat="server" href="~/Views/Homepage.aspx">Examinator</a>
+                    <a runat="server" href="~/Views/Homepage.aspx">Roostermaker</a>
+                </div>
+
+                <!-- Content! -->
+                <div id="main">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+                </div>             
+            </div>
+
+            <!-- Footer -->
+            <div id="footer">
+                Copyright &copy 2018 Dream Team
+            </div>
+        </div>
+    </form>
+</body>
+</html>

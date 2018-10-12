@@ -7,19 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BureauOnderwijs {
+namespace BureauOnderwijs.Views {
     
     
-    public partial class BO {
-        
-        /// <summary>
-        /// head control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+    public partial class LogIn {
         
         /// <summary>
         /// form1 control.
@@ -31,39 +22,48 @@ namespace BureauOnderwijs {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// headLabel control.
+        /// LabelUsernameLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label headLabel;
+        protected global::System.Web.UI.WebControls.Label LabelUsernameLogin;
         
         /// <summary>
-        /// navbar control.
+        /// TextBoxUsernameLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu navbar;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxUsernameLogin;
         
         /// <summary>
-        /// labelke control.
+        /// LabelPasswordLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelke;
+        protected global::System.Web.UI.WebControls.Label LabelPasswordLogin;
         
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// TextBoxPasswordLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxPasswordLogin;
+        
+        /// <summary>
+        /// ButtonLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonLogin;
     }
 }

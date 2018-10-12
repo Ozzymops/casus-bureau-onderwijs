@@ -16,7 +16,7 @@
 
             <!-- Header -->
             <div id="header">
-                <asp:Label CssClass="header" ID="headLabel" runat="server" text="Casus Bureau Onderwijs"></asp:Label>
+                <asp:Label ID="headLabel" runat="server" text="Casus Bureau Onderwijs"></asp:Label>
             </div>
 
             <!-- Navigation bar -->
@@ -39,12 +39,14 @@
             <div id="content">
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
             </div>
-            
-            <!-- Footer -->
-            <div id="footer">
-                <asp:Label CssClass="footer" ID="footLabel" runat="server" text="Copyright &copy 2018 Dreamteam"></asp:Label>
-            </div>   
 
+
+
+        </div>
+
+        <!-- Footer -->
+        <div id="footer">
+            <p>Copyright &copy 2018 Dreamteam</p>
         </div>
 
     </form>
