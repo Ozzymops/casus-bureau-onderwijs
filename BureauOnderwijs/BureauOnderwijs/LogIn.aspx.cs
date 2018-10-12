@@ -11,7 +11,7 @@ namespace BureauOnderwijs
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["UserId"] = null;
         }
 
         protected void ButtonLogin_Click(object sender, EventArgs e)
@@ -32,29 +32,27 @@ namespace BureauOnderwijs
                 /// hierdoor is later terug te vinden welke gebruiker ingelogd is. 
                 
                 Models.CC.LogIn l = new Models.CC.LogIn();
-                int[] RoleUseridNumber = l.LoginCC(TextBoxUsernameLogin.Text, TextBoxPasswordLogin.Text);
+                int[] RoleUseridRandomNumber = l.LoginCC(TextBoxUsernameLogin.Text, TextBoxPasswordLogin.Text);
 
-                foreach (var number in RoleUseridNumber)
+                if (RoleUseridRandomNumber[0] > 0 && RoleUseridRandomNumber[0] < 5)
                 {
-                    if (RoleUseridNumber[0] > 0 && RoleUseridNumber[0] < 5)
-                    {
-                        Session["UserId"] = RoleUseridNumber[1];
-                        Session["2FaCode"] = RoleUseridNumber[2];
-                        Response.Redirect("LogIn2FaCode.aspx");
-                    }
-                    else if (RoleUseridNumber[0] == 10)
-                    {
-                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongeldige gebruikersnaam en of wachtwoord!');", true);
-                    }
-                    else if (RoleUseridNumber[0] == 20)
-                    {
-                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Connectie met de database problemen.');", true);
-                    }
-                    else if (RoleUseridNumber[0] == 30)
-                    {
-                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Kom op kerel, je code klopt voor de klote niet.');", true);
-                    }
+                    Session["UserId"] = RoleUseridRandomNumber[1];
+                    Session["2FaCode"] = RoleUseridRandomNumber[2];
+                    Response.Redirect("LogIn2FaCode.aspx");
                 }
+                else if (RoleUseridRandomNumber[0] == 10)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongeldige gebruikersnaam en of wachtwoord!');", true);
+                }
+                else if (RoleUseridRandomNumber[0] == 20)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Connectie met de database problemen.');", true);
+                }
+                else if (RoleUseridRandomNumber[0] == 30)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Kom op kerel, je code klopt voor de klote niet.');", true);
+                }
+
             }
         }
     }
