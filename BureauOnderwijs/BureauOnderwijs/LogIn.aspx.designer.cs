@@ -22,15 +22,6 @@ namespace BureauOnderwijs {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// LabelUsernameLogin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelUsernameLogin;
-        
-        /// <summary>
         /// TextBoxUsernameLogin control.
         /// </summary>
         /// <remarks>
@@ -38,15 +29,6 @@ namespace BureauOnderwijs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxUsernameLogin;
-        
-        /// <summary>
-        /// LabelPasswordLogin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelPasswordLogin;
         
         /// <summary>
         /// TextBoxPasswordLogin control.

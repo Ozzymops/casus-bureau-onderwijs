@@ -22,15 +22,6 @@ namespace BureauOnderwijs {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Label2FaCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2FaCode;
-        
-        /// <summary>
         /// TextBox2FaCode control.
         /// </summary>
         /// <remarks>
@@ -49,15 +40,6 @@ namespace BureauOnderwijs {
         protected global::System.Web.UI.WebControls.Button ButtonSubmit2FaCode;
         
         /// <summary>
-        /// LabelSessionNumber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelSessionNumber;
-        
-        /// <summary>
         /// LabelSessionNumberActive control.
         /// </summary>
         /// <remarks>
@@ -65,15 +47,6 @@ namespace BureauOnderwijs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelSessionNumberActive;
-        
-        /// <summary>
-        /// LabelGenerated2FaCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelGenerated2FaCode;
         
         /// <summary>
         /// LabelGenerated2FaCodeActive control.

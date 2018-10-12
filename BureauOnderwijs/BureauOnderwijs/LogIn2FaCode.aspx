@@ -8,24 +8,24 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <asp:Label ID="Label2FaCode" runat="server" Text="2FA code:"></asp:Label>
+        <h4>
+            Twee staps verificatie code:
             <asp:TextBox ID="TextBox2FaCode" runat="server"></asp:TextBox>
-        </div>
+        </h4>
         <div>
             <asp:Button ID="ButtonSubmit2FaCode" runat="server" Text="Inloggen" OnClick="ButtonSubmit2FaCode_Click" />
         </div>
         <div>
 
         </div>
-        <div>   
-            <asp:Label ID="LabelSessionNumber" runat="server" Text="Sessie nummer:"></asp:Label>
+        <h4>
+            Sessienummer:
             <asp:Label ID="LabelSessionNumberActive" runat="server" Text=""></asp:Label>
-        </div>
-        <div>   
-            <asp:Label ID="LabelGenerated2FaCode" runat="server" Text="2Fa code:"></asp:Label>
+        </h4>   
+        <h4>
+            Twee staps verificatie code:
             <asp:Label ID="LabelGenerated2FaCodeActive" runat="server" Text=""></asp:Label>
-        </div>
+        </h4>
     </form>
 </body>
 </html>

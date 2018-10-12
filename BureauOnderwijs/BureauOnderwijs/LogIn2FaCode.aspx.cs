@@ -19,13 +19,17 @@ namespace BureauOnderwijs
         {
             if (TextBox2FaCode.Text == Session["2FaCode"].ToString())
             {
+
+                /// Kills de 2fa sessiecode
+                /// en logt de gebruiker vervolgens in
+                
+                Session["2FaCode"] = null;
                 Response.Redirect("Homepage.aspx");
             }
             else
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongeldige 2FA Code!');", true);
             }
-            
         }
     }
 }

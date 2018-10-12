@@ -8,16 +8,16 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <h4>
+            Gebruikersnaam:
+            <asp:TextBox ID="TextBoxUsernameLogin" runat="server" Width="300"></asp:TextBox>
+        </h4>
+        <h4>
+            Wachtwoord:
+            <asp:TextBox ID="TextBoxPasswordLogin" runat="server" TextMode="Password" Width="300"></asp:TextBox>
+        </h4>           
         <div>
-            <asp:Label ID="LabelUsernameLogin" runat="server" Text="Gebruikersnaam:"></asp:Label>
-            <asp:TextBox ID="TextBoxUsernameLogin" runat="server"></asp:TextBox>
-        </div>
-        <div>
-            <asp:Label ID="LabelPasswordLogin" runat="server" Text="Wachtwoord:"></asp:Label>
-            <asp:TextBox ID="TextBoxPasswordLogin" runat="server" TextMode="Password"></asp:TextBox>
-        </div>
-        <div>
-            <asp:Button ID="ButtonLogin" runat="server" Text="Inloggen" OnClick="ButtonLogin_Click" />
+            <asp:Button ID="ButtonLogin" runat="server" Text="Inloggen" OnClick="ButtonLogin_Click"/>
         </div>
     </form>
 </body>
