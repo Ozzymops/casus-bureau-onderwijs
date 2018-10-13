@@ -24,7 +24,7 @@ namespace BureauOnderwijs.Views
                 /// en logt de gebruiker vervolgens in
 
                 Session["2FaCode"] = null;
-                Response.Redirect("Views/Homepage.aspx");
+                Response.Redirect("Homepage.aspx");
             }
             else
             {
