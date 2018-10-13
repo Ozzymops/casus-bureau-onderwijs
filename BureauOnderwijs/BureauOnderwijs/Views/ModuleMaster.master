@@ -1,0 +1,8 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Views/MasterPage.Master" AutoEventWireup="true" CodeBehind="ModuleMaster.master.cs" Inherits="BureauOnderwijs.Views.ModuleMaster" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceholder1" runat="server">
+    <!-- nav bar -->
+    <asp:Button ID="addModuleButton" runat="server" Text="Add module" OnClick="addModuleButton_Click" />
+    <asp:ContentPlaceHolder ID="NestedPlaceholder1" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>

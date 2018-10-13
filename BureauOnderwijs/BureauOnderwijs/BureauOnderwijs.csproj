@@ -131,8 +131,8 @@
     <Content Include="App_Themes\stylesheet.css" />
     <Content Include="Views\EditModules.aspx" />
     <Content Include="Models\LagenModel.txt" />
+    <Content Include="Views\Module.aspx" />
     <Content Include="Views\ModuleKoppelen.aspx" />
-    <Content Include="Views\Modules.aspx" />
     <Content Include="Obsolete\old-about.aspx" />
     <Content Include="Obsolete\old-contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -161,7 +161,6 @@
     <Content Include="Views\LogIn.aspx" />
     <Content Include="Views\LogIn2FaCode.aspx" />
     <Content Include="Views\Wensen.aspx" />
-    <Content Include="NestedModule.master" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Image\Placeholder.png" />
     <Content Include="Views\Roosteroverzicht.aspx" />
@@ -248,26 +247,19 @@
     <Compile Include="Models\CC\Teacher_UpdateWish.cs" />
     <Compile Include="Models\Database.cs" />
     <Compile Include="Models\RandomNumberGenerator.cs" />
+    <Compile Include="Views\Module.aspx.cs">
+      <DependentUpon>Module.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Module.aspx.designer.cs">
+      <DependentUpon>Module.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\ModuleKoppelen.aspx.cs">
       <DependentUpon>ModuleKoppelen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\ModuleKoppelen.aspx.designer.cs">
       <DependentUpon>ModuleKoppelen.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Modules.aspx.cs">
-      <DependentUpon>Modules.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Modules.aspx.designer.cs">
-      <DependentUpon>Modules.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="NestedModule.master.cs">
-      <DependentUpon>NestedModule.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="NestedModule.master.designer.cs">
-      <DependentUpon>NestedModule.master</DependentUpon>
     </Compile>
     <Compile Include="Obsolete\old-about.aspx.cs">
       <DependentUpon>old-about.aspx</DependentUpon>
@@ -295,6 +287,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\ModuleMaster.master.cs">
+      <DependentUpon>ModuleMaster.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ModuleMaster.master.designer.cs">
+      <DependentUpon>ModuleMaster.master</DependentUpon>
+    </Compile>
     <Compile Include="Views\Recovery.aspx.cs">
       <DependentUpon>Recovery.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -403,6 +402,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Views\MasterPage.Master" />
+    <Content Include="Views\ModuleMaster.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
