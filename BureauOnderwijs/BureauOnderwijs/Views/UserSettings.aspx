@@ -9,7 +9,7 @@
             &nbsp;
             &nbsp;
             <asp:TextBox ID="TextBoxVoornaam" runat="server"></asp:TextBox>
-        <asp:Button ID="ButtonSaveVoornaam" runat="server" Text="Update" Height="25px" />
+        <asp:Button ID="ButtonSaveVoornaam" runat="server" Text="Update" Height="25px" OnClick="ButtonSaveVoornaam_Click" />
         </div>
         
         <div id="empty">

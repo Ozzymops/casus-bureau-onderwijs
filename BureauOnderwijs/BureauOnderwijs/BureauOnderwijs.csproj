@@ -230,6 +230,7 @@
     <Compile Include="Models\CC\Teacher_DeleteWish.cs" />
     <Compile Include="Models\CC\Teacher_ReadWishes.cs" />
     <Compile Include="Models\CC\Teacher_UpdateWish.cs" />
+    <Compile Include="Models\CC\User_UpdateUserSettings.cs" />
     <Compile Include="Models\Database.cs" />
     <Compile Include="Models\RandomNumberGenerator.cs" />
     <Compile Include="Views\AddModule.aspx.cs">
