@@ -127,12 +127,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\AddModules.aspx" />
     <Content Include="App_Themes\stylesheet.css" />
-    <Content Include="Views\EditModules.aspx" />
     <Content Include="Models\LagenModel.txt" />
-    <Content Include="Views\Module.aspx" />
-    <Content Include="Views\ModuleKoppelen.aspx" />
+    <Content Include="Views\AddModule.aspx" />
+    <Content Include="Views\DeleteModule.aspx" />
+    <Content Include="Views\EditModule.aspx" />
     <Content Include="Obsolete\old-about.aspx" />
     <Content Include="Obsolete\old-contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -199,21 +198,7 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Views\AddModules.aspx.cs">
-      <DependentUpon>AddModules.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\AddModules.aspx.designer.cs">
-      <DependentUpon>AddModules.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="Views\EditModules.aspx.cs">
-      <DependentUpon>EditModules.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\EditModules.aspx.designer.cs">
-      <DependentUpon>EditModules.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Models\BU\Admin.cs" />
     <Compile Include="Models\BU\Examiner.cs" />
     <Compile Include="Models\BU\Lecture.cs" />
@@ -247,19 +232,26 @@
     <Compile Include="Models\CC\Teacher_UpdateWish.cs" />
     <Compile Include="Models\Database.cs" />
     <Compile Include="Models\RandomNumberGenerator.cs" />
-    <Compile Include="Views\Module.aspx.cs">
-      <DependentUpon>Module.aspx</DependentUpon>
+    <Compile Include="Views\AddModule.aspx.cs">
+      <DependentUpon>AddModule.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Module.aspx.designer.cs">
-      <DependentUpon>Module.aspx</DependentUpon>
+    <Compile Include="Views\AddModule.aspx.designer.cs">
+      <DependentUpon>AddModule.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\ModuleKoppelen.aspx.cs">
-      <DependentUpon>ModuleKoppelen.aspx</DependentUpon>
+    <Compile Include="Views\DeleteModule.aspx.cs">
+      <DependentUpon>DeleteModule.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\ModuleKoppelen.aspx.designer.cs">
-      <DependentUpon>ModuleKoppelen.aspx</DependentUpon>
+    <Compile Include="Views\DeleteModule.aspx.designer.cs">
+      <DependentUpon>DeleteModule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditModule.aspx.cs">
+      <DependentUpon>EditModule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\EditModule.aspx.designer.cs">
+      <DependentUpon>EditModule.aspx</DependentUpon>
     </Compile>
     <Compile Include="Obsolete\old-about.aspx.cs">
       <DependentUpon>old-about.aspx</DependentUpon>
@@ -294,19 +286,19 @@
     <Compile Include="Views\ModuleMaster.master.designer.cs">
       <DependentUpon>ModuleMaster.master</DependentUpon>
     </Compile>
-    <Compile Include="Views\Recovery.aspx.cs">
-      <DependentUpon>Recovery.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Recovery.aspx.designer.cs">
-      <DependentUpon>Recovery.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Views\ReadModules.aspx.cs">
       <DependentUpon>ReadModules.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\ReadModules.aspx.designer.cs">
       <DependentUpon>ReadModules.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Recovery.aspx.cs">
+      <DependentUpon>Recovery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Recovery.aspx.designer.cs">
+      <DependentUpon>Recovery.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Roosteroverzicht.aspx.cs">
       <DependentUpon>Roosteroverzicht.aspx</DependentUpon>

@@ -10,7 +10,7 @@
 namespace BureauOnderwijs.Views {
     
     
-    public partial class Module {
+    public partial class DeleteModule {
         
         /// <summary>
         /// Button1 control.

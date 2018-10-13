@@ -37,7 +37,7 @@
                     <div class="dropdown">
                         <button class="dropbtn">Examinator</button>
                         <div class="dropdown-content">
-                            <a runat="server" href="~/Views/Modules.aspx">Modules</a>
+                            <a runat="server" href="~/Views/ReadModules.aspx">Modules</a>
                         </div>
                     </div>
                     <div class="dropdown">

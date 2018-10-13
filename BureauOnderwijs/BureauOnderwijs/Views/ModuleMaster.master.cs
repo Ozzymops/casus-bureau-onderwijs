@@ -14,9 +14,24 @@ namespace BureauOnderwijs.Views
 
         }
 
+        protected void readModulesButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Views/ReadModules.aspx");
+        }
+
         protected void addModuleButton_Click(object sender, EventArgs e)
         {
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('fucking aids');", true);
+            Response.Redirect("~/Views/AddModule.aspx");
+        }
+
+        protected void editModuleButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Views/EditModule.aspx");
+        }
+
+        protected void deleteModuleButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Views/DeleteModule.aspx");
         }
     }
 }
