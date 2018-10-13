@@ -114,5 +114,34 @@ namespace BureauOnderwijs.Models.BU
         
             
         }
+
+        public string UpdateAchternaam(string achternaam, string ingelogd)
+        {
+            //legt de locatie van de database vast en de query welke er naar toe verstuurd dient te worden met deze methode
+            string conStringAn = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQueryAn = "UPDATE UserAccount SET Lastname = '" + achternaam + "' WHERE UserId = '" + ingelogd + "'";
+            string succes;
+
+            //poogt de query uit te voeren, als dit succesvol verloopt wordt de return waarde succes op string value "1" gezet.
+            try
+            {
+                SqlConnection conAn = new SqlConnection(conStringAn);
+                SqlCommand cmdAn = new SqlCommand(sqlQueryAn, conAn);
+
+                conAn.Open();
+                cmdAn.ExecuteNonQuery();
+                conAn.Close();
+
+                return succes = "1";
+
+            }
+            //Bij een onsuccesvolle poging wordt de return waarde succes op string value "0" gezet.
+            catch (Exception)
+            {
+                return succes = "0";
+            }
+
+
+        }
     }
 }

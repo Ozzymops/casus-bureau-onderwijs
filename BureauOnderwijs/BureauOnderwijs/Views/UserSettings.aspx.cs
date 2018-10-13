@@ -49,5 +49,41 @@ namespace BureauOnderwijs.Views
                 
             }
         }
+
+        protected void ButtonSaveAchternaam_Click(object sender, EventArgs e)
+        {
+            //hier wordt de sessieId opgehaald om te controleren welke persoonsgegevens aangepast moeten kunnen worden.
+            string Ingelogd = Session["UserId"].ToString();
+
+            //als er geen achternaam is in gevuld geef de foutmelding 'geen achternaam gevonden.'. 
+            if (string.IsNullOrEmpty(TextBoxAchternaam.Text))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Geen nieuwe achternaam gevonden.');", true);
+            }
+
+            //anders stuur de achternaam en sessie ID door naar CC.User_UpdateUserSettings
+            else
+            {
+                Models.CC.User_UpdateUserSettings u = new Models.CC.User_UpdateUserSettings();
+                string NewAchternaam = u.UpdateAchternaamCC(TextBoxAchternaam.Text, Ingelogd);
+
+                //als de return waarde van succesvol updaten gelijk is aan de string waarde "0" geef foutmelding 'niet goed gegaan.'. 
+                if (NewAchternaam == "0")
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Niet goed gegaan.');", true);
+                }
+                //als de return waarde van succesvol updaten gelijk is aan de string waarde "1" geef melding 'Succes! Achternaam is geupdatet.'.
+                else if (NewAchternaam == "1")
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Succes! Achternaam is geupdatet.');", true);
+                }
+                //In andere gevallen geef de foutmelding 'Onbekende Fout'.
+                else
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Onbekende Fout');", true);
+                }
+
+            }
+        }
     }
 }

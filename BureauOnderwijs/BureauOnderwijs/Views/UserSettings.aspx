@@ -20,7 +20,7 @@
             <asp:Label ID="Label2" runat="server" Text="Achternaam:"></asp:Label>
             &nbsp;
             <asp:TextBox ID="TextBoxAchternaam" runat="server"></asp:TextBox>
-            <asp:Button ID="ButtonSaveAchternaam" runat="server" Height="21px" Text="Update" />
+            <asp:Button ID="ButtonSaveAchternaam" runat="server" Height="21px" Text="Update" OnClick="ButtonSaveAchternaam_Click" />
         </div>      
         
         <div id="empty">

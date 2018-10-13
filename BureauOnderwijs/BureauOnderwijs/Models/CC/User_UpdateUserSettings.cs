@@ -13,5 +13,11 @@ namespace BureauOnderwijs.Models.CC
             User u = new User();
             return u.UpdateVoornaam(voornaam, ingelogd);
         }
+
+        public string UpdateAchternaamCC(string achternaam, string ingelogd)
+        {
+            User u = new User();
+            return u.UpdateAchternaam(achternaam, ingelogd);
+        }
     }
 }
