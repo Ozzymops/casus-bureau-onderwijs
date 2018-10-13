@@ -10,7 +10,7 @@
 namespace BureauOnderwijs.Views {
     
     
-    public partial class LogIn {
+    public partial class Recovery {
         
         /// <summary>
         /// form1 control.
@@ -22,30 +22,12 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// TextBoxUsernameLogin control.
+        /// PasswordRecovery control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxUsernameLogin;
-        
-        /// <summary>
-        /// TextBoxPasswordLogin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxPasswordLogin;
-        
-        /// <summary>
-        /// ButtonLogin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonLogin;
+        protected global::System.Web.UI.WebControls.PasswordRecovery PasswordRecovery;
     }
 }

@@ -27,9 +27,27 @@
                             <a runat="server" href="#">Link 2</a>
                         </div>
                     </div>
-                    <a runat="server" href="~/Views/Homepage.aspx">Docent</a>
-                    <a runat="server" href="~/Views/Homepage.aspx">Examinator</a>
-                    <a runat="server" href="~/Views/Homepage.aspx">Roostermaker</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">Docent</button>
+                        <div class="dropdown-content">
+                            <a runat="server" href="~/Views/Roosteroverzicht.aspx">Roosteroverzicht</a>
+                            <a runat="server" href="~/Views/Wensen.aspx">Wensen</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Examinator</button>
+                        <div class="dropdown-content">
+                            <a runat="server" href="~/Views/Modules.aspx">Modules</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Roostermaker</button>
+                        <div class="dropdown-content">
+                            <a runat="server" href="#">Rooster</a>
+                        </div>
+                    </div>
+                    <a runat="server" href="~/Views/UserSettings.aspx">Gebruikersinstellingen</a>
+                    <a runat="server" href="#">Log out</a>
                 </div>
 
                 <!-- Content! -->

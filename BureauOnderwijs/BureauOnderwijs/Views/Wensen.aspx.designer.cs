@@ -10,42 +10,33 @@
 namespace BureauOnderwijs.Views {
     
     
-    public partial class LogIn {
+    public partial class Wensen {
         
         /// <summary>
-        /// form1 control.
+        /// DropDownListBlokperiode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListBlokperiode;
         
         /// <summary>
-        /// TextBoxUsernameLogin control.
+        /// DropDownListWeek control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxUsernameLogin;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListWeek;
         
         /// <summary>
-        /// TextBoxPasswordLogin control.
+        /// DropDownListDag control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxPasswordLogin;
-        
-        /// <summary>
-        /// ButtonLogin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonLogin;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListDag;
     }
 }
