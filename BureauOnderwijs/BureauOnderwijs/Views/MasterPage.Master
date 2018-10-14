@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <a runat="server" href="~/Views/UserSettings.aspx">Gebruikersinstellingen</a>
-                    <a runat="server" href="#">Log out</a>
+                    <a runat="server" href="~/Views/LogIn.aspx">Log out</a>
                 </div>
 
                 <!-- Content! -->

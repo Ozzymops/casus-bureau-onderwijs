@@ -152,8 +152,8 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Obsolete\Default.aspx" />
+    <Content Include="Views\PasswordRecovery.aspx" />
     <Content Include="Views\ReadModules.aspx" />
-    <Content Include="Views\Recovery.aspx" />
     <Content Include="Views\TestNest.aspx" />
     <Content Include="Views\UserSettings.aspx" />
     <Content Include="Views\Homepage.aspx" />
@@ -287,19 +287,19 @@
     <Compile Include="Views\ModuleMaster.master.designer.cs">
       <DependentUpon>ModuleMaster.master</DependentUpon>
     </Compile>
+    <Compile Include="Views\PasswordRecovery.aspx.cs">
+      <DependentUpon>PasswordRecovery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\PasswordRecovery.aspx.designer.cs">
+      <DependentUpon>PasswordRecovery.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\ReadModules.aspx.cs">
       <DependentUpon>ReadModules.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\ReadModules.aspx.designer.cs">
       <DependentUpon>ReadModules.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Recovery.aspx.cs">
-      <DependentUpon>Recovery.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Recovery.aspx.designer.cs">
-      <DependentUpon>Recovery.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Roosteroverzicht.aspx.cs">
       <DependentUpon>Roosteroverzicht.aspx</DependentUpon>

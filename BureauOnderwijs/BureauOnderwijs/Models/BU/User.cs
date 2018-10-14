@@ -71,6 +71,18 @@ namespace BureauOnderwijs.Models.BU
 
         }
 
+        public bool CheckIfUserExists(string username)
+        {
+            string query = "SELECT Username FROM UserAccount WHERE Username = '" + username + "'";
+            Models.Database db = new Models.Database();
+            db.Connect();
+            if (db.ReturnBoolFromSingleResult(query))
+            {
+                return true;
+            }
+            return false;
+        }
+
         public void ViewSchedule()
         {
 

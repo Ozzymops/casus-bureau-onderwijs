@@ -55,5 +55,10 @@ namespace BureauOnderwijs.Views
 
             }
         }
+
+        protected void ButtonRecovery_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Views/PasswordRecovery.aspx");
+        }
     }
 }

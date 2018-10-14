@@ -13,5 +13,11 @@ namespace BureauOnderwijs.Models.CC
             User u = new User();
             return u.LogIn(username, password);
         }
+
+        public bool CheckIfUserExists(string username)
+        {
+            User u = new User();
+            return u.CheckIfUserExists(username);
+        }
     }
 }

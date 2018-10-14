@@ -18,6 +18,7 @@
         </h4>           
         <div>
             <asp:Button ID="ButtonLogin" runat="server" Text="Inloggen" OnClick="ButtonLogin_Click"/>
+            <asp:Button ID="ButtonRecovery" runat="server" Text="Wachtwoord vergeten?" OnClick="ButtonRecovery_Click" />
         </div>
     </form>
 </body>

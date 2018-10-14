@@ -18,17 +18,44 @@ namespace BureauOnderwijs.Models
         /// <returns>connection string</returns>
         public SqlConnection Connect()
         {
-            string connString = @"Data Source=moodlestudiepad.database.windows.net;" +
-                                 "Initial Catalog=MoodleStudiepad;" + "User id=moodleadmin;" +
-                                 "Password=#studiepad01;"; // edit to new Azure db !!!
+            string connString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             conn = new SqlConnection(connString);
             return conn;
         }
 
-
         #region Get
         // get functies: lees uit een table
         // create things via queries and send them back to the requester.
+        /// <summary>
+        /// Return een boolean vanuit een enkel resultaat: zoek je op usernames? Return true wanneer er 1 username bestaat.
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public bool ReturnBoolFromSingleResult(string query)
+        {
+            bool returnValue = false;
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (reader.GetString(0) != null)
+                    {
+                        returnValue = true;
+                    }
+                }
+                conn.Dispose();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return returnValue;
+        }
         #endregion
 
         #region Add
@@ -37,6 +64,22 @@ namespace BureauOnderwijs.Models
 
         #region Update
         // update functies: werk table bij
+        public bool UpdatePassword(string query)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Dispose();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
         #endregion
 
         #region Delete
