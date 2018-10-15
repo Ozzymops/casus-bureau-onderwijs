@@ -130,8 +130,6 @@
     <Content Include="App_Themes\stylesheet.css" />
     <Content Include="Models\LagenModel.txt" />
     <Content Include="Views\AddModule.aspx" />
-    <Content Include="Views\DeleteModule.aspx" />
-    <Content Include="Views\EditModule.aspx" />
     <Content Include="Obsolete\old-about.aspx" />
     <Content Include="Obsolete\old-contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -242,20 +240,6 @@
     </Compile>
     <Compile Include="Views\AddModule.aspx.designer.cs">
       <DependentUpon>AddModule.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DeleteModule.aspx.cs">
-      <DependentUpon>DeleteModule.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\DeleteModule.aspx.designer.cs">
-      <DependentUpon>DeleteModule.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\EditModule.aspx.cs">
-      <DependentUpon>EditModule.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\EditModule.aspx.designer.cs">
-      <DependentUpon>EditModule.aspx</DependentUpon>
     </Compile>
     <Compile Include="Obsolete\old-about.aspx.cs">
       <DependentUpon>old-about.aspx</DependentUpon>
