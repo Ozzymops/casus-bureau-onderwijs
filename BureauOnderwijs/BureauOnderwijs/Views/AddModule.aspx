@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/ModuleMaster.master" AutoEventWireup="true" CodeBehind="AddModule.aspx.cs" Inherits="BureauOnderwijs.Views.AddModule" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="NestedPlaceholder1" runat="server">
+    <h1>
+        Modules Toevoegen
+    </h1>
         <div>
         <asp:Label ID="LBName" runat="server" Text="Naam: " Width="95px"></asp:Label>
         <asp:TextBox ID="TBName" runat="server" style="margin-right:20px" OnTextChanged="TBName_TextChanged"></asp:TextBox>
@@ -7,7 +10,7 @@
         <asp:TextBox ID="TBFaculty" runat="server" style="margin-right:20px" OnTextChanged="TBFaculty_TextChanged"></asp:TextBox>
         <asp:Label ID="LBLectureHours" runat="server" Text="Uren Hoorcollege: " Width="120px"></asp:Label>
         <asp:TextBox ID="TBLectureHours" runat="server" OnTextChanged="TBLectureHours_TextChanged"></asp:TextBox>
-        <asp:Button ID="BTSend" runat="server" Text="Opslaan" style="margin-right:10px" OnClick="BTSend_Click" />
+        <asp:Button ID="BTSend" runat="server" Text="Opslaan" style="margin-right:10px" OnClick="BTSend_Click" Width="90px" />
         </div>
     <div>
         <asp:Label ID="LBModuleCode" runat="server" Text="Module Code: " Width="95px"></asp:Label>
@@ -16,7 +19,7 @@
         <asp:TextBox ID="TBProfile" runat="server" style="margin-right:20px" OnTextChanged="TBProfile_TextChanged"></asp:TextBox>
         <asp:Label ID="LbPracticalHours" runat="server" Text="Uren Werkcollege: " Width="120px"></asp:Label>
         <asp:TextBox ID="TBPracticalHOurs" runat="server" OnTextChanged="TBPracticalHOurs_TextChanged"></asp:TextBox>
-        <asp:Button ID="BTCancel" runat="server" Text="Annuleren" style="margin-right:10px" OnClick="BTCancel_Click"/>
+        <asp:Button ID="BTCancel" runat="server" Text="Annuleren" style="margin-right:10px" OnClick="BTCancel_Click" Width="90px"/>
         </div>
     <div>
         <asp:Label ID="LBPeriod" runat="server" Text="Periode: " Width="95px"></asp:Label>

@@ -19,5 +19,10 @@ namespace BureauOnderwijs.Models.BU
         private bool generalModule;
         private int lectureHours;   // hoorcollege
         private int practicalHours; // werkcollege
+
+        public Module(string name, int modulCode, DateTime period, DateTime year, string faculty, string profile, int credits, Examiner examiner, string description, bool generalModule, int lectureHours, int practicanHours)
+        {
+
+        }
     }
 }

@@ -11,12 +11,14 @@ namespace BureauOnderwijs.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void BTSend_Click(object sender, EventArgs e)
         {
-
+            //string ingelogd = Session["UserId"].ToString();
+            //Models.BU.Module m = new Models.BU.Module();
+            //Response.Write("<script>alert('Data verzonden');</script>");
         }
 
         protected void BTCancel_Click(object sender, EventArgs e)
