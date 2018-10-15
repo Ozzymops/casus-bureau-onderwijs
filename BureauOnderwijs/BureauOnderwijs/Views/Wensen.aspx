@@ -31,8 +31,5 @@
                 </tbody>
             </table>
         </FooterTemplate>
-
     </asp:DataList>
-
-
 </asp:Content>

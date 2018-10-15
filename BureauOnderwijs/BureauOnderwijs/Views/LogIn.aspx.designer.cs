@@ -22,6 +22,15 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// LabelGebruikersnaam control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelGebruikersnaam;
+        
+        /// <summary>
         /// TextBoxUsernameLogin control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace BureauOnderwijs.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxUsernameLogin;
+        
+        /// <summary>
+        /// LabelWachtwoord control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelWachtwoord;
         
         /// <summary>
         /// TextBoxPasswordLogin control.
