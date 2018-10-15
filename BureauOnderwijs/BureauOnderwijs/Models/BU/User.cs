@@ -19,7 +19,7 @@ namespace BureauOnderwijs.Models.BU
 
         public int[] LogIn(string username, string password)
         {
-
+            // localhost/MSSQLSERVER indien het niet werkt (Justin)
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQuery = "SELECT Role, UserId FROM UserAccount WHERE Username = '" + username + "' and Password = '" + password + "'";
 
