@@ -23,15 +23,5 @@ namespace BureauOnderwijs.Views
         {
             Response.Redirect("~/Views/AddModule.aspx");
         }
-
-        protected void editModuleButton_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/Views/EditModule.aspx");
-        }
-
-        protected void deleteModuleButton_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/Views/DeleteModule.aspx");
-        }
     }
 }

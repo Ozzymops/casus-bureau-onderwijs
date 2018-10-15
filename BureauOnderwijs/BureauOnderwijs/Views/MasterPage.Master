@@ -38,6 +38,7 @@
                         <button class="dropbtn">Examinator</button>
                         <div class="dropdown-content">
                             <a runat="server" href="~/Views/ReadModules.aspx">Modules</a>
+                            <a runat="server" href="~/Views/ConnectModules.aspx">Modules koppelen</a>
                         </div>
                     </div>
                     <div class="dropdown">

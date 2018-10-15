@@ -14,7 +14,72 @@ namespace BureauOnderwijs.Views
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void BTSend_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void BTCancel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TBName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TBModuleCode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TBPeriod_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TBYear_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TBDescription_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void DropDownListExaminor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TBFaculty_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TBProfile_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TBCredits_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TBLectureHours_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TBPracticalHOurs_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void CheckBoxGeneralModule_CheckedChanged(object sender, EventArgs e)
         {
 
         }
