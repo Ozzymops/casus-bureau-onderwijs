@@ -191,6 +191,9 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Views\WensToevoegen.aspx" />
+    <Content Include="Views\WensVerwijderen.aspx" />
+    <Content Include="Views\WensWijzigen.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -369,6 +372,34 @@
     <Compile Include="Views\Wensen.aspx.designer.cs">
       <DependentUpon>Wensen.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\WensenMaster.master.cs">
+      <DependentUpon>WensenMaster.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\WensenMaster.master.designer.cs">
+      <DependentUpon>WensenMaster.master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WensToevoegen.aspx.cs">
+      <DependentUpon>WensToevoegen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\WensToevoegen.aspx.designer.cs">
+      <DependentUpon>WensToevoegen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WensVerwijderen.aspx.cs">
+      <DependentUpon>WensVerwijderen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\WensVerwijderen.aspx.designer.cs">
+      <DependentUpon>WensVerwijderen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WensWijzigen.aspx.cs">
+      <DependentUpon>WensWijzigen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\WensWijzigen.aspx.designer.cs">
+      <DependentUpon>WensWijzigen.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -380,6 +411,7 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Views\MasterPage.Master" />
     <Content Include="Views\ModuleMaster.master" />
+    <Content Include="Views\WensenMaster.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

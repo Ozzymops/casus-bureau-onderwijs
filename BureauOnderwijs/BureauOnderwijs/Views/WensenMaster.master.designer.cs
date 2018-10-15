@@ -10,69 +10,51 @@
 namespace BureauOnderwijs.Views {
     
     
-    public partial class LogIn {
+    public partial class WensenMaster {
         
         /// <summary>
-        /// form1 control.
+        /// showWishesButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Button showWishesButton;
         
         /// <summary>
-        /// LabelGebruikersnaam control.
+        /// addWishButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelGebruikersnaam;
+        protected global::System.Web.UI.WebControls.Button addWishButton;
         
         /// <summary>
-        /// TextBoxUsernameLogin control.
+        /// editWishButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxUsernameLogin;
+        protected global::System.Web.UI.WebControls.Button editWishButton;
         
         /// <summary>
-        /// LabelWachtwoord control.
+        /// deleteWishButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelWachtwoord;
+        protected global::System.Web.UI.WebControls.Button deleteWishButton;
         
         /// <summary>
-        /// TextBoxPasswordLogin control.
+        /// NestedPlaceholder1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxPasswordLogin;
-        
-        /// <summary>
-        /// ButtonLogin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonLogin;
-        
-        /// <summary>
-        /// ButtonRecovery control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonRecovery;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder NestedPlaceholder1;
     }
 }
