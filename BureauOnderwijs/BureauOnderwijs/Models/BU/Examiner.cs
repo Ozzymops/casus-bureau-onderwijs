@@ -18,7 +18,7 @@ namespace BureauOnderwijs.Models.BU
             string connectionString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlquery = "INSERT INTO ModuleTest2(Name, ModuleCode, Period, Year, Faculty, Profile, Credits, Examinor, Description, LectureHours, PracticalHours) " +
                 "VALUES('"+ Name + "','" + ModuleCode + "','" + Period + "','" + Year + "','" + Faculty + "','" + Profile + "','" + Credits + "','" + Examinor + "','" + Description + "','" + LectureHours + "','" + PracticalHours + "')";
-            string succes;
+            
             try
             {
                 SqlConnection con = new SqlConnection(connectionString);
@@ -28,12 +28,12 @@ namespace BureauOnderwijs.Models.BU
                 cmd.ExecuteNonQuery();
                 con.Close();
 
-                return succes = "1";
+                return  "0";
             }
 
             catch(Exception)
             {
-                return succes = "2";
+                return  "1";
             }
         }
 
