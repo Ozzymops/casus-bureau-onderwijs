@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BureauOnderwijs.Models.BU;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,10 +8,10 @@ namespace BureauOnderwijs.Models.CC
 {
     public class Examiner_CreateModule
     {
-        /*public bool AddModule(Models.BU.Module m)
+        public string AddModuleCC(string Name, int ModuleCode, int Period, int Year, string Faculty, string Profile, int Credits, string Examinor, string Description, int LectureHours, int PracticalHours, string ingelogd)
         {
-            Models.BU.Examiner ex1 = new Models.BU.Examiner();
-            return ex1.NewModule(m);
-        }*/
+            Examiner ex = new Examiner();
+            return ex.AddNewModule(Name, ModuleCode, Period, Year, Faculty, Profile, Credits, Examinor, Description, LectureHours, PracticalHours, ingelogd);
+        }
     }
 }

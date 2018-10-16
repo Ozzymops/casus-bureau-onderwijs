@@ -13,13 +13,30 @@ namespace BureauOnderwijs.Models.BU
 
         }
 
-        //public bool NewModule(Models.BU.Module m)
-        /*{
-            using (SqlConnection connection = new SqlConnection())
-            connection.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO Module(Name, ModuleCode, Period, Year, Faculty, Profile, Credits, Examinor, Description, GeneralModule, LectureHours, PracticalHours)" +
-                "VALUES (@Name, @Modulecode, @Period, @Year, @Faculty, @profile, @Credits, @Examinor, @Description, @GeneralModule, @LectureHours, @PracticalHours)");
-        }*/
+ public string AddNewModule(string Name, int ModuleCode,int Period, int Year, string Faculty, string Profile, int Credits, string Examinor, string Description, int LectureHours, int PracticalHours,  string ingelogd)
+        {
+            string connectionString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlquery = "INSERT INTO ModuleTest2(Name, ModuleCode, Period, Year, Faculty, Profile, Credits, Examinor, Description, LectureHours, PracticalHours) " +
+                "VALUES('"+ Name + "','" + ModuleCode + "','" + Period + "','" + Year + "','" + Faculty + "','" + Profile + "','" + Credits + "','" + Examinor + "','" + Description + "','" + LectureHours + "','" + PracticalHours + "')";
+            
+            try
+            {
+                SqlConnection con = new SqlConnection(connectionString);
+                SqlCommand cmd = new SqlCommand(sqlquery, con);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                return  "0";
+            }
+
+            catch(Exception)
+            {
+                return  "1";
+            }
+        }
+
 
         private void UpdateModule()
         {
