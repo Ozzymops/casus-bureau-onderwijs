@@ -4,11 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceholder1" runat="server">
     <!-- nav bar -->
     <ul style="list-style-type: none;" >
-        <li><asp:Button ID="readModulesButton" runat="server" Text="Read modules" Width="150px"  OnClick="readModulesButton_Click" /></li>
-        <li>
-
-        </li>
-        <li><asp:Button ID="addModuleButton" runat="server" Text="Add module" Width="150px" OnClick="addModuleButton_Click" /></li>
+        <asp:Button ID="readModulesButton" runat="server" Text="Modules weergeven" Width="150px" style="margin-left:450px" OnClick="readModulesButton_Click" />
+        <asp:Button ID="addModuleButton" runat="server" Text="Module toevoegen" Width="150px" style="margin-left:50px" OnClick="addModuleButton_Click" />
     </ul>
     <asp:ContentPlaceHolder ID="NestedPlaceholder1" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>

@@ -121,13 +121,13 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Label LbPracticalHours;
         
         /// <summary>
-        /// TBPracticalHOurs control.
+        /// TBPracticalHours control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBPracticalHOurs;
+        protected global::System.Web.UI.WebControls.TextBox TBPracticalHours;
         
         /// <summary>
         /// BTCancel control.

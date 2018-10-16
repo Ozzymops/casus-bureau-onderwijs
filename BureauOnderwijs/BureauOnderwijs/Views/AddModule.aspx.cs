@@ -16,10 +16,29 @@ namespace BureauOnderwijs.Views
 
         protected void BTSend_Click(object sender, EventArgs e)
         {
-            //string ingelogd = Session["UserId"].ToString();
-            //Models.BU.Module m = new Models.BU.Module();
-            //Response.Write("<script>alert('Data verzonden');</script>");
+            //sessie id wordt opgehaald om te controleren of er daadwerkelijke een examinator is ingelogd
+            string ingelogd = Session["UserId"].ToString();
+            Models.CC.Examiner_CreateModule m = new Models.CC.Examiner_CreateModule();
+            string name = m.AddModuleCC(TBName.Text, Convert.ToInt32(TBModuleCode.Text), Convert.ToInt32(TBPeriod.Text), Convert.ToInt32(TBYear.Text), TBFaculty.Text, TBProfile.Text, Convert.ToInt32(TBCredits.Text), DropDownListExaminor.SelectedValue, TBDescription.Text, Convert.ToInt32(TBLectureHours.Text), Convert.ToInt32(TBPracticalHours.Text), ingelogd);
+
+            //als de return waarde van succesvol updaten gelijk is aan de string waarde "0" geef foutmelding 'niet goed gegaan.'. 
+            if (name == "2")
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Niet goed gegaan.');", true);
+            }
+            //als de return waarde van succesvol updaten gelijk is aan de string waarde "1" geef melding 'Succes! Voornaam is geupdatet.'.
+            else if (name == "1")
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Succes! Voornaam is geupdatet.');", true);
+            }
+            //In andere gevallen geef de foutmelding 'Onbekende Fout'.
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Onbekende Fout');", true);
+            }
+
         }
+
 
         protected void BTCancel_Click(object sender, EventArgs e)
         {

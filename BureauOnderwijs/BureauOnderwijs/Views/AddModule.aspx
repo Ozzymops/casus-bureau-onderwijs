@@ -18,7 +18,7 @@
         <asp:Label ID="LBProfile" runat="server" Text="Profiel: " Width="95px"></asp:Label>
         <asp:TextBox ID="TBProfile" runat="server" style="margin-right:20px" OnTextChanged="TBProfile_TextChanged"></asp:TextBox>
         <asp:Label ID="LbPracticalHours" runat="server" Text="Uren Werkcollege: " Width="120px"></asp:Label>
-        <asp:TextBox ID="TBPracticalHOurs" runat="server" OnTextChanged="TBPracticalHOurs_TextChanged"></asp:TextBox>
+        <asp:TextBox ID="TBPracticalHours" runat="server" OnTextChanged="TBPracticalHOurs_TextChanged"></asp:TextBox>
         <asp:Button ID="BTCancel" runat="server" Text="Annuleren" style="margin-right:10px" OnClick="BTCancel_Click" Width="90px"/>
         </div>
     <div>
@@ -40,7 +40,13 @@
     <div>
         <asp:Label ID="LBExaminor" runat="server" Text="Examinator: " Width="95px"></asp:Label>
         <asp:DropDownList ID="DropDownListExaminor" runat="server" OnSelectedIndexChanged="DropDownListExaminor_SelectedIndexChanged"> 
-        <asp:ListItem>LIJST EXAMINATOREN</asp:ListItem>
+        <asp:ListItem>
+            LIJST EXAMINATOREN
+        </asp:ListItem>
+            <asp:ListItem Value="1">Dhr. NoName</asp:ListItem>
+            <asp:ListItem Value="2">Peroon B</asp:ListItem>
+            <asp:ListItem Value="3">Persoon C</asp:ListItem>
+            <asp:ListItem Value="4">Persoon D</asp:ListItem>
         </asp:DropDownList>
         </div>
 </asp:Content>
