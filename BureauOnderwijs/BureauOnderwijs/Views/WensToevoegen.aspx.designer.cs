@@ -13,30 +13,21 @@ namespace BureauOnderwijs.Views {
     public partial class WensToevoegen {
         
         /// <summary>
-        /// DropDownListBlokperiode control.
+        /// gvUserWishes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListBlokperiode;
+        protected global::System.Web.UI.WebControls.GridView gvUserWishes;
         
         /// <summary>
-        /// DropDownListWeek control.
+        /// LabelSuccesvol control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListWeek;
-        
-        /// <summary>
-        /// DropDownListDag control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListDag;
+        protected global::System.Web.UI.WebControls.Label LabelSuccesvol;
     }
 }

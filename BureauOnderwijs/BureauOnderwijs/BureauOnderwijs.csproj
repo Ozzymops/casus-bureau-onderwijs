@@ -129,6 +129,12 @@
   <ItemGroup>
     <Content Include="App_Themes\stylesheet.css" />
     <Content Include="Models\LagenModel.txt" />
+    <None Include="Resources\Annuleren logo.jpg" />
+    <None Include="Resources\Annuleren logo.png" />
+    <None Include="Resources\Delete logo.jpg" />
+    <None Include="Resources\Edit logo.jpg" />
+    <None Include="Resources\Opslaan logo.jpg" />
+    <None Include="Resources\Toevoegen logo.jpg" />
     <Content Include="Views\AddModule.aspx" />
     <Content Include="Obsolete\old-about.aspx" />
     <Content Include="Obsolete\old-contact.aspx" />
@@ -234,6 +240,11 @@
     <Compile Include="Models\CC\User_UpdateUserSettings.cs" />
     <Compile Include="Models\Database.cs" />
     <Compile Include="Models\RandomNumberGenerator.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddModule.aspx.cs">
       <DependentUpon>AddModule.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -418,6 +429,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
