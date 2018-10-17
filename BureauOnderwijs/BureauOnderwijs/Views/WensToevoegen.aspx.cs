@@ -25,45 +25,31 @@ namespace BureauOnderwijs.Views
 
         protected void gvUserWishes_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
-            //string dropDownListPeriod = (DropDownList)gvUserWishes.FooterRow.FindControl("DropDownListPeriod").ToString();
-
             if (e.CommandName == "AddNew")
             {
-                //int ingelogd = Convert.ToInt32(Session["UsedId"].ToString());
-                int ingelogd = 1;
-                
-                Models.CC.Teacher_CreateWish c = new Models.CC.Teacher_CreateWish();
-                int result = c.CreateWishCC(gvUserWishes.FooterRow.FindControl("DropDownListWeek").ToString(),
-                    1, "Maandag", "09:00:00", "10:00:00",
-                    ingelogd);
-                    
-                    
-                    
-                    //Convert.ToInt32(gvUserWishes.FooterRow.FindControl("DropDownListWeek").ToString()),
-                    //gvUserWishes.FooterRow.FindControl("DropDownListDag").ToString(), 
-                    //gvUserWishes.FooterRow.FindControl("DropDownListStartTijd").ToString(),
-                    //gvUserWishes.FooterRow.FindControl("DropDownListEindTijd").ToString(),
-                    //ingelogd);
+                int ingelogd = Convert.ToInt32(Session["UserId"]);
 
-                //int result = c.CreateWishCC((gvUserWishes.FooterRow.FindControl("DropDownListPeriod") as TextBox).Text,
-                //    (Convert.ToInt32(gvUserWishes.FooterRow.FindControl("textboxWeekFooter") as TextBox)),
-                //    (gvUserWishes.FooterRow.FindControl("textboxDayFooter") as TextBox).Text,
-                //    (Convert.ToDateTime(gvUserWishes.FooterRow.FindControl("textboxStartTimeFooter") as TextBox)),
-                //    (Convert.ToDateTime(gvUserWishes.FooterRow.FindControl("textboxEndTimeFooter") as TextBox)),
-                //    ingelogd);
+
+                string dropDownListPeriod = (gvUserWishes.FooterRow.FindControl("DropDownListPeriod") as DropDownList).SelectedValue;
+                int dropDownListWeek = Convert.ToInt32((gvUserWishes.FooterRow.FindControl("DropDownListWeek") as DropDownList).SelectedValue);
+                string dropDownListDag = (gvUserWishes.FooterRow.FindControl("DropDownListDag") as DropDownList).SelectedValue;
+                string dropDownListStarttijd = (gvUserWishes.FooterRow.FindControl("DropDownListStartTijd") as DropDownList).SelectedValue;
+                string dropDownListEindtijd = (gvUserWishes.FooterRow.FindControl("DropDownListEindTijd") as DropDownList).SelectedValue;
+                                               
+                Models.CC.Teacher_CreateWish c = new Models.CC.Teacher_CreateWish();
+                int result = c.CreateWishCC(dropDownListPeriod, dropDownListWeek, dropDownListDag, dropDownListStarttijd, dropDownListEindtijd ,ingelogd);
 
                 if (result == 0)
                 {
-                    LabelSuccesvol.Text = "SUCCES!";
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Wens succesvol toegevoegd!');", true);
                 }
                 else if (result == 1)
                 {
-                    LabelSuccesvol.Text = "EPIC FAIL";
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Wens niet toegevoegd! Probeer het later nog eens.');", true);
                 }
                 else
                 {
-                    LabelSuccesvol.Text = "MASTER EPIC FAIL";
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Er is iets fout gegaan, neem contact op met uw netwerkbeheerder!');", true);
                 }
             }
             else if (e.CommandName == "UserEdit")
@@ -79,8 +65,7 @@ namespace BureauOnderwijs.Views
         }
         private void fillGvUserWishes()
         {
-            //string ingelogd = Session["UserId"].ToString();
-            string ingelogd = "1";
+            string ingelogd = Session["UserId"].ToString();
             DataTable dt = new DataTable();
             Models.CC.Teacher_ReadWishes r = new Models.CC.Teacher_ReadWishes();
             dt = r.GetUserWishesCC(ingelogd);
