@@ -23,7 +23,7 @@ namespace BureauOnderwijs.Views
             {
                 Models.RandomNumberGenerator rng = new Models.RandomNumberGenerator();
                 this.Session["RecoveryCode"] = rng.GenerateNumber(1000, 9999);
-                CodeLabel.Text += this.Session["RecoveryCode"].ToString();
+                CodeLabel.Text = "Code: " + this.Session["RecoveryCode"].ToString();
                 this.Session["Username"] = UsernameTextBox.Text;
                 this.Session["RecoveryStep"] = "2";
 
@@ -31,18 +31,26 @@ namespace BureauOnderwijs.Views
                 recoveryStepTwo.Visible = true;
                 recoveryStepThree.Visible = false;
             }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Fouthjuh! Ongeldige gebruikersnaam.');", true);
+            }
         }
 
         protected void RecoveryCodeButton_Click(object sender, EventArgs e)
         {
             if (RecoveryCodeTextBox.Text == this.Session["RecoveryCode"].ToString())
             {
-                NewPasswordLabel.Text += this.Session["Username"];
+                NewPasswordLabel.Text = "Verander wachtwoord voor " + this.Session["Username"];
                 this.Session["RecoveryStep"] = "3";
 
                 recoveryStepOne.Visible = false;
                 recoveryStepTwo.Visible = false;
                 recoveryStepThree.Visible = true;
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Foutjuh! Ongeldige recovery code.');", true);
             }
         }
 
