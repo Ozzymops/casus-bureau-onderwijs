@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -83,6 +84,92 @@ namespace BureauOnderwijs.Views
                     ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Onbekende Fout');", true);
                 }
 
+            }
+        }
+
+        protected void ButtonSaveEmail_Click(object sender, EventArgs e)
+        {
+            //hier wordt de sessieId opgehaald om te controleren welke persoonsgegevens aangepast moeten kunnen worden.
+            string Ingelogd = Session["UserId"].ToString();
+
+            //als er geen achternaam is in gevuld geef de foutmelding 'geen achternaam gevonden.'. 
+            if (string.IsNullOrEmpty(TextBoxEmail.Text))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Geen nieuw emailadres gevonden.');", true);
+            }
+
+            //anders stuur het emailadres en sessie ID door naar CC.User_UpdateUserSettings
+            else
+            {
+                Models.CC.User_UpdateUserSettings u = new Models.CC.User_UpdateUserSettings();
+                string NewEmail = u.UpdateEmailCC(TextBoxEmail.Text, Ingelogd);
+
+                //als de return waarde van succesvol updaten gelijk is aan de string waarde "0" geef foutmelding 'niet goed gegaan.'. 
+                if (NewEmail == "0")
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Niet goed gegaan.');", true);
+                }
+                //als de return waarde van succesvol updaten gelijk is aan de string waarde "1" geef melding 'Succes! Achternaam is geupdatet.'.
+                else if (NewEmail == "1")
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Succes! Email is geupdatet.');", true);
+                }
+                //In andere gevallen geef de foutmelding 'Onbekende Fout'.
+                else
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Onbekende Fout');", true);
+                }
+            }
+        }
+
+        protected void ButtonSavePassword_Click(object sender, EventArgs e)
+        {
+            //hier wordt de sessieId opgehaald om te controleren welke persoonsgegevens aangepast moeten kunnen worden.
+            string Ingelogd = Session["UserId"].ToString();
+
+            if (string.IsNullOrWhiteSpace(TextBoxNewPassword.Text) ||
+                string.IsNullOrWhiteSpace(TextBoxNewPassword2.Text) ||
+                    string.IsNullOrWhiteSpace(TextBoxCurrentPassword.Text))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Error1 Niet alle velden zijn ingevuld');", true);
+            }
+            else
+            {
+                if (TextBoxNewPassword.Text != TextBoxNewPassword2.Text)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Error2 Nieuwe wachtwoorden komen niet overeen');", true);
+                }
+                else
+                {
+                    try
+                    {
+                        Models.CC.User_UpdateUserSettings u = new Models.CC.User_UpdateUserSettings();
+                        string NewPassword = u.UpdatePasswordCC(TextBoxNewPassword.Text, TextBoxCurrentPassword.Text, Ingelogd);
+
+                        if(NewPassword == "1")
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Niet goed gegaan.');", true);
+                        }
+                        else if(NewPassword == "0")
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Succes! Password is geupdatet.');", true);
+                        }
+                        else if(NewPassword == "2")
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Iets fout');", true);
+                        }
+                        else
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Onbekende Fout');", true);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('asfglglegnlk catch');", true);
+                    }
+
+                    
+                }
             }
         }
     }

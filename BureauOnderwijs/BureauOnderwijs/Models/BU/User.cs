@@ -31,7 +31,7 @@ namespace BureauOnderwijs.Models.BU
                 con.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                int[] result = { 0, 0, 0};
+                int[] result = { 0, 0, 0 };
 
                 if (reader.HasRows)
                 {
@@ -42,15 +42,15 @@ namespace BureauOnderwijs.Models.BU
                     }
                 }
 
-                if (result.First() > 0 && result.First() <5)
+                if (result.First() > 0 && result.First() < 5)
                 {
                     /// login succesvol
 
                     RandomNumberGenerator r = new RandomNumberGenerator();
                     result[2] = r.GenerateNumber(1000, 9999);
-                    return new int[] { result[0], result[1], result[2] }; 
+                    return new int[] { result[0], result[1], result[2] };
                 }
-                else if (result.First() == 0) 
+                else if (result.First() == 0)
                 {
                     /// foutmelding laten zien dat de combinatie username en password niet voorkomt
                     //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongelidge username en/of wachtwoord');", true);
@@ -103,7 +103,6 @@ namespace BureauOnderwijs.Models.BU
             //legt de locatie van de database vast en de query welke er naar toe verstuurd dient te worden met deze methode
             string conStringVn = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQueryVn = "UPDATE UserAccount SET Firstname = '" + voornaam + "' WHERE UserId = '" + ingelogd + "'";
-            string succes;
 
             //poogt de query uit te voeren, als dit succesvol verloopt wordt de return waarde succes op string value "1" gezet.
             try
@@ -114,17 +113,17 @@ namespace BureauOnderwijs.Models.BU
                 conVn.Open();
                 cmdVn.ExecuteNonQuery();
                 conVn.Close();
-                
-                return succes = "1";
-                
+
+                return "1";
+
             }
             //Bij een onsuccesvolle poging wordt de return waarde succes op string value "0" gezet.
-            catch(Exception)
+            catch (Exception)
             {
-                return succes = "0";
+                return "0";
             }
-        
-            
+
+
         }
 
         public string UpdateAchternaam(string achternaam, string ingelogd)
@@ -132,7 +131,6 @@ namespace BureauOnderwijs.Models.BU
             //legt de locatie van de database vast en de query welke er naar toe verstuurd dient te worden met deze methode
             string conStringAn = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQueryAn = "UPDATE UserAccount SET Lastname = '" + achternaam + "' WHERE UserId = '" + ingelogd + "'";
-            string succes;
 
             //poogt de query uit te voeren, als dit succesvol verloopt wordt de return waarde succes op string value "1" gezet.
             try
@@ -144,16 +142,85 @@ namespace BureauOnderwijs.Models.BU
                 cmdAn.ExecuteNonQuery();
                 conAn.Close();
 
-                return succes = "1";
+                return "1";
 
             }
             //Bij een onsuccesvolle poging wordt de return waarde succes op string value "0" gezet.
             catch (Exception)
             {
-                return succes = "0";
+                return "0";
             }
 
 
+        }
+
+        public string UpdateEmail(string email, string ingelogd)
+        {
+            //legt de locatie van de database vast en de query welke er naar toe verstuurd dient te worden met deze methode
+            string conStringEm = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQueryEm = "UPDATE UserAccount SET Emailadress = '" + email + "' WHERE UserId = '" + ingelogd + "'";
+
+            //poogt de query uit te voeren, als dit succesvol verloopt wordt de return waarde succes op string value "1" gezet.
+            try
+            {
+                SqlConnection conEm = new SqlConnection(conStringEm);
+                SqlCommand cmdEm = new SqlCommand(sqlQueryEm, conEm);
+
+                conEm.Open();
+                cmdEm.ExecuteNonQuery();
+                conEm.Close();
+
+                return "1";
+
+            }
+            //Bij een onsuccesvolle poging wordt de return waarde succes op string value "0" gezet.
+            catch (Exception)
+            {
+                return "0";
+            }
+        }
+
+        public string UpdatePassword(string newpassword, string currentpassword, string ingelogd)
+        {
+            //legt de locatie van de database vast en de query welke er naar toe verstuurd dient te worden met deze methode
+            string conStringPw = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQueryPwCheck = "SELECT COUNT (*) FROM UserAccount WHERE UserId = '" + ingelogd + "' AND Password = '" + currentpassword + "'";
+            string sqlQueryPw = "UPDATE UserAccount SET Password = '" + newpassword + "' WHERE UserId = '" + ingelogd + "'";
+            int checkpass;
+
+            SqlConnection conPwCheck = new SqlConnection(conStringPw);
+            SqlCommand cmdPwCheck = new SqlCommand(sqlQueryPwCheck, conPwCheck);
+
+            conPwCheck.Open();
+            checkpass = (Int32)cmdPwCheck.ExecuteScalar();
+            conPwCheck.Close();
+
+
+            //poogt de query uit te voeren, als dit succesvol verloopt wordt de return waarde succes op string value "1" gezet.
+            if (checkpass == 1)
+            {
+                try
+                {
+                    SqlConnection conPw = new SqlConnection(conStringPw);
+                    SqlCommand cmdPw = new SqlCommand(sqlQueryPw, conPw);
+
+                    conPw.Open();
+                    cmdPw.ExecuteNonQuery();
+                    conPw.Close();
+
+                    return "0";
+
+                }
+                //Bij een onsuccesvolle poging wordt de return waarde succes op string value "0" gezet.
+                catch (Exception)
+                {
+                    return "1";
+                }
+            }
+            else
+            {
+                return "2";
+            }
         }
     }
 }

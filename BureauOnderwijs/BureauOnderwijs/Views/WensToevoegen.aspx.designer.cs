@@ -10,15 +10,24 @@
 namespace BureauOnderwijs.Views {
     
     
-    public partial class Wensen {
+    public partial class WensToevoegen {
         
         /// <summary>
-        /// DataListWensen control.
+        /// gvUserWishes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList DataListWensen;
+        protected global::System.Web.UI.WebControls.GridView gvUserWishes;
+        
+        /// <summary>
+        /// LabelSuccesvol control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelSuccesvol;
     }
 }

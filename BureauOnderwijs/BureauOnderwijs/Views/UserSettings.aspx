@@ -30,7 +30,7 @@
         <div id="content-row">
             <asp:Label ID="Label3" runat="server" Text="Email:"></asp:Label>
             <asp:TextBox ID="TextBoxEmail" runat="server"></asp:TextBox>
-            <asp:Button ID="ButtonSaveEmail" runat="server" Height="24px" style="margin-top: 0px" Text="Update" />
+            <asp:Button ID="ButtonSaveEmail" runat="server" Height="24px" style="margin-top: 0px" Text="Update" OnClick="ButtonSaveEmail_Click" />
         </div>
 
         <div id="empty">
@@ -39,9 +39,22 @@
 
         <div id="content-row">
 
-            <asp:Label ID="Label4" runat="server" Text="Wachtwoord:  "></asp:Label>
-            <asp:TextBox ID="TextBoxPassword" runat="server"></asp:TextBox>
-            <asp:Button ID="ButtonSavePassword" runat="server" Height="24px" Text="Update" />
+            <asp:Label ID="Label4" runat="server" Text="Nieuw Wachtwoord:  "></asp:Label>
+            <asp:TextBox ID="TextBoxNewPassword" runat="server" TextMode="Password"></asp:TextBox>
+            <asp:Label ID="Label6" runat="server" Text="Huidig Wachtwoord:"></asp:Label>
+            <asp:TextBox ID="TextBoxCurrentPassword" runat="server" TextMode="Password"></asp:TextBox>
+
+        </div>
+
+        <div id="empty">
+
+        </div>
+
+        <div id="content-row">
+
+            <asp:Label ID="Label5" runat="server" Text="Nieuw Wachtwoord Opnieuw:"></asp:Label>
+            <asp:TextBox ID="TextBoxNewPassword2" runat="server" TextMode="Password"></asp:TextBox>
+            <asp:Button ID="ButtonSavePassword" runat="server" Height="24px" Text="Update" OnClick="ButtonSavePassword_Click" />
 
         </div>
 

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,12 +13,12 @@ namespace BureauOnderwijs.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-
+            string ingelogd = Session["UserId"].ToString();
+            DataTable dtbl = new DataTable();
+            Models.CC.Examiner_ReadModules RM = new Models.CC.Examiner_ReadModules();
+            dtbl = RM.ReadModuleCC(ingelogd);
+            DLModules.DataSource = dtbl;
+            DLModules.DataBind();
         }
     }
 }

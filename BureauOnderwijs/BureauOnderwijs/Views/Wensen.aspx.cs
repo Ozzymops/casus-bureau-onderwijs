@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 namespace BureauOnderwijs.Views
 {
@@ -11,19 +13,12 @@ namespace BureauOnderwijs.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            for(int y = 1; y < 5; y++)
-            {
-                DropDownListBlokperiode.Items.Add(y+"-2018/2019");
-            }
-            for (int i = 1; i < 11; i++)
-            {
-                DropDownListWeek.Items.Add(Convert.ToString(i));
-            }
-            DropDownListDag.Items.Add("Maandag");
-            DropDownListDag.Items.Add("Dinsdag");
-            DropDownListDag.Items.Add("Woensdag");
-            DropDownListDag.Items.Add("Donderdag");
-            DropDownListDag.Items.Add("Vrijdag");
+            string ingelogd = Session["UserId"].ToString();
+            DataTable dt = new DataTable();
+            Models.CC.Teacher_ReadWishes r = new Models.CC.Teacher_ReadWishes();
+            dt = r.GetUserWishesCC(ingelogd);
+            DataListWensen.DataSource = dt;
+            DataListWensen.DataBind();
         }
     }
 }

@@ -10,52 +10,43 @@
 namespace BureauOnderwijs.Views {
     
     
-    public partial class ModuleMaster {
+    public partial class WensenMaster {
         
         /// <summary>
-        /// readModulesButton control.
+        /// showWishesButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button readModulesButton;
+        protected global::System.Web.UI.WebControls.Button showWishesButton;
         
         /// <summary>
-        /// addModuleButton control.
+        /// addWishButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addModuleButton;
+        protected global::System.Web.UI.WebControls.Button addWishButton;
         
         /// <summary>
-        /// DeleteModuleButton control.
+        /// editWishButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button DeleteModuleButton;
+        protected global::System.Web.UI.WebControls.Button editWishButton;
         
         /// <summary>
-        /// UpdateModuleButton control.
+        /// deleteWishButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button UpdateModuleButton;
-        
-        /// <summary>
-        /// LinkModule control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button LinkModule;
+        protected global::System.Web.UI.WebControls.Button deleteWishButton;
         
         /// <summary>
         /// NestedPlaceholder1 control.

@@ -3,9 +3,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceholder1" runat="server">
     <!-- nav bar -->
-    <ul>
-        <li><asp:Button ID="readModulesButton" runat="server" Text="Read modules" Width="150px" OnClick="readModulesButton_Click" /></li>
-        <li><asp:Button ID="addModuleButton" runat="server" Text="Add module" Width="150px" OnClick="addModuleButton_Click" /></li>
+    <ul style="list-style-type: none;" >
+        <asp:Button ID="readModulesButton" runat="server" Text="Modules weergeven" Width="150px" style="margin-left:250px" OnClick="readModulesButton_Click" />
+        <asp:Button ID="addModuleButton" runat="server" Text="Module toevoegen" Width="150px" style="margin-left:50px" OnClick="addModuleButton_Click" />
+        <asp:Button ID="DeleteModuleButton" runat="server" Text="Module verwijderen" Width="150px" style="margin-left:50px" OnClick="DeleteModuleButton_Click" />
+        <asp:Button ID="UpdateModuleButton" runat="server" Text="Module wijzigen" Width="150px" style="margin-left:50px" OnClick="UpdateModuleButton_Click" />
+        <asp:Button ID="LinkModule" runat="server" Text="Module Koppelen" Width="150px" style="margin-left:50px" OnClick="LinkModule_Click" />
     </ul>
     <asp:ContentPlaceHolder ID="NestedPlaceholder1" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>
