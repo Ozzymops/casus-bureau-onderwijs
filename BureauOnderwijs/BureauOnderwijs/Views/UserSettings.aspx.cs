@@ -143,40 +143,32 @@ namespace BureauOnderwijs.Views
                 {
                     try
                     {
-                        string conStringPw = "Data Source = localhost; Initial Catalog = Bureauonderwijsdb; Integrated Security = True";
-                        string sqlQueryPwCheck = "SELECT COUNT (Password) FROM UserAccount WHERE UserId = '" + Ingelogd + "' AND Password = '" + TextBoxCurrentPassword.Text + "'";
-                        string sqlQueryPw = "UPDATE UserAccount SET Password = '" + TextBoxNewPassword.Text + "' WHERE UserId = '" + Ingelogd + "'";
-                        int checkpass;
+                        Models.CC.User_UpdateUserSettings u = new Models.CC.User_UpdateUserSettings();
+                        string NewPassword = u.UpdatePasswordCC(TextBoxNewPassword.Text, TextBoxCurrentPassword.Text, Ingelogd);
 
-                        SqlConnection conPwCheck = new SqlConnection(conStringPw);
-                        SqlCommand cmdPwCheck = new SqlCommand(sqlQueryPwCheck, conPwCheck);
-
-                        conPwCheck.Open();
-                        checkpass = cmdPwCheck.ExecuteNonQuery();
-                        conPwCheck.Close();
-                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('"+ checkpass +"');", true);
-
+                        if(NewPassword == "1")
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Niet goed gegaan.');", true);
+                        }
+                        else if(NewPassword == "0")
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Succes! Password is geupdatet.');", true);
+                        }
+                        else if(NewPassword == "2")
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Iets fout');", true);
+                        }
+                        else
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Onbekende Fout');", true);
+                        }
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('asfglglegnlk catch');", true);
                     }
 
-                    //Models.CC.User_UpdateUserSettings u = new Models.CC.User_UpdateUserSettings();
-                    //string NewPassword = u.UpdatePasswordCC(TextBoxNewPassword.Text, TextBoxCurrentPassword.Text, Ingelogd);
-
-                    //if(NewPassword == "1")
-                    //{
-                    //    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Niet goed gegaan.');", true);
-                    //}
-                    //else if(NewPassword == "0")
-                    //{
-                    //    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Succes! Password is geupdatet.');", true);
-                    //}
-                    //else
-                    //{
-                    //    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Onbekende Fout');", true);
-                    //}
+                    
                 }
             }
         }
