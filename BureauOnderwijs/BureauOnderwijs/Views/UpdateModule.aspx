@@ -2,43 +2,43 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="NestedPlaceholder1" runat="server">
 <h1>Module wijzigen</h1>
     <h4>Klik op wijzigen bij een module op de gegevens op te halen</h4>
-            <div>
+            <div style="margin-left: 30px">
         <asp:Label ID="LBName" runat="server" Text="Naam: " Width="95px"></asp:Label>
-        <asp:TextBox ID="TBName" runat="server" style="margin-right:20px" ></asp:TextBox>
+        <asp:TextBox ID="TBNameU" runat="server" style="margin-right:20px" ></asp:TextBox>
         <asp:Label ID="LBFaculty" runat="server" Text="Faculteit: " Width="95px"></asp:Label>
-        <asp:TextBox ID="TBFaculty" runat="server" style="margin-right:20px" ></asp:TextBox>
+        <asp:TextBox ID="TBFacultyU" runat="server" style="margin-right:20px" ></asp:TextBox>
         <asp:Label ID="LBLectureHours" runat="server" Text="Uren Hoorcollege: " Width="120px"></asp:Label>
-        <asp:TextBox ID="TBLectureHours" runat="server" ></asp:TextBox>
+        <asp:TextBox ID="TBLectureHoursU" runat="server" ></asp:TextBox>
         <asp:Button ID="BTUpdate" runat="server" Text="Aanpassen" style="margin-right:10px" OnClick="BTUpdate_Click" OnClientClick="return confirm('Gegevens aanpassen?')" Width="90px" />
         </div>
-    <div>
+    <div style="margin-left: 30px">
         <asp:Label ID="LBModuleCode" runat="server" Text="Module Code: " Width="95px"></asp:Label>
-        <asp:TextBox ID="TBModuleCode" runat="server" style="margin-right:20px" ></asp:TextBox>
+        <asp:TextBox ID="TBModuleCodeU" runat="server" style="margin-right:20px" ></asp:TextBox>
         <asp:Label ID="LBProfile" runat="server" Text="Profiel: " Width="95px"></asp:Label>
-        <asp:TextBox ID="TBProfile" runat="server" style="margin-right:20px" ></asp:TextBox>
+        <asp:TextBox ID="TBProfileU" runat="server" style="margin-right:20px" ></asp:TextBox>
         <asp:Label ID="LbPracticalHours" runat="server" Text="Uren Werkcollege: " Width="120px"></asp:Label>
-        <asp:TextBox ID="TBPracticalHours" runat="server" ></asp:TextBox>
+        <asp:TextBox ID="TBPracticalHoursU" runat="server" ></asp:TextBox>
         <asp:Button ID="BTCancel" runat="server" Text="Annuleren" style="margin-right:10px" OnClick="BTCancel_Click" Width="90px"/>
         </div>
-    <div>
+    <div style="margin-left: 30px">
         <asp:Label ID="LBPeriod" runat="server" Text="Periode: " Width="95px"></asp:Label>
-        <asp:TextBox ID="TBPeriod" runat="server" style="margin-right:20px" ></asp:TextBox>
+        <asp:TextBox ID="TBPeriodU" runat="server" style="margin-right:20px" ></asp:TextBox>
         <asp:Label ID="LBCredits" runat="server" Text="Credits: " Width="95px"></asp:Label>
-        <asp:TextBox ID="TBCredits" runat="server" style="margin-right:20px" ></asp:TextBox>
+        <asp:TextBox ID="TBCreditsU" runat="server" style="margin-right:20px" ></asp:TextBox>
         <asp:Label ID="LBGeneralModule" runat="server" Text="Algemeen vak ja/nee: "></asp:Label>
-        <asp:CheckBox ID="CheckBoxGeneralModule" runat="server" />
+        <asp:CheckBox ID="CheckBoxGeneralModuleU" runat="server" />
         </div>
-    <div>
+    <div style="margin-left: 30px">
         <asp:Label ID="LBYear" runat="server" Text="Year: " Width="95px"></asp:Label>
-        <asp:TextBox ID="TBYear" runat="server" style="margin-right:20px" ></asp:TextBox>
+        <asp:TextBox ID="TBYearU" runat="server" style="margin-right:20px" ></asp:TextBox>
         </div>
-    <div>
+    <div style="margin-left: 30px">
         <asp:Label ID="LBDescription" runat="server" Text="Omschrijving: " Width="95px"></asp:Label>
-        <asp:TextBox ID="TBDescription" runat="server" style="margin-right:20px" ></asp:TextBox>
+        <asp:TextBox ID="TBDescriptionU" runat="server" style="margin-right:20px" ></asp:TextBox>
         </div>
-    <div>
+    <div style="margin-left: 30px">
         <asp:Label ID="LBExaminor" runat="server" Text="Examinator: " Width="95px"></asp:Label>
-        <asp:DropDownList ID="DropDownListExaminor" runat="server"> 
+        <asp:DropDownList ID="DropDownListExaminorU" runat="server"> 
         <asp:ListItem>
             Lijst examinatoren
         </asp:ListItem>
@@ -49,48 +49,19 @@
         </asp:DropDownList>
         </div>
     <br />
-    <asp:DataList ID="DLUpdateModule" runat="server" OnSelectedIndexChanged="DLUpdateModule_SelectedIndexChanged">
-        <HeaderTemplate>
-            <table style="border:2px solid black; text-align:left; margin-left:auto; margin-right:auto; width:1400px;">
-                <thead>
-                     <tr>
-                        <th>Naam</th>
-                        <th>Module Code</th>
-                        <th>Periode</th>
-                        <th>Jaar</th>
-                        <th>Faculteit</th>
-                        <th>Profiel</th>
-                        <th>Credits</th>
-                        <th>Examinator</th>
-                        <th>Omschrijving</th>
-                        <th>Algemeen vak</th>
-                        <th>Hoorcolle uren</th>
-                        <th>Praktijk uren</th>
-                    </tr>
-                </thead>       
-            <tbody>
-                </HeaderTemplate>
-            <ItemTemplate>
-                <tr>
-                    <td><%#Eval("Name") %></td>
-                    <td><%#Eval("ModuleCode") %></td>
-                    <td><%#Eval("Period") %></td>
-                    <td><%#Eval("Year") %></td>
-                    <td><%#Eval("Faculty") %></td>
-                    <td><%#Eval("Profile") %></td>
-                    <td><%#Eval("Credits") %></td>
-                    <td><%#Eval("Examinor") %></td>
-                    <td><%#Eval("Description") %></td>
-                    <td><%#Eval("GeneralModule") %></td>
-                    <td><%#Eval("LectureHours") %></td>
-                    <td><%#Eval("PracticalHours") %></td>
-                    <td><asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Eval("ModuleId") %>' >Wijzigen</asp:LinkButton></td>
-                </tr>
-            </ItemTemplate>
-           
-            <FooterTemplate>
-                </tbody>
-            </table>
-        </FooterTemplate>
-    </asp:DataList>
+
+        <asp:GridView style="margin-left:auto; margin-right:auto;" Width="1500px" ID="GVUpdateModule" runat="server" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4" OnSelectedIndexChanged="GVUpdateModule_SelectedIndexChanged">
+            <Columns>
+                <asp:ButtonField Text="Aanpassen" />
+            </Columns>
+            <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
+            <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Center" />
+            <RowStyle BackColor="White" ForeColor="#330099" />
+            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="#663399" />
+            <SortedAscendingCellStyle BackColor="#FEFCEB" />
+            <SortedAscendingHeaderStyle BackColor="#AF0101" />
+            <SortedDescendingCellStyle BackColor="#F6F0C0" />
+            <SortedDescendingHeaderStyle BackColor="#7E0000" />
+    </asp:GridView>
 </asp:Content>

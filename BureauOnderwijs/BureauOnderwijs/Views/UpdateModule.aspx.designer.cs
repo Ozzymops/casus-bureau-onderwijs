@@ -22,13 +22,13 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Label LBName;
         
         /// <summary>
-        /// TBName control.
+        /// TBNameU control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBName;
+        protected global::System.Web.UI.WebControls.TextBox TBNameU;
         
         /// <summary>
         /// LBFaculty control.
@@ -40,13 +40,13 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Label LBFaculty;
         
         /// <summary>
-        /// TBFaculty control.
+        /// TBFacultyU control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBFaculty;
+        protected global::System.Web.UI.WebControls.TextBox TBFacultyU;
         
         /// <summary>
         /// LBLectureHours control.
@@ -58,13 +58,13 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Label LBLectureHours;
         
         /// <summary>
-        /// TBLectureHours control.
+        /// TBLectureHoursU control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBLectureHours;
+        protected global::System.Web.UI.WebControls.TextBox TBLectureHoursU;
         
         /// <summary>
         /// BTUpdate control.
@@ -85,13 +85,13 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Label LBModuleCode;
         
         /// <summary>
-        /// TBModuleCode control.
+        /// TBModuleCodeU control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBModuleCode;
+        protected global::System.Web.UI.WebControls.TextBox TBModuleCodeU;
         
         /// <summary>
         /// LBProfile control.
@@ -103,13 +103,13 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Label LBProfile;
         
         /// <summary>
-        /// TBProfile control.
+        /// TBProfileU control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBProfile;
+        protected global::System.Web.UI.WebControls.TextBox TBProfileU;
         
         /// <summary>
         /// LbPracticalHours control.
@@ -121,13 +121,13 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Label LbPracticalHours;
         
         /// <summary>
-        /// TBPracticalHours control.
+        /// TBPracticalHoursU control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBPracticalHours;
+        protected global::System.Web.UI.WebControls.TextBox TBPracticalHoursU;
         
         /// <summary>
         /// BTCancel control.
@@ -148,13 +148,13 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Label LBPeriod;
         
         /// <summary>
-        /// TBPeriod control.
+        /// TBPeriodU control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBPeriod;
+        protected global::System.Web.UI.WebControls.TextBox TBPeriodU;
         
         /// <summary>
         /// LBCredits control.
@@ -166,13 +166,13 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Label LBCredits;
         
         /// <summary>
-        /// TBCredits control.
+        /// TBCreditsU control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBCredits;
+        protected global::System.Web.UI.WebControls.TextBox TBCreditsU;
         
         /// <summary>
         /// LBGeneralModule control.
@@ -184,13 +184,13 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Label LBGeneralModule;
         
         /// <summary>
-        /// CheckBoxGeneralModule control.
+        /// CheckBoxGeneralModuleU control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBoxGeneralModule;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBoxGeneralModuleU;
         
         /// <summary>
         /// LBYear control.
@@ -202,13 +202,13 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Label LBYear;
         
         /// <summary>
-        /// TBYear control.
+        /// TBYearU control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBYear;
+        protected global::System.Web.UI.WebControls.TextBox TBYearU;
         
         /// <summary>
         /// LBDescription control.
@@ -220,13 +220,13 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Label LBDescription;
         
         /// <summary>
-        /// TBDescription control.
+        /// TBDescriptionU control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBDescription;
+        protected global::System.Web.UI.WebControls.TextBox TBDescriptionU;
         
         /// <summary>
         /// LBExaminor control.
@@ -238,21 +238,21 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Label LBExaminor;
         
         /// <summary>
-        /// DropDownListExaminor control.
+        /// DropDownListExaminorU control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListExaminor;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListExaminorU;
         
         /// <summary>
-        /// DLUpdateModule control.
+        /// GVUpdateModule control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList DLUpdateModule;
+        protected global::System.Web.UI.WebControls.GridView GVUpdateModule;
     }
 }

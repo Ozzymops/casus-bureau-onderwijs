@@ -7,6 +7,16 @@
     <asp:TextBox ID="TBDelete" runat="server"></asp:TextBox><asp:Button ID="DeleteModuleButton" runat="server" Text="Delete" OnClick="DeleteId_Click" OnClientClick="return confirm('Weet je het zeker?')" Width="116px" />
     </p>
         </div>
-    <asp:GridView style="margin-left:auto; margin-right:auto;" Width="1500px" ID="GVDeleteModule" runat="server"></asp:GridView>
+    <asp:GridView style="margin-left:auto; margin-right:auto;" Width="1500px" ID="GVDeleteModule" runat="server" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4">
+        <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
+        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
+        <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Center" />
+        <RowStyle BackColor="White" ForeColor="#330099" />
+        <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="#663399" />
+        <SortedAscendingCellStyle BackColor="#FEFCEB" />
+        <SortedAscendingHeaderStyle BackColor="#AF0101" />
+        <SortedDescendingCellStyle BackColor="#F6F0C0" />
+        <SortedDescendingHeaderStyle BackColor="#7E0000" />
+    </asp:GridView>
 </asp:Content>
 

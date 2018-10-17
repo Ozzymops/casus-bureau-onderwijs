@@ -16,8 +16,8 @@ namespace BureauOnderwijs.Views
             DataTable dtbl = new DataTable();
             Models.CC.Examiner_ReadModules RM = new Models.CC.Examiner_ReadModules();
             dtbl = RM.ReadModuleCC(ingelogd);
-            DLUpdateModule.DataSource = dtbl;
-            DLUpdateModule.DataBind();
+            GVUpdateModule.DataSource = dtbl;
+            GVUpdateModule.DataBind();
         }
 
         protected void DLUpdateModule_SelectedIndexChanged(object sender, EventArgs e)
@@ -29,12 +29,45 @@ namespace BureauOnderwijs.Views
         {
             string ingelogd = Session["UserId"].ToString();
             Models.CC.Examiner_UpdateModule Up = new Models.CC.Examiner_UpdateModule();
-            string name = Up.UpdateModuleCC(TBName.Text, Convert.ToInt32(TBModuleCode.Text), Convert.ToInt32(TBPeriod.Text), Convert.ToInt32(TBYear.Text), TBFaculty.Text, TBProfile.Text, Convert.ToInt32(TBCredits.Text), CheckBoxGeneralModule.Checked, DropDownListExaminor.SelectedValue, TBDescription.Text, Convert.ToInt32(TBLectureHours.Text), Convert.ToInt32(TBPracticalHours.Text), ingelogd);
+            string name = Up.UpdateModuleCC(TBNameU.Text, Convert.ToInt32(TBModuleCodeU.Text), Convert.ToInt32(TBPeriodU.Text), Convert.ToInt32(TBYearU.Text), TBFacultyU.Text, TBProfileU.Text, Convert.ToInt32(TBCreditsU.Text), CheckBoxGeneralModuleU.Checked, DropDownListExaminorU.SelectedValue, TBDescriptionU.Text, Convert.ToInt32(TBLectureHoursU.Text), Convert.ToInt32(TBPracticalHoursU.Text), ingelogd);
+            
+            //Er komt een return waarde terug voor het aanpassen van de module. wanneer dit NIET gelukt is komt er de volgende melding: 
+            if (name == "2")
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Foutmelding! er is iets mis gegaan :(.');", true);
+            }
+            //Er komt een return waarde terug voor het aanpassen van de module. wanneer dit WEL gelukt is komt er de volgende melding:
+            else if (name == "1")
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Nieuwe module is toegevoegd!.');", true);
+            }
+            //In andere gevallen geef de foutmelding 'Onbekende Fout'.
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Onbekende Fout');", true);
+            }
         }
 
         protected void BTCancel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void GVUpdateModule_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow gr = GVUpdateModule.SelectedRow;
+            TBNameU.Text = gr.Cells[1].Text;
+            TBModuleCodeU.Text = gr.Cells[2].Text;
+            TBPeriodU.Text = gr.Cells[3].Text;
+            TBYearU.Text = gr.Cells[4].Text;
+            TBFacultyU.Text = gr.Cells[5].Text;
+            TBProfileU.Text = gr.Cells[6].Text;
+            TBCreditsU.Text = gr.Cells[7].Text;
+            DropDownListExaminorU.Text = gr.Cells[8].Text;
+            TBDescriptionU.Text = gr.Cells[9].Text;
+            CheckBoxGeneralModuleU.Text = gr.Cells[10].Text;
+            TBLectureHoursU.Text = gr.Cells[11].Text;
+            TBPracticalHoursU.Text = gr.Cells[12].Text;
         }
     }
 }
