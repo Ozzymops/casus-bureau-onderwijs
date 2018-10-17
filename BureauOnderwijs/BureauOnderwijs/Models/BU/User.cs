@@ -153,7 +153,77 @@ namespace BureauOnderwijs.Models.BU
                 return succes = "0";
             }
 
+    
+        }
 
+        public string UpdateEmail(string email, string ingelogd)
+        {
+            //legt de locatie van de database vast en de query welke er naar toe verstuurd dient te worden met deze methode
+            string conStringEm = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQueryEm = "UPDATE UserAccount SET Emailadress = '" + email + "' WHERE UserId = '" + ingelogd + "'";
+            string succes;
+
+            //poogt de query uit te voeren, als dit succesvol verloopt wordt de return waarde succes op string value "1" gezet.
+            try
+            {
+                SqlConnection conEm = new SqlConnection(conStringEm);
+                SqlCommand cmdEm = new SqlCommand(sqlQueryEm, conEm);
+
+                conEm.Open();
+                cmdEm.ExecuteNonQuery();
+                conEm.Close();
+
+                return succes = "1";
+
+            }
+            //Bij een onsuccesvolle poging wordt de return waarde succes op string value "0" gezet.
+            catch (Exception)
+            {
+                return succes = "0";
+            }
+        }
+
+        public string UpdatePassword(string newpassword,string currentpassword, string ingelogd)
+        {
+            //legt de locatie van de database vast en de query welke er naar toe verstuurd dient te worden met deze methode
+            string conStringPw = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQueryPwCheck = "SELECT COUNT (Password) FROM UserAccount WHERE UserId = '" + ingelogd + "' AND Password = '" + currentpassword + "'";
+            string sqlQueryPw = "UPDATE UserAccount SET Password = '" + newpassword + "' WHERE UserId = '" + ingelogd + "'";
+            int checkpass;
+            
+            SqlConnection conPwCheck = new SqlConnection(conStringPw);
+            SqlCommand cmdPwCheck = new SqlCommand(sqlQueryPwCheck, conPwCheck);
+
+            conPwCheck.Open();
+            checkpass = Convert.ToInt32(cmdPwCheck.ExecuteNonQuery());
+            conPwCheck.Close();
+
+
+            //poogt de query uit te voeren, als dit succesvol verloopt wordt de return waarde succes op string value "1" gezet.
+            if(checkpass == 1)
+            {
+                try
+                {
+                    SqlConnection conPw = new SqlConnection(conStringPw);
+                    SqlCommand cmdPw = new SqlCommand(sqlQueryPw, conPw);
+
+                    conPw.Open();
+                    cmdPw.ExecuteNonQuery();
+                    conPw.Close();
+
+                    return "0";
+
+                }
+                //Bij een onsuccesvolle poging wordt de return waarde succes op string value "0" gezet.
+                catch (Exception)
+                {
+                    return "1";
+                }
+            }
+            else
+            {
+                return "2";
+            }    
         }
     }
 }

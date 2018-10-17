@@ -19,5 +19,17 @@ namespace BureauOnderwijs.Models.CC
             User u = new User();
             return u.UpdateAchternaam(achternaam, ingelogd);
         }
+
+        public string UpdateEmailCC(string email, string ingelogd)
+        {
+            User u = new User();
+            return u.UpdateEmail(email, ingelogd);
+        }
+
+        public string UpdatePasswordCC(string newpassword,string currentpassword, string ingelogd)
+        {
+            User u = new User();
+            return u.UpdatePassword(newpassword,currentpassword, ingelogd);
+        }
     }
 }
