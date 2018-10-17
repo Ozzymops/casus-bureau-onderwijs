@@ -36,7 +36,6 @@ namespace BureauOnderwijs.Views
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Onbekende Fout');", true);
             }
-
         }
 
 

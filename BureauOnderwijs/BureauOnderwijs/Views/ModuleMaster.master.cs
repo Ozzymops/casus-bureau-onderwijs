@@ -36,7 +36,7 @@ namespace BureauOnderwijs.Views
 
         protected void LinkModule_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Views/LinkModule.aspx");
+            Response.Redirect("~/Views/ModuleKoppelen.aspx");
         }
     }
 }

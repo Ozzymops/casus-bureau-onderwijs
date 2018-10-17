@@ -59,8 +59,26 @@ namespace BureauOnderwijs.Models.BU
         }
 
 
-        private void UpdateModule()
+        public string UpdateModule(string Name, int ModuleCode, int Period, int Year, string Faculty, string Profile, int Credits, bool GeneralModule, string Examinor, string Description, int LectureHours, int PracticalHours, string ingelogd)
         {
+            string connectionString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlquery = "UPDATE Module SET Name = '"+ Name + "', ModuleCode = '" + ModuleCode + "', Period = '" + Period + "', Year'" + Year + "', Faculty '" + Faculty + "', Profile '" + Profile + "', Credits'" + Credits + "', GeneralModule '" + GeneralModule + "', Examinor'" + Examinor + "', Description'" + Description + "', LectureHours'" + LectureHours + "', PracticalHours '" + PracticalHours + "' WHERE ModuleId = ModuleId "; 
+                
+            try
+            {
+                SqlConnection con = new SqlConnection(connectionString);
+                SqlCommand cmd = new SqlCommand(sqlquery, con);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                return "1";
+            }
+            catch (Exception)
+            {
+                return "2";
+            }
 
         }
 
