@@ -12,7 +12,7 @@ namespace BureauOnderwijs.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            TextBoxVoornaam.Text = "a";
         }
 
         protected void ButtonSaveVoornaam_Click(object sender, EventArgs e)
