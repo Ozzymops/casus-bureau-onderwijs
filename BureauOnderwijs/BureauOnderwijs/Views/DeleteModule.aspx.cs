@@ -28,7 +28,7 @@ namespace BureauOnderwijs.Views
             dtbldelete = EDM.DeleteModuleCC(Convert.ToInt32(TBDelete.Text),ingelogd);
             GVDeleteModule.DataSource = dtbldelete;
             GVDeleteModule.DataBind();
-
+            Response.Redirect("~/Views/DeleteModule.aspx");
         }
     }
 }

@@ -157,9 +157,11 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Obsolete\Default.aspx" />
     <Content Include="Views\DeleteModule.aspx" />
+    <Content Include="Views\ModuleKoppelen.aspx" />
     <Content Include="Views\PasswordRecovery.aspx" />
     <Content Include="Views\ReadModules.aspx" />
     <Content Include="Views\TestNest.aspx" />
+    <Content Include="Views\UpdateModule.aspx" />
     <Content Include="Views\UserSettings.aspx" />
     <Content Include="Views\Homepage.aspx" />
     <Content Include="Views\LogIn.aspx" />
@@ -286,6 +288,13 @@
     <Compile Include="Views\DeleteModule.aspx.designer.cs">
       <DependentUpon>DeleteModule.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\ModuleKoppelen.aspx.cs">
+      <DependentUpon>ModuleKoppelen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ModuleKoppelen.aspx.designer.cs">
+      <DependentUpon>ModuleKoppelen.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\ModuleMaster.master.cs">
       <DependentUpon>ModuleMaster.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -334,6 +343,13 @@
     </Compile>
     <Compile Include="Views\TestNest.aspx.designer.cs">
       <DependentUpon>TestNest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UpdateModule.aspx.cs">
+      <DependentUpon>UpdateModule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\UpdateModule.aspx.designer.cs">
+      <DependentUpon>UpdateModule.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\UserSettings.aspx.cs">
       <DependentUpon>UserSettings.aspx</DependentUpon>
