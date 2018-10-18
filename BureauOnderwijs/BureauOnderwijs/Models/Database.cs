@@ -56,6 +56,28 @@ namespace BureauOnderwijs.Models
             }
             return returnValue;
         }
+
+        public string ReturnUsernameFromUserId(string query)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    return reader.GetString(0);
+                }
+                conn.Dispose();
+            }
+            catch (Exception)
+            {
+                return "error: connection error";
+            }
+            return "error: not found";
+        }
         #endregion
 
         #region Add

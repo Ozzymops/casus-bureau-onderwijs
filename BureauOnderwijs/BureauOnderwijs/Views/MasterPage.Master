@@ -15,7 +15,6 @@
             <div id="header">
                 <h2>Casus Bureau Onderwijs</h2>
             </div>
-
             <div id="content">
                 <!-- Navigation bar -->
                 <div class="nav">
@@ -27,36 +26,18 @@
                             <a runat="server" href="#">Link 2</a>
                         </div>
                     </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Docent</button>
-                        <div class="dropdown-content">
-                            <a runat="server" href="~/Views/Roosteroverzicht.aspx">Roosteroverzicht</a>
-                            <a runat="server" href="~/Views/Wensen.aspx">Wensen</a>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Examinator</button>
-                        <div class="dropdown-content">
-                            <a runat="server" href="~/Views/ReadModules.aspx">Modules</a>
-                            <a runat="server" href="~/Views/ConnectModules.aspx">Modules koppelen</a>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Roostermaker</button>
-                        <div class="dropdown-content">
-                            <a runat="server" href="#">Rooster</a>
-                        </div>
-                    </div>
+                    <a runat="server" href="~/Views/Roosteroverzicht.aspx">Roosteroverzicht</a>
+                    <a runat="server" href="~/Views/Wensen.aspx">Wensen</a>
+                    <a runat="server" href="~/Views/ReadModules.aspx">Modules</a>
                     <a runat="server" href="~/Views/UserSettings.aspx">Gebruikersinstellingen</a>
-                    <a runat="server" href="~/Views/LogIn.aspx">Log out</a>
+                    <a runat="server" href="~/Views/LogIn.aspx" style="float:right;">Log out</a>
+                    <p runat="server" style="padding:0px 10px; text-align:right; font-size:16px; float:right;"><asp:Label runat="server" id="welcomeLabel" Text="Welkom bitchass"></asp:Label></p>
                 </div>
-
                 <!-- Content! -->
                 <div id="main">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
                 </div>             
             </div>
-
             <!-- Footer -->
             <div id="footer">
                 Copyright &copy 2018 Dream Team
