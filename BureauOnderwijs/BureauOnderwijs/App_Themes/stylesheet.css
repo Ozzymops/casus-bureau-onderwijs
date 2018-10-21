@@ -13,6 +13,7 @@ body {
 }
 
 #footer {
+    clear: both;
     background-color: red;
     color: white;
     text-align: right;
@@ -88,4 +89,26 @@ body {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+/* Roosteroverzicht.aspx */
+.table_title {
+    width: 200px;
+    text-align: center;
+}
+
+.table_time {
+    text-align: center;
+}
+
+.table_vacant {
+    text-align: left;
+}
+
+#controls {
+    text-align: left;
+    margin-left: auto;
+    width: 680px;
+    float: right;
+    padding: 5px;
 }
