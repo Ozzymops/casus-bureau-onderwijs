@@ -1,11 +1,6 @@
 ﻿<%@ Page Title="Roosteroverzicht" Language="C#" MasterPageFile="~/Views/MasterPage.Master" AutoEventWireup="true" CodeBehind="Roosteroverzicht.aspx.cs" Inherits="BureauOnderwijs.Views.Roosteroverzicht" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style type="text/css">
-        .auto-style1 {
-            left: 1232px;
-        }
-    </style>
-</asp:Content>
+    </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!-- Script manager -->
     <asp:ScriptManager ID="manager" runat="server"></asp:ScriptManager>
@@ -16,36 +11,23 @@
             <asp:ListItem Value="1">Docent 2</asp:ListItem>
             <asp:ListItem Value="2">Docent 3</asp:ListItem>
         </asp:DropDownList></p>
-        <!-- Table -->
-        <asp:Table ID="table" runat="server" Width="1140px">
-            <asp:TableRow runat="server">
-                <asp:TableCell runat="server">Tijd</asp:TableCell>
-                <asp:TableCell runat="server">Maandag</asp:TableCell>
-                <asp:TableCell runat="server">Dinsdag</asp:TableCell>
-                <asp:TableCell runat="server">Woensdag</asp:TableCell>
-                <asp:TableCell runat="server">Donderdag</asp:TableCell>
-                <asp:TableCell runat="server">Vrijdag</asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow runat="server">
-                <asp:TableCell runat="server">09:00</asp:TableCell>
-                <asp:TableCell runat="server"></asp:TableCell>
-                <asp:TableCell runat="server"></asp:TableCell>
-                <asp:TableCell runat="server"></asp:TableCell>
-                <asp:TableCell runat="server"></asp:TableCell>
-                <asp:TableCell runat="server"></asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow runat="server">
-                <asp:TableCell runat="server">09:30</asp:TableCell>
-                <asp:TableCell runat="server"></asp:TableCell>
-                <asp:TableCell runat="server"></asp:TableCell>
-                <asp:TableCell runat="server"></asp:TableCell>
-                <asp:TableCell runat="server"></asp:TableCell>
-                <asp:TableCell runat="server"></asp:TableCell>
-            </asp:TableRow>
-        </asp:Table>
+        <asp:GridView ID="gr_schedule" runat="server" Width="1140px" CellPadding="4" ForeColor="#333333" GridLines="Both" CssClass="schedule">
+            <AlternatingRowStyle BackColor="White" />
+            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+            <RowStyle BackColor="#FFFBD6" ForeColor="#333333"/>
+            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+            <SortedAscendingCellStyle BackColor="#FDF5AC" />
+            <SortedAscendingHeaderStyle BackColor="#4D0000" />
+            <SortedDescendingCellStyle BackColor="#FCF6C0" />
+            <SortedDescendingHeaderStyle BackColor="#820000" />
+        </asp:GridView>
     </div>
     <div id="controls">
-        <p>Toevoegen:</p>
+        <p>Toevoegen:
+            <asp:Label ID="TestLabel" runat="server" Text="Label"></asp:Label>
+        </p>
         <!-- Wordt dynamisch aangepast op basis van beschikbaarheid docent! -->
         <p>Dag: <asp:DropDownList ID="dayList" runat="server">
             <asp:ListItem Value="0">Maandag</asp:ListItem>
@@ -63,6 +45,6 @@
         <p>Starttijd: <asp:TextBox ID="startTextBox" runat="server"></asp:TextBox></p>
         <p>Eindtijd: <asp:TextBox ID="endTextBox" runat="server"></asp:TextBox></p>
         <p>Lokaal: <asp:TextBox ID="roomTextBox" runat="server"></asp:TextBox></p>
-        <asp:Button ID="addButton" runat="server" Text="Toevoegen" />
+        <asp:Button ID="addButton" runat="server" Text="Toevoegen" OnClick="addButton_Click" />
     </div>
 </asp:Content>

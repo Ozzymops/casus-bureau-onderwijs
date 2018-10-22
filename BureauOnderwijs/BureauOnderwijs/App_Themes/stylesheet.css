@@ -92,17 +92,8 @@ body {
 }
 
 /* Roosteroverzicht.aspx */
-.table_title {
-    width: 200px;
+.schedule {
     text-align: center;
-}
-
-.table_time {
-    text-align: center;
-}
-
-.table_vacant {
-    text-align: left;
 }
 
 #controls {

@@ -129,6 +129,10 @@
   <ItemGroup>
     <Content Include="App_Themes\stylesheet.css" />
     <Content Include="Models\LagenModel.txt" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Resources\Annuleren logo.jpg" />
     <None Include="Resources\Annuleren logo.png" />
     <None Include="Resources\Delete logo.jpg" />
@@ -247,6 +251,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Views\AddModule.aspx.cs">
       <DependentUpon>AddModule.aspx</DependentUpon>
