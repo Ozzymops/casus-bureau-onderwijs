@@ -6,11 +6,17 @@
     <asp:ScriptManager ID="manager" runat="server"></asp:ScriptManager>
     <!-- On screen -->
     <div id="schedule" style="padding: 10px; float: left;">
-        <p>Rooster van: <asp:DropDownList ID="userList" runat="server">
+        <p>Rooster van: <asp:DropDownList ID="userList" runat="server" DataSourceID="SqlDataSource" DataTextField="Username" DataValueField="Username">
             <asp:ListItem Value="0">Docent 1</asp:ListItem>
             <asp:ListItem Value="1">Docent 2</asp:ListItem>
             <asp:ListItem Value="2">Docent 3</asp:ListItem>
-        </asp:DropDownList></p>
+        </asp:DropDownList>
+            <asp:SqlDataSource ID="SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnectionString %>" SelectCommand="SELECT [Username] FROM [UserAccount] WHERE ([Role] = @Role)">
+                <SelectParameters>
+                    <asp:Parameter DefaultValue="3" Name="Role" Type="Int32" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+        </p>
         <asp:GridView ID="gr_schedule" runat="server" Width="1140px" CellPadding="4" ForeColor="#333333" GridLines="Both" CssClass="schedule">
             <AlternatingRowStyle BackColor="White" />
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
