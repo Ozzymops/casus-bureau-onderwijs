@@ -42,10 +42,9 @@ namespace BureauOnderwijs.Models.BU
                     }
                 }
 
-                if (result.First() > 0 && result.First() < 5)
+                if (result.First() > 0)
                 {
                     /// login succesvol
-
                     RandomNumberGenerator r = new RandomNumberGenerator();
                     result[2] = r.GenerateNumber(1000, 9999);
                     return new int[] { result[0], result[1], result[2] };
@@ -54,16 +53,15 @@ namespace BureauOnderwijs.Models.BU
                 {
                     /// foutmelding laten zien dat de combinatie username en password niet voorkomt
                     //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongelidge username en/of wachtwoord');", true);
-                    return new int[] { 10, 0, 0 };
+                    return new int[] { -1, 0, 0 };
                 }
                 con.Dispose();
             }
             catch (Exception)
             {
-                /// er is iets mis gegaan met het inloggen, afhankelijk van de foutmelding die weergegeven wordt
-                return new int[] { 20, 0, 0 };
+                return new int[] { -2, 0, 0 };
             }
-            return new int[] { 30, 0, 0 };
+            return new int[] { -3, 0, 0 };
         }
 
         public void LogOut()
