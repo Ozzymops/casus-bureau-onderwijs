@@ -236,6 +236,7 @@
     <Compile Include="Models\CC\Scheduler_DeleteEntry.cs" />
     <Compile Include="Models\CC\Scheduler_ExportWishlist.cs" />
     <Compile Include="Models\CC\Scheduler_GenerateClassSchedule.cs" />
+    <Compile Include="Models\CC\Scheduler_GetData.cs" />
     <Compile Include="Models\CC\Scheduler_ReadEntry.cs" />
     <Compile Include="Models\CC\Scheduler_ReadWishlist.cs" />
     <Compile Include="Models\CC\Scheduler_ShowConflicts.cs" />

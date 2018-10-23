@@ -6,10 +6,7 @@
     <asp:ScriptManager ID="manager" runat="server"></asp:ScriptManager>
     <!-- On screen -->
     <div id="schedule" style="padding: 10px; float: left;">
-        <p>Rooster van: <asp:DropDownList ID="userList" runat="server" DataSourceID="SqlDataSource" DataTextField="Username" DataValueField="Username">
-            <asp:ListItem Value="0">Docent 1</asp:ListItem>
-            <asp:ListItem Value="1">Docent 2</asp:ListItem>
-            <asp:ListItem Value="2">Docent 3</asp:ListItem>
+        <p>Rooster van: <asp:DropDownList ID="userList" runat="server" OnSelectedIndexChanged="userList_SelectedIndexChanged">
         </asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnectionString %>" SelectCommand="SELECT [Username] FROM [UserAccount] WHERE ([Role] = @Role)">
                 <SelectParameters>
@@ -36,11 +33,11 @@
         </p>
         <!-- Wordt dynamisch aangepast op basis van beschikbaarheid docent! -->
         <p>Dag: <asp:DropDownList ID="dayList" runat="server">
-            <asp:ListItem Value="0">Maandag</asp:ListItem>
-            <asp:ListItem Value="1">Dinsdag</asp:ListItem>
-            <asp:ListItem Value="2">Woensdag</asp:ListItem>
-            <asp:ListItem Value="3">Donderdag</asp:ListItem>
-            <asp:ListItem Value="4">Vrijdag</asp:ListItem>
+            <asp:ListItem Value="1">Maandag</asp:ListItem>
+            <asp:ListItem Value="2">Dinsdag</asp:ListItem>
+            <asp:ListItem Value="3">Woensdag</asp:ListItem>
+            <asp:ListItem Value="4">Donderdag</asp:ListItem>
+            <asp:ListItem Value="5">Vrijdag</asp:ListItem>
             </asp:DropDownList></p>
         <!-- Wordt dynamisch aangepast op basis van docent! -->
         <p>Vak: <asp:DropDownList ID="moduleList" runat="server">

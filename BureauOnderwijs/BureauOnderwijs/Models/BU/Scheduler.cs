@@ -46,5 +46,21 @@ namespace BureauOnderwijs.Models.BU
         {
 
         }
+
+        public List<string> GetUsernameListRole(int role)
+        {
+            Models.Database db = new Models.Database();
+            db.Connect();
+            string query = "SELECT Username FROM UserAccount WHERE Role = " + role;
+            return(db.GetUsernameListRole(query));
+        }
+
+        public List<int> GetDayListUserId (string username)
+        {
+            Models.Database db = new Models.Database();
+            db.Connect();
+            string query = "SELECT DISTINCT Day FROM Wish, UserAccount WHERE Wish.UserId = UserAccount.UserId AND UserAccount.Username = '" + username + "'";
+            return (db.GetDayListUserId(query));
+        }
     }
 }

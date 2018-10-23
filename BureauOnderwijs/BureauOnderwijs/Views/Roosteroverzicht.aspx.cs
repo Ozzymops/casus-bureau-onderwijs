@@ -13,6 +13,7 @@ namespace BureauOnderwijs.Views
         protected void Page_Load(object sender, EventArgs e)
         {
             DrawTable();
+            UpdateBoxes();
         }
 
         #region Functions
@@ -103,11 +104,78 @@ namespace BureauOnderwijs.Views
         }
         #endregion
 
+        /// <summary>
+        /// Update de comboboxes met relevante informatie bepaald door user id
+        /// </summary>
+        /// <param name="userId"></param>
+        public void UpdateBoxes()
+        {
+            UpdateUserList();
+            UpdateDayList();
+        }
+
+        /// <summary>
+        /// Werkt de UserList bij zodat alle beschikbare docenten in de combobox staan.
+        /// </summary>
+        public void UpdateUserList()
+        {
+            Models.CC.Scheduler_GetData sgd = new Models.CC.Scheduler_GetData();
+            if (userList.Items.Count == 0)
+            {
+                List<string> nameList = sgd.GetUsernameListRole(3);
+                foreach (string name in nameList)
+                {
+                    userList.Items.Add(name);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Werkt de DayList bij zodat alleen de beschikbare dagen van de gebruiker er staan.
+        /// </summary>
+        public void UpdateDayList()
+        {
+            Models.CC.Scheduler_GetData sgd = new Models.CC.Scheduler_GetData();
+            dayList.Items.Clear();
+            List<int> dList = sgd.GetDayListUserId(userList.SelectedValue);
+            if (dList != null)
+            {
+                foreach (int day in dList)
+                {
+                    if (day == 1) // Maandag
+                    {
+                        dayList.Items.Add("Maandag");
+                    }
+                    else if (day == 2) // Dinsdag
+                    {
+                        dayList.Items.Add("Dinsdag");
+                    }
+                    else if (day == 3) // Woensdag
+                    {
+                        dayList.Items.Add("Woensdag");
+                    }
+                    else if (day == 4) // Donderdag
+                    {
+                        dayList.Items.Add("Donderdag");
+                    }
+                    else if (day == 5) // Vrijdag
+                    {
+                        dayList.Items.Add("Vrijdag");
+                    }
+                }
+            }
+        }
+
         #region Buttons
         protected void addButton_Click(object sender, EventArgs e)
         {
             
         }
         #endregion
+
+        protected void userList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateDayList();
+        }
     }
 }
