@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -12,7 +13,11 @@ namespace BureauOnderwijs.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            TextBoxVoornaam.Text = "a";
+            string Ingelogd = Session["UserId"].ToString();
+            Models.CC.User_UpdateUserSettings u = new Models.CC.User_UpdateUserSettings();
+            string displayvoornaam = u.LoadVnCC(Ingelogd);
+            TextBoxVoornaam.Text = displayvoornaam;
+            
         }
 
         protected void ButtonSaveVoornaam_Click(object sender, EventArgs e)

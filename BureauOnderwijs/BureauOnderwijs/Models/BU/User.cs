@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -104,6 +105,30 @@ namespace BureauOnderwijs.Models.BU
         public void UpdateData()
         {
 
+        }
+
+        public string LoadVn(string ingelogd)
+        {
+            string conStringGetVn = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQueryGetVn = "SELECT Firstname FROM UserAccount WHERE UserId = '" + ingelogd + "' ";
+            
+            try
+            {
+                SqlConnection conGetVn = new SqlConnection(conStringGetVn);
+                SqlCommand cmdGetVn = new SqlCommand(sqlQueryGetVn, conGetVn);
+
+                conGetVn.Open();
+                string displayvoornaam = cmdGetVn.ExecuteScalar().ToString();
+                
+                conGetVn.Close();
+
+                return displayvoornaam;
+            }
+            catch
+            {
+                string redmar = "schets";
+                return redmar;
+            }
         }
 
         public string UpdateVoornaam(string voornaam, string ingelogd)
