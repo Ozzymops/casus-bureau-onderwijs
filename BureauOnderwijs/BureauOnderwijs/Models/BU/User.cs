@@ -84,6 +84,14 @@ namespace BureauOnderwijs.Models.BU
             return false;
         }
 
+        public string GetUsername(int userId)
+        {
+            string query = "SELECT Username FROM UserAccount WHERE UserId = " + userId;
+            Models.Database db = new Models.Database();
+            db.Connect();
+            return db.ReturnUsernameFromUserId(query);
+        }
+
         public void ViewSchedule()
         {
 

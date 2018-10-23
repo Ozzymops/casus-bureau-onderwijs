@@ -56,6 +56,75 @@ namespace BureauOnderwijs.Models
             }
             return returnValue;
         }
+
+        public string ReturnUsernameFromUserId(string query)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    return reader.GetString(0);
+                }
+                conn.Dispose();
+            }
+            catch (Exception)
+            {
+                return "error: connection error";
+            }
+            return "error: not found";
+        }
+
+        public List<string> GetUsernameListRole(string query)
+        {
+            List<string> userList = new List<string>();
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    userList.Add(reader.GetString(0));
+                }
+                conn.Dispose();
+                return userList;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            return null;
+        }
+        public List<int> GetDayListUserId(string query)
+        {
+            List<int> dayList = new List<int>();
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    dayList.Add(Convert.ToInt32(reader.GetString(0)));
+                }
+                conn.Dispose();
+                return dayList;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            return null;
+        }
         #endregion
 
         #region Add
