@@ -19,7 +19,7 @@ namespace BureauOnderwijs.Views
 
         /// Te doen:
         /// - Auto-update UserList en DayList   [X]
-        /// - Toon entries in het rooster zelf  [ ]
+        /// - Toon entries in het rooster zelf  [X]
         /// - Haal entries op uit database      [ ]
         /// - Save entries naar database        [ ]
 
