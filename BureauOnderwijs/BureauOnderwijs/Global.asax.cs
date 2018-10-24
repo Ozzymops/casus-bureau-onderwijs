@@ -23,6 +23,7 @@ namespace BureauOnderwijs
         protected void Session_Start(object sender, EventArgs e)
         {
             Session["RecoveryStep"] = "1";
+            Session["ScheduleChanges"] = new List<string>();
         }
     }
 }

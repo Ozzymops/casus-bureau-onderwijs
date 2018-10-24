@@ -13,12 +13,20 @@ namespace BureauOnderwijs.Views
         protected void Page_Load(object sender, EventArgs e)
         {
             DrawTable();
-            UpdateBoxes();
+            UpdateUserList();
+            ReapplyChanges();
         }
+
+        /// Te doen:
+        /// - Auto-update UserList en DayList   [X]
+        /// - Toon entries in het rooster zelf  [ ]
+        /// - Haal entries op uit database      [ ]
+        /// - Save entries naar database        [ ]
+
 
         #region Functions
         /// <summary>
-        /// Tekent een table voor een wat meer visueel voorbeeld
+        /// Bereidt table voor
         /// </summary>
         public void DrawTable()
         {
@@ -166,16 +174,124 @@ namespace BureauOnderwijs.Views
             }
         }
 
+        /// <summary>
+        /// Voegt een entry toe aan het rooster
+        /// </summary>
+        public void AddEntry(string day, string module, string start, string end, string room)
+        {
+            /// Zoek juiste tijdsvak / cel
+            /// Maak een mooie string
+            /// Voeg in
+            string entryString = String.Format("{0}\r\n{1} - {2}\n{3}\n{4}", day, start, end, module, room);
+
+            int row = -1;
+            int cell = -1;
+            // Check day
+            if (day == "Maandag")
+            {
+                cell = 1;
+            }
+            else if (day == "Dinsdag")
+            {
+                cell = 2;
+            }
+            else if (day == "Woensdag")
+            {
+                cell = 3;
+            }
+            else if (day == "Donderdag")
+            {
+                cell = 4;
+            }
+            else if (day == "Vrijdag")
+            {
+                cell = 5;
+            }
+            // Check time
+            if (start.Contains("09:"))
+            {
+                row = 0;
+            }
+            else if (start.Contains("10:"))
+            {
+                row = 2;
+            }
+            else if (start.Contains("11:"))
+            {
+                row = 4;
+            }
+            else if (start.Contains("12:"))
+            {
+                row = 6;
+            }
+            else if (start.Contains("13:"))
+            {
+                row = 8;
+            }
+            else if (start.Contains("14:"))
+            {
+                row = 10;
+            }
+            else if (start.Contains("15:"))
+            {
+                row = 12;
+            }
+            else if (start.Contains("16:"))
+            {
+                row = 14;
+            }
+            else if (start.Contains("17:"))
+            {
+                row = 16;
+            }
+            else if (start.Contains("18:"))
+            {
+                row = 18;
+            }
+            if (start.Contains(":30") && !start.Contains("18:"))
+            {
+                row += 1;
+            }
+            // Apply to schedule
+            gr_schedule.Rows[row].Cells[cell].Text = entryString;
+            // Retrieve and save list
+            entryString += "@" + row.ToString() + "@" + cell.ToString();
+            List<string> changeList = (List<string>)Session["ScheduleChanges"];
+            changeList.Add(entryString);
+            Session["ScheduleChanges"] = changeList;
+        }
+
+        /// <summary>
+        /// Doet entries opnieuw toepassen in schedule indien Page_Load weer eens alles wist
+        /// </summary>
+        public void ReapplyChanges()
+        {
+            List<string> changeList = (List<string>)Session["ScheduleChanges"];
+            if (changeList.Any())
+            {
+                foreach(string entry in changeList)
+                {
+                    string[] splitEntry = entry.Split('@');
+                    TestLabel.Text = splitEntry[1] + " " + splitEntry[2] + " " + splitEntry[0];
+                    gr_schedule.Rows[Convert.ToInt32(splitEntry[1])].Cells[Convert.ToInt32(splitEntry[2])].Text = splitEntry[0];
+                }
+            }
+        }
+
         #region Buttons
         protected void addButton_Click(object sender, EventArgs e)
         {
-            
+            if (startTextBox.Text != "" && endTextBox.Text != "" && roomTextBox.Text != "")
+            {
+                AddEntry(dayList.SelectedValue.ToString(), moduleList.SelectedValue.ToString(),
+                         startTextBox.Text, endTextBox.Text, roomTextBox.Text);
+            }
         }
         #endregion
 
-        protected void userList_SelectedIndexChanged(object sender, EventArgs e)
+        protected void RefreshButton_Click(object sender, EventArgs e)
         {
-            UpdateDayList();
+            UpdateBoxes();
         }
     }
 }
