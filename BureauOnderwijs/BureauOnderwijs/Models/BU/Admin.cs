@@ -38,9 +38,50 @@ namespace BureauOnderwijs.Models.BU
             }
         }
 
-        public void DeleteUser()
+        public DataTable SelDeleteUser(string delUserID)
         {
+            string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQuery = ("SELECT UserId, Username, Emailadress, Firstname, Lastname, Role FROM UserAccount WHERE UserId = "+delUserID+"");
 
+            try
+            {
+                SqlConnection con = new SqlConnection(conString);
+                SqlCommand cmd = new SqlCommand(sqlQuery, con);
+                
+                con.Open();
+                SqlDataAdapter sqlDa = new SqlDataAdapter(sqlQuery, conString);
+                DataTable dtblBU = new DataTable();
+                sqlDa.Fill(dtblBU);
+                con.Close();
+
+                return dtblBU;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public int DeleteUser(string delUserID)
+        {
+            string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQuery = ("DELETE FROM UserAccount WHERE UserId = "+delUserID+"");
+
+            try
+            {
+                SqlConnection con = new SqlConnection(conString);
+                SqlCommand cmd = new SqlCommand(sqlQuery, con);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                return 0;
+            }
+            catch (Exception)
+            {
+                return 1;
+            }
         }
 
         public DataTable ReadUsers()

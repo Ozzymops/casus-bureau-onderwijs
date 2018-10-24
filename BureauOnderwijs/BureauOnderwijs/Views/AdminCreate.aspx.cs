@@ -44,7 +44,6 @@ namespace BureauOnderwijs.Views
         {
             Models.CC.Admin_CreateAccount oCreateAccount = new Models.CC.Admin_CreateAccount();
             int result = oCreateAccount.CreateUserCC(TBUsername.Text, TBPassword.Text, TBEmail.Text, TBFirstName.Text, TBLastName.Text, DropDownListRole.SelectedValue);
-
         }
 
         protected void BTCancel_Click(object sender, EventArgs e)

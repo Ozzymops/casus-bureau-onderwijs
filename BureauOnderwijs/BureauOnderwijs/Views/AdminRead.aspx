@@ -7,6 +7,7 @@
     <div>
         <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="false">
             <Columns>
+                <asp:BoundField DataField="UserID" HeaderText="UserID" />
                 <asp:BoundField DataField="Username" HeaderText="Username" />
                 <asp:BoundField DataField="Password" HeaderText="Password" />
                 <asp:BoundField DataField="Emailadress" HeaderText="Email-adres" />
