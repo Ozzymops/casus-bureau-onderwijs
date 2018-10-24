@@ -160,6 +160,9 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Obsolete\Default.aspx" />
+    <Content Include="Views\AdminCreate.aspx" />
+    <Content Include="Views\AdminDelete.aspx" />
+    <Content Include="Views\AdminRead.aspx" />
     <Content Include="Views\DeleteModule.aspx" />
     <Content Include="Views\ModuleKoppelen.aspx" />
     <Content Include="Views\PasswordRecovery.aspx" />
@@ -291,6 +294,34 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\AdminCreate.aspx.cs">
+      <DependentUpon>AdminCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\AdminCreate.aspx.designer.cs">
+      <DependentUpon>AdminCreate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminDelete.aspx.cs">
+      <DependentUpon>AdminDelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\AdminDelete.aspx.designer.cs">
+      <DependentUpon>AdminDelete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminMaster.master.cs">
+      <DependentUpon>AdminMaster.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\AdminMaster.master.designer.cs">
+      <DependentUpon>AdminMaster.master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminRead.aspx.cs">
+      <DependentUpon>AdminRead.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\AdminRead.aspx.designer.cs">
+      <DependentUpon>AdminRead.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\DeleteModule.aspx.cs">
       <DependentUpon>DeleteModule.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -457,6 +488,7 @@
     <Content Include="Views\MasterPage.Master" />
     <Content Include="Views\ModuleMaster.master" />
     <Content Include="Views\WensenMaster.master" />
+    <Content Include="Views\AdminMaster.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

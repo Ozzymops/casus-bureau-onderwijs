@@ -6,13 +6,9 @@
     <asp:ScriptManager ID="manager" runat="server"></asp:ScriptManager>
     <!-- On screen -->
     <div id="schedule" style="padding: 10px; float: left;">
-        <p>Rooster van: <asp:DropDownList ID="userList" runat="server" OnSelectedIndexChanged="userList_SelectedIndexChanged">
+        <p>Rooster van: <asp:DropDownList ID="userList" runat="server">
         </asp:DropDownList>
-            <asp:SqlDataSource ID="SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnectionString %>" SelectCommand="SELECT [Username] FROM [UserAccount] WHERE ([Role] = @Role)">
-                <SelectParameters>
-                    <asp:Parameter DefaultValue="3" Name="Role" Type="Int32" />
-                </SelectParameters>
-            </asp:SqlDataSource>
+            <asp:Button ID="RefreshButton" runat="server" OnClick="RefreshButton_Click" Text="Refresh" />
         </p>
         <asp:GridView ID="gr_schedule" runat="server" Width="1140px" CellPadding="4" ForeColor="#333333" GridLines="Both" CssClass="schedule">
             <AlternatingRowStyle BackColor="White" />
@@ -29,7 +25,7 @@
     </div>
     <div id="controls">
         <p>Toevoegen:
-            <asp:Label ID="TestLabel" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="TestLabel" runat="server" Text="TestLabel"></asp:Label>
         </p>
         <!-- Wordt dynamisch aangepast op basis van beschikbaarheid docent! -->
         <p>Dag: <asp:DropDownList ID="dayList" runat="server">

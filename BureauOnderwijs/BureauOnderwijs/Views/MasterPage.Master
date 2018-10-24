@@ -22,7 +22,7 @@
                     <div class="dropdown">
                         <button class="dropbtn">Administrator</button>
                         <div class="dropdown-content">
-                            <a runat="server" href="#">Link 1</a>
+                            <a runat="server" href="~/Views/AdminRead.aspx">Link 1</a>
                             <a runat="server" href="#">Link 2</a>
                         </div>
                     </div>
