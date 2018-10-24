@@ -43,7 +43,7 @@ namespace BureauOnderwijs.Views
         protected void BTSend_Click(object sender, EventArgs e)
         {
             Models.CC.Admin_CreateAccount oCreateAccount = new Models.CC.Admin_CreateAccount();
-            int result = oCreateAccount.CreateUserCC(TBUsername.Text, TBPassword.Text, TBEmail.Text, TBFirstName.Text, TBLastName.Text, DropDownListRole.SelectedValue);
+            int result = oCreateAccount.CreateUserCC(TBUsername.Text, TBPassword.Text, TBEmail.Text, TBFirstName.Text, TBLastName.Text, DropDownListRole.SelectedItem.Text);
         }
 
         protected void BTCancel_Click(object sender, EventArgs e)
