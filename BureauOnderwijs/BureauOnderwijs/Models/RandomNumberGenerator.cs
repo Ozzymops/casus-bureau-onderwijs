@@ -11,6 +11,7 @@ namespace BureauOnderwijs.Models
         {
             Random r = new Random();
             int number = r.Next(min, max);
+
             return number;
         }
     }

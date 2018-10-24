@@ -45,6 +45,10 @@ namespace BureauOnderwijs.Models.CC
             {
                 return "alert('Kom op kerel, je code klopt voor de klote niet ;)');";
             }
+            else if (RoleUseridRandomNumber == -4)
+            {
+                return "alert('Problemen met de mailingdinghusus');";
+            }
             return "alert('Neem a.u.b. contact op met je netwerkbeheerder.');";
         }
     }
