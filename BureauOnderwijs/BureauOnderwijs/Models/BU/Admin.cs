@@ -43,9 +43,28 @@ namespace BureauOnderwijs.Models.BU
 
         }
 
-        public void ReadUsers()
+        public DataTable ReadUsers()
         {
+            string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQuery = ("SELECT UserID, Username, Password, Emailadress, Firstname, Lastname, Role FROM UserAccount;");
 
+            try
+            {
+                SqlConnection con = new SqlConnection(conString);
+                SqlCommand cmd = new SqlCommand(sqlQuery, con);
+
+                con.Open();
+                SqlDataAdapter sqlDa = new SqlDataAdapter(sqlQuery, conString);
+                DataTable dtblBU = new DataTable();
+                sqlDa.Fill(dtblBU);
+                con.Close();
+
+                return dtblBU;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
     }
 }
