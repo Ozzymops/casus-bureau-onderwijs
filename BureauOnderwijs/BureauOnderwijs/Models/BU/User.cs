@@ -111,23 +111,68 @@ namespace BureauOnderwijs.Models.BU
         {
             string conStringGetVn = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQueryGetVn = "SELECT Firstname FROM UserAccount WHERE UserId = '" + ingelogd + "' ";
-            
+
             try
             {
                 SqlConnection conGetVn = new SqlConnection(conStringGetVn);
                 SqlCommand cmdGetVn = new SqlCommand(sqlQueryGetVn, conGetVn);
-
                 conGetVn.Open();
                 string displayvoornaam = cmdGetVn.ExecuteScalar().ToString();
-                
+
                 conGetVn.Close();
 
                 return displayvoornaam;
             }
             catch
             {
-                string redmar = "schets";
-                return redmar;
+                string ditisniets = "eentext";
+                return ditisniets;
+            }
+        }
+
+        public string LoadAn(string ingelogd)
+        {
+            string conStringGetAn = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQueryGetAn = "SELECT Lastname FROM UserAccount WHERE UserId = '" + ingelogd + "' ";
+
+            try
+            {
+                SqlConnection conGetAn = new SqlConnection(conStringGetAn);
+                SqlCommand cmdGetAn = new SqlCommand(sqlQueryGetAn, conGetAn);
+                conGetAn.Open();
+                string displayachternaam = cmdGetAn.ExecuteScalar().ToString();
+
+                conGetAn.Close();
+
+                return displayachternaam;
+            }
+            catch
+            {
+                string ditisniets = "eentext";
+                return ditisniets;
+            }
+        }
+
+        public string LoadEm(string ingelogd)
+        {
+            string conStringGetEm = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQueryGetEm = "SELECT Emailadress FROM UserAccount WHERE UserId = '" + ingelogd + "' ";
+
+            try
+            {
+                SqlConnection conGetEm = new SqlConnection(conStringGetEm);
+                SqlCommand cmdGetEm = new SqlCommand(sqlQueryGetEm, conGetEm);
+                conGetEm.Open();
+                string displayemail = cmdGetEm.ExecuteScalar().ToString();
+
+                conGetEm.Close();
+
+                return displayemail;
+            }
+            catch
+            {
+                string ditisniets = "eentext";
+                return ditisniets;
             }
         }
 
@@ -136,27 +181,21 @@ namespace BureauOnderwijs.Models.BU
             //legt de locatie van de database vast en de query welke er naar toe verstuurd dient te worden met deze methode
             string conStringVn = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQueryVn = "UPDATE UserAccount SET Firstname = '" + voornaam + "' WHERE UserId = '" + ingelogd + "'";
-
             //poogt de query uit te voeren, als dit succesvol verloopt wordt de return waarde succes op string value "1" gezet.
             try
             {
                 SqlConnection conVn = new SqlConnection(conStringVn);
                 SqlCommand cmdVn = new SqlCommand(sqlQueryVn, conVn);
-
                 conVn.Open();
                 cmdVn.ExecuteNonQuery();
                 conVn.Close();
-
                 return "1";
-
             }
             //Bij een onsuccesvolle poging wordt de return waarde succes op string value "0" gezet.
             catch (Exception)
             {
                 return "0";
             }
-
-
         }
 
         public string UpdateAchternaam(string achternaam, string ingelogd)
@@ -164,27 +203,21 @@ namespace BureauOnderwijs.Models.BU
             //legt de locatie van de database vast en de query welke er naar toe verstuurd dient te worden met deze methode
             string conStringAn = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQueryAn = "UPDATE UserAccount SET Lastname = '" + achternaam + "' WHERE UserId = '" + ingelogd + "'";
-
             //poogt de query uit te voeren, als dit succesvol verloopt wordt de return waarde succes op string value "1" gezet.
             try
             {
                 SqlConnection conAn = new SqlConnection(conStringAn);
                 SqlCommand cmdAn = new SqlCommand(sqlQueryAn, conAn);
-
                 conAn.Open();
                 cmdAn.ExecuteNonQuery();
                 conAn.Close();
-
                 return "1";
-
             }
             //Bij een onsuccesvolle poging wordt de return waarde succes op string value "0" gezet.
             catch (Exception)
             {
                 return "0";
             }
-
-
         }
 
         public string UpdateEmail(string email, string ingelogd)
