@@ -31,13 +31,13 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.DropDownList userList;
         
         /// <summary>
-        /// SqlDataSource control.
+        /// RefreshButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource;
+        protected global::System.Web.UI.WebControls.Button RefreshButton;
         
         /// <summary>
         /// gr_schedule control.
