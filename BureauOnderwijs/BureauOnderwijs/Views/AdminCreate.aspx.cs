@@ -42,6 +42,7 @@ namespace BureauOnderwijs.Views
         }
 
         protected void BTSend_Click(object sender, EventArgs e)
+        //Verzamelt de ingevulde data en slaat die op in de Database
         {
             Models.CC.Admin_CreateAccount oCreateAccount = new Models.CC.Admin_CreateAccount();
             int result = oCreateAccount.CreateUserCC(TBUsername.Text, TBPassword.Text, TBEmail.Text, TBFirstName.Text, TBLastName.Text, DropDownListRole.SelectedItem.Text);
@@ -61,6 +62,7 @@ namespace BureauOnderwijs.Views
         }
 
         protected void BTCancel_Click(object sender, EventArgs e)
+        //Maakt de tekstboxxen leeg
         {
             TBUsername.Text = string.Empty;
             TBPassword.Text = string.Empty;

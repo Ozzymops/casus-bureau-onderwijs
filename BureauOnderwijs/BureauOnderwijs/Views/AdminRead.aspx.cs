@@ -30,7 +30,7 @@ namespace BureauOnderwijs.Views
             //    ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", "alert('Error: Unexpected Respons');", true);
             //}
 
-            
+            //Maakt Tabel met alle Gebruikers en hun gegevens
             DataTable dtbl = new DataTable();
             Admin_UpdateAccount oUpdateAccount = new Admin_UpdateAccount();
             dtbl = oUpdateAccount.ReadUsersCC();

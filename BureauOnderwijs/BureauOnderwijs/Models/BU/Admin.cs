@@ -10,6 +10,7 @@ namespace BureauOnderwijs.Models.BU
     public class Admin : User   // inherit from User.cs
     {
         public int CheckAdmin(int UserID)
+        //Functie die checkt of de ingelogde user een Admin is
         {
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQuery = ("SELECT Role FROM UserAccount WHERE UserId = " +UserID+ "");
@@ -19,7 +20,6 @@ namespace BureauOnderwijs.Models.BU
                 SqlConnection con = new SqlConnection(conString);
                 SqlCommand cmd = new SqlCommand(sqlQuery, con);
                 
-
                 con.Open();
                 int UserRole = (int)cmd.ExecuteScalar();
                 con.Close();
@@ -40,6 +40,7 @@ namespace BureauOnderwijs.Models.BU
         }
 
         public int CreateUser(string newUsername, string newPassword, string newEmail, string newFirstName, string newLastName, int newRole)
+        //Functie die de doorgegeven gegevens opslaat in de Database
         {
             string[] inputs = { newUsername, newPassword, newEmail, newFirstName, newLastName };
 
@@ -77,6 +78,7 @@ namespace BureauOnderwijs.Models.BU
         }
 
         public DataTable SelDeleteUser(string delUserID)
+        //Functie die de doorgestuurde User laat zien
         {
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQuery = ("SELECT UserId, Username, Emailadress, Firstname, Lastname, Role FROM UserAccount WHERE UserId = "+delUserID+"");
@@ -101,6 +103,7 @@ namespace BureauOnderwijs.Models.BU
         }
 
         public int DeleteUser(string delUserID)
+        //Functie die de doorgestuurde User verwijdert
         {
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQuery = ("DELETE FROM UserAccount WHERE UserId = "+delUserID+"");
@@ -130,6 +133,7 @@ namespace BureauOnderwijs.Models.BU
         }
 
         public DataTable ReadUsers()
+        //Functie die alle Users in een tabel zet
         {
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQuery = ("SELECT UserID, Username, Password, Emailadress, Firstname, Lastname, Role FROM UserAccount;");
