@@ -9,6 +9,35 @@ namespace BureauOnderwijs.Models.BU
 {
     public class Admin : User   // inherit from User.cs
     {
+        public int CheckAdmin(int UserID)
+        {
+            string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQuery = ("SELECT Role FROM UserAccount WHERE UserId = " +UserID+ "");
+            
+            try
+            {
+                SqlConnection con = new SqlConnection(conString);
+                SqlCommand cmd = new SqlCommand(sqlQuery, con);
+                
+
+                con.Open();
+                int UserRole = (int)cmd.ExecuteScalar();
+                con.Close();
+
+                if (UserRole == 4)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+            catch (Exception)
+            {
+                return 2;
+            }
+        }
 
         public int CreateUser(string newUsername, string newPassword, string newEmail, string newFirstName, string newLastName, int newRole)
         {

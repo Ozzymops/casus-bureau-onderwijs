@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BureauOnderwijs.Models.CC;
 
 namespace BureauOnderwijs.Views
 {
@@ -11,7 +12,23 @@ namespace BureauOnderwijs.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            int Check = Convert.ToInt32(Session["UserId"]);
 
+            Admin_Authentication oAuthentication = new Admin_Authentication();
+            int result = oAuthentication.Authentication(Check);
+            if (result == 0)
+            {
+            }
+            else if (result == 1)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", "alert('Je bent niet bevoegd deze pagina te bezoeken');", true);
+                Response.Redirect("~/Views/Homepage");
+            }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", "alert('Je bent niet bevoegd deze pagina te bezoeken');", true);
+                Response.Redirect("~/Views/Homepage");
+            }
         }
 
         protected void readUsersButton_Click(object sender, EventArgs e)
