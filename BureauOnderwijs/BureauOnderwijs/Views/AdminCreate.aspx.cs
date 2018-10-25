@@ -44,11 +44,28 @@ namespace BureauOnderwijs.Views
         {
             Models.CC.Admin_CreateAccount oCreateAccount = new Models.CC.Admin_CreateAccount();
             int result = oCreateAccount.CreateUserCC(TBUsername.Text, TBPassword.Text, TBEmail.Text, TBFirstName.Text, TBLastName.Text, DropDownListRole.SelectedItem.Text);
+
+            if (result == 0)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", "alert('Gebruiker toegevoegd.');", true);
+            }
+            else if (result == 1)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", "alert('Toevoegen mislukt. Zijn alle velden juist ingevuld?');", true);
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", "alert('Error: Unexpected Respons');", true);
+            }
         }
 
         protected void BTCancel_Click(object sender, EventArgs e)
         {
-
+            TBUsername.Text = string.Empty;
+            TBPassword.Text = string.Empty;
+            TBEmail.Text = string.Empty;
+            TBFirstName.Text = string.Empty;
+            TBLastName.Text = string.Empty;
         }
 
         protected void DropDownListRole_SelectedIndexChanged(object sender, EventArgs e)
