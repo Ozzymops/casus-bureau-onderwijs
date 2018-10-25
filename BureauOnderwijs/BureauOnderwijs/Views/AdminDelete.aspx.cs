@@ -21,6 +21,7 @@ namespace BureauOnderwijs.Views
         }
 
         protected void BTSelect_Click(object sender, EventArgs e)
+        //Weergeeft de geselecteerde gebruiker en zijn gegevens
         {
             DataTable dtbl = new DataTable();
             Models.CC.Admin_DeleteAccount oDeleteAccount = new Models.CC.Admin_DeleteAccount();
@@ -31,9 +32,23 @@ namespace BureauOnderwijs.Views
         }
 
         protected void BTDelete_Click(object sender, EventArgs e)
+        //Verwijdert de geselecteerde gebruiker
         {
             Models.CC.Admin_DeleteAccount oDeleteAccount = new Models.CC.Admin_DeleteAccount();
             int result = oDeleteAccount.DeleteUserExeCC(TBUsername.Text);
+
+            if (result == 0)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", "alert('Gebruiker verwijderd.');", true);
+            }
+            else if (result == 1)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", "alert('Verwijderen mislukt. Bestaat de gebruiker?');", true);
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", "alert('Error: Unexpected Respons');", true);
+            }
         }
     }
 }

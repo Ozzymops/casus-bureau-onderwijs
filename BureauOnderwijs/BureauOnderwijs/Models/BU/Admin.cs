@@ -9,28 +9,67 @@ namespace BureauOnderwijs.Models.BU
 {
     public class Admin : User   // inherit from User.cs
     {
+        public int CheckAdmin(int UserID)
+        //Functie die checkt of de ingelogde user een Admin is
+        {
+            string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQuery = ("SELECT Role FROM UserAccount WHERE UserId = " +UserID+ "");
+            
+            try
+            {
+                SqlConnection con = new SqlConnection(conString);
+                SqlCommand cmd = new SqlCommand(sqlQuery, con);
+                
+                con.Open();
+                int UserRole = (int)cmd.ExecuteScalar();
+                con.Close();
+
+                if (UserRole == 4)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+            catch (Exception)
+            {
+                return 2;
+            }
+        }
 
         public int CreateUser(string newUsername, string newPassword, string newEmail, string newFirstName, string newLastName, int newRole)
+        //Functie die de doorgegeven gegevens opslaat in de Database
         {
+            string[] inputs = { newUsername, newPassword, newEmail, newFirstName, newLastName };
+
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQuery = ("INSERT INTO UserAccount(Username, Password, Emailadress, Firstname, Lastname, Role) VALUES(@InputUsername, @InputPassword, @InputEmail, @InputFirstName, @InputLastName, @InputRole)");
 
             try
             {
-                SqlConnection con = new SqlConnection(conString);
-                SqlCommand cmd = new SqlCommand(sqlQuery, con);
+                if (inputs.Any(x => string.IsNullOrWhiteSpace(x)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    SqlConnection con = new SqlConnection(conString);
+                    SqlCommand cmd = new SqlCommand(sqlQuery, con);
 
-                cmd.Parameters.Add("InputUsername", SqlDbType.VarChar).Value = newUsername;
-                cmd.Parameters.Add("InputPassword", SqlDbType.VarChar).Value = newPassword;
-                cmd.Parameters.Add("InputEmail", SqlDbType.VarChar).Value = newEmail;
-                cmd.Parameters.Add("InputFirstName", SqlDbType.VarChar).Value = newFirstName;
-                cmd.Parameters.Add("InputLastName", SqlDbType.VarChar).Value = newLastName;
-                cmd.Parameters.Add("InputRole", SqlDbType.Int).Value = newRole;
+                    cmd.Parameters.Add("InputUsername", SqlDbType.VarChar).Value = newUsername;
+                    cmd.Parameters.Add("InputPassword", SqlDbType.VarChar).Value = newPassword;
+                    cmd.Parameters.Add("InputEmail", SqlDbType.VarChar).Value = newEmail;
+                    cmd.Parameters.Add("InputFirstName", SqlDbType.VarChar).Value = newFirstName;
+                    cmd.Parameters.Add("InputLastName", SqlDbType.VarChar).Value = newLastName;
+                    cmd.Parameters.Add("InputRole", SqlDbType.Int).Value = newRole;
 
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
-                return 0;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    return 0;
+                }
             }
             catch (Exception)
             {
@@ -39,6 +78,7 @@ namespace BureauOnderwijs.Models.BU
         }
 
         public DataTable SelDeleteUser(string delUserID)
+        //Functie die de doorgestuurde User laat zien
         {
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQuery = ("SELECT UserId, Username, Emailadress, Firstname, Lastname, Role FROM UserAccount WHERE UserId = "+delUserID+"");
@@ -63,6 +103,7 @@ namespace BureauOnderwijs.Models.BU
         }
 
         public int DeleteUser(string delUserID)
+        //Functie die de doorgestuurde User verwijdert
         {
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQuery = ("DELETE FROM UserAccount WHERE UserId = "+delUserID+"");
@@ -71,12 +112,19 @@ namespace BureauOnderwijs.Models.BU
             {
                 SqlConnection con = new SqlConnection(conString);
                 SqlCommand cmd = new SqlCommand(sqlQuery, con);
-
+                
                 con.Open();
-                cmd.ExecuteNonQuery();
+                int rowsAffected = cmd.ExecuteNonQuery();
                 con.Close();
-
-                return 0;
+                
+                if (rowsAffected > 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
             }
             catch (Exception)
             {
@@ -85,6 +133,7 @@ namespace BureauOnderwijs.Models.BU
         }
 
         public DataTable ReadUsers()
+        //Functie die alle Users in een tabel zet
         {
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQuery = ("SELECT UserID, Username, Password, Emailadress, Firstname, Lastname, Role FROM UserAccount;");

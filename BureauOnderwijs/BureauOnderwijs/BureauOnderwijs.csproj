@@ -225,6 +225,7 @@
     <Compile Include="Models\BU\Teacher.cs" />
     <Compile Include="Models\BU\User.cs" />
     <Compile Include="Models\BU\Wish.cs" />
+    <Compile Include="Models\CC\Admin_Authentication.cs" />
     <Compile Include="Models\CC\Admin_CreateAccount.cs" />
     <Compile Include="Models\CC\Admin_DeleteAccount.cs" />
     <Compile Include="Models\CC\Admin_UpdateAccount.cs" />

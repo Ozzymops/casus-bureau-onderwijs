@@ -26,7 +26,7 @@
     </div>
     <div>
         <asp:Label ID="LBRole" runat="server" Text="Role: " Width="120px"></asp:Label>
-        <asp:DropDownList ID="DropDownListRole" runat="server" OnSelectedIndexChanged="DropDownListRole_SelectedIndexChanged"> 
+        <asp:DropDownList ID="DropDownListRole" runat="server" Width="144px" OnSelectedIndexChanged="DropDownListRole_SelectedIndexChanged"> 
         <asp:ListItem Value="0">Docent</asp:ListItem>
         <asp:ListItem Value="1">Roostermaker</asp:ListItem>
         <asp:ListItem Value="2">Examinator</asp:ListItem>
