@@ -10,26 +10,41 @@ namespace BureauOnderwijs.Views
 {
     public partial class Roosteroverzicht : System.Web.UI.Page
     {
+        /// Te doen:
+        /// - Genereer een lege table                           [X]
+        /// - Een entry is een string ARRAY in een LIST         [X]
+        /// - Auto-update UserList met teacher id's             [X]
+        /// - Auto-update DayList met dagen                     [X]
+        /// - Auto-update ModuleList met modulen                [X]
+        /// - Maak entry strings en sla deze op in session      [X]
+        /// - Toon entry strings in session in schedule         [X]
+        /// - Maak entry strings userId gebonden                [X]
+        /// - Check of entry strings al bestaan in db           [ ]
+        /// - Save CREATE / UPDATE entry strings naar database  [ ]
+        /// - Haal entries op uit database                      [ ]
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            DrawTable();
-            UpdateUserList();
-            ReapplyChanges();
+            // Genereer eenmalig een tabel
+            if (gr_schedule.Rows.Count == 0)
+            {
+                CreateTable();
+            }
+            // Laad eenmalig de gebruikers in
+            if (userList.Items.Count == 0)
+            {
+                FillDropDownLists();
+            }
+            ApplyFromSession();
         }
 
-        /// Te doen:
-        /// - Auto-update UserList en DayList   [X]
-        /// - Toon entries in het rooster zelf  [X]
-        /// - Haal entries op uit database      [ ]
-        /// - Save entries naar database        [ ]
-
-
-        #region Functions
         /// <summary>
-        /// Bereidt table voor
+        /// Genereer een tabel van maandag tot vrijdag, 09:00 tot 18:00.
         /// </summary>
-        public void DrawTable()
+        #region Functions
+        public void CreateTable()
         {
+            // Columns
             DataTable dt = new DataTable();
             if (dt.Columns.Count == 0)
             {
@@ -41,6 +56,7 @@ namespace BureauOnderwijs.Views
                 dt.Columns.Add("Vrijdag", typeof(string));
             }
 
+            // Rows
             int hour = 9;
             bool halfHour = false;
             for (int i = 0; i < 19; i++)
@@ -73,60 +89,18 @@ namespace BureauOnderwijs.Views
                 halfHour = !halfHour;
                 dt.Rows.Add(dr);
             }
-            
+
+            // Bind
             gr_schedule.DataSource = dt;
             gr_schedule.DataBind();
         }
 
         /// <summary>
-        /// Check de textboxes voor algemene foutjes, zoals geen cijfers zijn ingevoerd, geen data, etc.
+        /// Vul de DropDownLists - users vanuit de db en beschikbare dagen / modules via userId.
         /// </summary>
-        /// <returns></returns>
-        public bool CheckGeneralErrors()
+        public void FillDropDownLists()
         {
-            // Check of de verplichte velden niet leeg zijn
-            if (startTextBox.Text == "" || endTextBox.Text == "")
-            {
-                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongeldig tijdsvak.');", true);
-                return true;
-            }
-            if (roomTextBox.Text == "")
-            {
-                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongeldig lokaal.');", true);
-                return true;
-            }
-            return false;
-        }
-
-        public void CheckConflicts()
-        {
-            // Gijsje, mijn dude
-        }
-
-        /// <summary>
-        /// Vult de table met data uit de database.
-        /// </summary>
-        public void PopulateTable()
-        {
-
-        }
-        #endregion
-
-        /// <summary>
-        /// Update de comboboxes met relevante informatie bepaald door user id
-        /// </summary>
-        /// <param name="userId"></param>
-        public void UpdateBoxes()
-        {
-            UpdateUserList();
-            UpdateDayList();
-        }
-
-        /// <summary>
-        /// Werkt de UserList bij zodat alle beschikbare docenten in de combobox staan.
-        /// </summary>
-        public void UpdateUserList()
-        {
+            // userList
             Models.CC.Scheduler_GetData sgd = new Models.CC.Scheduler_GetData();
             if (userList.Items.Count == 0)
             {
@@ -136,14 +110,8 @@ namespace BureauOnderwijs.Views
                     userList.Items.Add(name);
                 }
             }
-        }
 
-        /// <summary>
-        /// Werkt de DayList bij zodat alleen de beschikbare dagen van de gebruiker er staan.
-        /// </summary>
-        public void UpdateDayList()
-        {
-            Models.CC.Scheduler_GetData sgd = new Models.CC.Scheduler_GetData();
+            // dayList
             dayList.Items.Clear();
             List<int> dList = sgd.GetDayListUserId(userList.SelectedValue);
             if (dList != null)
@@ -172,20 +140,48 @@ namespace BureauOnderwijs.Views
                     }
                 }
             }
+
+            // moduleList
+            moduleList.Items.Clear();
+            List<int> mList = sgd.GetModuleListUserId(userList.SelectedValue);
+            if (mList != null)
+            {
+                foreach (int module in mList)
+                {
+                    moduleList.Items.Add(sgd.GetModuleCode(module).ToString());
+                }
+            }
         }
 
         /// <summary>
-        /// Voegt een entry toe aan het rooster
+        /// Maak een entry string aan in de tijdelijke session.
         /// </summary>
-        public void AddEntry(string day, string module, string start, string end, string room)
+        public void AddEntryString(string day, string start, string end, string module, string room)
         {
-            /// Zoek juiste tijdsvak / cel
-            /// Maak een mooie string
-            /// Voeg in
-            string entryString = String.Format("{0}\r\n{1} - {2}\n{3}\n{4}", day, start, end, module, room);
+            // Genereer string
+            string entryString = day + ": " + start + " - " + end + ". " + module + ". " + room + ".";
+            TestLabel.Text = entryString;
+            // Selecteer row en cell
+            int[] spot = DetermineSpot(day, start, end);
+            // Opslaan naar session
+            string[] sessionString = { day, start, end, module, room, spot[0].ToString(), spot[1].ToString(), userList.SelectedValue};
+            List<string[]> sessionList = (List<string[]>)Session["ScheduleChanges"];
+            sessionList.Add(sessionString);
+            Session["ScheduleChanges"] = sessionList;
+        }
 
+        /// <summary>
+        /// Bepaal plaats van entry in tabel.
+        /// </summary>
+        /// <param name="day"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public int[] DetermineSpot(string day, string start, string end)
+        {
             int row = -1;
             int cell = -1;
+
             // Check day
             if (day == "Maandag")
             {
@@ -207,6 +203,7 @@ namespace BureauOnderwijs.Views
             {
                 cell = 5;
             }
+
             // Check time
             if (start.Contains("09:"))
             {
@@ -252,46 +249,52 @@ namespace BureauOnderwijs.Views
             {
                 row += 1;
             }
-            // Apply to schedule
-            gr_schedule.Rows[row].Cells[cell].Text = entryString;
-            // Retrieve and save list
-            entryString += "@" + row.ToString() + "@" + cell.ToString();
-            List<string> changeList = (List<string>)Session["ScheduleChanges"];
-            changeList.Add(entryString);
-            Session["ScheduleChanges"] = changeList;
+            return new int[] { row, cell };
         }
 
         /// <summary>
-        /// Doet entries opnieuw toepassen in schedule indien Page_Load weer eens alles wist
+        /// Past sessionList toe aan tabel.
         /// </summary>
-        public void ReapplyChanges()
+        public void ApplyFromSession()
         {
-            List<string> changeList = (List<string>)Session["ScheduleChanges"];
-            if (changeList.Any())
+            gr_schedule.DataSource = null;
+            gr_schedule.DataBind();
+            CreateTable();
+            List<string[]> sessionList = (List<string[]>)Session["ScheduleChanges"];
+            if (sessionList.Count != 0)
             {
-                foreach(string entry in changeList)
+                foreach (string[] entry in sessionList)
                 {
-                    string[] splitEntry = entry.Split('@');
-                    TestLabel.Text = splitEntry[1] + " " + splitEntry[2] + " " + splitEntry[0];
-                    gr_schedule.Rows[Convert.ToInt32(splitEntry[1])].Cells[Convert.ToInt32(splitEntry[2])].Text = splitEntry[0];
+                    if (userList.SelectedValue == entry[7])
+                    {
+                        string row = entry[5];
+                        string column = entry[6];
+                        string text = entry[0] + ": " + entry[1] + " - " + entry[2] + ". " + entry[3] + ". " + entry[4] + ".";
+                        gr_schedule.Rows[Convert.ToInt32(row)].Cells[Convert.ToInt32(column)].Text = text;
+                    }
                 }
             }
         }
+        #endregion
 
         #region Buttons
         protected void addButton_Click(object sender, EventArgs e)
         {
             if (startTextBox.Text != "" && endTextBox.Text != "" && roomTextBox.Text != "")
             {
-                AddEntry(dayList.SelectedValue.ToString(), moduleList.SelectedValue.ToString(),
-                         startTextBox.Text, endTextBox.Text, roomTextBox.Text);
+                AddEntryString(dayList.SelectedValue, startTextBox.Text, endTextBox.Text, moduleList.SelectedValue, roomTextBox.Text);
+                ApplyFromSession();
             }
         }
-        #endregion
 
         protected void RefreshButton_Click(object sender, EventArgs e)
         {
-            UpdateBoxes();
+            //UpdateBoxes();
         }
+        protected void userList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillDropDownLists();
+        }
+        #endregion
     }
 }

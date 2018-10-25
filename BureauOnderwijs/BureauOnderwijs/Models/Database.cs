@@ -125,6 +125,50 @@ namespace BureauOnderwijs.Models
             }
             return null;
         }
+        public List<int> GetModuleListUserId(string query)
+        {
+            List<int> moduleList = new List<int>();
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    moduleList.Add(reader.GetInt32(0));
+                }
+                conn.Dispose();
+                return moduleList;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            return null;
+        }
+        public string GetModuleCode(string query)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    return reader.GetString(0);
+                }
+                conn.Dispose();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            return null;
+        }
         #endregion
 
         #region Add

@@ -18,5 +18,17 @@ namespace BureauOnderwijs.Models.CC
             Models.BU.Scheduler s = new Models.BU.Scheduler();
             return(s.GetDayListUserId(username));
         }
+
+        public List<int> GetModuleListUserId(string username)
+        {
+            Models.BU.Scheduler s = new Models.BU.Scheduler();
+            return (s.GetModuleListUserId(username));
+        }
+
+        public string GetModuleCode(int module)
+        {
+            Models.BU.Scheduler s = new Models.BU.Scheduler();
+            return (s.GetModuleCode(module));
+        }
     }
 }

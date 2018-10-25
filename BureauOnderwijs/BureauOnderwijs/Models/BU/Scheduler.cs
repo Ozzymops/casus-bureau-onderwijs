@@ -62,5 +62,19 @@ namespace BureauOnderwijs.Models.BU
             string query = "SELECT DISTINCT Day FROM Wish, UserAccount WHERE Wish.UserId = UserAccount.UserId AND UserAccount.Username = '" + username + "'";
             return (db.GetDayListUserId(query));
         }
+        public List<int> GetModuleListUserId(string username)
+        {
+            Models.Database db = new Models.Database();
+            db.Connect();
+            string query = "SELECT mu.ModuleId FROM ModuleUser mu, UserAccount ua WHERE ua.Username = '" + username + "' AND ua.UserId = mu.UserId";
+            return (db.GetModuleListUserId(query));
+        }
+        public string GetModuleCode(int module)
+        {
+            Models.Database db = new Models.Database();
+            db.Connect();
+            string query = "SELECT ModuleCode FROM Module WHERE ModuleId = '" + module + "'";
+            return (db.GetModuleCode(query));
+        }
     }
 }

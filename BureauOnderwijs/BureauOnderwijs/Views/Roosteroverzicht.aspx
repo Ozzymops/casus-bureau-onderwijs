@@ -6,7 +6,7 @@
     <asp:ScriptManager ID="manager" runat="server"></asp:ScriptManager>
     <!-- On screen -->
     <div id="schedule" style="padding: 10px; float: left;">
-        <p>Rooster van: <asp:DropDownList ID="userList" runat="server">
+        <p>Rooster van: <asp:DropDownList ID="userList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="userList_SelectedIndexChanged">
         </asp:DropDownList>
             <asp:Button ID="RefreshButton" runat="server" OnClick="RefreshButton_Click" Text="Refresh" />
         </p>
