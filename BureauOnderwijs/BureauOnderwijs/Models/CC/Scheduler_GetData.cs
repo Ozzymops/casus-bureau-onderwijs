@@ -13,10 +13,10 @@ namespace BureauOnderwijs.Models.CC
             return(s.GetUsernameListRole(role));
         }
 
-        public List<int> GetDayListUserId(string username)
+        public List<int> GetDayListUserId(string username, string period, string week)
         {
             Models.BU.Scheduler s = new Models.BU.Scheduler();
-            return(s.GetDayListUserId(username));
+            return(s.GetDayListUserId(username, period, week));
         }
 
         public List<int> GetModuleListUserId(string username)
@@ -29,6 +29,12 @@ namespace BureauOnderwijs.Models.CC
         {
             Models.BU.Scheduler s = new Models.BU.Scheduler();
             return (s.GetModuleCode(module));
+        }
+
+        public bool CheckIfEntryExists(string[] entry)
+        {
+            Models.BU.Scheduler s = new Models.BU.Scheduler();
+            return (s.CheckIfEntryExists(entry));
         }
     }
 }

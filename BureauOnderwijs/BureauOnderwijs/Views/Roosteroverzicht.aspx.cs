@@ -22,6 +22,7 @@ namespace BureauOnderwijs.Views
         /// - Check of entry strings al bestaan in db           [ ]
         /// - Save CREATE / UPDATE entry strings naar database  [ ]
         /// - Haal entries op uit database                      [ ]
+        /// - Try/catch OVERAL                                  [ ]
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,10 +32,7 @@ namespace BureauOnderwijs.Views
                 CreateTable();
             }
             // Laad eenmalig de gebruikers in
-            if (userList.Items.Count == 0)
-            {
-                FillDropDownLists();
-            }
+            FillDropDownLists();
             ApplyFromSession();
         }
 
@@ -100,6 +98,24 @@ namespace BureauOnderwijs.Views
         /// </summary>
         public void FillDropDownLists()
         {
+            // periodList
+            if (periodList.Items.Count == 0)
+            {
+                for (int i = 1; i < 5; i++)
+                {
+                    periodList.Items.Add(i.ToString());
+                }
+            }
+
+            // weekList
+            if (weekList.Items.Count == 0)
+            {
+                for (int i = 1; i < 11; i++)
+                {
+                    weekList.Items.Add(i.ToString());
+                }
+            }
+
             // userList
             Models.CC.Scheduler_GetData sgd = new Models.CC.Scheduler_GetData();
             if (userList.Items.Count == 0)
@@ -112,31 +128,36 @@ namespace BureauOnderwijs.Views
             }
 
             // dayList
-            dayList.Items.Clear();
-            List<int> dList = sgd.GetDayListUserId(userList.SelectedValue);
-            if (dList != null)
+            if (userList.SelectedValue != Session["CurrentUser"].ToString() || weekList.SelectedValue != Session["CurrentWeek"].ToString() || periodList.SelectedValue != Session["CurrentPeriod"].ToString() || (bool)Session["FirstTimeSchedule"] == true)
             {
-                foreach (int day in dList)
+                dayList.Items.Clear();
+                Session["CurrentWeek"] = Convert.ToInt32(weekList.SelectedValue);
+                Session["CurrentPeriod"] = Convert.ToInt32(periodList.SelectedValue);
+                List<int> dList = sgd.GetDayListUserId(userList.SelectedValue, periodList.SelectedValue, weekList.SelectedValue);
+                if (dList.Count != 0)
                 {
-                    if (day == 1) // Maandag
+                    foreach (int day in dList)
                     {
-                        dayList.Items.Add("Maandag");
-                    }
-                    else if (day == 2) // Dinsdag
-                    {
-                        dayList.Items.Add("Dinsdag");
-                    }
-                    else if (day == 3) // Woensdag
-                    {
-                        dayList.Items.Add("Woensdag");
-                    }
-                    else if (day == 4) // Donderdag
-                    {
-                        dayList.Items.Add("Donderdag");
-                    }
-                    else if (day == 5) // Vrijdag
-                    {
-                        dayList.Items.Add("Vrijdag");
+                        if (day == 1) // Maandag
+                        {
+                            dayList.Items.Add("Maandag");
+                        }
+                        else if (day == 2) // Dinsdag
+                        {
+                            dayList.Items.Add("Dinsdag");
+                        }
+                        else if (day == 3) // Woensdag
+                        {
+                            dayList.Items.Add("Woensdag");
+                        }
+                        else if (day == 4) // Donderdag
+                        {
+                            dayList.Items.Add("Donderdag");
+                        }
+                        else if (day == 5) // Vrijdag
+                        {
+                            dayList.Items.Add("Vrijdag");
+                        }
                     }
                 }
             }
@@ -144,13 +165,14 @@ namespace BureauOnderwijs.Views
             // moduleList
             moduleList.Items.Clear();
             List<int> mList = sgd.GetModuleListUserId(userList.SelectedValue);
-            if (mList != null)
+            if (mList.Count != 0)
             {
                 foreach (int module in mList)
                 {
                     moduleList.Items.Add(sgd.GetModuleCode(module).ToString());
                 }
             }
+            Session["FirstTimeSchedule"] = false;
         }
 
         /// <summary>
@@ -160,11 +182,10 @@ namespace BureauOnderwijs.Views
         {
             // Genereer string
             string entryString = day + ": " + start + " - " + end + ". " + module + ". " + room + ".";
-            TestLabel.Text = entryString;
             // Selecteer row en cell
             int[] spot = DetermineSpot(day, start, end);
             // Opslaan naar session
-            string[] sessionString = { day, start, end, module, room, spot[0].ToString(), spot[1].ToString(), userList.SelectedValue};
+            string[] sessionString = { day, start, end, module, room, spot[0].ToString(), spot[1].ToString(), userList.SelectedValue };
             List<string[]> sessionList = (List<string[]>)Session["ScheduleChanges"];
             sessionList.Add(sessionString);
             Session["ScheduleChanges"] = sessionList;
@@ -275,6 +296,16 @@ namespace BureauOnderwijs.Views
                 }
             }
         }
+
+        public bool CheckIfEntryExists(string[] entry)
+        {
+            Models.CC.Scheduler_GetData sgd = new Models.CC.Scheduler_GetData();
+            if (CheckIfEntryExists(entry))
+            {
+
+            }
+            return false;
+        }
         #endregion
 
         #region Buttons
@@ -293,7 +324,8 @@ namespace BureauOnderwijs.Views
         }
         protected void userList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FillDropDownLists();
+            //FillDropDownLists();
+            Session["CurrentUser"] = userList.SelectedValue;
         }
         #endregion
 
