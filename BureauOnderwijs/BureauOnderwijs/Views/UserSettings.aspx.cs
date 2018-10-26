@@ -20,12 +20,10 @@ namespace BureauOnderwijs.Views
                 Models.CC.User_UpdateUserSettings u = new Models.CC.User_UpdateUserSettings();
                 string displayvoornaam = u.LoadVnCC(Ingelogd);
                 TextBoxVoornaam.Text = displayvoornaam;
-
-                //Models.CC.User_UpdateUserSettings u = new Models.CC.User_UpdateUserSettings();
+                
                 string displayachternaam = u.LoadAnCC(Ingelogd);
                 TextBoxAchternaam.Text = displayachternaam;
-
-                //Models.CC.User_UpdateUserSettings u = new Models.CC.User_UpdateUserSettings();
+                
                 string displayemail = u.LoadEmCC(Ingelogd);
                 TextBoxEmail.Text = displayemail;
             }

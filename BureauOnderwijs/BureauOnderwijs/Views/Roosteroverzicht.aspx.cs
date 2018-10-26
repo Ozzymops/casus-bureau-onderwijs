@@ -10,26 +10,40 @@ namespace BureauOnderwijs.Views
 {
     public partial class Roosteroverzicht : System.Web.UI.Page
     {
+        /// Te doen:
+        /// - Genereer een lege table                           [X]
+        /// - Een entry is een string ARRAY in een LIST         [X]
+        /// - Auto-update UserList met teacher id's             [X]
+        /// - Auto-update DayList met dagen                     [X]
+        /// - Auto-update ModuleList met modulen                [X]
+        /// - Maak entry strings en sla deze op in session      [X]
+        /// - Toon entry strings in session in schedule         [X]
+        /// - Maak entry strings userId gebonden                [X]
+        /// - Week/periode gebonden data                        [X]
+        /// - Check of entry strings al bestaan in db           [ ]
+        /// - Save CREATE / UPDATE entry strings naar database  [ ]
+        /// - Haal entries op uit database                      [ ]
+        /// - Try/catch OVERAL                                  [ ]
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            DrawTable();
-            UpdateUserList();
-            ReapplyChanges();
+            // Genereer eenmalig een tabel
+            if (gr_schedule.Rows.Count == 0)
+            {
+                CreateTable();
+            }
+            // Laad eenmalig de gebruikers in
+            FillDropDownLists();
+            ApplyFromSession();
         }
 
-        /// Te doen:
-        /// - Auto-update UserList en DayList   [X]
-        /// - Toon entries in het rooster zelf  [X]
-        /// - Haal entries op uit database      [ ]
-        /// - Save entries naar database        [ ]
-
-
-        #region Functions
         /// <summary>
-        /// Bereidt table voor
+        /// Genereer een tabel van maandag tot vrijdag, 09:00 tot 18:00.
         /// </summary>
-        public void DrawTable()
+        #region Functions
+        public void CreateTable()
         {
+            // Columns
             DataTable dt = new DataTable();
             if (dt.Columns.Count == 0)
             {
@@ -41,6 +55,7 @@ namespace BureauOnderwijs.Views
                 dt.Columns.Add("Vrijdag", typeof(string));
             }
 
+            // Rows
             int hour = 9;
             bool halfHour = false;
             for (int i = 0; i < 19; i++)
@@ -73,60 +88,36 @@ namespace BureauOnderwijs.Views
                 halfHour = !halfHour;
                 dt.Rows.Add(dr);
             }
-            
+
+            // Bind
             gr_schedule.DataSource = dt;
             gr_schedule.DataBind();
         }
 
         /// <summary>
-        /// Check de textboxes voor algemene foutjes, zoals geen cijfers zijn ingevoerd, geen data, etc.
+        /// Vul de DropDownLists - users vanuit de db en beschikbare dagen / modules via userId.
         /// </summary>
-        /// <returns></returns>
-        public bool CheckGeneralErrors()
+        public void FillDropDownLists()
         {
-            // Check of de verplichte velden niet leeg zijn
-            if (startTextBox.Text == "" || endTextBox.Text == "")
+            // periodList
+            if (periodList.Items.Count == 0)
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongeldig tijdsvak.');", true);
-                return true;
+                for (int i = 1; i < 5; i++)
+                {
+                    periodList.Items.Add(i.ToString());
+                }
             }
-            if (roomTextBox.Text == "")
+
+            // weekList
+            if (weekList.Items.Count == 0)
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongeldig lokaal.');", true);
-                return true;
+                for (int i = 1; i < 11; i++)
+                {
+                    weekList.Items.Add(i.ToString());
+                }
             }
-            return false;
-        }
 
-        public void CheckConflicts()
-        {
-            // Gijsje, mijn dude
-        }
-
-        /// <summary>
-        /// Vult de table met data uit de database.
-        /// </summary>
-        public void PopulateTable()
-        {
-
-        }
-        #endregion
-
-        /// <summary>
-        /// Update de comboboxes met relevante informatie bepaald door user id
-        /// </summary>
-        /// <param name="userId"></param>
-        public void UpdateBoxes()
-        {
-            UpdateUserList();
-            UpdateDayList();
-        }
-
-        /// <summary>
-        /// Werkt de UserList bij zodat alle beschikbare docenten in de combobox staan.
-        /// </summary>
-        public void UpdateUserList()
-        {
+            // userList
             Models.CC.Scheduler_GetData sgd = new Models.CC.Scheduler_GetData();
             if (userList.Items.Count == 0)
             {
@@ -136,56 +127,86 @@ namespace BureauOnderwijs.Views
                     userList.Items.Add(name);
                 }
             }
-        }
 
-        /// <summary>
-        /// Werkt de DayList bij zodat alleen de beschikbare dagen van de gebruiker er staan.
-        /// </summary>
-        public void UpdateDayList()
-        {
-            Models.CC.Scheduler_GetData sgd = new Models.CC.Scheduler_GetData();
-            dayList.Items.Clear();
-            List<int> dList = sgd.GetDayListUserId(userList.SelectedValue);
-            if (dList != null)
+            // dayList
+            if (userList.SelectedValue != Session["CurrentUser"].ToString() || weekList.SelectedValue != Session["CurrentWeek"].ToString() || periodList.SelectedValue != Session["CurrentPeriod"].ToString() || (bool)Session["FirstTimeSchedule"] == true)
             {
-                foreach (int day in dList)
+                dayList.Items.Clear();
+                Session["CurrentWeek"] = Convert.ToInt32(weekList.SelectedValue);
+                Session["CurrentPeriod"] = Convert.ToInt32(periodList.SelectedValue);
+                List<int> dList = sgd.GetDayListUserId(userList.SelectedValue, periodList.SelectedValue, weekList.SelectedValue);
+                if (dList.Count != 0)
                 {
-                    if (day == 1) // Maandag
+                    foreach (int day in dList)
                     {
-                        dayList.Items.Add("Maandag");
-                    }
-                    else if (day == 2) // Dinsdag
-                    {
-                        dayList.Items.Add("Dinsdag");
-                    }
-                    else if (day == 3) // Woensdag
-                    {
-                        dayList.Items.Add("Woensdag");
-                    }
-                    else if (day == 4) // Donderdag
-                    {
-                        dayList.Items.Add("Donderdag");
-                    }
-                    else if (day == 5) // Vrijdag
-                    {
-                        dayList.Items.Add("Vrijdag");
+                        if (day == 1) // Maandag
+                        {
+                            dayList.Items.Add("Maandag");
+                        }
+                        else if (day == 2) // Dinsdag
+                        {
+                            dayList.Items.Add("Dinsdag");
+                        }
+                        else if (day == 3) // Woensdag
+                        {
+                            dayList.Items.Add("Woensdag");
+                        }
+                        else if (day == 4) // Donderdag
+                        {
+                            dayList.Items.Add("Donderdag");
+                        }
+                        else if (day == 5) // Vrijdag
+                        {
+                            dayList.Items.Add("Vrijdag");
+                        }
                     }
                 }
             }
+
+            // moduleList
+            if (userList.SelectedValue != Session["CurrentUser"].ToString() || (bool)Session["FirstTimeSchedule"] == true)
+            {
+                moduleList.Items.Clear();
+                List<int> mList = sgd.GetModuleListUserId(userList.SelectedValue);
+                if (mList.Count != 0)
+                {
+                    foreach (int module in mList)
+                    {
+                        moduleList.Items.Add(sgd.GetModuleCode(module).ToString());
+                    }
+                }
+            }
+            Session["FirstTimeSchedule"] = false;
         }
 
         /// <summary>
-        /// Voegt een entry toe aan het rooster
+        /// Maak een entry string aan in de tijdelijke session.
         /// </summary>
-        public void AddEntry(string day, string module, string start, string end, string room)
+        public void AddEntryString(string day, string start, string end, string module, string room, string period, string week)
         {
-            /// Zoek juiste tijdsvak / cel
-            /// Maak een mooie string
-            /// Voeg in
-            string entryString = String.Format("{0}\r\n{1} - {2}\n{3}\n{4}", day, start, end, module, room);
+            // Genereer string
+            string entryString = day + ": " + start + " - " + end + ". " + module + ". " + room + ".";
+            // Selecteer row en cell
+            int[] spot = DetermineSpot(day, start, end);
+            // Opslaan naar session
+            string[] sessionString = { day, start, end, module, room, spot[0].ToString(), spot[1].ToString(), period, week, userList.SelectedValue };
+            List<string[]> sessionList = (List<string[]>)Session["ScheduleChanges"];
+            sessionList.Add(sessionString);
+            Session["ScheduleChanges"] = sessionList;
+        }
 
+        /// <summary>
+        /// Bepaal plaats van entry in tabel.
+        /// </summary>
+        /// <param name="day"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public int[] DetermineSpot(string day, string start, string end)
+        {
             int row = -1;
             int cell = -1;
+
             // Check day
             if (day == "Maandag")
             {
@@ -207,6 +228,7 @@ namespace BureauOnderwijs.Views
             {
                 cell = 5;
             }
+
             // Check time
             if (start.Contains("09:"))
             {
@@ -252,46 +274,114 @@ namespace BureauOnderwijs.Views
             {
                 row += 1;
             }
-            // Apply to schedule
-            gr_schedule.Rows[row].Cells[cell].Text = entryString;
-            // Retrieve and save list
-            entryString += "@" + row.ToString() + "@" + cell.ToString();
-            List<string> changeList = (List<string>)Session["ScheduleChanges"];
-            changeList.Add(entryString);
-            Session["ScheduleChanges"] = changeList;
+            return new int[] { row, cell };
         }
 
         /// <summary>
-        /// Doet entries opnieuw toepassen in schedule indien Page_Load weer eens alles wist
+        /// Past sessionList toe aan tabel.
         /// </summary>
-        public void ReapplyChanges()
+        public void ApplyFromSession()
         {
-            List<string> changeList = (List<string>)Session["ScheduleChanges"];
-            if (changeList.Any())
+            gr_schedule.DataSource = null;
+            gr_schedule.DataBind();
+            CreateTable();
+            List<string[]> sessionList = (List<string[]>)Session["ScheduleChanges"];
+            if (sessionList.Count != 0)
             {
-                foreach(string entry in changeList)
+                foreach (string[] entry in sessionList)
                 {
-                    string[] splitEntry = entry.Split('@');
-                    TestLabel.Text = splitEntry[1] + " " + splitEntry[2] + " " + splitEntry[0];
-                    gr_schedule.Rows[Convert.ToInt32(splitEntry[1])].Cells[Convert.ToInt32(splitEntry[2])].Text = splitEntry[0];
+                    if (userList.SelectedValue == entry[9] && periodList.SelectedValue == entry[7] && weekList.SelectedValue == entry[8])
+                    {
+                        string row = entry[5];
+                        string column = entry[6];
+                        string text = entry[0] + ": " + entry[1] + " - " + entry[2] + ". " + entry[3] + ". " + entry[4] + ".";
+                        gr_schedule.Rows[Convert.ToInt32(row)].Cells[Convert.ToInt32(column)].Text = text;
+                    }
                 }
             }
         }
+
+        /// <summary>
+        /// Check of een entry al bestaat in de database.
+        /// </summary>
+        /// <param name="entry"></param>
+        /// <returns></returns>
+        public bool CheckIfEntryExists(string[] entry)
+        {
+            Models.CC.Scheduler_GetData sgd = new Models.CC.Scheduler_GetData();
+            if (sgd.CheckIfEntryExists(entry))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Sla data op naar de database.
+        /// </summary>
+        public void SaveToDatabase()
+        {
+            List<string[]> sessionList = (List<string[]>)Session["ScheduleChanges"];
+            foreach (string[] entry in sessionList)
+            {
+                if(CheckIfEntryExists(entry)) // already exists, overwrite
+                {
+                    Models.CC.Scheduler_UpdateEntry sue = new Models.CC.Scheduler_UpdateEntry();
+                    sue.UpdateEntry(entry);
+                }
+                else // does not exist, yet
+                {
+                    Models.CC.Scheduler_CreateEntry sce = new Models.CC.Scheduler_CreateEntry();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Haal data op vanuit de database.
+        /// </summary>
+        public void RetrieveFromDatabase()
+        {
+
+        }
+        #endregion
 
         #region Buttons
         protected void addButton_Click(object sender, EventArgs e)
         {
             if (startTextBox.Text != "" && endTextBox.Text != "" && roomTextBox.Text != "")
             {
-                AddEntry(dayList.SelectedValue.ToString(), moduleList.SelectedValue.ToString(),
-                         startTextBox.Text, endTextBox.Text, roomTextBox.Text);
+                AddEntryString(dayList.SelectedValue, startTextBox.Text, endTextBox.Text, moduleList.SelectedValue, roomTextBox.Text, periodList.SelectedValue, weekList.SelectedValue);
+                ApplyFromSession();
             }
         }
-        #endregion
 
         protected void RefreshButton_Click(object sender, EventArgs e)
         {
-            UpdateBoxes();
+            //UpdateBoxes();
+        }
+        protected void userList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //FillDropDownLists();
+            Session["CurrentUser"] = userList.SelectedValue;
+        }
+        #endregion
+
+        protected void saveButton_Click(object sender, EventArgs e)
+        {
+            SaveToDatabase();
+        }
+
+        protected void ButtonFoutControle_Click(object sender, EventArgs e)
+        {
+            ///gijs: in mijn lecture tabel heb ik 2 entries toegevoerd: id 4 & 5
+            ///bij id 4 conflicteert het lokaal met id 1 omdat ze in het zelfde lokaal plaats vinden op overlappende tijden
+            ///bij id 5 conflicteert de docent met id 1 omdat deze docent tegelijker tijd op 2 plekken moet zijn
+
+            Models.CC.Scheduler_ShowConflicts ssc = new Models.CC.Scheduler_ShowConflicts();
+
+
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Hier komt te staan of er fouten zijn aangetroffen de ja of de nee.');", true);
+
         }
     }
 }
