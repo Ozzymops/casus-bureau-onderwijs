@@ -296,5 +296,12 @@ namespace BureauOnderwijs.Views
             FillDropDownLists();
         }
         #endregion
+
+        protected void ButtonFoutControle_Click(object sender, EventArgs e)
+        {
+
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Hier komt te staan of er fouten zijn aangetroffen de ja of de nee.');", true);
+
+        }
     }
 }
