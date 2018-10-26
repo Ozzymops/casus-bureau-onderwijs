@@ -8,6 +8,12 @@ namespace BureauOnderwijs.Models.BU
 {
     public class Scheduler : User   // inherit from User.cs
     {
+        public string ConflictCheck()
+        {
+
+            return "iets2";
+        }
+
         private void ShowEntry()
         {
 
