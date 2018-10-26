@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Diagnostics;
 
 namespace BureauOnderwijs.Models
 {
@@ -57,6 +58,32 @@ namespace BureauOnderwijs.Models
             return returnValue;
         }
 
+        public bool ReturnBoolFromInt(string query)
+        {
+            bool returnValue = false;
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (reader.GetInt32(0) != 0)
+                    {
+                        returnValue = true;
+                    }
+                }
+                conn.Dispose();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return returnValue;
+        }
+
         public string ReturnUsernameFromUserId(string query)
         {
             try
@@ -77,6 +104,54 @@ namespace BureauOnderwijs.Models
                 return "error: connection error";
             }
             return "error: not found";
+        }
+
+        public int ReturnUserIdFromUserName(string query)
+        {
+            int returnValue = -1;
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    returnValue = reader.GetInt32(0);
+                }
+                conn.Dispose();
+                return returnValue;
+            }
+            catch (Exception)
+            {
+                return returnValue;
+            }
+            return returnValue;
+        }
+
+        public int GetLectureId(string query)
+        {
+            int returnValue = -1;
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    returnValue = reader.GetInt32(0);
+                }
+                conn.Dispose();
+                return returnValue;
+            }
+            catch (Exception)
+            {
+                return returnValue;
+            }
+            return returnValue;
         }
 
         public List<string> GetUsernameListRole(string query)
@@ -191,6 +266,22 @@ namespace BureauOnderwijs.Models
             catch (Exception)
             {
                 return false;
+            }
+        }
+
+        public void UpdateEntry(string query)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Dispose();
+            }
+            catch (Exception)
+            {
+                // iets of zo
             }
         }
         #endregion

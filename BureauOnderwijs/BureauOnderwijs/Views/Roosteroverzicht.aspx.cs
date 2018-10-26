@@ -19,6 +19,7 @@ namespace BureauOnderwijs.Views
         /// - Maak entry strings en sla deze op in session      [X]
         /// - Toon entry strings in session in schedule         [X]
         /// - Maak entry strings userId gebonden                [X]
+        /// - Week/periode gebonden data                        [X]
         /// - Check of entry strings al bestaan in db           [ ]
         /// - Save CREATE / UPDATE entry strings naar database  [ ]
         /// - Haal entries op uit database                      [ ]
@@ -163,13 +164,16 @@ namespace BureauOnderwijs.Views
             }
 
             // moduleList
-            moduleList.Items.Clear();
-            List<int> mList = sgd.GetModuleListUserId(userList.SelectedValue);
-            if (mList.Count != 0)
+            if (userList.SelectedValue != Session["CurrentUser"].ToString() || (bool)Session["FirstTimeSchedule"] == true)
             {
-                foreach (int module in mList)
+                moduleList.Items.Clear();
+                List<int> mList = sgd.GetModuleListUserId(userList.SelectedValue);
+                if (mList.Count != 0)
                 {
-                    moduleList.Items.Add(sgd.GetModuleCode(module).ToString());
+                    foreach (int module in mList)
+                    {
+                        moduleList.Items.Add(sgd.GetModuleCode(module).ToString());
+                    }
                 }
             }
             Session["FirstTimeSchedule"] = false;
@@ -178,14 +182,14 @@ namespace BureauOnderwijs.Views
         /// <summary>
         /// Maak een entry string aan in de tijdelijke session.
         /// </summary>
-        public void AddEntryString(string day, string start, string end, string module, string room)
+        public void AddEntryString(string day, string start, string end, string module, string room, string period, string week)
         {
             // Genereer string
             string entryString = day + ": " + start + " - " + end + ". " + module + ". " + room + ".";
             // Selecteer row en cell
             int[] spot = DetermineSpot(day, start, end);
             // Opslaan naar session
-            string[] sessionString = { day, start, end, module, room, spot[0].ToString(), spot[1].ToString(), userList.SelectedValue };
+            string[] sessionString = { day, start, end, module, room, spot[0].ToString(), spot[1].ToString(), period, week, userList.SelectedValue };
             List<string[]> sessionList = (List<string[]>)Session["ScheduleChanges"];
             sessionList.Add(sessionString);
             Session["ScheduleChanges"] = sessionList;
@@ -286,7 +290,7 @@ namespace BureauOnderwijs.Views
             {
                 foreach (string[] entry in sessionList)
                 {
-                    if (userList.SelectedValue == entry[7])
+                    if (userList.SelectedValue == entry[9] && periodList.SelectedValue == entry[7] && weekList.SelectedValue == entry[8])
                     {
                         string row = entry[5];
                         string column = entry[6];
@@ -297,14 +301,47 @@ namespace BureauOnderwijs.Views
             }
         }
 
+        /// <summary>
+        /// Check of een entry al bestaat in de database.
+        /// </summary>
+        /// <param name="entry"></param>
+        /// <returns></returns>
         public bool CheckIfEntryExists(string[] entry)
         {
             Models.CC.Scheduler_GetData sgd = new Models.CC.Scheduler_GetData();
-            if (CheckIfEntryExists(entry))
+            if (sgd.CheckIfEntryExists(entry))
             {
-
+                return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// Sla data op naar de database.
+        /// </summary>
+        public void SaveToDatabase()
+        {
+            List<string[]> sessionList = (List<string[]>)Session["ScheduleChanges"];
+            foreach (string[] entry in sessionList)
+            {
+                if(CheckIfEntryExists(entry)) // already exists, overwrite
+                {
+                    Models.CC.Scheduler_UpdateEntry sue = new Models.CC.Scheduler_UpdateEntry();
+                    sue.UpdateEntry(entry);
+                }
+                else // does not exist, yet
+                {
+                    Models.CC.Scheduler_CreateEntry sce = new Models.CC.Scheduler_CreateEntry();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Haal data op vanuit de database.
+        /// </summary>
+        public void RetrieveFromDatabase()
+        {
+
         }
         #endregion
 
@@ -313,7 +350,7 @@ namespace BureauOnderwijs.Views
         {
             if (startTextBox.Text != "" && endTextBox.Text != "" && roomTextBox.Text != "")
             {
-                AddEntryString(dayList.SelectedValue, startTextBox.Text, endTextBox.Text, moduleList.SelectedValue, roomTextBox.Text);
+                AddEntryString(dayList.SelectedValue, startTextBox.Text, endTextBox.Text, moduleList.SelectedValue, roomTextBox.Text, periodList.SelectedValue, weekList.SelectedValue);
                 ApplyFromSession();
             }
         }
@@ -328,5 +365,10 @@ namespace BureauOnderwijs.Views
             Session["CurrentUser"] = userList.SelectedValue;
         }
         #endregion
+
+        protected void saveButton_Click(object sender, EventArgs e)
+        {
+            SaveToDatabase();
+        }
     }
 }

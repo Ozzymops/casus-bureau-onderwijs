@@ -23,6 +23,7 @@
             <SortedDescendingCellStyle BackColor="#FCF6C0" />
             <SortedDescendingHeaderStyle BackColor="#820000" />
         </asp:GridView>
+        <p><asp:Button ID="saveButton" runat="server" Text="Opslaan" OnClick="saveButton_Click" /></p>
     </div>
     <div id="controls">
         <p>Toevoegen:
