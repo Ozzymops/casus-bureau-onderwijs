@@ -55,11 +55,11 @@ namespace BureauOnderwijs.Models.BU
             return(db.GetUsernameListRole(query));
         }
 
-        public List<int> GetDayListUserId (string username)
+        public List<int> GetDayListUserId (string username, string period, string week)
         {
             Models.Database db = new Models.Database();
             db.Connect();
-            string query = "SELECT DISTINCT Day FROM Wish, UserAccount WHERE Wish.UserId = UserAccount.UserId AND UserAccount.Username = '" + username + "'";
+            string query = "SELECT DISTINCT Day FROM Wish, UserAccount WHERE Wish.UserId = UserAccount.UserId AND UserAccount.Username = '" + username + "' AND Wish.Period LIKE '%" + period + "-%' AND Wish.Week = '" + week + "'";
             return (db.GetDayListUserId(query));
         }
         public List<int> GetModuleListUserId(string username)
@@ -75,6 +75,16 @@ namespace BureauOnderwijs.Models.BU
             db.Connect();
             string query = "SELECT ModuleCode FROM Module WHERE ModuleId = '" + module + "'";
             return (db.GetModuleCode(query));
+        }
+
+        public bool CheckIfEntryExists(string[] entry)
+        {
+            Models.Database db = new Models.Database();
+            db.Connect();
+            // Construct query
+            // { day, start, end, module, room, spot[0].ToString(), spot[1].ToString(), userList.SelectedValue}
+            string query = "";
+            return (db.ReturnBoolFromSingleResult(query));
         }
     }
 }

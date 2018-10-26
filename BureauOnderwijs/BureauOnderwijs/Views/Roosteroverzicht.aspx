@@ -6,8 +6,9 @@
     <asp:ScriptManager ID="manager" runat="server"></asp:ScriptManager>
     <!-- On screen -->
     <div id="schedule" style="padding: 10px; float: left;">
-        <p>Rooster van: <asp:DropDownList ID="userList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="userList_SelectedIndexChanged">
-        </asp:DropDownList>
+        <p>Rooster van: <asp:DropDownList ID="userList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="userList_SelectedIndexChanged"></asp:DropDownList>
+           Periode: <asp:DropDownList ID="periodList" runat="server" AutoPostBack="True"></asp:DropDownList>
+           Week: <asp:DropDownList ID="weekList" runat="server" AutoPostBack="True"></asp:DropDownList>
             <asp:Button ID="RefreshButton" runat="server" OnClick="RefreshButton_Click" Text="Refresh" />
         </p>
         <asp:GridView ID="gr_schedule" runat="server" Width="1140px" CellPadding="4" ForeColor="#333333" GridLines="Both" CssClass="schedule">
@@ -29,11 +30,6 @@
         </p>
         <!-- Wordt dynamisch aangepast op basis van beschikbaarheid docent! -->
         <p>Dag: <asp:DropDownList ID="dayList" runat="server">
-            <asp:ListItem Value="1">Maandag</asp:ListItem>
-            <asp:ListItem Value="2">Dinsdag</asp:ListItem>
-            <asp:ListItem Value="3">Woensdag</asp:ListItem>
-            <asp:ListItem Value="4">Donderdag</asp:ListItem>
-            <asp:ListItem Value="5">Vrijdag</asp:ListItem>
             </asp:DropDownList></p>
         <!-- Wordt dynamisch aangepast op basis van docent! -->
         <p>Vak: <asp:DropDownList ID="moduleList" runat="server">
