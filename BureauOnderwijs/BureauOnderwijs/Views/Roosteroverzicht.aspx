@@ -42,5 +42,6 @@
         <p>Eindtijd: <asp:TextBox ID="endTextBox" runat="server"></asp:TextBox></p>
         <p>Lokaal: <asp:TextBox ID="roomTextBox" runat="server"></asp:TextBox></p>
         <asp:Button ID="addButton" runat="server" Text="Toevoegen" OnClick="addButton_Click" />
+        <asp:Button ID="ButtonFoutControle" runat="server" OnClick="ButtonFoutControle_Click" style="margin-left: 31px" Text="Fout Controle" Width="112px" />
     </div>
 </asp:Content>
