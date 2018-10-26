@@ -331,6 +331,12 @@ namespace BureauOnderwijs.Views
 
         protected void ButtonFoutControle_Click(object sender, EventArgs e)
         {
+            ///gijs: in mijn lecture tabel heb ik 2 entries toegevoerd: id 4 & 5
+            ///bij id 4 conflicteert het lokaal met id 1 omdat ze in het zelfde lokaal plaats vinden op overlappende tijden
+            ///bij id 5 conflicteert de docent met id 1 omdat deze docent tegelijker tijd op 2 plekken moet zijn
+
+            Models.CC.Scheduler_ShowConflicts ssc = new Models.CC.Scheduler_ShowConflicts();
+
 
             ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Hier komt te staan of er fouten zijn aangetroffen de ja of de nee.');", true);
 
