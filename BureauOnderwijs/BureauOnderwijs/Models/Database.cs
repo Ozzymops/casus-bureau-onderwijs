@@ -330,6 +330,21 @@ namespace BureauOnderwijs.Models
         #region Delete
         // delete functies: verwijder data uit een table
         // DROP NOOIT EEN TABLE! Hiermee verlies je ALLE data!
+        public void DeleteEntry(string query)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Dispose();
+            }
+            catch (Exception)
+            {
+                // iets of zo
+            }
+        }
         #endregion
     }
 }

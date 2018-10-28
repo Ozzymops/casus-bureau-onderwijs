@@ -460,6 +460,22 @@ namespace BureauOnderwijs.Views
             ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Hier komt te staan of er fouten zijn aangetroffen de ja of de nee.');", true);
 
         }
+
+        protected void deleteButton_Click(object sender, EventArgs e)
+        {
+            // CheckIfEntryExists
+            string[] deletable = { dayList.SelectedValue, startTextBox.Text, endTextBox.Text, moduleList.SelectedValue, groupTextBox.Text, roomTextBox.Text, "", "", periodList.SelectedValue, weekList.SelectedValue, userList.SelectedValue};
+            if (CheckIfEntryExists(deletable))
+            {
+                Models.CC.Scheduler_DeleteEntry sde = new Models.CC.Scheduler_DeleteEntry();
+                sde.DeleteEntry(deletable);
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Entry verwijderd.');", true);
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Entry niet gevonden. Probeer het nog een keer.');", true);
+            }
+        }
         #endregion
     }
 }
