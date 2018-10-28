@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Diagnostics;
 
 namespace BureauOnderwijs.Views
 {
@@ -20,8 +21,8 @@ namespace BureauOnderwijs.Views
         /// - Toon entry strings in session in schedule         [X]
         /// - Maak entry strings userId gebonden                [X]
         /// - Week/periode gebonden data                        [X]
-        /// - Check of entry strings al bestaan in db           [ ]
-        /// - Save CREATE / UPDATE entry strings naar database  [ ]
+        /// - Check of entry strings al bestaan in db           [X]
+        /// - Save CREATE / UPDATE entry strings naar database  [X]
         /// - Haal entries op uit database                      [ ]
         /// - Try/catch OVERAL                                  [ ]
 
@@ -32,9 +33,10 @@ namespace BureauOnderwijs.Views
             {
                 CreateTable();
             }
-            // Laad eenmalig de gebruikers in
             FillDropDownLists();
+            RetrieveFromDatabase();
             ApplyFromSession();
+            Session["FirstTimeSchedule"] = false;
         }
 
         /// <summary>
@@ -176,20 +178,19 @@ namespace BureauOnderwijs.Views
                     }
                 }
             }
-            Session["FirstTimeSchedule"] = false;
         }
 
         /// <summary>
         /// Maak een entry string aan in de tijdelijke session.
         /// </summary>
-        public void AddEntryString(string day, string start, string end, string module, string room, string period, string week)
+        public void AddEntryString(string day, string start, string end, string module, string group, string room, string period, string week)
         {
             // Genereer string
-            string entryString = day + ": " + start + " - " + end + ". " + module + ". " + room + ".";
+            string entryString = day + ": " + start + " - " + end + ". " + group + " " + module + ". " + room + ".";
             // Selecteer row en cell
             int[] spot = DetermineSpot(day, start, end);
             // Opslaan naar session
-            string[] sessionString = { day, start, end, module, room, spot[0].ToString(), spot[1].ToString(), period, week, userList.SelectedValue };
+            string[] sessionString = { day, start, end, module, group, room, spot[0].ToString(), spot[1].ToString(), period, week, userList.SelectedValue };
             List<string[]> sessionList = (List<string[]>)Session["ScheduleChanges"];
             sessionList.Add(sessionString);
             Session["ScheduleChanges"] = sessionList;
@@ -212,21 +213,48 @@ namespace BureauOnderwijs.Views
             {
                 cell = 1;
             }
-            else if (day == "Dinsdag")
+            else if (day == "Dinsdag" || Convert.ToInt32(day) == 2)
             {
                 cell = 2;
             }
-            else if (day == "Woensdag")
+            else if (day == "Woensdag" || Convert.ToInt32(day) == 3)
             {
                 cell = 3;
             }
-            else if (day == "Donderdag")
+            else if (day == "Donderdag" || Convert.ToInt32(day) == 4)
             {
                 cell = 4;
             }
-            else if (day == "Vrijdag")
+            else if (day == "Vrijdag" || Convert.ToInt32(day) == 5)
             {
                 cell = 5;
+            }
+            else
+            {
+                int num;
+                if (Int32.TryParse(day, out num))
+                {
+                    if (num == 1)   // Maandag
+                    {
+                        cell = 1;
+                    }
+                    if (num == 2)   // Dinsdag
+                    {
+                        cell = 2;
+                    }
+                    if (num == 3)   // Woensdag
+                    {
+                        cell = 3;
+                    }
+                    if (num == 4)   // Donderdag
+                    {
+                        cell = 4;
+                    }
+                    if (num == 5)   // Vrijdag
+                    {
+                        cell = 5;
+                    }
+                }
             }
 
             // Check time
@@ -285,16 +313,33 @@ namespace BureauOnderwijs.Views
             gr_schedule.DataSource = null;
             gr_schedule.DataBind();
             CreateTable();
+            // Database
+            List<string[]> retrieveList = (List<string[]>)Session["ScheduleDatabase"];
+            if (retrieveList.Count != 0)
+            {
+                foreach (string[] entry in retrieveList)
+                {
+                    if (userList.SelectedValue == entry[10] && periodList.SelectedValue == entry[8] && weekList.SelectedValue == entry[9])
+                    {              
+                        string row = entry[6];
+                        string column = entry[7];
+                        string text = entry[0] + ": " + entry[1] + " - " + entry[2] + ". " + entry[4] + " " + entry[3] + ". " + entry[5] + ".";
+                        gr_schedule.Rows[Convert.ToInt32(row)].Cells[Convert.ToInt32(column)].Text = text;
+                    }
+                }
+            }
+
+            // Current session
             List<string[]> sessionList = (List<string[]>)Session["ScheduleChanges"];
             if (sessionList.Count != 0)
             {
                 foreach (string[] entry in sessionList)
                 {
-                    if (userList.SelectedValue == entry[9] && periodList.SelectedValue == entry[7] && weekList.SelectedValue == entry[8])
+                    if (userList.SelectedValue == entry[10] && periodList.SelectedValue == entry[8] && weekList.SelectedValue == entry[9])
                     {
-                        string row = entry[5];
-                        string column = entry[6];
-                        string text = entry[0] + ": " + entry[1] + " - " + entry[2] + ". " + entry[3] + ". " + entry[4] + ".";
+                        string row = entry[6];
+                        string column = entry[7];
+                        string text = entry[0] + ": " + entry[1] + " - " + entry[2] + ". " + entry[4] + " " + entry[3] + ". " + entry[5] + ".";
                         gr_schedule.Rows[Convert.ToInt32(row)].Cells[Convert.ToInt32(column)].Text = text;
                     }
                 }
@@ -332,6 +377,7 @@ namespace BureauOnderwijs.Views
                 else // does not exist, yet
                 {
                     Models.CC.Scheduler_CreateEntry sce = new Models.CC.Scheduler_CreateEntry();
+                    sce.CreateEntry(entry);
                 }
             }
         }
@@ -341,7 +387,39 @@ namespace BureauOnderwijs.Views
         /// </summary>
         public void RetrieveFromDatabase()
         {
-
+            if ((bool)Session["FirstTimeSchedule"] == true)
+            {
+                Models.CC.Scheduler_ReadEntry sre = new Models.CC.Scheduler_ReadEntry();
+                List<string[]> retrieveList = sre.ReadEntry();
+                foreach (string[] entry in retrieveList)
+                {
+                    int[] spot = DetermineSpot(entry[0], entry[1], entry[2]);
+                    entry[6] = spot[0].ToString();
+                    entry[7] = spot[1].ToString();
+                    if (entry[0] == "1")
+                    {
+                        entry[0] = "Maandag";
+                    }
+                    else if (entry[0] == "2")
+                    {
+                        entry[0] = "Dinsdag";
+                    }
+                    else if (entry[0] == "3")
+                    {
+                        entry[0] = "Woensdag";
+                    }
+                    else if (entry[0] == "4")
+                    {
+                        entry[0] = "Donderdag";
+                    }
+                    else if (entry[0] == "5")
+                    {
+                        entry[0] = "Vrijdag";
+                    }
+                }
+                Session["ScheduleDatabase"] = retrieveList;
+                ApplyFromSession();
+            }
         }
         #endregion
 
@@ -350,7 +428,7 @@ namespace BureauOnderwijs.Views
         {
             if (startTextBox.Text != "" && endTextBox.Text != "" && roomTextBox.Text != "")
             {
-                AddEntryString(dayList.SelectedValue, startTextBox.Text, endTextBox.Text, moduleList.SelectedValue, roomTextBox.Text, periodList.SelectedValue, weekList.SelectedValue);
+                AddEntryString(dayList.SelectedValue, startTextBox.Text, endTextBox.Text, moduleList.SelectedValue, groupTextBox.Text, roomTextBox.Text, periodList.SelectedValue, weekList.SelectedValue);
                 ApplyFromSession();
             }
         }
@@ -364,7 +442,6 @@ namespace BureauOnderwijs.Views
             //FillDropDownLists();
             Session["CurrentUser"] = userList.SelectedValue;
         }
-        #endregion
 
         protected void saveButton_Click(object sender, EventArgs e)
         {
@@ -383,5 +460,6 @@ namespace BureauOnderwijs.Views
             ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Hier komt te staan of er fouten zijn aangetroffen de ja of de nee.');", true);
 
         }
+        #endregion
     }
 }

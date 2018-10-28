@@ -244,10 +244,51 @@ namespace BureauOnderwijs.Models
             }
             return null;
         }
+
+        public List<string[]> ShowEntry(string query)
+        {
+            List<string[]> fillList = new List<string[]>();
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string[] temp = { reader.GetString(5), reader.GetTimeSpan(3).ToString(), reader.GetTimeSpan(4).ToString(), reader.GetString(1), reader.GetString(8), reader.GetString(2), "", "", reader.GetString(7), reader.GetString(6), reader.GetInt32(9).ToString() };
+                    fillList.Add(temp);
+                }
+                conn.Dispose();
+                return fillList;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            return null;
+        }
+
         #endregion
 
         #region Add
         // add functies: voeg toe aan een table
+        public void AddEntry(string query)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Dispose();
+            }
+            catch (Exception)
+            {
+                // iets of zo
+            }
+        }
         #endregion
 
         #region Update

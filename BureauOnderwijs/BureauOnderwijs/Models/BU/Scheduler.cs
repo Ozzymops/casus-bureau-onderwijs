@@ -14,25 +14,82 @@ namespace BureauOnderwijs.Models.BU
             return "iets2";
         }
 
-        private void ShowEntry()
+        /// <summary>
+        /// Haal data op uit database.
+        /// </summary>
+        public List<string[]> ShowEntry()
         {
-
+            Models.Database db = new Models.Database();
+            db.Connect();
+            string query = "SELECT * FROM Lecture";
+            List<string[]> returnList = db.ShowEntry(query);
+            foreach (string[] entry in returnList)
+            {
+                db.Connect();
+                int userId = Convert.ToInt32(entry[10]);
+                query = "SELECT Username FROM UserAccount WHERE UserId = '" + entry[10] + "'";
+                entry[10] = db.ReturnUsernameFromUserId(query);
+            }
+            return (returnList);
         }
 
-        public void AddEntry()
+        /// <summary>
+        /// Voegt een entry toe in de database.
+        /// </summary>
+        /// <param name="entry"></param>
+        public void AddEntry(string[] entry)
         {
+            Models.Database db = new Models.Database();
+            db.Connect();
+            string idQuery = "SELECT UserId FROM UserAccount WHERE Username = '" + entry[10] + "'";
+            int userId = db.ReturnUserIdFromUserName(idQuery);
+            // Construct query
+            // { day, start, end, module, group, room, spot[0].ToString(), spot[1].ToString(), period, week, userList.SelectedValue }
+            // { 0    1      2    3       4     5      6                   7                   8       9     10                     }
 
+            // Dag van string naar int omzetten want ik ben achterlijk en ik denk goed na
+            int day = 0;
+            if (entry[0] == "Maandag")
+            {
+                day = 1;
+            }
+            else if (entry[0] == "Dinsdag")
+            {
+                day = 2;
+            }
+            else if (entry[0] == "Woensdag")
+            {
+                day = 3;
+            }
+            else if (entry[0] == "Donderdag")
+            {
+                day = 4;
+            }
+            else if (entry[0] == "Vrijdag")
+            {
+                day = 5;
+            }
+            // add to database
+            string query = "INSERT INTO Lecture(Module, Classroom, StartTime, EndTime, Day, Week, Period, Studentgroup, Teacher) " +
+                           "VALUES('" + entry[3] + "', '" + entry[5] + "', '" + entry[1] + "', '" + entry[2] + "', '" + day + "', '" + entry[9] + "'," +
+                           "'" + entry[8] + "', '" + entry[4] + "', '" + userId + "')";
+            db.Connect();
+            db.AddEntry(query);
         }
 
+        /// <summary>
+        /// Werkt een entry in de database bij als tijd, dag, week, periode en userId overeen komen.
+        /// </summary>
+        /// <param name="entry"></param>
         public void EditEntry(string[] entry)
         {
             Models.Database db = new Models.Database();
             db.Connect();
-            string idQuery = "SELECT UserId FROM UserAccount WHERE Username = '" + entry[9] + "'";
+            string idQuery = "SELECT UserId FROM UserAccount WHERE Username = '" + entry[10] + "'";
             int userId = db.ReturnUserIdFromUserName(idQuery);
             // Construct query
-            // { day, start, end, module, room, spot[0].ToString(), spot[1].ToString(), period, week, userList.SelectedValue }
-            // { 0    1      2    3       4     5                   6                   7       8     9                      }
+            // { day, start, end, module, group, room, spot[0].ToString(), spot[1].ToString(), period, week, userList.SelectedValue }
+            // { 0    1      2    3       4     5      6                   7                   8       9     10                     }
 
             // Dag van string naar int omzetten want ik ben achterlijk en ik denk goed na
             int day = 0;
@@ -62,9 +119,9 @@ namespace BureauOnderwijs.Models.BU
             db.Connect();
             int lectureId = db.GetLectureId(lectureQuery);
             // actual update
-            string query = "UPDATE Lecture SET Classroom = '" + entry[4] +
+            string query = "UPDATE Lecture SET Classroom = '" + entry[5] +
                            "', Module = '" + entry[3] + "', StartTime = '" + entry[1] + "', EndTime = '" + entry[2] +
-                           "', Day = '" + day.ToString() + "', Week = '" + entry[8] + "', Period = '" + entry[7] + "', Teacher = '" + userId + "' WHERE LectureId = '" + lectureId + "'";
+                           "', Day = '" + day.ToString() + "', Week = '" + entry[9] + "', Period = '" + entry[8] + "', Studentgroup = '" + entry[4] + "', Teacher = '" + userId + "' WHERE LectureId = '" + lectureId + "'";
             db.Connect();
             db.UpdateEntry(query);
         }
@@ -130,10 +187,6 @@ namespace BureauOnderwijs.Models.BU
             db.Connect();
             string idQuery = "SELECT UserId FROM UserAccount WHERE Username = '" + entry[9] + "'";
             int userId = db.ReturnUserIdFromUserName(idQuery);
-            // Construct query
-            // { day, start, end, module, room, spot[0].ToString(), spot[1].ToString(), period, week, userList.SelectedValue }
-            // { 0    1      2    3       4     5                   6                   7       8     9                      }
-            
             // Dag van string naar int omzetten want ik ben achterlijk en ik denk goed na
             int day = 0;
             if (entry[0] == "Maandag")

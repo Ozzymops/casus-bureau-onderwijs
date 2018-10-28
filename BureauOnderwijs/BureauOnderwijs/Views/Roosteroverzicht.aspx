@@ -38,6 +38,7 @@
             <asp:ListItem Value="1">Vak 2</asp:ListItem>
             <asp:ListItem Value="2">Vak 3</asp:ListItem>
             </asp:DropDownList></p>
+        <p>Klas: <asp:TextBox ID="groupTextBox" runat="server"></asp:TextBox></p>
         <p>Starttijd: <asp:TextBox ID="startTextBox" runat="server"></asp:TextBox></p>
         <p>Eindtijd: <asp:TextBox ID="endTextBox" runat="server"></asp:TextBox></p>
         <p>Lokaal: <asp:TextBox ID="roomTextBox" runat="server"></asp:TextBox></p>
