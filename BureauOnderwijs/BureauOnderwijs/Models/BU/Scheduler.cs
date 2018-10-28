@@ -57,9 +57,8 @@ namespace BureauOnderwijs.Models.BU
                 day = 5;
             }
             // get LectureId
-            string lectureQuery = "SELECT LectureId FROM Lecture WHERE Classroom = '" + entry[4] +
-                           "' AND Module = '" + entry[3] + "' AND StartTime = '" + entry[1] + "' AND EndTime = '" + entry[2] +
-                           "' AND Day = '" + day.ToString() + "' AND Week = '" + entry[8] + "' AND Period = '" + entry[7] + "' AND Teacher = '" + userId + "'";
+            string lectureQuery = "SELECT LectureId FROM Lecture WHERE StartTime = '" + entry[1] + "' AND EndTime = '" + entry[2] +
+                                  "' AND Day = '" + day.ToString() + "' AND Week = '" + entry[8] + "' AND Period = '" + entry[7] + "' AND Teacher = '" + userId + "'";
             db.Connect();
             int lectureId = db.GetLectureId(lectureQuery);
             // actual update
@@ -158,8 +157,7 @@ namespace BureauOnderwijs.Models.BU
                 day = 5;
             }
 
-            string query = "SELECT LectureId FROM Lecture WHERE Classroom = '" + entry[4] +  
-                           "' AND Module = '" + entry[3] + "' AND StartTime = '" + entry[1] + "' AND EndTime = '" + entry[2] + 
+            string query = "SELECT LectureId FROM Lecture WHERE StartTime = '" + entry[1] + "' AND EndTime = '" + entry[2] + 
                            "' AND Day = '" + day.ToString() + "' AND Week = '" + entry[8] + "' AND Period = '" + entry[7] + "' AND Teacher = '" + userId + "'";
             Debug.WriteLine(query);
             db.Connect();
