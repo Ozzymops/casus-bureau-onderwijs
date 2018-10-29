@@ -12,19 +12,13 @@ namespace BureauOnderwijs.Views
     public partial class Roosteroverzicht : System.Web.UI.Page
     {
         /// Te doen:
-        /// - Genereer een lege table                           [X]
-        /// - Een entry is een string ARRAY in een LIST         [X]
-        /// - Auto-update UserList met teacher id's             [X]
-        /// - Auto-update DayList met dagen                     [X]
-        /// - Auto-update ModuleList met modulen                [X]
-        /// - Maak entry strings en sla deze op in session      [X]
-        /// - Toon entry strings in session in schedule         [X]
-        /// - Maak entry strings userId gebonden                [X]
-        /// - Week/periode gebonden data                        [X]
-        /// - Check of entry strings al bestaan in db           [X]
-        /// - Save CREATE / UPDATE entry strings naar database  [X]
-        /// - Haal entries op uit database                      [ ]
-        /// - Try/catch OVERAL                                  [ ]
+        /// - Leg verantwoordelijkheden correct vast:           [ ]
+        ///   Dit betekent: alles wat met Teacher heeft te maken
+        ///   gaat in Teacher.cs staan.
+        /// - Maak van herhalende stukken code methoden.        [ ]
+        /// - Geef logische namen aan variabelen/methoden.      [ ]
+        /// - Try/catch overal wanneer toepasbaar               [ ]
+        /// - Maak de code schoon                               [ ]
 
         protected void Page_Load(object sender, EventArgs e)
         {
