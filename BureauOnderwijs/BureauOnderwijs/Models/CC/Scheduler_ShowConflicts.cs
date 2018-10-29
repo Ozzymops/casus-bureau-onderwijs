@@ -8,7 +8,7 @@ namespace BureauOnderwijs.Models.CC
 {
     public class Scheduler_ShowConflicts
     {
-        public int Conflicts()
+        public string Conflicts()
         {
             Models.BU.Scheduler s = new Scheduler();
             return s.ConflictCheck();
