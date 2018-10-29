@@ -213,19 +213,20 @@ namespace BureauOnderwijs.Views
             {
                 cell = 1;
             }
-            else if (day == "Dinsdag" || Convert.ToInt32(day) == 2)
+            else if (day == "Dinsdag")
             {
                 cell = 2;
             }
-            else if (day == "Woensdag" || Convert.ToInt32(day) == 3)
+            else if (day == "Woensdag")
             {
                 cell = 3;
             }
-            else if (day == "Donderdag" || Convert.ToInt32(day) == 4)
+            else if (day == "Donderdag")
             {
                 cell = 4;
             }
-            else if (day == "Vrijdag" || Convert.ToInt32(day) == 5)
+            else if (day == "Vrijdag"
+                )
             {
                 cell = 5;
             }
