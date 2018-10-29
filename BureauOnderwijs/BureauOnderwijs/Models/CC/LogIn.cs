@@ -27,6 +27,7 @@ namespace BureauOnderwijs.Models.CC
         {
             /// feedback: maak niet constant een nieuw object aan. zet User.u in de class en roep dan alleen de functie(s) aan
             /// antwoord: krijg een error message dat er object u(User) null is. 
+
             User u = new User();
             return u.GetUsername(userId);
         }

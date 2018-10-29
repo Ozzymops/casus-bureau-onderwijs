@@ -10,8 +10,10 @@
                         <th>Dag</th>
                         <th>Week</th>
                         <th>Blok</th>
-                        <th>Start tijd</th>
-                        <th>Eind tijd</th>
+                        <th>Start uur</th>
+                        <th>Start minuut</th>
+                        <th>Eind uur</th>
+                        <th>Eind minuut</th>
                     </tr>
                 </thead>       
             <tbody>
@@ -22,8 +24,10 @@
                     <td><%#Eval("Day") %></td>
                     <td><%#Eval("Week") %></td>
                     <td><%#Eval("Period") %></td>
-                    <td><%#Eval("StartTime") %></td>
-                    <td><%#Eval("EndTime") %></td>
+                    <td><%#Eval("StartHour") %></td>
+                    <td><%#Eval("StartMinute") %></td>
+                    <td><%#Eval("EndHour") %></td>
+                    <td><%#Eval("EndMinute") %></td>
                 </tr>
             </ItemTemplate>
            

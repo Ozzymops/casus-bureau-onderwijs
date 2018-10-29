@@ -17,10 +17,10 @@ namespace BureauOnderwijs.Models.BU
         private DateTime startTime;
         private DateTime endTime;
 
-        public int CreateWish(string period, int week, string day, string startTime, string endTime, int ingelogd)
+        public int CreateWish(string period, int week, int day, int startHour, int startMinute, int endHour, int endMinute, int ingelogd)
         {
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
-            string sqlQuery = "INSERT INTO Wish (Period, Week, Day, StartTime, EndTime, UserId) VALUES ('"+ period +"', '"+ week +"', '"+ day +"', '"+ startTime +"', '"+ endTime +"', '"+ ingelogd +"')";
+            string sqlQuery = "INSERT INTO Wish (Period, Week, Day, StartHour, StartMinute, EndHour, EndMinute, UserId) VALUES ('"+ period +"', '"+ week +"', '"+ day +"', '"+ startHour +"', '" + startMinute + "', '"+ endHour +"', '" + endMinute + "', '"+ ingelogd +"')";
 
             try
             {
@@ -114,20 +114,38 @@ namespace BureauOnderwijs.Models.BU
 
         public DataTable GetUserWishes(string ingelogd)
         {
+
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
-            string sqlQuery = "SELECT WishId, Day, Week, Period, StartTime, EndTime FROM Wish Where UserId = '" + ingelogd + "'";
+            string sqlQuery = "SELECT WishId, Period, Week, Day, StartHour, StartMinute, EndHour, EndMinute FROM Wish Where UserId = '" + ingelogd + "'";
+
+
+            SqlConnection con = new SqlConnection(conString);
+            SqlCommand cmd = new SqlCommand(sqlQuery, con);
 
             try
             {
-                SqlConnection con = new SqlConnection(conString);
-                SqlCommand cmd = new SqlCommand(sqlQuery, con);
-
                 con.Open();
                 DataTable dt = new DataTable();
                 SqlDataReader dr = cmd.ExecuteReader();
                 dt.Load(dr);
+
+                /// Klonen van database zodat voor de gebruiker de dagen voluit geschreven gezien kunnen worden
+                /// ipv de dagen als 1, 2, 3, 4 of 5. Dit is een stuk gebruiksvriendelijker
+
+                DataTable dtClone = new DataTable();
+                dtClone = dt.Clone();
+                dtClone.Columns[3].DataType = typeof(string);
+                dtClone.Columns[4].DataType = typeof(string);
+                dtClone.Columns[5].DataType = typeof(string);
+                dtClone.Columns[6].DataType = typeof(string);
+                dtClone.Columns[7].DataType = typeof(string);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    dtClone.ImportRow(row);
+                }
                 con.Close();
-                return dt; 
+                return dtClone;
             }
             catch (Exception)
             {

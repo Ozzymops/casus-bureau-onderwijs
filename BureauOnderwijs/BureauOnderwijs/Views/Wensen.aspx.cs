@@ -13,7 +13,8 @@ namespace BureauOnderwijs.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string ingelogd = Session["UserId"].ToString();
+            string ingelogd = "1";
+            //string ingelogd = Session["UserId"].ToString();
             DataTable dt = new DataTable();
             Models.CC.Teacher_ReadWishes r = new Models.CC.Teacher_ReadWishes();
             dt = r.GetUserWishesCC(ingelogd);
