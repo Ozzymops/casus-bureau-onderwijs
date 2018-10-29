@@ -1,6 +1,7 @@
 ﻿using BureauOnderwijs.Models.BU;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -30,6 +31,24 @@ namespace BureauOnderwijs.Models.CC
         {
             User u = new User();
             return u.UpdatePassword(newpassword,currentpassword, ingelogd);
+        }
+
+        public string LoadVnCC(string ingelogd)
+        {
+            User u = new User();
+            return u.LoadVn(ingelogd);
+        }
+
+        public string LoadAnCC(string ingelogd)
+        {
+            User u = new User();
+            return u.LoadAn(ingelogd);
+        }
+
+        public string LoadEmCC(string ingelogd)
+        {
+            User u = new User();
+            return u.LoadEm(ingelogd);
         }
     }
 }

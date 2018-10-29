@@ -10,60 +10,51 @@
 namespace BureauOnderwijs.Views {
     
     
-    public partial class WensenMaster {
+    public partial class AdminDelete {
         
         /// <summary>
-        /// showWishesButton control.
+        /// LBSelect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button showWishesButton;
+        protected global::System.Web.UI.WebControls.Label LBSelect;
         
         /// <summary>
-        /// addWishButton control.
+        /// TBUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addWishButton;
+        protected global::System.Web.UI.WebControls.TextBox TBUsername;
         
         /// <summary>
-        /// editWishButton control.
+        /// BTSelect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button editWishButton;
+        protected global::System.Web.UI.WebControls.Button BTSelect;
         
         /// <summary>
-        /// deleteWishButton control.
+        /// gvUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button deleteWishButton;
+        protected global::System.Web.UI.WebControls.GridView gvUser;
         
         /// <summary>
-        /// ExportWishesButton control.
+        /// BTDelete control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ExportWishesButton;
-        
-        /// <summary>
-        /// NestedPlaceholder1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder NestedPlaceholder1;
+        protected global::System.Web.UI.WebControls.Button BTDelete;
     }
 }

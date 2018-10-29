@@ -10,52 +10,34 @@
 namespace BureauOnderwijs.Views {
     
     
-    public partial class WensenMaster {
+    public partial class AdminMaster {
         
         /// <summary>
-        /// showWishesButton control.
+        /// readUsersButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button showWishesButton;
+        protected global::System.Web.UI.WebControls.Button readUsersButton;
         
         /// <summary>
-        /// addWishButton control.
+        /// createUsersButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addWishButton;
+        protected global::System.Web.UI.WebControls.Button createUsersButton;
         
         /// <summary>
-        /// editWishButton control.
+        /// deleteUsersButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button editWishButton;
-        
-        /// <summary>
-        /// deleteWishButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button deleteWishButton;
-        
-        /// <summary>
-        /// ExportWishesButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ExportWishesButton;
+        protected global::System.Web.UI.WebControls.Button deleteUsersButton;
         
         /// <summary>
         /// NestedPlaceholder1 control.

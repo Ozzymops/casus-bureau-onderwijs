@@ -10,159 +10,132 @@
 namespace BureauOnderwijs.Views {
     
     
-    public partial class Roosteroverzicht {
+    public partial class AdminCreate {
         
         /// <summary>
-        /// manager control.
+        /// LBUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager manager;
+        protected global::System.Web.UI.WebControls.Label LBUsername;
         
         /// <summary>
-        /// userList control.
+        /// TBUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList userList;
+        protected global::System.Web.UI.WebControls.TextBox TBUsername;
         
         /// <summary>
-        /// periodList control.
+        /// LBPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList periodList;
+        protected global::System.Web.UI.WebControls.Label LBPassword;
         
         /// <summary>
-        /// weekList control.
+        /// TBPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList weekList;
+        protected global::System.Web.UI.WebControls.TextBox TBPassword;
         
         /// <summary>
-        /// RefreshButton control.
+        /// LBEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button RefreshButton;
+        protected global::System.Web.UI.WebControls.Label LBEmail;
         
         /// <summary>
-        /// gr_schedule control.
+        /// TBEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gr_schedule;
+        protected global::System.Web.UI.WebControls.TextBox TBEmail;
         
         /// <summary>
-        /// saveButton control.
+        /// LBFirstName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button saveButton;
+        protected global::System.Web.UI.WebControls.Label LBFirstName;
         
         /// <summary>
-        /// TestLabel control.
+        /// TBFirstName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TestLabel;
+        protected global::System.Web.UI.WebControls.TextBox TBFirstName;
         
         /// <summary>
-        /// dayList control.
+        /// LBLastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dayList;
+        protected global::System.Web.UI.WebControls.Label LBLastName;
         
         /// <summary>
-        /// moduleList control.
+        /// TBLastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList moduleList;
+        protected global::System.Web.UI.WebControls.TextBox TBLastName;
         
         /// <summary>
-        /// groupTextBox control.
+        /// LBRole control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox groupTextBox;
+        protected global::System.Web.UI.WebControls.Label LBRole;
         
         /// <summary>
-        /// startTextBox control.
+        /// DropDownListRole control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox startTextBox;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListRole;
         
         /// <summary>
-        /// endTextBox control.
+        /// BTSend control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox endTextBox;
+        protected global::System.Web.UI.WebControls.Button BTSend;
         
         /// <summary>
-        /// roomTextBox control.
+        /// BTCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox roomTextBox;
-        
-        /// <summary>
-        /// addButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addButton;
-        
-        /// <summary>
-        /// deleteButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button deleteButton;
-        
-        /// <summary>
-        /// ButtonFoutControle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonFoutControle;
+        protected global::System.Web.UI.WebControls.Button BTCancel;
     }
 }

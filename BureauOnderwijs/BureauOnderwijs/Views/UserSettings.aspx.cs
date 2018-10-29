@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -12,7 +13,22 @@ namespace BureauOnderwijs.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            TextBoxVoornaam.Text = "a";
+            if (!Page.IsPostBack)
+            {
+                string Ingelogd = Session["UserId"].ToString();
+
+                Models.CC.User_UpdateUserSettings u = new Models.CC.User_UpdateUserSettings();
+                string displayvoornaam = u.LoadVnCC(Ingelogd);
+                TextBoxVoornaam.Text = displayvoornaam;
+                
+                string displayachternaam = u.LoadAnCC(Ingelogd);
+                TextBoxAchternaam.Text = displayachternaam;
+                
+                string displayemail = u.LoadEmCC(Ingelogd);
+                TextBoxEmail.Text = displayemail;
+            }
+
+
         }
 
         protected void ButtonSaveVoornaam_Click(object sender, EventArgs e)
@@ -33,11 +49,11 @@ namespace BureauOnderwijs.Views
                 string NewVoornaam = u.UpdateVoornaamCC(TextBoxVoornaam.Text, Ingelogd);
 
                 //als de return waarde van succesvol updaten gelijk is aan de string waarde "0" geef foutmelding 'niet goed gegaan.'. 
-                if(NewVoornaam == "0")
+                if (NewVoornaam == "0")
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Niet goed gegaan.');", true);
                 }
-                //als de return waarde van succesvol updaten gelijk is aan de string waarde "1" geef melding 'Succes! Voornaam is geupdatet.'.
+                //als de return waarde van succesvol updaten gelijk is aan de string waarde "1" geef melding 'Succes! Achternaam is geupdatet.'.
                 else if (NewVoornaam == "1")
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Succes! Voornaam is geupdatet.');", true);
@@ -47,7 +63,6 @@ namespace BureauOnderwijs.Views
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Onbekende Fout');", true);
                 }
-                
             }
         }
 
