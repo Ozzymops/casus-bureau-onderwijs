@@ -12,6 +12,7 @@ namespace BureauOnderwijs.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //User moet ingelogd zijn om te kunnen deleten. De CC laag wordt aangeroepen en de datatable aangemaakt
             string ingelogd = Session["UserId"].ToString();
             DataTable dtbl = new DataTable();
             Models.CC.Examiner_ReadModules RM = new Models.CC.Examiner_ReadModules();
@@ -22,12 +23,14 @@ namespace BureauOnderwijs.Views
 
         protected void DeleteId_Click(object sender, EventArgs e)
         {
+            //User moet ingelogd zijn om te kunnen deleten. De CC laag wordt aangeroepen en de datatable aangemaakt
             string ingelogd = Session["UserId"].ToString();
             DataTable dtbldelete = new DataTable();
             Models.CC.Examiner_DeleteModule EDM = new Models.CC.Examiner_DeleteModule();
             dtbldelete = EDM.DeleteModuleCC(Convert.ToInt32(TBDelete.Text),ingelogd);
             GVDeleteModule.DataSource = dtbldelete;
             GVDeleteModule.DataBind();
+            //pagina refreshen
             Response.Redirect("~/Views/DeleteModule.aspx");
         }
     }

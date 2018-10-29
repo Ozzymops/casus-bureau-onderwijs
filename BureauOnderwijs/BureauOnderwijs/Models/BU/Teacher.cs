@@ -9,6 +9,20 @@ namespace BureauOnderwijs.Models.BU
     {
         private List<Wish> wishList;
 
+        public Teacher()
+        {
+            // Leeg: anders verschijnen er enge rode lijntjes.
+        }
+
+        public Teacher(int id, string username, string email, string firstname, string lastname)
+        {
+            this.userId = id;
+            this.username = username;
+            this.emailAdress = email;
+            this.firstname = firstname;
+            this.lastname = lastname;
+        }
+
         private void ViewWishlist()
         {
 

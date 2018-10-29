@@ -50,9 +50,9 @@
         </div>
     <br />
 
-        <asp:GridView style="margin-left:auto; margin-right:auto;" Width="1500px" ID="GVUpdateModule" runat="server" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4" OnSelectedIndexChanged="GVUpdateModule_SelectedIndexChanged">
+        <asp:GridView style="margin-left:auto; margin-right:auto;" Width="1500px" ID="GVUpdateModule" runat="server" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4" OnRowCommand="GVUpdateModule_RowCommand" >
             <Columns>
-                <asp:ButtonField Text="Aanpassen" />
+                <asp:ButtonField Text="Aanpassen" CommandName="update"/>
             </Columns>
             <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />

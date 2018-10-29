@@ -33,5 +33,28 @@ namespace BureauOnderwijs.Views
         {
             Response.Redirect("~/Views/WensVerwijderen.aspx");
         }
+
+        protected void exportWishesButton_Click(object sender, EventArgs e)
+        {
+            Models.CC.Teacher_ExportWishes Export = new Models.CC.Teacher_ExportWishes();
+            int result = Export.ExportWishesCC();
+
+            if (result == 0)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", "alert('Excelbestand is gemaakt.');", true);
+            }
+            else if (result == 1)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", "alert('Excel is niet juist geinstalleerd.');", true);
+            }
+            else if (result == 2)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", "alert('Kan gegevens niet toevoegen aan Excel bestand');", true);
+            }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", "alert('Error: Unexpected Respons');", true);
+            }
+        }
     }
 }

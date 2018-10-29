@@ -8,6 +8,7 @@
         <asp:Button ID="addWishButton" runat="server" Text="Wens toevoegen" Width="250px" OnClick="addWishButton_Click"/>
         <asp:Button ID="editWishButton" runat="server" Text="Wens wijzigen" Width="250px" OnClick="editWishButton_Click"/>
         <asp:Button ID="deleteWishButton" runat="server" Text="Wens verwijderen" Width="250px" OnClick="deleteWishButton_Click"/>
+        <asp:Button ID="ExportWishesButton" runat="server" Text="Wensen Exporteren" Width="250px" OnClick="exportWishesButton_Click" />
     </ul>
     <asp:ContentPlaceHolder ID="NestedPlaceholder1" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>

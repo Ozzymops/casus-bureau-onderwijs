@@ -7,34 +7,36 @@ namespace BureauOnderwijs.Models.CC
 {
     public class Scheduler_GetData
     {
-        public List<string> GetUsernameListRole(int role)
+        Models.BU.Scheduler s = new Models.BU.Scheduler();
+
+        /// <summary>
+        /// Return de bijbehorende username volgens gegeven userId.
+        /// </summary>
+        public string UserIdToUsername(int userId)
         {
-            Models.BU.Scheduler s = new Models.BU.Scheduler();
-            return(s.GetUsernameListRole(role));
+            return (s.UserIdToUsername(userId));
         }
 
-        public List<int> GetDayListUserId(string username, string period, string week)
+        public int UsernameToUserId(string username)
         {
-            Models.BU.Scheduler s = new Models.BU.Scheduler();
-            return(s.GetDayListUserId(username, period, week));
+            return (s.UsernameToUserId(username));
         }
 
-        public List<int> GetModuleListUserId(string username)
+        /// <summary>
+        /// Return een lijst van Teachers.
+        /// </summary>
+        /// <returns></returns>
+        public List<Models.BU.Teacher> GetTeacherList()
         {
-            Models.BU.Scheduler s = new Models.BU.Scheduler();
-            return (s.GetModuleListUserId(username));
+            return (s.GetTeacherList());
         }
 
-        public string GetModuleCode(int module)
+        /// <summary>
+        /// Return een lijst van beschikbare werkdagen.
+        /// </summary>
+        public List<int> GetAvailableDays(int userId, int period, int week)
         {
-            Models.BU.Scheduler s = new Models.BU.Scheduler();
-            return (s.GetModuleCode(module));
-        }
-
-        public bool CheckIfEntryExists(string[] entry)
-        {
-            Models.BU.Scheduler s = new Models.BU.Scheduler();
-            return (s.CheckIfEntryExists(entry));
+            return (s.GetAvailableDays(userId, period, week));
         }
     }
 }

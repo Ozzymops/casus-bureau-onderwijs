@@ -23,6 +23,7 @@
             <SortedDescendingCellStyle BackColor="#FCF6C0" />
             <SortedDescendingHeaderStyle BackColor="#820000" />
         </asp:GridView>
+        <p><asp:Button ID="saveButton" runat="server" Text="Opslaan" OnClick="saveButton_Click" /></p>
     </div>
     <div id="controls">
         <p>Toevoegen:
@@ -37,10 +38,12 @@
             <asp:ListItem Value="1">Vak 2</asp:ListItem>
             <asp:ListItem Value="2">Vak 3</asp:ListItem>
             </asp:DropDownList></p>
+        <p>Klas: <asp:TextBox ID="groupTextBox" runat="server"></asp:TextBox></p>
         <p>Starttijd: <asp:TextBox ID="startTextBox" runat="server"></asp:TextBox></p>
         <p>Eindtijd: <asp:TextBox ID="endTextBox" runat="server"></asp:TextBox></p>
         <p>Lokaal: <asp:TextBox ID="roomTextBox" runat="server"></asp:TextBox></p>
         <asp:Button ID="addButton" runat="server" Text="Toevoegen" OnClick="addButton_Click" />
+        <asp:Button ID="deleteButton" runat="server" Text="Verwijderen" OnClick="deleteButton_Click" />
         <asp:Button ID="ButtonFoutControle" runat="server" OnClick="ButtonFoutControle_Click" style="margin-left: 31px" Text="Fout Controle" Width="112px" />
     </div>
 </asp:Content>

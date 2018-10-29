@@ -7,5 +7,6 @@ namespace BureauOnderwijs.Models.CC
 {
     public class Scheduler_UpdateEntry
     {
+
     }
 }
