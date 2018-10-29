@@ -11,7 +11,7 @@ namespace BureauOnderwijs.Models.CC
         public string Conflicts()
         {
             Models.BU.Scheduler s = new Scheduler();
-            return ("iets");
+            return s.ConflictCheck();
         }
     }
 }

@@ -24,7 +24,8 @@ namespace BureauOnderwijs.Models.BU
         public int[] LogIn(string username, string password)
         {
             // localhost/MSSQLSERVER indien het niet werkt (Justin)
-            // sayy wuuut? (redmar)
+            // sayy wuuut? (Redmar)
+            // hoi, ik ben ook hier. redmar naar Redmar veranderd.. (Gijs)
 
             int[] result = { 0, 0, 0 };
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
@@ -228,8 +229,9 @@ namespace BureauOnderwijs.Models.BU
                 return "1";
             }
             //Bij een onsuccesvolle poging wordt de return waarde succes op string value "0" gezet.
-            catch (Exception)
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return "0";
             }
         }
