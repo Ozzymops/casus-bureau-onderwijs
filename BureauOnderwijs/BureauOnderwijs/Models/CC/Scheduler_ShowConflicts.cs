@@ -8,10 +8,10 @@ namespace BureauOnderwijs.Models.CC
 {
     public class Scheduler_ShowConflicts
     {
-        public string Conflicts()
+        public int Conflicts()
         {
             Models.BU.Scheduler s = new Scheduler();
-            return ("iets");
+            return s.ConflictCheck();
         }
     }
 }

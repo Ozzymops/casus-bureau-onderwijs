@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -7,10 +8,38 @@ namespace BureauOnderwijs.Models.BU
 {
     public class Scheduler : User   // inherit from User.cs
     {
-        public string ConflictCheck()
+        public int ConflictCheck()
         {
+            ///check 1 - leraar dubbel gepland:
+            ///controleert of een leraar in 2 verschillende lokalen tegelijkertijd moet zijn.
+            int i = 0;
+            string conStringetje = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQuerytje = "SELECT  FROM Lecture WHERE Day = 1 AND Week = 1 AND Period = 1";
+            SqlDataReader datareader;
 
-            return "iets2";
+            try
+            {
+                SqlConnection connetje = new SqlConnection(conStringetje);
+                SqlCommand cmdtje = new SqlCommand(sqlQuerytje, connetje);
+                connetje.Open();
+                datareader = cmdtje.ExecuteReader();
+                while (datareader.Read())
+                {
+                    
+                    i = 4;
+
+                    return i;
+                }
+                connetje.Close();
+                i = 2;
+                return i;
+            }
+            catch
+            {
+                i = 2;
+                return i;
+            }
+            
         }
 
         private void ShowEntry()

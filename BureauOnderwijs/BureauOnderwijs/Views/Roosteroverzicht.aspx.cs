@@ -331,14 +331,32 @@ namespace BureauOnderwijs.Views
 
         protected void ButtonFoutControle_Click(object sender, EventArgs e)
         {
-            ///gijs: in mijn lecture tabel heb ik 2 entries toegevoerd: id 4 & 5
-            ///bij id 4 conflicteert het lokaal met id 1 omdat ze in het zelfde lokaal plaats vinden op overlappende tijden
-            ///bij id 5 conflicteert de docent met id 1 omdat deze docent tegelijker tijd op 2 plekken moet zijn
 
             Models.CC.Scheduler_ShowConflicts ssc = new Models.CC.Scheduler_ShowConflicts();
+            int returnvalue = ssc.Conflicts();
+            if (returnvalue == 0)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('return is 0');", true);
+            }
+            else if(returnvalue == 1)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('return is 1');", true);
+            }
+            else if(returnvalue == 2)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('return is 2');", true);
+            }
+            else if(returnvalue == 4)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('return is 4');", true);
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('dafuq');", true);
+            }
 
 
-            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Hier komt te staan of er fouten zijn aangetroffen de ja of de nee.');", true);
+            //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Hier komt te staan of er fouten zijn aangetroffen de ja of de nee.');", true);
 
         }
     }
