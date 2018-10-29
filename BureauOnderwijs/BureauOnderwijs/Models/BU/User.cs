@@ -11,11 +11,12 @@ namespace BureauOnderwijs.Models.BU
 {
     public class User
     {
-        private string username;
+        public int userId;
+        public string username;
         private string password;
-        private string emailAdress;
-        private string firstname;
-        private string lastname;
+        public string emailAdress;
+        public string firstname;
+        public string lastname;
         private int twoFactorCode;
         private int recoveryCode;
         private int role;
@@ -103,7 +104,7 @@ namespace BureauOnderwijs.Models.BU
             string query = "SELECT Username FROM UserAccount WHERE UserId = " + userId;
             Models.Database db = new Models.Database();
             db.Connect();
-            return db.ReturnUsernameFromUserId(query);
+            return db.UserIdToUsername(query);
         }
 
         public void ViewSchedule()

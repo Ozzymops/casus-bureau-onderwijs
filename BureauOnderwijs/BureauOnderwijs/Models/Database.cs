@@ -9,8 +9,6 @@ namespace BureauOnderwijs.Models
 {
     public class Database
     {
-        // Zie Wesley code
-
         protected SqlConnection conn;
         /// <summary>
         /// This method is used to setup the connection string which is used to connect to the database.
@@ -25,8 +23,6 @@ namespace BureauOnderwijs.Models
         }
 
         #region Get
-        // get functies: lees uit een table
-        // create things via queries and send them back to the requester.
         /// <summary>
         /// Return een boolean vanuit een enkel resultaat: zoek je op usernames? Return true wanneer er 1 username bestaat.
         /// </summary>
@@ -34,6 +30,7 @@ namespace BureauOnderwijs.Models
         /// <returns></returns>
         public bool ReturnBoolFromSingleResult(string query)
         {
+            Connect();
             bool returnValue = false;
             try
             {
@@ -58,9 +55,12 @@ namespace BureauOnderwijs.Models
             return returnValue;
         }
 
-        public bool ReturnBoolFromInt(string query)
+        /// <summary>
+        /// Return een username op basis van userId.
+        /// </summary>
+        public string UserIdToUsername(string query)
         {
-            bool returnValue = false;
+            Connect();
             try
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
@@ -70,24 +70,27 @@ namespace BureauOnderwijs.Models
 
                 while (reader.Read())
                 {
-                    if (reader.GetInt32(0) != 0)
-                    {
-                        returnValue = true;
-                    }
+                    return reader["Username"].ToString();
                 }
                 conn.Dispose();
             }
             catch (Exception)
             {
-                return false;
+                return "fout";
             }
-            return returnValue;
+            return "leeg";
         }
 
-        public string ReturnUsernameFromUserId(string query)
+        /// <summary>
+        /// Return een userId op basis van username.
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public int UsernameToUserId(string query)
         {
-            try
-            {
+            Connect();
+            //try
+            //{
                 SqlCommand cmd = new SqlCommand(query, conn);
 
                 conn.Open();
@@ -95,200 +98,75 @@ namespace BureauOnderwijs.Models
 
                 while (reader.Read())
                 {
-                    return reader.GetString(0);
+                    return Convert.ToInt32(reader["UserId"]);
                 }
                 conn.Dispose();
-            }
-            catch (Exception)
-            {
-                return "error: connection error";
-            }
-            return "error: not found";
+            //}
+            //catch (Exception)
+            //{
+            //    return 0;
+            //}
+            return 0;
         }
 
-        public int ReturnUserIdFromUserName(string query)
+        /// <summary>
+        /// Return een lijst van Teachers
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public List<Models.BU.Teacher> GetTeacherList(string query)
         {
-            int returnValue = -1;
+            Connect();
             try
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
-
                 conn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
 
+                List<Models.BU.Teacher> teacherList = new List<Models.BU.Teacher>();
                 while (reader.Read())
                 {
-                    returnValue = reader.GetInt32(0);
+                    Models.BU.Teacher tempTeacher = new Models.BU.Teacher(Convert.ToInt32(reader["UserId"]), reader["Username"].ToString(), reader["EmailAdress"].ToString(), reader["Firstname"].ToString(), reader["Lastname"].ToString());
+                    teacherList.Add(tempTeacher);
                 }
-                conn.Dispose();
-                return returnValue;
-            }
-            catch (Exception)
-            {
-                return returnValue;
-            }
-            return returnValue;
-        }
-
-        public int GetLectureId(string query)
-        {
-            int returnValue = -1;
-            try
-            {
-                SqlCommand cmd = new SqlCommand(query, conn);
-
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    returnValue = reader.GetInt32(0);
-                }
-                conn.Dispose();
-                return returnValue;
-            }
-            catch (Exception)
-            {
-                return returnValue;
-            }
-            return returnValue;
-        }
-
-        public List<string> GetUsernameListRole(string query)
-        {
-            List<string> userList = new List<string>();
-            try
-            {
-                SqlCommand cmd = new SqlCommand(query, conn);
-
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    userList.Add(reader.GetString(0));
-                }
-                conn.Dispose();
-                return userList;
+                return teacherList;
             }
             catch (Exception)
             {
                 return null;
             }
-            return null;
         }
-        public List<int> GetDayListUserId(string query)
+
+        /// <summary>
+        /// Return een lijst van beschikbare werkdagen.
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public List<int> GetAvailableDays(string query)
         {
-            List<int> dayList = new List<int>();
+            Connect();
             try
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
-
                 conn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
 
+                List<int> availableDayList = new List<int>();
                 while (reader.Read())
                 {
-                    dayList.Add(Convert.ToInt32(reader.GetString(0)));
+                    availableDayList.Add(Convert.ToInt32(reader["Day"]));
                 }
-                conn.Dispose();
-                return dayList;
+                return availableDayList;
             }
             catch (Exception)
             {
                 return null;
             }
-            return null;
         }
-        public List<int> GetModuleListUserId(string query)
-        {
-            List<int> moduleList = new List<int>();
-            try
-            {
-                SqlCommand cmd = new SqlCommand(query, conn);
-
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    moduleList.Add(reader.GetInt32(0));
-                }
-                conn.Dispose();
-                return moduleList;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-            return null;
-        }
-        public string GetModuleCode(string query)
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand(query, conn);
-
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    return reader.GetString(0);
-                }
-                conn.Dispose();
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-            return null;
-        }
-
-        public List<string[]> ShowEntry(string query)
-        {
-            List<string[]> fillList = new List<string[]>();
-            try
-            {
-                SqlCommand cmd = new SqlCommand(query, conn);
-
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    string[] temp = { reader.GetString(5), reader.GetTimeSpan(3).ToString(), reader.GetTimeSpan(4).ToString(), reader.GetString(1), reader.GetString(8), reader.GetString(2), "", "", reader.GetString(7), reader.GetString(6), reader.GetInt32(9).ToString() };
-                    fillList.Add(temp);
-                }
-                conn.Dispose();
-                return fillList;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-            return null;
-        }
-
         #endregion
 
         #region Add
-        // add functies: voeg toe aan een table
-        public void AddEntry(string query)
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand(query, conn);
 
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Dispose();
-            }
-            catch (Exception)
-            {
-                // iets of zo
-            }
-        }
         #endregion
 
         #region Update
@@ -307,42 +185,6 @@ namespace BureauOnderwijs.Models
             catch (Exception)
             {
                 return false;
-            }
-        }
-
-        public void UpdateEntry(string query)
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand(query, conn);
-
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Dispose();
-            }
-            catch (Exception)
-            {
-                // iets of zo
-            }
-        }
-        #endregion
-
-        #region Delete
-        // delete functies: verwijder data uit een table
-        // DROP NOOIT EEN TABLE! Hiermee verlies je ALLE data!
-        public void DeleteEntry(string query)
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand(query, conn);
-
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Dispose();
-            }
-            catch (Exception)
-            {
-                // iets of zo
             }
         }
         #endregion
