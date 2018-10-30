@@ -42,6 +42,10 @@ namespace BureauOnderwijs.Views
             if (result == 0)
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", "alert('Excelbestand is gemaakt.');", true);
+                Response.ContentType = "Application/xls";
+                Response.AppendHeader("Content-Disposition", "attachment; filename=WensenlijstExcel.xls");
+                Response.TransmitFile(Server.MapPath("~/Downloads/WensenlijstExcel.xls"));
+                Response.End();
             }
             else if (result == 1)
             {
@@ -51,10 +55,17 @@ namespace BureauOnderwijs.Views
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", "alert('Kan gegevens niet toevoegen aan Excel bestand');", true);
             }
+            else if (result == 3)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", "alert('Kan gegevens niet opslaan');", true);
+
+            }
             else
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", "alert('Error: Unexpected Respons');", true);
             }
+
+
         }
     }
 }

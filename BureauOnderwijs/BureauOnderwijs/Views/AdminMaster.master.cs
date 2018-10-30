@@ -21,12 +21,10 @@ namespace BureauOnderwijs.Views
             }
             else if (result == 1)
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", "alert('Je bent niet bevoegd deze pagina te bezoeken');", true);
                 Response.Redirect("~/Views/Homepage");
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", "alert('Je bent niet bevoegd deze pagina te bezoeken');", true);
                 Response.Redirect("~/Views/Homepage");
             }
         }
