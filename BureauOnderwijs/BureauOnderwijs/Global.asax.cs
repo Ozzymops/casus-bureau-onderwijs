@@ -23,10 +23,9 @@ namespace BureauOnderwijs
         protected void Session_Start(object sender, EventArgs e)
         {
             Session["RecoveryStep"] = "1";
-            Session["ScheduleChanges"] = new List<string[]>();
-            Session["ScheduleDatabase"] = new List<string[]>();
-            Session["CurrentPeriod"] = 1;
-            Session["CurrentWeek"] = 1;
+            // Roosteroverzicht.aspx.cs
+            Session["ScheduleChangeList"] = new List<Models.BU.Lecture>();
+            Session["ScheduleDatabaseList"] = new List<Models.BU.Lecture>();
             Session["CurrentUser"] = "Roy"; // los dit op!
             Session["FirstTimeSchedule"] = true;
         }

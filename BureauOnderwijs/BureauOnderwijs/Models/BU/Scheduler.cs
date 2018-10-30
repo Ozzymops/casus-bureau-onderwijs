@@ -34,6 +34,27 @@ namespace BureauOnderwijs.Models.BU
             return(db.GetTeacherList(query));
         }
 
+        public Models.BU.Teacher GetSingleTeacher(int userId)
+        {
+            Models.Database db = new Models.Database();
+            string query = "SELECT * FROM UserAccount WHERE Role = '3' AND UserId = '" + userId + "'";
+            return (db.GetSingleTeacher(query));
+        }
+
+        public List<Models.BU.Module> GetModuleListOfTeacher(int userId)
+        {
+            Models.Database db = new Models.Database();
+            string query = "SELECT DISTINCT m.* FROM Module m, ModuleUser mu, UserAccount ua WHERE ua.UserId = mu.UserId AND mu.ModuleId = m.ModuleId AND ua.UserId = '" + userId + "'";
+            return (db.GetModuleListOfTeacher(query));
+        }
+
+        public Models.BU.Module GetSingleModule(int moduleId)
+        {
+            Models.Database db = new Models.Database();
+            string query = "SELECT * FROM Module WHERE ModuleId = '" + moduleId + "'";
+            return (db.GetSingleModule(query));
+        }
+
         public List<int> GetAvailableDays(int userId, int period, int week)
         {
             Models.Database db = new Models.Database();

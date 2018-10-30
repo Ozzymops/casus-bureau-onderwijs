@@ -89,8 +89,8 @@ namespace BureauOnderwijs.Models
         public int UsernameToUserId(string query)
         {
             Connect();
-            //try
-            //{
+            try
+            {
                 SqlCommand cmd = new SqlCommand(query, conn);
 
                 conn.Open();
@@ -101,19 +101,17 @@ namespace BureauOnderwijs.Models
                     return Convert.ToInt32(reader["UserId"]);
                 }
                 conn.Dispose();
-            //}
-            //catch (Exception)
-            //{
-            //    return 0;
-            //}
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
             return 0;
         }
 
         /// <summary>
         /// Return een lijst van Teachers
         /// </summary>
-        /// <param name="query"></param>
-        /// <returns></returns>
         public List<Models.BU.Teacher> GetTeacherList(string query)
         {
             Connect();
@@ -135,6 +133,107 @@ namespace BureauOnderwijs.Models
             {
                 return null;
             }
+        }
+
+        /// <summary>
+        /// Return één enkele Teacher.
+        /// </summary>
+        public Models.BU.Teacher GetSingleTeacher(string query)
+        {
+            Connect();
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Models.BU.Teacher singleTeacher = new Models.BU.Teacher(Convert.ToInt32(reader["UserId"]), reader["Username"].ToString(), reader["EmailAdress"].ToString(), reader["Firstname"].ToString(), reader["Lastname"].ToString());
+                    return singleTeacher;
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            return null;
+        }
+
+        public Models.BU.Examiner GetSingleExaminer(string query)
+        {
+            Connect();
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Models.BU.Examiner singleExaminer = new Models.BU.Examiner(Convert.ToInt32(reader["UserId"]), reader["Username"].ToString(), reader["EmailAdress"].ToString(), reader["Firstname"].ToString(), reader["Lastname"].ToString());
+                    return singleExaminer;
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Return een lijst van Modules op basis van userId.
+        /// </summary>
+        public List<Models.BU.Module> GetModuleListOfTeacher(string query)
+        {
+            Connect();
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                List<Models.BU.Module> modulesList = new List<Models.BU.Module>();
+                while (reader.Read())
+                {
+                    Models.BU.Module tempModule = new Models.BU.Module(Convert.ToInt32(reader["ModuleId"]), reader["Name"].ToString(), reader["Code"].ToString(), Convert.ToInt32(reader["Period"]), Convert.ToInt32(reader["Year"]), reader["Faculty"].ToString(), reader["Profile"].ToString(), Convert.ToInt32(reader["Credits"]), GetSingleExaminer("SELECT * FROM UserAccount WHERE Role = '2' AND UserId = '" + reader["ExaminerId"] + "'"), reader["Description"].ToString(), (bool)reader["GeneralModule"], Convert.ToInt32(reader["LectureHours"]), Convert.ToInt32(reader["PracticalHours"]));
+                    modulesList.Add(tempModule);
+                }
+                return modulesList;
+            }
+            catch (Exception)
+            {
+               return null;
+            }
+        }
+
+        /// <summary>
+        /// Return één Module.
+        /// </summary>
+        public Models.BU.Module GetSingleModule(string query)
+        {
+            Connect();
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Models.BU.Module singleModule = new Models.BU.Module(Convert.ToInt32(reader["ModuleId"]), reader["Name"].ToString(), reader["Code"].ToString(), Convert.ToInt32(reader["Period"]), Convert.ToInt32(reader["Year"]), reader["Faculty"].ToString(), reader["Profile"].ToString(), Convert.ToInt32(reader["Credits"]), null, reader["Description"].ToString(), (bool)reader["GeneralModule"], Convert.ToInt32(reader["LectureHours"]), Convert.ToInt32(reader["PracticalHours"]));
+                    return singleModule;
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            return null;
         }
 
         /// <summary>
