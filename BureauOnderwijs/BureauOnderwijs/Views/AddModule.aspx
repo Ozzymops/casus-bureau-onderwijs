@@ -39,14 +39,6 @@
         </div>
     <div>
         <asp:Label ID="LBExaminor" runat="server" Text="Examinator: " Width="95px"></asp:Label>
-        <asp:DropDownList ID="DropDownListExaminor" runat="server" OnSelectedIndexChanged="DropDownListExaminor_SelectedIndexChanged"> 
-        <asp:ListItem>
-            LIJST EXAMINATOREN
-        </asp:ListItem>
-            <asp:ListItem Value="1">Dhr. NoName</asp:ListItem>
-            <asp:ListItem Value="2">Peroon B</asp:ListItem>
-            <asp:ListItem Value="3">Persoon C</asp:ListItem>
-            <asp:ListItem Value="4">Persoon D</asp:ListItem>
-        </asp:DropDownList>
+        <asp:TextBox ID="DropDownListExaminor" runat="server"></asp:TextBox>
         </div>
 </asp:Content>

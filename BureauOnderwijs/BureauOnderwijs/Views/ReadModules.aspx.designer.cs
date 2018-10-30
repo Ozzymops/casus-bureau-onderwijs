@@ -13,12 +13,12 @@ namespace BureauOnderwijs.Views {
     public partial class ReadModules {
         
         /// <summary>
-        /// DLModules control.
+        /// GVReadModule control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList DLModules;
+        protected global::System.Web.UI.WebControls.GridView GVReadModule;
     }
 }

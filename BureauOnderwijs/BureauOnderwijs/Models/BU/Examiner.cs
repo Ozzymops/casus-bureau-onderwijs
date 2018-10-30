@@ -14,7 +14,7 @@ namespace BureauOnderwijs.Models.BU
         public DataTable ReadModules(string ingelogd)
         {
             string connectionString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
-            string sqlquery = "SELECT[Name], [ModuleCode], [Period], [Year], [Faculty], [Profile], [Credits], [Examinor], [Description], [GeneralModule], [LectureHours], [PracticalHours], [ModuleId] FROM[Module]";
+            string sqlquery = "SELECT [ModuleId], [Name], [Code], [Period], [Year], [Faculty], [Profile], [Credits], [ExaminerId], [Description], [GeneralModule], [LectureHours], [PracticalHours] FROM[Module] WHERE Deleted = 0";
 
             try
             {
@@ -34,11 +34,11 @@ namespace BureauOnderwijs.Models.BU
             }
         }
 
-        public string AddNewModule(string Name, int ModuleCode,int Period, int Year, string Faculty, string Profile, int Credits, bool GeneralModule ,string Examinor, string Description, int LectureHours, int PracticalHours,  string ingelogd)
+        public string AddNewModule(string Name, string Code,int Period, int Year, string Faculty, string Profile, int Credits, bool GeneralModule ,int ExaminerId, string Description, int LectureHours, int PracticalHours, string ingelogd)
         {
             string connectionString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
-            string sqlquery = "INSERT INTO Module(Name, ModuleCode, Period, Year, Faculty, Profile, Credits, GeneralModule, Examinor, Description, LectureHours, PracticalHours) " +
-                "VALUES('"+ Name + "','" + ModuleCode + "','" + Period + "','" + Year + "','" + Faculty + "','" + Profile + "','" + Credits + "','" + GeneralModule + "', '" + Examinor + "','" + Description + "','" + LectureHours + "','" + PracticalHours + "')";
+            string sqlquery = "INSERT INTO Module(Name, Code, Period, Year, Faculty, Profile, Credits, GeneralModule, ExaminerId, Description, LectureHours, PracticalHours) " +
+                "VALUES('"+ Name + "','" + Code + "','" + Period + "','" + Year + "','" + Faculty + "','" + Profile + "','" + Credits + "','" + GeneralModule + "', '" + ExaminerId + "','" + Description + "','" + LectureHours + "','" + PracticalHours + "' Deleted = 0)";
             
             try
             {
@@ -59,11 +59,11 @@ namespace BureauOnderwijs.Models.BU
         }
 
 
-        public string UpdateModule(string Name, int ModuleCode, int Period, int Year, string Faculty, string Profile, int Credits, bool GeneralModule, string Examinor, string Description, int LectureHours, int PracticalHours, string ingelogd, int ModuleId)
+        public string UpdateModule(string Name, int ModuleCode, int Period, int Year, string Faculty, string Profile, int Credits, bool GeneralModule, int ExaminerId, string Description, int LectureHours, int PracticalHours, string ingelogd, int ModuleId)
         {
             string connectionString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlquerySelect = "SELECT[Name], [ModuleCode], [Period], [Year], [Faculty], [Profile], [Credits], [Examinor], [Description], [GeneralModule], [LectureHours], [PracticalHours], [ModuleId] FROM[Module]";
-            string sqlqueryUpdate = "UPDATE Module SET Name = '"+ Name + "', ModuleCode = '" + ModuleCode + "', Period = '" + Period + "', Year'" + Year + "', Faculty '" + Faculty + "', Profile '" + Profile + "', Credits'" + Credits + "', GeneralModule '" + GeneralModule + "', Examinor'" + Examinor + "', Description'" + Description + "', LectureHours'" + LectureHours + "', PracticalHours '" + PracticalHours + "' WHERE ModuleId = '"+ ModuleId + "' "; 
+            string sqlqueryUpdate = "UPDATE Module SET Name = '"+ Name + "', ModuleCode = '" + ModuleCode + "', Period = '" + Period + "', Year'" + Year + "', Faculty '" + Faculty + "', Profile '" + Profile + "', Credits'" + Credits + "', GeneralModule '" + GeneralModule + "', ExaminerId'" + ExaminerId + "', Description'" + Description + "', LectureHours'" + LectureHours + "', PracticalHours '" + PracticalHours + "' WHERE ModuleId = '"+ ModuleId + "' "; 
                 
             try
             {
