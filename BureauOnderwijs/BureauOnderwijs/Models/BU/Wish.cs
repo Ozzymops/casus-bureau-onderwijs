@@ -46,13 +46,14 @@ namespace BureauOnderwijs.Models.BU
         public int ExportWishlist()
         {
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
-            string sqlQuery = ("SELECT Wi.WishId, Wi.Period, Wi.Week, Wi.Day, Wi.StartTime, Wi.EndTime, UA.UserId, UA.Firstname, UA.Lastname, UA.Role FROM Wish Wi JOIN UserAccount UA ON UA.UserId = Wi.UserId");
+            string sqlQuery = ("SELECT Wi.WishId, Wi.Period, Wi.Week, Wi.Day, Wi.StartHour, Wi.StartMinute, Wi.EndHour, Wi. EndMinute, UA.UserId, UA.Firstname, UA.Lastname, UA.Role FROM Wish Wi JOIN UserAccount UA ON UA.UserId = Wi.UserId");
             int i = 0;
             int j = 0;
 
             try
             {
                 Excel.Application xlapp = new Excel.Application();
+                xlapp.DisplayAlerts = false;
 
                 //Checkt of excel juist is geinstalleerd
                 if (xlapp == null)
@@ -93,17 +94,28 @@ namespace BureauOnderwijs.Models.BU
                     }
                 }
 
-                //Slaat de gegevens op
-                xlWorkBook.SaveAs("c:\\Test\\WensenlijstExcel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                xlWorkBook.Close(true, misValue, misValue);
-                xlapp.Quit();
+                try
+                {
+                    //Slaat de gegevens op
+                    xlWorkBook.SaveAs(HttpContext.Current.Server.MapPath("~/Downloads/WensenlijstExcel.xls"), Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    xlWorkBook.Close(true, misValue, misValue);
+                    xlapp.Quit();
 
-                //Verwijdert de objecten
-                Marshal.ReleaseComObject(xlWorkSheet);
-                Marshal.ReleaseComObject(xlWorkBook);
-                Marshal.ReleaseComObject(xlapp);
-
-                return 0; 
+                    //Verwijdert de objecten
+                    Marshal.ReleaseComObject(xlWorkSheet);
+                    Marshal.ReleaseComObject(xlWorkBook);
+                    Marshal.ReleaseComObject(xlapp);
+                    return 0;
+                }
+                catch
+                {
+                    //Verwijdert de objecten
+                    Marshal.ReleaseComObject(xlWorkSheet);
+                    Marshal.ReleaseComObject(xlWorkBook);
+                    Marshal.ReleaseComObject(xlapp);
+                    return 3;
+                }
+                
             }
 
             catch(Exception)

@@ -482,6 +482,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Downloads\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
