@@ -11,6 +11,20 @@ namespace BureauOnderwijs.Models.BU
 {
     public class Examiner : Teacher // inherit from Teacher.cs
     {
+        public Examiner()
+        {
+            // Leeg: anders verschijnen er enge rode lijntjes.
+        }
+
+        public Examiner(int id, string username, string email, string firstname, string lastname)
+        {
+            this.userId = id;
+            this.username = username;
+            this.emailAdress = email;
+            this.firstname = firstname;
+            this.lastname = lastname;
+        }
+
         public DataTable ReadModules(string ingelogd)
         {
             string connectionString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";

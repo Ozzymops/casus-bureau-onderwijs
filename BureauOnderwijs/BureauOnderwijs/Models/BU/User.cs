@@ -21,6 +21,18 @@ namespace BureauOnderwijs.Models.BU
         private int recoveryCode;
         private int role;
 
+        public int UserID
+        {
+            get { return this.userId; }
+            set { this.userId = value; }
+        }
+
+        public string UserName
+        {
+            get { return this.username; }
+            set { this.username = value; }
+        }
+
         public int[] LogIn(string username, string password)
         {
             // localhost/MSSQLSERVER indien het niet werkt (Justin)
