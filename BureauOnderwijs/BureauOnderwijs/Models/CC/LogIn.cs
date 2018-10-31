@@ -8,18 +8,30 @@ namespace BureauOnderwijs.Models.CC
 {
     public class LogIn
     {
-        //User u;
+        public User u;
 
         public int[] LoginCC(string username, string password)
         {
-            User u = new User();
-            return u.LogIn(username, password);
+            if (u == null)
+            {
+                u = new User();
+            }
+            if (u.LogIn(username, password))
+            {
+                int[] tmp = { u.UserID, u.TwoFactorCode };
+                return tmp;
+            }
+            return null;
+
         }
-
-
+        
+        //Password Recovery hoort niet bij de UC "Login" -> Deze methode moet waarschijnlijk naar een andere .cs
         public bool CheckIfUserExists(string username)
         {
-            User u = new User();
+            if (u == null)
+            {
+                u = new User();
+            }
             return u.CheckIfUserExists(username);
         }
 
@@ -27,13 +39,19 @@ namespace BureauOnderwijs.Models.CC
         {
             /// feedback: maak niet constant een nieuw object aan. zet User.u in de class en roep dan alleen de functie(s) aan
             /// antwoord: krijg een error message dat er object u(User) null is. 
+            /// -> Nieuwe contructor gemaakt hiervoor. Maar aangezien je deze functie aanroept vanuit "Master.cs", zal deze methode daar ook naar toe moeten
 
-            User u = new User();
+            if (u == null)
+            {
+                u = new User(userId);
+            }
             return u.GetUsername(userId);
         }
 
-        internal string GetLoginError(int RoleUseridRandomNumber)
+ /*       public string GetLoginError(int RoleUseridRandomNumber)
         {
+            return u.GetLoginError(RoleUseridRandomNumber);
+            /*
             if (RoleUseridRandomNumber == -1)
             {
                return "alert('Ongeldige gebruikersnaam en of wachtwoord!');";
@@ -51,6 +69,8 @@ namespace BureauOnderwijs.Models.CC
                 return "alert('Problemen met de mailingdinghusus');";
             }
             return "alert('Neem a.u.b. contact op met je netwerkbeheerder.');";
+            
         }
+    */
     }
 }

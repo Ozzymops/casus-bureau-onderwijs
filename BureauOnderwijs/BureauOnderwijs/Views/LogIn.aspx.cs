@@ -31,22 +31,25 @@ namespace BureauOnderwijs.Views
                 /// krijg een array terug, met als eerste nummer de rol van de bestreffende user
                 /// en als tweede nummer de unieke userId. Het unieke UserId wordt de sessie, 
                 /// hierdoor is later terug te vinden welke gebruiker ingelogd is. 
-                
-                l = new Models.CC.LogIn();
-                int[] RoleUseridRandomNumber = l.LoginCC(TextBoxUsernameLogin.Text, TextBoxPasswordLogin.Text);
+                try
+                {
+                    l = new Models.CC.LogIn();
+                    int[] RoleUseridRandomNumber = l.LoginCC(TextBoxUsernameLogin.Text, TextBoxPasswordLogin.Text);
 
-                /// feedback: role number errormessage -1 geven en role moet groter zijn dan 0. Als er nieuw rollen toegevoegd worden
-                /// feedback: hoeft de code niet aangepast te worden.
-                /// feedback: else if statement in cc class verwerken zodat GUI-laag simpeler blijft.
-                if (RoleUseridRandomNumber[0] > 0)
-                {
-                    Session["UserId"] = RoleUseridRandomNumber[1];
-                    Session["2FaCode"] = RoleUseridRandomNumber[2];
-                    Response.Redirect("~/Views/LogIn2FaCode.aspx");
+                    /// feedback: role number errormessage -1 geven en role moet groter zijn dan 0. Als er nieuw rollen toegevoegd worden
+                    /// feedback: hoeft de code niet aangepast te worden.
+                    /// feedback: else if statement in cc class verwerken zodat GUI-laag simpeler blijft.
+                    //if (RoleUseridRandomNumber[0] > 0)
+                    if (RoleUseridRandomNumber.Length == 2)
+                    {
+                        Session["UserId"] = RoleUseridRandomNumber[0];
+                        Session["2FaCode"] = RoleUseridRandomNumber[1];
+                        Response.Redirect("~/Views/LogIn2FaCode.aspx");
+                    }
                 }
-                else if (RoleUseridRandomNumber[0] < 0)
+                catch (Exception err)
                 {
-                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", l.GetLoginError(RoleUseridRandomNumber[0]), true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('"+err.Message+"')", true);
                 }
             }
         }

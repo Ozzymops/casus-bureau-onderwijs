@@ -14,7 +14,7 @@ namespace BureauOnderwijs.Models.BU
             // Leeg: anders verschijnen er enge rode lijntjes.
         }
 
-        public Teacher(int id, string username, string email, string firstname, string lastname)
+        public Teacher(int id, string username, string email, string firstname, string lastname): base()
         {
             this.userId = id;
             this.username = username;

@@ -11,88 +11,168 @@ namespace BureauOnderwijs.Models.BU
 {
     public class User
     {
-        public int userId;
-        public string username;
-        private string password;
-        public string emailAdress;
-        public string firstname;
-        public string lastname;
-        private int twoFactorCode;
-        private int recoveryCode;
-        private int role;
+        protected int userId;
+        protected string username;
+        protected string password;
+        protected string emailAdress;
+        protected string firstname;
+        protected string lastname;
+        protected int twoFactorCode;
+        protected int recoveryCode;
+        protected int role;
 
         public int UserID
         {
             get { return this.userId; }
-            set { this.userId = value; }
+            //set { this.userId = value; }
         }
 
         public string UserName
         {
             get { return this.username; }
-            set { this.username = value; }
+            //set { this.username = value; }
         }
 
-        public int[] LogIn(string username, string password)
+        public int TwoFactorCode
+        {
+            get { return this.twoFactorCode; }
+            //set { this.username = value; }
+        }
+
+        /// <summary>
+        /// Maak een lege user, vooral als nog niet ingelogd is.
+        /// </summary>
+        public User()
+        {
+            
+        }
+
+        /// <summary>
+        /// Maak een user aan, aan de hand van het UserId
+        /// Na de inlogpagina deze methode gebruiken, op iedere webpagina moet het userobject weer gecreerd worden.
+        /// </summary>
+        /// <param name="userId"></param>
+        public User(int userId)
+        {
+            string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQuery = "SELECT UserId, Username, Role, Emailadress FROM UserAccount";
+
+            SqlConnection con = new SqlConnection(conString);
+            SqlCommand cmd = new SqlCommand(sqlQuery, con);
+
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    //Alle gegevens opslaan in het User object 
+                    //-> Nu alleen deze 5 gebruikt: UserId, Username, Password, Role, Emailadress
+                    userId = reader.GetInt32(0);
+                    username = reader.GetString(1);
+                    role = reader.GetInt32(2);
+                    emailAdress = reader.GetString(3);
+                }
+            }
+            con.Close();
+        }
+
+        public string GetLoginError(int RoleUseridRandomNumber)
+        {            
+            if (RoleUseridRandomNumber == -1)
+            {
+               return "alert('Ongeldige gebruikersnaam en of wachtwoord!');";
+            }
+            else if (RoleUseridRandomNumber == -2)
+            {
+                return "alert('Problemen met de connectie van de database.');";
+            }
+            else if (RoleUseridRandomNumber == -3)
+            {
+                return "alert('Kom op kerel, je code klopt voor de klote niet ;)');";
+            }
+            else if (RoleUseridRandomNumber == -4)
+            {
+                return "alert('Problemen met de mailingdinghusus');";
+            }
+            return "alert('Neem a.u.b. contact op met je netwerkbeheerder.');";
+        }
+
+        public bool LogIn(string username, string password)
         {
             // localhost/MSSQLSERVER indien het niet werkt (Justin)
             // sayy wuuut? (Redmar)
             // hoi, ik ben ook hier. redmar naar Redmar veranderd.. (Gijs)
 
-            int[] result = { 0, 0, 0 };
+            //int[] result = { 0, 0, 0 };
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
-            string sqlQuery = "SELECT Role, UserId FROM UserAccount WHERE Username = '" + username + "' and Password = '" + password + "'";
-            string sqlQueryGetEmailAdress = "SELECT Emailadress FROM UserAccount WHERE Username = '" + username + "' and Password = '" + password + "'";
+            //string sqlQuery = "SELECT Role, UserId FROM UserAccount WHERE Username = '" + username + "' and Password = '" + password + "'";
+            string sqlQuery = "SELECT UserId, Username, Password, Role, Emailadress FROM UserAccount WHERE Username = '" + username + "' and Password = '" + password + "'";
+            //string sqlQueryGetEmailAdress = "SELECT Emailadress FROM UserAccount WHERE Username = '" + username + "' and Password = '" + password + "'";
 
-            try
+            //try
+            //{
+            SqlConnection con = new SqlConnection(conString);
+            SqlCommand cmd = new SqlCommand(sqlQuery, con);
+            //SqlCommand cmdEmail = new SqlCommand(sqlQueryGetEmailAdress, con);
+
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.HasRows)
             {
-                SqlConnection con = new SqlConnection(conString);
-                SqlCommand cmd = new SqlCommand(sqlQuery, con);
-                SqlCommand cmdEmail = new SqlCommand(sqlQueryGetEmailAdress, con);
-                
-                con.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.HasRows)
+                while (reader.Read())
                 {
-                    while (reader.Read())
-                    {
-                        result[0] = reader.GetInt32(0);
-                        result[1] = reader.GetInt32(1);
-                    }
+                    //result[0] = reader.GetInt32(0);
+                    //result[1] = reader.GetInt32(1);
+
+                    //Alle gegevens opslaan in het User object 
+                    //-> Nu alleen deze 5 gebruikt: UserId, Username, Password, Role, Emailadress
+                    userId = reader.GetInt32(0);
+                    username = reader.GetString(1);
+                    password = reader.GetString(2);
+                    role = reader.GetInt32(3);
+                    emailAdress = reader.GetString(4);
                 }
                 con.Close();
+                //}
 
-                if (result.First() > 0)
+
+                //if (result.First() > 0)
+                //{
+                /// login succesvol, gaat een 2FA code genereren met RandomNumerGenerator
+                /// en stuurt vervolgens deze 2FA code naar het email adres van de persoon die wilt inloggen.
+
+                RandomNumberGenerator r = new RandomNumberGenerator();
+                twoFactorCode = r.GenerateNumber(1000, 9999);
+                //result[2] = r.GenerateNumber(1000, 9999);
+                /*
+                try
                 {
-                    /// login succesvol, gaat een 2FA code genereren met RandomNumerGenerator
-                    /// en stuurt vervolgens deze 2FA code naar het email adres van de persoon die wilt inloggen.
-
-                    RandomNumberGenerator r = new RandomNumberGenerator();
-                    result[2] = r.GenerateNumber(1000, 9999);
-
-                    try
-                    {
-                        //send2facodeLogin(result[2], username, password);
-                    }
-                    catch
-                    {
-                        return new int[] { -4, 0, 0 };
-                    }
-
-                    return new int[] { result[0], result[1], result[2] };
+                    //send2facodeLogin(result[2], username, password);
                 }
-                else if (result.First() == 0)
+                catch
                 {
-                    return new int[] { -1, 0, 0 };
+                    return new int[] { -4, 0, 0 };
                 }
+                */
+
+                //return new int[] { result[0], result[1], result[2] };
+                return true;//new int[] { result[0], result[1] };
             }
+            else //if (result.First() == 0)
+            {
+                con.Close();
+                //return new int[] { -1, 0, 0 };
+                throw new Exception("Ongeldige gebruikersnaam en of wachtwoord.");
+            }
+            /*}
             catch
             {
                 return new int[] { -2, 0, 0 };
-            }
+            }*/
 
-            return new int[] { -3, 0, 0 };
+            //return new int[] { -3, 0, 0 };
         }
 
         public void LogOut()

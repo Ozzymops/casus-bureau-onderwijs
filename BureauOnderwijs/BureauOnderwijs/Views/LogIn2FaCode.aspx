@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LogIn2FaCode.aspx.cs" Inherits="BureauOnderwijs.Views.LogIn2FaCode" %>
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">

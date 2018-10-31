@@ -16,7 +16,7 @@ namespace BureauOnderwijs.Models.BU
             // Leeg: anders verschijnen er enge rode lijntjes.
         }
 
-        public Examiner(int id, string username, string email, string firstname, string lastname)
+        public Examiner(int id, string username, string email, string firstname, string lastname) : base()
         {
             this.userId = id;
             this.username = username;

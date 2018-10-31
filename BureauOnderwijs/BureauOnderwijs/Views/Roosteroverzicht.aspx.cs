@@ -125,7 +125,7 @@ namespace BureauOnderwijs.Views
             {
                 foreach (Models.BU.Lecture lecture in currentChangeList)
                 {
-                    if (Convert.ToInt32(userList.SelectedValue) == lecture.teacher.userId && (Convert.ToInt32(periodList.SelectedValue) == lecture.period && Convert.ToInt32(weekList.SelectedValue) == lecture.week))
+                    if (Convert.ToInt32(userList.SelectedValue) == lecture.teacher.UserID && (Convert.ToInt32(periodList.SelectedValue) == lecture.period && Convert.ToInt32(weekList.SelectedValue) == lecture.week))
                     {
                         int[] cell = DetermineCell(lecture.day, lecture.startHour, lecture.startMinute);
                         // string: Dag: Start - Eind. Vak, Groep. Lokaal.
@@ -151,7 +151,7 @@ namespace BureauOnderwijs.Views
                 userList.DataTextField = "username";
                 userList.DataBind();
                 Session["TempTeacherList"] = teacherList;
-                Session["CurrentUser"] = teacherList[0].username;
+                Session["CurrentUser"] = teacherList[0].UserName;
             }
 
             // Vul periodList

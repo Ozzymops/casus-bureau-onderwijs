@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BureauOnderwijs.Models.BU;
 
 namespace BureauOnderwijs.Views
 {
@@ -14,8 +15,10 @@ namespace BureauOnderwijs.Views
             // Get username via UserId, wordt iedere keer herhaald dus let op fouten.
             if (Session["UserId"] != null)
             {
-                Models.CC.LogIn l = new Models.CC.LogIn();
-                welcomeLabel.Text = "Welkom " + l.GetUsername(Convert.ToInt32(Session["UserId"])).ToString() + ".";
+                //Models.CC.LogIn l = new Models.CC.LogIn();
+                User u = new User(Convert.ToInt32(Session["UserId"]));
+                //welcomeLabel.Text = "Welkom " + l.GetUsername(Convert.ToInt32(Session["UserId"])).ToString() + ".";
+                welcomeLabel.Text = "Welkom " + u.UserName + ".";
             }
             else
             {
