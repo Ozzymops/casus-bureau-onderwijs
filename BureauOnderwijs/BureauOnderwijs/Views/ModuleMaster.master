@@ -8,7 +8,6 @@
         <asp:Button ID="addModuleButton" runat="server" Text="Module toevoegen" Width="150px" style="margin-left:50px" OnClick="addModuleButton_Click" />
         <asp:Button ID="DeleteModuleButton" runat="server" Text="Module verwijderen" Width="150px" style="margin-left:50px" OnClick="DeleteModuleButton_Click" />
         <asp:Button ID="UpdateModuleButton" runat="server" Text="Module wijzigen" Width="150px" style="margin-left:50px" OnClick="UpdateModuleButton_Click" />
-        <asp:Button ID="LinkModule" runat="server" Text="Module Koppelen" Width="150px" style="margin-left:50px" OnClick="LinkModule_Click" />
     </ul>
     <asp:ContentPlaceHolder ID="NestedPlaceholder1" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>
