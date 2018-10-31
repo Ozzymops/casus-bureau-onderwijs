@@ -13,5 +13,15 @@ namespace BureauOnderwijs.Views
         {
 
         }
+
+        protected void BTOpslaan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void BTAnnuleren_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Views/ModuleKoppelen.aspx");
+        }
     }
 }
