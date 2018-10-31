@@ -40,6 +40,15 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Button ButtonSubmit2FaCode;
         
         /// <summary>
+        /// ButtonCancelLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonCancelLogin;
+        
+        /// <summary>
         /// LabelSessionNumberActive control.
         /// </summary>
         /// <remarks>

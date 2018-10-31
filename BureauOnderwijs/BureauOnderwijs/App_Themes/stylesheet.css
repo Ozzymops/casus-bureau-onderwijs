@@ -103,3 +103,8 @@ body {
     float: right;
     padding: 5px;
 }
+.divider{
+    width:5px;
+    height:30px;
+    display:inline-block;
+}

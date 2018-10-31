@@ -161,6 +161,29 @@ namespace BureauOnderwijs.Models
             return null;
         }
 
+        public List<Models.BU.Lecture> GetLecturesOfTeacher(string query, int userId)
+        {
+            Connect();
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                List<Models.BU.Lecture> lectureList = new List<Models.BU.Lecture>();
+                while (reader.Read())
+                {
+                    Models.BU.Lecture tempLecture = new Models.BU.Lecture(GetSingleTeacher("SELECT * FROM UserAccount WHERE UserId = '" + userId + "'"), GetSingleModule("SELECT * FROM Module WHERE Code = '" + reader["ModuleCode"].ToString() + "'"), reader["Classroom"].ToString(), reader["StudentGroup"].ToString(), Convert.ToInt32(reader["Period"]), Convert.ToInt32(reader["Week"]), Convert.ToInt32(reader["Day"]), Convert.ToInt32(reader["StartHour"]), Convert.ToInt32(reader["StartMinute"]), Convert.ToInt32(reader["EndHour"]), Convert.ToInt32(reader["EndMinute"]));
+                    lectureList.Add(tempLecture);
+                }
+                return lectureList;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public Models.BU.Examiner GetSingleExaminer(string query)
         {
             Connect();
@@ -182,6 +205,29 @@ namespace BureauOnderwijs.Models
                 return null;
             }
             return null;
+        }
+
+        public List<Models.BU.Wish> GetWishListOfTeacher(string query)
+        {
+            Connect();
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                List<Models.BU.Wish> wishList = new List<Models.BU.Wish>();
+                while (reader.Read())
+                {
+                    Models.BU.Wish tempWish = new Models.BU.Wish(Convert.ToInt32(reader["WishId"]), Convert.ToInt32(reader["Period"]), Convert.ToInt32(reader["Week"]), Convert.ToInt32(reader["Day"]), Convert.ToInt32(reader["StartHour"]), Convert.ToInt32(reader["StartMinute"]), Convert.ToInt32(reader["EndHour"]), Convert.ToInt32(reader["EndMinute"]));
+                    wishList.Add(tempWish);
+                }
+                return wishList;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -262,10 +308,54 @@ namespace BureauOnderwijs.Models
                 return null;
             }
         }
+
+        public int CheckIfLectureAlreadyExists(string query)
+        {
+            Connect();
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (reader.HasRows)
+                    {
+                        Debug.WriteLine("Goed gedaan ouwe, je hebt zomaar even een LectureId gevonden, proficiat! - " + reader["LectureId"]);
+                        return Convert.ToInt32(reader["LectureId"]);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                Debug.WriteLine("Oepsie woepsie, er was een foutje uWu");
+                return -1;
+            }
+            Debug.WriteLine("Oepsie woepsie, niks gevonden uWu");
+            return -1;
+        }
         #endregion
 
         #region Add
-
+        /// <summary>
+        /// Maak een entry aan in de database.
+        /// </summary>
+        public void CreateEntry(string query)
+        {
+            Connect();
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Dispose();
+            }
+            catch (Exception)
+            {
+                Debug.WriteLine("Oepsie woepsie, er was een foutje uWu");
+            }
+        }
         #endregion
 
         #region Update
@@ -284,6 +374,25 @@ namespace BureauOnderwijs.Models
             catch (Exception)
             {
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Update een entry in de database.
+        /// </summary>
+        public void UpdateEntry(string query)
+        {
+            Connect();
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Dispose();
+            }
+            catch(Exception)
+            {
+                Debug.WriteLine("Oepsie woepsie, er was een foutje uWu");
             }
         }
         #endregion

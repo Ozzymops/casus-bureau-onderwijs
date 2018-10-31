@@ -65,7 +65,7 @@ namespace BureauOnderwijs.Models.BU
 
                 if (result.First() > 0)
                 {
-                    /// login succesvol, gaat een 2FA code genereren met RandomNumerGenerator
+                    /// login succesvol, gaat een 2FA code genereren met RandomNumerGenerator van 4 cijfers
                     /// en stuurt vervolgens deze 2FA code naar het email adres van de persoon die wilt inloggen.
 
                     RandomNumberGenerator r = new RandomNumberGenerator();

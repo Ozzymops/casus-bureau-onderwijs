@@ -31,5 +31,12 @@ namespace BureauOnderwijs.Views
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Ongeldige 2FA Code!');", true);
             }
         }
+
+        protected void ButtonCancelLogin_Click(Object sender, EventArgs e)
+        {
+            Session["2FaCode"] = null;
+            Session["UserId"] = null;
+            Response.Redirect("LogIn.aspx");
+        }
     }
 }
