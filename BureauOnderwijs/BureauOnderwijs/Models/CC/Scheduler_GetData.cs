@@ -32,11 +32,48 @@ namespace BureauOnderwijs.Models.CC
         }
 
         /// <summary>
+        /// Return één Teacher.
+        /// </summary>
+        public Models.BU.Teacher GetSingleTeacher(int userId)
+        {
+            return (s.GetSingleTeacher(userId));
+        }
+
+        /// <summary>
+        /// Return een lijst van Lectures.
+        /// </summary>
+        public List<Models.BU.Lecture> GetLecturesOfTeacher(int userId)
+        {
+            return (s.GetLecturesOfTeacher(userId));
+        }
+
+        /// <summary>
+        /// Return een lijst van Modules op basis van userId.
+        /// </summary>
+        public List<Models.BU.Module> GetModuleListOfTeacher(int userId)
+        {
+            return (s.GetModuleListOfTeacher(userId));
+        }
+
+        /// <summary>
+        /// Return één Module.
+        /// </summary>
+        public Models.BU.Module GetSingleModule(int moduleId)
+        {
+            return (s.GetSingleModule(moduleId));
+        }
+
+        /// <summary>
         /// Return een lijst van beschikbare werkdagen.
         /// </summary>
         public List<int> GetAvailableDays(int userId, int period, int week)
         {
             return (s.GetAvailableDays(userId, period, week));
+        }
+
+        public int CheckIfLectureAlreadyExists(Models.BU.Lecture lecture)
+        {
+            return (s.CheckIfLectureAlreadyExists(lecture));
         }
     }
 }

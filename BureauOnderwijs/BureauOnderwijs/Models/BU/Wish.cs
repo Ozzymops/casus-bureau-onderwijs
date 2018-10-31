@@ -11,11 +11,48 @@ namespace BureauOnderwijs.Models.BU
 {
     public class Wish
     {
-        private string period;
-        private int week;
-        private string day;
-        private DateTime startTime;
-        private DateTime endTime;
+        public int wishId;
+        public int period;
+        public int week;
+        public int day;
+        public int startHour;
+        public int startMinute;
+        public int endHour;
+        public int endMinute;
+
+        public int WishId
+        {
+            get { return this.wishId; }
+            set { this.wishId = value; }
+        }
+
+        public int Day
+        {
+            get { return this.day; }
+            set { this.day = value; }
+        }
+
+        public string DayString
+        {
+            get { return this.day.ToString(); }
+        }
+
+        public Wish()
+        {
+            // Leeg: anders verschijnen er enge rode lijntjes.
+        }
+
+        public Wish(int wishId, int period, int week, int day, int startHour, int startMinute, int endHour, int endMinute)
+        {
+            this.wishId = wishId;
+            this.period = period;
+            this.week = week;
+            this.day = day;
+            this.startHour = startHour;
+            this.startMinute = startMinute;
+            this.endHour = endHour;
+            this.endMinute = endMinute;
+        }
 
         public int CreateWish(string period, int week, int day, int startHour, int startMinute, int endHour, int endMinute, int ingelogd)
         {
@@ -46,13 +83,14 @@ namespace BureauOnderwijs.Models.BU
         public int ExportWishlist()
         {
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
-            string sqlQuery = ("SELECT Wi.WishId, Wi.Period, Wi.Week, Wi.Day, Wi.StartTime, Wi.EndTime, UA.UserId, UA.Firstname, UA.Lastname, UA.Role FROM Wish Wi JOIN UserAccount UA ON UA.UserId = Wi.UserId");
+            string sqlQuery = ("SELECT Wi.WishId, Wi.Period, Wi.Week, Wi.Day, Wi.StartHour, Wi.StartMinute, Wi.EndHour, Wi. EndMinute, UA.UserId, UA.Firstname, UA.Lastname, UA.Role FROM Wish Wi JOIN UserAccount UA ON UA.UserId = Wi.UserId");
             int i = 0;
             int j = 0;
 
             try
             {
                 Excel.Application xlapp = new Excel.Application();
+                xlapp.DisplayAlerts = false;
 
                 //Checkt of excel juist is geinstalleerd
                 if (xlapp == null)
@@ -93,17 +131,28 @@ namespace BureauOnderwijs.Models.BU
                     }
                 }
 
-                //Slaat de gegevens op
-                xlWorkBook.SaveAs("c:\\Test\\WensenlijstExcel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                xlWorkBook.Close(true, misValue, misValue);
-                xlapp.Quit();
+                try
+                {
+                    //Slaat de gegevens op
+                    xlWorkBook.SaveAs(HttpContext.Current.Server.MapPath("~/Downloads/WensenlijstExcel.xls"), Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    xlWorkBook.Close(true, misValue, misValue);
+                    xlapp.Quit();
 
-                //Verwijdert de objecten
-                Marshal.ReleaseComObject(xlWorkSheet);
-                Marshal.ReleaseComObject(xlWorkBook);
-                Marshal.ReleaseComObject(xlapp);
-
-                return 0; 
+                    //Verwijdert de objecten
+                    Marshal.ReleaseComObject(xlWorkSheet);
+                    Marshal.ReleaseComObject(xlWorkBook);
+                    Marshal.ReleaseComObject(xlapp);
+                    return 0;
+                }
+                catch
+                {
+                    //Verwijdert de objecten
+                    Marshal.ReleaseComObject(xlWorkSheet);
+                    Marshal.ReleaseComObject(xlWorkBook);
+                    Marshal.ReleaseComObject(xlapp);
+                    return 3;
+                }
+                
             }
 
             catch(Exception)

@@ -19,13 +19,7 @@
                 <!-- Navigation bar -->
                 <div class="nav">
                     <a runat="server" href="~/Views/Homepage.aspx">Homepage</a>
-                    <div class="dropdown">
-                        <button class="dropbtn">Administrator</button>
-                        <div class="dropdown-content">
-                            <a runat="server" href="~/Views/AdminRead.aspx">Link 1</a>
-                            <a runat="server" href="#">Link 2</a>
-                        </div>
-                    </div>
+                    <a runat="server" href="~/Views/AdminRead.aspx">Administrator</a>
                     <a runat="server" href="~/Views/Roosteroverzicht.aspx">Roosteroverzicht</a>
                     <a runat="server" href="~/Views/Wensen.aspx">Wensen</a>
                     <a runat="server" href="~/Views/ReadModules.aspx">Modules</a>
