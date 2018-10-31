@@ -181,6 +181,7 @@ namespace BureauOnderwijs.Views
             if ((bool)Session["FirstTimeSchedule"] || userList.SelectedValue != Session["CurrentUser"].ToString() || periodList.SelectedValue != Session["CurrentPeriod"].ToString() || weekList.SelectedValue != Session["CurrentWeek"].ToString())
             {
                 dayList.Items.Clear();
+                // ZET OM NAAR WISHLIST! Voeg ook vier dropdownlists toe voor beschikbare tijden of toon wat de tijdsintervallen zijn.
                 List<int> availableDayList = sgd.GetAvailableDays(Convert.ToInt32(userList.SelectedValue), Convert.ToInt32(periodList.SelectedValue), Convert.ToInt32(weekList.SelectedValue));
 
                 if (availableDayList.Count != 0)
