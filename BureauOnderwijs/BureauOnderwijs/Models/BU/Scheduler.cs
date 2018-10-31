@@ -17,7 +17,7 @@ namespace BureauOnderwijs.Models.BU
         {
             Models.Database db = new Models.Database();
             string query = "INSERT INTO Lecture(TeacherId, ModuleCode, Classroom, StudentGroup, Period, Week, Day, StartHour, StartMinute, EndHour, EndMinute) " +
-                "VALUES ('" + lecture.teacher.userId + "', '" + lecture.module.moduleCode + "', '" + lecture.classroom + "', '" + lecture.studentGroup + "', '" + lecture.period + "', " +
+                "VALUES ('" + lecture.teacher.UserID + "', '" + lecture.module.moduleCode + "', '" + lecture.classroom + "', '" + lecture.studentGroup + "', '" + lecture.period + "', " +
                 "'" + lecture.week + "', '" + lecture.day + "', '" + lecture.startHour + "', '" + lecture.startMinute + "', '" + lecture.endHour + "', '" + lecture.endMinute + "')";
             db.CreateEntry(query);
         }
@@ -52,7 +52,7 @@ namespace BureauOnderwijs.Models.BU
             // Vul wishList van Teachers
             foreach (Models.BU.Teacher teacher in teacherList)
             {
-                query = "SELECT DISTINCT * FROM Wish WHERE UserId = '" + teacher.userId + "'";
+                query = "SELECT DISTINCT * FROM Wish WHERE UserId = '" + teacher.UserID + "'";
                 teacher.wishList = db.GetWishListOfTeacher(query);
             }
             return teacherList;
@@ -96,7 +96,7 @@ namespace BureauOnderwijs.Models.BU
         public int CheckIfLectureAlreadyExists(Models.BU.Lecture lecture)
         {
             Models.Database db = new Models.Database();
-            string query = "SELECT LectureId FROM Lecture WHERE TeacherId = '" + lecture.teacher.userId + "' AND Period = '" + lecture.period + "' AND Week = '" + lecture.week + "'" +
+            string query = "SELECT LectureId FROM Lecture WHERE TeacherId = '" + lecture.teacher.UserID + "' AND Period = '" + lecture.period + "' AND Week = '" + lecture.week + "'" +
                            "AND Day = '" + lecture.day + "' AND StartHour = '" + lecture.startHour + "' AND StartMinute = '" + lecture.startMinute + "'" +
                            "AND EndHour = '" + lecture.endHour + "' AND EndMinute = '" + lecture.endMinute + "'";
             return (db.CheckIfLectureAlreadyExists(query));
