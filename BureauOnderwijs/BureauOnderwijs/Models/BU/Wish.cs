@@ -112,6 +112,27 @@ namespace BureauOnderwijs.Models.BU
             }
         }
 
+        public int DeleteWish(int wishId)
+        {
+            string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQuery = "DELETE FROM Wish WHERE WishId = '" + wishId + "'";
+
+            SqlConnection con = new SqlConnection(conString);
+            SqlCommand cmd = new SqlCommand(sqlQuery, con);
+
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return 0;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
+
         public DataTable GetUserWishes(string ingelogd)
         {
 

@@ -6,9 +6,11 @@
         </h1>
 
 
-        <asp:GridView ID="gvUserWishes" runat="server" AutoGenerateColumns="false" ShowFooter="true" DataKeyNames="WishId" ShowHeaderWhenEmpty="true" 
+        <asp:GridView ID="gvUserWishes" runat="server" AutoGenerateColumns="false" ShowFooter="true" DataKeyNames="WishId" 
+            ShowHeaderWhenEmpty="true" 
             
-            OnRowCommand="gvUserWishes_RowCommand"
+            OnRowCommand="gvUserWishes_RowCommand" OnRowEditing="gvUserWishes_RowEditing" OnRowCancelingEdit="gvUserWishes_RowCancelingEdit"
+            OnRowUpdating="gvUserWishes_RowUpdating" OnRowDeleting="gvUserWishes_RowDeleting"
             
             BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4" OnSelectedIndexChanged="gvUserWishes_SelectedIndexChanged">
             <%-- THEME VAN DE GV --%>
@@ -179,7 +181,7 @@
                 <%-- Logo's --%> 
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:ImageButton ImageUrl="~/Resources/Edit logo.jpg" runat="server" CommandName="UserEdit" ToolTip="Wijzigen" Width="20px" Height="20px"/>
+                        <asp:ImageButton ImageUrl="~/Resources/Edit logo.jpg" runat="server" CommandName="Edit" ToolTip="Wijzigen" Width="20px" Height="20px"/>
                         <asp:ImageButton ImageUrl="~/Resources/Delete logo.jpg" runat="server" CommandName="Delete" ToolTip="Verwijderen" Width="20px" Height="20px"/>
                     </ItemTemplate>
                     <EditItemTemplate>
@@ -193,6 +195,6 @@
             </Columns>
         </asp:GridView>
 
-        <asp:Label ID="LabelSuccesvol" runat="server" Text="In afwachting..."></asp:Label>
+        <asp:Label ID="LabelSuccesvol" runat="server" Text=""></asp:Label>
     </div>
 </asp:Content>
