@@ -16,14 +16,10 @@
             <asp:Label ID="LabelWachtwoord" runat="server" Text="Wachtwoord:" Width="170px"></asp:Label>
             <asp:TextBox ID="TextBoxPasswordLogin" runat="server" TextMode="Password" Width="300"></asp:TextBox>
         </h4>           
-        <div style="margin-left:240px;">
-            <asp:Button ID="ButtonLogin" runat="server" Text="Inloggen" OnClick="ButtonLogin_Click" Width="237"/>    
-        </div>
-        <div style="color:white;">
-            White space
-        </div>
-        <div style="margin-left:240px;">
+        <div>
             <asp:Button ID="ButtonRecovery" runat="server" Text="Wachtwoord vergeten?" OnClick="ButtonRecovery_Click" Width="237"/> 
+                <asp:Button ID="ButtonLogin" runat="server" Text="Inloggen" OnClick="ButtonLogin_Click" Width="237"/>    
+                
         </div>
     </form>
 </body>

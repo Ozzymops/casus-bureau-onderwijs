@@ -182,7 +182,7 @@
                 <asp:TemplateField>
                     <ItemTemplate>
                         <asp:ImageButton ImageUrl="~/Resources/Edit logo.jpg" runat="server" CommandName="Edit" ToolTip="Wijzigen" Width="20px" Height="20px"/>
-                        <asp:ImageButton ImageUrl="~/Resources/Delete logo.jpg" runat="server" CommandName="Delete" ToolTip="Verwijderen" Width="20px" Height="20px"/>
+                        <asp:ImageButton ImageUrl="~/Resources/Delete logo.jpg" runat="server" CommandName="Delete" ToolTip="Verwijderen" Width="20px" Height="20px" OnClientClick="return confirm('Weet je zeker dat je de wens wilt verwijderen?')"/>
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:ImageButton ImageUrl="~/Resources/Opslaan logo.jpg" runat="server" CommandName="Update" ToolTip="Opslaan" Width="20px" Height="20px"/>
