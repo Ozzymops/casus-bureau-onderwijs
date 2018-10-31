@@ -25,7 +25,7 @@ namespace BureauOnderwijs.Views
             string ingelogd = Session["UserId"].ToString();
             int ModuleId = Convert.ToInt32((sender as LinkButton).CommandArgument);
             Models.CC.Examiner_UpdateModule Up = new Models.CC.Examiner_UpdateModule();
-            string name = Up.UpdateModuleCC(TBNameU.Text, Convert.ToInt32(TBModuleCodeU.Text), Convert.ToInt32(TBPeriodU.Text), Convert.ToInt32(TBYearU.Text), TBFacultyU.Text, TBProfileU.Text, Convert.ToInt32(TBCreditsU.Text), CheckBoxGeneralModuleU.Checked, DropDownListExaminorU.SelectedValue, TBDescriptionU.Text, Convert.ToInt32(TBLectureHoursU.Text), Convert.ToInt32(TBPracticalHoursU.Text), ingelogd, ModuleId);
+            string name = Up.UpdateModuleCC(TBNameU.Text, Convert.ToInt32(TBModuleCodeU.Text), Convert.ToInt32(TBPeriodU.Text), Convert.ToInt32(TBYearU.Text), TBFacultyU.Text, TBProfileU.Text, Convert.ToInt32(TBCreditsU.Text), CheckBoxGeneralModuleU.Checked, Convert.ToInt32(DropDownListExaminorU.Text), TBDescriptionU.Text, Convert.ToInt32(TBLectureHoursU.Text), Convert.ToInt32(TBPracticalHoursU.Text), ingelogd, ModuleId);
             
             //Er komt een return waarde terug voor het aanpassen van de module. wanneer dit NIET gelukt is komt er de volgende melding: 
             if (name == "2")

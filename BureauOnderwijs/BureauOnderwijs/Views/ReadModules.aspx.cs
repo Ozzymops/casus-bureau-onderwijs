@@ -17,8 +17,8 @@ namespace BureauOnderwijs.Views
             DataTable dtbl = new DataTable();
             Models.CC.Examiner_ReadModules RM = new Models.CC.Examiner_ReadModules();
             dtbl = RM.ReadModuleCC(ingelogd);
-            DLModules.DataSource = dtbl;
-            DLModules.DataBind();
+            GVReadModule.DataSource = dtbl;
+            GVReadModule.DataBind();
         }
     }
 }
