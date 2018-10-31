@@ -11,11 +11,48 @@ namespace BureauOnderwijs.Models.BU
 {
     public class Wish
     {
-        private string period;
-        private int week;
-        private string day;
-        private DateTime startTime;
-        private DateTime endTime;
+        public int wishId;
+        public int period;
+        public int week;
+        public int day;
+        public int startHour;
+        public int startMinute;
+        public int endHour;
+        public int endMinute;
+
+        public int WishId
+        {
+            get { return this.wishId; }
+            set { this.wishId = value; }
+        }
+
+        public int Day
+        {
+            get { return this.day; }
+            set { this.day = value; }
+        }
+
+        public string DayString
+        {
+            get { return this.day.ToString(); }
+        }
+
+        public Wish()
+        {
+            // Leeg: anders verschijnen er enge rode lijntjes.
+        }
+
+        public Wish(int wishId, int period, int week, int day, int startHour, int startMinute, int endHour, int endMinute)
+        {
+            this.wishId = wishId;
+            this.period = period;
+            this.week = week;
+            this.day = day;
+            this.startHour = startHour;
+            this.startMinute = startMinute;
+            this.endHour = endHour;
+            this.endMinute = endMinute;
+        }
 
         public int CreateWish(string period, int week, int day, int startHour, int startMinute, int endHour, int endMinute, int ingelogd)
         {
