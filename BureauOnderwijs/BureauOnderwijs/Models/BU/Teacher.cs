@@ -7,7 +7,7 @@ namespace BureauOnderwijs.Models.BU
 {
     public class Teacher : User     // inherit from User.cs
     {
-        private List<Wish> wishList;
+        public List<Models.BU.Wish> wishList;
 
         public Teacher()
         {

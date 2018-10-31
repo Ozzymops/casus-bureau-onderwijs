@@ -13,6 +13,7 @@
         </h4>
         <div>
             <asp:Button ID="ButtonSubmit2FaCode" runat="server" Text="Inloggen" OnClick="ButtonSubmit2FaCode_Click" />
+            <asp:Button ID="ButtonCancelLogin" runat="server" Text="Annuleren" OnClick="ButtonCancelLogin_Click" />
         </div>
         <div>
 

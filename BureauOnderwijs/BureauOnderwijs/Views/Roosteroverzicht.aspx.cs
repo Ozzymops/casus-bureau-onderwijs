@@ -98,12 +98,14 @@ namespace BureauOnderwijs.Views
         {
             List<Models.BU.Lecture> currentChangeList = (List<Models.BU.Lecture>)Session["ScheduleChangeList"];
             Models.CC.Scheduler_GetData sgd = new Models.CC.Scheduler_GetData();
-            // Vul constructor van Lecture
             Models.BU.Lecture newLecture = new Models.BU.Lecture(
-                sgd.GetSingleTeacher(UsernameToUserId(userList.SelectedValue)), sgd.GetSingleModule(Convert.ToInt32(moduleList.SelectedValue)), roomTextBox.Text, groupTextBox.Text,
+                sgd.GetSingleTeacher(Convert.ToInt32(userList.SelectedValue)), sgd.GetSingleModule(Convert.ToInt32(moduleList.SelectedValue)), roomTextBox.Text, groupTextBox.Text,
                 Convert.ToInt32(periodList.SelectedValue), Convert.ToInt32(weekList.SelectedValue), DayStringToInt(dayList.SelectedValue), 9, 0, 10, 0);
             currentChangeList.Add(newLecture);
             Session["ScheduleChangeList"] = currentChangeList;
+
+            // Direct refreshen
+            PasteData();
         }
 
         /// <summary>
@@ -117,7 +119,20 @@ namespace BureauOnderwijs.Views
             GenerateTable();
 
             // Vanuit database
-
+            List<Models.BU.Lecture> retrievedData = RetrieveData();
+            if (retrievedData.Count != 0)
+            {
+                foreach (Models.BU.Lecture lecture in retrievedData)
+                {
+                    if (Convert.ToInt32(userList.SelectedValue) == lecture.teacher.userId && (Convert.ToInt32(periodList.SelectedValue) == lecture.period && Convert.ToInt32(weekList.SelectedValue) == lecture.week))
+                    {
+                        int[] cell = DetermineCell(lecture.day, lecture.startHour, lecture.startMinute);
+                        // string: Dag: Start - Eind. Vak, Groep. Lokaal.
+                        string entry = String.Format("{0}: {1} - {2}. {3}, {4}. {5}.", DayIntToString(lecture.day), TimeToString(lecture.startHour, lecture.startMinute), TimeToString(lecture.endHour, lecture.endMinute), lecture.module.name, lecture.studentGroup, lecture.classroom);
+                        gr_schedule.Rows[cell[0]].Cells[cell[1]].Text = entry;
+                    }
+                }
+            }
 
             // Vanuit Session
             List<Models.BU.Lecture> currentChangeList = (List<Models.BU.Lecture>)Session["ScheduleChangeList"];
@@ -134,6 +149,46 @@ namespace BureauOnderwijs.Views
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Sla data op naar de database.
+        /// </summary>
+        private void SaveData()
+        {
+            List<Models.BU.Lecture> currentChangeList = (List<Models.BU.Lecture>)Session["ScheduleChangeList"];
+            Models.CC.Scheduler_GetData sgd = new Models.CC.Scheduler_GetData();
+            Models.CC.Scheduler_UpdateEntry sue = new Models.CC.Scheduler_UpdateEntry();
+            Models.CC.Scheduler_CreateEntry sce = new Models.CC.Scheduler_CreateEntry();
+            foreach (Models.BU.Lecture lecture in currentChangeList)
+            {
+                int lectureId = sgd.CheckIfLectureAlreadyExists(lecture);
+                if (lectureId != -1) // update
+                {
+                    sue.UpdateEntry(lecture, lectureId);
+                }
+                else                 // create
+                {
+                    sce.CreateEntry(lecture);
+                }
+            }
+            
+            // Reset changelist            
+            currentChangeList.Clear();
+            Session["ScheduleChangeList"] = currentChangeList;
+
+            // Direct refreshen
+            PasteData();
+        }
+
+        /// <summary>
+        /// Haal data op vanuit de database.
+        /// </summary>
+        private List<Models.BU.Lecture> RetrieveData()
+        {
+            Models.CC.Scheduler_GetData sgd = new Models.CC.Scheduler_GetData();
+            List<Models.BU.Lecture> retrievedData = sgd.GetLecturesOfTeacher(Convert.ToInt32(userList.SelectedValue));
+            return retrievedData;
         }
 
         /// <summary>
@@ -181,9 +236,7 @@ namespace BureauOnderwijs.Views
             if ((bool)Session["FirstTimeSchedule"] || userList.SelectedValue != Session["CurrentUser"].ToString() || periodList.SelectedValue != Session["CurrentPeriod"].ToString() || weekList.SelectedValue != Session["CurrentWeek"].ToString())
             {
                 dayList.Items.Clear();
-                // ZET OM NAAR WISHLIST! Voeg ook vier dropdownlists toe voor beschikbare tijden of toon wat de tijdsintervallen zijn.
                 List<int> availableDayList = sgd.GetAvailableDays(Convert.ToInt32(userList.SelectedValue), Convert.ToInt32(periodList.SelectedValue), Convert.ToInt32(weekList.SelectedValue));
-
                 if (availableDayList.Count != 0)
                 {
                     foreach (int day in availableDayList)
@@ -204,6 +257,8 @@ namespace BureauOnderwijs.Views
                 moduleList.DataBind();
                 Session["TempModuleList"] = modulesList;
             }
+
+            // Vul wishList
 
             // Zet Session variabelen
             Session["CurrentUser"] = userList.SelectedValue;
@@ -258,7 +313,7 @@ namespace BureauOnderwijs.Views
             {
                 row += 1;
             }
-            return new int[] { col, row };
+            return new int[] { row, col };
         }
 
         /// <summary>
@@ -342,11 +397,26 @@ namespace BureauOnderwijs.Views
         {
             if (hour == 9)
             {
-                return (String.Format("0{0}:{1}", hour, minute));
+                if (minute == 0)
+                {
+                    return (String.Format("0{0}:{1}0", hour, minute));
+                }
+                else
+                {
+                    return (String.Format("0{0}:{1}", hour, minute));
+                }
+
             }
             else
             {
-                return (String.Format("{0}:{1}", hour, minute));
+                if (minute == 0)
+                {
+                    return (String.Format("{0}:{1}0", hour, minute));
+                }
+                else
+                {
+                    return (String.Format("{0}:{1}", hour, minute));
+                }         
             }
         }
         #endregion
@@ -368,7 +438,7 @@ namespace BureauOnderwijs.Views
 
         protected void saveButton_Click(object sender, EventArgs e)
         {
-
+            SaveData();
         }
 
         protected void ButtonFoutControle_Click(object sender, EventArgs e)

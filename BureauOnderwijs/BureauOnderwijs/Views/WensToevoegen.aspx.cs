@@ -10,6 +10,7 @@ namespace BureauOnderwijs.Views
 {
     public partial class WensToevoegen : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -42,19 +43,48 @@ namespace BureauOnderwijs.Views
                 int intdag = c.getIntFromDayinput(dropDownListDag);
                 int result = c.CreateWishCC(dropDownListPeriod, dropDownListWeek, intdag, dropDownListStartTijdUur, dropDownListStartTijdMinuut, dropDownListEindTijdUur, dropDownListEndTijdMinuut, ingelogd);
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", c.getMessage(result), true);
-
             }
-            else if (e.CommandName == "UserEdit")
-            {
-                LabelSuccesvol.Text = "Clicked edit";
-            }
-            else if (e.CommandName == "Delete")
-            {
-                LabelSuccesvol.Text = "Clicked delete";
-            }
-
             fillGvUserWishes();
         }
+
+        protected void gvUserWishes_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            gvUserWishes.EditIndex = e.NewEditIndex;
+            fillGvUserWishes();
+        }
+
+        protected void gvUserWishes_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            gvUserWishes.EditIndex = -1;
+            fillGvUserWishes();
+        }
+
+        protected void gvUserWishes_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            //string dropDownListPeriod = (gvUserWishes.FooterRow.FindControl("DropDownListPeriod") as DropDownList).SelectedValue;
+            //int dropDownListWeek = Convert.ToInt32((gvUserWishes.FooterRow.FindControl("DropDownListWeek") as DropDownList).SelectedValue);
+            //string dropDownListDag = (gvUserWishes.FooterRow.FindControl("DropDownListDag") as DropDownList).SelectedValue;
+            //int dropDownListStartTijdUur = Convert.ToInt32((gvUserWishes.FooterRow.FindControl("DropDownListStartTijdUur") as DropDownList).SelectedValue);
+            //int dropDownListStartTijdMinuut = Convert.ToInt32((gvUserWishes.FooterRow.FindControl("DropDownListStartTijdMinuut") as DropDownList).SelectedValue);
+            //int dropDownListEindTijdUur = Convert.ToInt32((gvUserWishes.FooterRow.FindControl("DropDownListEindTijdUur") as DropDownList).SelectedValue);
+            //int dropDownListEndTijdMinuut = Convert.ToInt32((gvUserWishes.FooterRow.FindControl("DropDownListEndTijdMinuut") as DropDownList).SelectedValue);
+
+            //Models.CC.Teacher_UpdateWish c = new Models.CC.Teacher_CreateWish();
+            //int intdag = c.getIntFromDayinput(dropDownListDag);
+            //int result = c.CreateWishCC(dropDownListPeriod, dropDownListWeek, intdag, dropDownListStartTijdUur, dropDownListStartTijdMinuut, dropDownListEindTijdUur, dropDownListEndTijdMinuut, ingelogd);
+            //ClientScript.RegisterStartupScript(this.GetType(), "myalert", c.getMessage(result), true);
+        }
+
+        protected void gvUserWishes_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int wishId = (Convert.ToInt32(gvUserWishes.DataKeys[e.RowIndex].Value.ToString()));
+
+            Models.CC.Teacher_DeleteWish dw = new Models.CC.Teacher_DeleteWish();
+            int result = dw.DeleteWish(wishId);
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", dw.GetMessage(result), true);
+            fillGvUserWishes();
+        }
+
         private void fillGvUserWishes()
         {
             //string ingelogd = "1";
@@ -78,5 +108,7 @@ namespace BureauOnderwijs.Views
                 gvUserWishes.DataBind();
             }
         }
+
+
     }
 }
