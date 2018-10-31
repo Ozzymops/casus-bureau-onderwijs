@@ -124,7 +124,7 @@ namespace BureauOnderwijs.Views
             {
                 foreach (Models.BU.Lecture lecture in retrievedData)
                 {
-                    if (Convert.ToInt32(userList.SelectedValue) == lecture.teacher.userId && (Convert.ToInt32(periodList.SelectedValue) == lecture.period && Convert.ToInt32(weekList.SelectedValue) == lecture.week))
+                    if (Convert.ToInt32(userList.SelectedValue) == lecture.teacher.UserID && (Convert.ToInt32(periodList.SelectedValue) == lecture.period && Convert.ToInt32(weekList.SelectedValue) == lecture.week))
                     {
                         int[] cell = DetermineCell(lecture.day, lecture.startHour, lecture.startMinute);
                         // string: Dag: Start - Eind. Vak, Groep. Lokaal.
