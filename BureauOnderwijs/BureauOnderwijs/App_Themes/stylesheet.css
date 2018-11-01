@@ -108,3 +108,35 @@ body {
     height:30px;
     display:inline-block;
 }
+
+.controls {
+    width: 600px;
+    padding: 5px;
+}
+
+.controls p {
+    width: 350px;
+    text-align: left;
+    padding: 2px;
+}
+
+.controlsAsp {
+    width: 300px;
+    text-align: left;
+    padding: 2px;
+}
+
+.controlsAspHalf {
+    width: 148px;
+    text-align: left;
+    padding: 1px;
+}
+
+.wishList {
+    width: 250px;
+    height: 350px;
+    position: absolute;
+    left: 1550px;
+    float: right;
+    padding: 1px;
+}

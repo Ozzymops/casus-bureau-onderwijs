@@ -76,6 +76,24 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Button saveButton;
         
         /// <summary>
+        /// ButtonFoutControle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonFoutControle;
+        
+        /// <summary>
+        /// WishListBoxA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox WishListBoxA;
+        
+        /// <summary>
         /// TestLabel control.
         /// </summary>
         /// <remarks>
@@ -112,22 +130,22 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.TextBox groupTextBox;
         
         /// <summary>
-        /// startTextBox control.
+        /// StartTimeTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox startTextBox;
+        protected global::System.Web.UI.WebControls.TextBox StartTimeTextBox;
         
         /// <summary>
-        /// endTextBox control.
+        /// EndTimeTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox endTextBox;
+        protected global::System.Web.UI.WebControls.TextBox EndTimeTextBox;
         
         /// <summary>
         /// roomTextBox control.
@@ -148,6 +166,15 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Button addButton;
         
         /// <summary>
+        /// LectureListBoxR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox LectureListBoxR;
+        
+        /// <summary>
         /// deleteButton control.
         /// </summary>
         /// <remarks>
@@ -155,14 +182,5 @@ namespace BureauOnderwijs.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button deleteButton;
-        
-        /// <summary>
-        /// ButtonFoutControle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonFoutControle;
     }
 }

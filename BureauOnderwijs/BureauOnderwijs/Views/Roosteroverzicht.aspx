@@ -25,25 +25,31 @@
         </asp:GridView>
         <p><asp:Button ID="saveButton" runat="server" Text="Opslaan" OnClick="saveButton_Click" /></p>
     </div>
-    <div id="controls">
-        <p>Toevoegen:
-            <asp:Label ID="TestLabel" runat="server" Text="TestLabel"></asp:Label>
-        </p>
-        <!-- Wordt dynamisch aangepast op basis van beschikbaarheid docent! -->
-        <p>Dag: <asp:DropDownList ID="dayList" runat="server">
-            </asp:DropDownList></p>
-        <!-- Wordt dynamisch aangepast op basis van docent! -->
-        <p>Vak: <asp:DropDownList ID="moduleList" runat="server">
-            <asp:ListItem Value="0">Vak 1</asp:ListItem>
-            <asp:ListItem Value="1">Vak 2</asp:ListItem>
-            <asp:ListItem Value="2">Vak 3</asp:ListItem>
-            </asp:DropDownList></p>
-        <p>Klas: <asp:TextBox ID="groupTextBox" runat="server"></asp:TextBox></p>
-        <p>Starttijd: <asp:TextBox ID="startTextBox" runat="server"></asp:TextBox></p>
-        <p>Eindtijd: <asp:TextBox ID="endTextBox" runat="server"></asp:TextBox></p>
-        <p>Lokaal: <asp:TextBox ID="roomTextBox" runat="server"></asp:TextBox></p>
-        <asp:Button ID="addButton" runat="server" Text="Toevoegen" OnClick="addButton_Click" />
-        <asp:Button ID="deleteButton" runat="server" Text="Verwijderen" OnClick="deleteButton_Click" />
+    <div id="controls" class="controls">
         <asp:Button ID="ButtonFoutControle" runat="server" OnClick="ButtonFoutControle_Click" style="margin-left: 31px" Text="Fout Controle" Width="112px" />
+        <div id="wishList">
+            <asp:ListBox ID="WishListBoxA" runat="server" CssClass="wishList"></asp:ListBox>
+        </div>
+        <div id="add_controls"> <!-- werk later bij -->
+            <p>Toevoegen: <asp:Label ID="TestLabel" runat="server" Text="TestLabel" CssClass="controlsAsp"></asp:Label></p>
+            <p>Dag: <asp:DropDownList ID="dayList" runat="server" CssClass="controlsAsp" AutoPostBack="True"></asp:DropDownList></p>
+            <p>Vak: <asp:DropDownList ID="moduleList" runat="server" CssClass="controlsAsp"></asp:DropDownList></p>
+            <p>Klas: <asp:TextBox ID="groupTextBox" runat="server" CssClass="controlsAsp"></asp:TextBox></p>
+            <p>Starttijd: 
+                <asp:TextBox ID="StartTimeTextBox" runat="server"></asp:TextBox>
+            </p>
+            <p>Eindtijd: 
+                <asp:TextBox ID="EndTimeTextBox" runat="server"></asp:TextBox>
+            </p>
+            <p>Lokaal: <asp:TextBox ID="roomTextBox" runat="server" CssClass="controlsAsp"></asp:TextBox></p>
+            <asp:Button ID="addButton" runat="server" Text="Toevoegen" OnClick="addButton_Click" CssClass="controlsline" />
+        </div>
+        <div id="edit_controls" style="display: none">
+
+        </div>
+        <div id="remove_controls" style="display: none"> <!-- werk later bij -->
+            <asp:ListBox ID="LectureListBoxR" runat="server"></asp:ListBox>
+            <asp:Button ID="deleteButton" runat="server" Text="Verwijderen" OnClick="deleteButton_Click" />
+        </div>
     </div>
 </asp:Content>

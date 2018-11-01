@@ -72,6 +72,13 @@ namespace BureauOnderwijs.Models.BU
             return (db.GetLecturesOfTeacher(query, userId));
         }
 
+        public List<Models.BU.Wish> GetTeacherWishes(int userId)
+        {
+            Models.Database db = new Models.Database();
+            string query = "SELECT * FROM Wish WHERE UserId = '" + userId + "'";
+            return (db.GetTeacherWishes(query));
+        }
+
         public List<Models.BU.Module> GetModuleListOfTeacher(int userId)
         {
             Models.Database db = new Models.Database();

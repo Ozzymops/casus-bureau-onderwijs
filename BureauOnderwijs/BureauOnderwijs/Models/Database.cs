@@ -161,6 +161,9 @@ namespace BureauOnderwijs.Models
             return null;
         }
 
+        /// <summary>
+        /// Return een lijst van Lectures op basis van userId
+        /// </summary>
         public List<Models.BU.Lecture> GetLecturesOfTeacher(string query, int userId)
         {
             Connect();
@@ -177,6 +180,32 @@ namespace BureauOnderwijs.Models
                     lectureList.Add(tempLecture);
                 }
                 return lectureList;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Return een lijst van Wishes op basis van userId
+        /// </summary>
+        public List<Models.BU.Wish> GetTeacherWishes(string query)
+        {
+            Connect();
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                List<Models.BU.Wish> wishList = new List<Models.BU.Wish>();
+                while (reader.Read())
+                {
+                    Models.BU.Wish tempWish = new Models.BU.Wish(Convert.ToInt32(reader["WishId"]), Convert.ToInt32(reader["Period"]), Convert.ToInt32(reader["Week"]), Convert.ToInt32(reader["Day"]), Convert.ToInt32(reader["StartHour"]), Convert.ToInt32(reader["StartMinute"]), Convert.ToInt32(reader["EndHour"]), Convert.ToInt32(reader["EndMinute"]));
+                    wishList.Add(tempWish);
+                }
+                return wishList;
             }
             catch (Exception)
             {

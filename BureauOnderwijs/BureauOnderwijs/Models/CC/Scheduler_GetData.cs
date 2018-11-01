@@ -47,6 +47,11 @@ namespace BureauOnderwijs.Models.CC
             return (s.GetLecturesOfTeacher(userId));
         }
 
+        public List<Models.BU.Wish> GetTeacherWishes(int userId)
+        {
+            return (s.GetTeacherWishes(userId));
+        }
+
         /// <summary>
         /// Return een lijst van Modules op basis van userId.
         /// </summary>

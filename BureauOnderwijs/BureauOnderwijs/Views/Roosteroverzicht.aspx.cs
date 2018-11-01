@@ -244,6 +244,7 @@ namespace BureauOnderwijs.Views
                         dayList.Items.Add(DayIntToString(day));
                     }
                 }
+                Session["CurrentDay"] = dayList.SelectedValue.ToString();
             }
 
             // Vul moduleList
@@ -259,6 +260,10 @@ namespace BureauOnderwijs.Views
             }
 
             // Vul wishList
+            if ((bool)Session["FirstTimeSchedule"] || userList.SelectedValue != Session["CurrentUser"].ToString())
+            {
+
+            }
 
             // Zet Session variabelen
             Session["CurrentUser"] = userList.SelectedValue;
