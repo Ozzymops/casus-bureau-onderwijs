@@ -24,7 +24,7 @@ namespace BureauOnderwijs.Models.BU
         public int UserID
         {
             get { return this.userId; }
-            //set { this.userId = value; }
+            set { this.userId = value; }
         }
 
         public string UserName
@@ -55,7 +55,7 @@ namespace BureauOnderwijs.Models.BU
         public User(int userId)
         {
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
-            string sqlQuery = "SELECT UserId, Username, Role, Emailadress FROM UserAccount";
+            string sqlQuery = "SELECT UserId, Username, Role, Emailadress FROM UserAccount WHERE UserId = '" + userId + "'";
 
             SqlConnection con = new SqlConnection(conString);
             SqlCommand cmd = new SqlCommand(sqlQuery, con);

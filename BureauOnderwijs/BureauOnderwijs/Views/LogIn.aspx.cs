@@ -13,7 +13,7 @@ namespace BureauOnderwijs.Views
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["UserId"] = null;
+            //Session["UserId"] = null;
         }
 
         protected void ButtonLogin_Click(object sender, EventArgs e)
