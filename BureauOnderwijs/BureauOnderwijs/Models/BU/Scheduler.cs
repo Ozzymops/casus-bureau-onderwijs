@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 using System.Web;
+using System.Data.SqlClient;
 
 namespace BureauOnderwijs.Models.BU
 {
@@ -10,7 +11,27 @@ namespace BureauOnderwijs.Models.BU
     {
         public string ConflictCheck()
         {
-            return "iets2";
+            string conStringetje = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQuerytje = "SELECT COUNT (*) FROM Lecture WHERE 'Classroom' = ''";
+            string rv = "";
+            try
+            {
+                SqlConnection connetje = new SqlConnection(conStringetje);
+                SqlCommand cmdtje = new SqlCommand(sqlQuerytje, connetje); 
+                connetje.Open();
+                SqlDataReader reader = cmdtje.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    rv = reader.GetInt32(0).ToString();
+                }
+                connetje.Close();
+                return rv;
+            }
+            catch (Exception ex)
+            {                
+                return Convert.ToString(ex);
+            }
         }
 
         public void CreateEntry(Models.BU.Lecture lecture)
