@@ -449,7 +449,8 @@ namespace BureauOnderwijs.Views
         protected void ButtonFoutControle_Click(object sender, EventArgs e)
         {
             Models.CC.Scheduler_ShowConflicts ssc = new Models.CC.Scheduler_ShowConflicts();
-            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Hier komt te staan of er fouten zijn aangetroffen de ja of de nee.');", true);
+            string returnvalue = ssc.Conflicts();
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Aantal Lessen zonder toegewezen lokaal: '" + returnvalue +"'');", true);
         }
 
         protected void deleteButton_Click(object sender, EventArgs e)
