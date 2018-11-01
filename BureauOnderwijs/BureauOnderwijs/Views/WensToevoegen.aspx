@@ -140,7 +140,7 @@
                 </asp:TemplateField>
 
                 <%-- Eind tijd --%>
-                <asp:TemplateField HeaderText="Eind tijd">
+                <asp:TemplateField HeaderText="Eind uur">
                     <ItemTemplate>
                         <asp:Label Text='<%# Eval("EndHour")%>' runat="server" />
                     </ItemTemplate>
