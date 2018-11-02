@@ -109,34 +109,45 @@ body {
     display:inline-block;
 }
 
-.controls {
+.controls_div_main {
     width: 600px;
-    padding: 5px;
+    height: 300px;
 }
 
-.controls p {
-    width: 350px;
-    text-align: left;
-    padding: 2px;
-}
-
-.controlsAsp {
+.controls_div {
+    float: left;
+    clear: left;
     width: 300px;
-    text-align: left;
-    padding: 2px;
+    height: 30px;
+    padding-bottom: 3px;
+    overflow: hidden;
 }
 
-.controlsAspHalf {
-    width: 148px;
-    text-align: left;
-    padding: 1px;
+.controls_label {
+    text-align: right;
+    margin-right: 5px;
+}
+
+.controls_textbox {
+    text-align: center;
+    margin-right: 5px;
+}
+
+.controls_textbox_small {
+    width: 50px;
+    margin-right: 5px;
+}
+
+.controls_dropdownlist {
+    text-align: center;
+    margin-right: 5px;
 }
 
 .wishList {
     width: 250px;
-    height: 350px;
+    height: 400px;
     position: absolute;
     left: 1550px;
     float: right;
-    padding: 1px;
+    clear: both;
 }

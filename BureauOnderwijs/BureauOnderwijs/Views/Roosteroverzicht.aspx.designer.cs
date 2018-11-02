@@ -22,31 +22,31 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.ScriptManager manager;
         
         /// <summary>
-        /// userList control.
+        /// UserDropdownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList userList;
+        protected global::System.Web.UI.WebControls.DropDownList UserDropdownList;
         
         /// <summary>
-        /// periodList control.
+        /// PeriodDropdownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList periodList;
+        protected global::System.Web.UI.WebControls.DropDownList PeriodDropdownList;
         
         /// <summary>
-        /// weekList control.
+        /// WeekDropdownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList weekList;
+        protected global::System.Web.UI.WebControls.DropDownList WeekDropdownList;
         
         /// <summary>
         /// RefreshButton control.
@@ -76,6 +76,15 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Button saveButton;
         
         /// <summary>
+        /// PanelDropdownList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList PanelDropdownList;
+        
+        /// <summary>
         /// ButtonFoutControle control.
         /// </summary>
         /// <remarks>
@@ -85,102 +94,174 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Button ButtonFoutControle;
         
         /// <summary>
-        /// WishListBoxA control.
+        /// add_controls control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox WishListBoxA;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl add_controls;
         
         /// <summary>
-        /// TestLabel control.
+        /// DayLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TestLabel;
+        protected global::System.Web.UI.WebControls.Label DayLabel;
         
         /// <summary>
-        /// dayList control.
+        /// DayDropdownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dayList;
+        protected global::System.Web.UI.WebControls.DropDownList DayDropdownList;
         
         /// <summary>
-        /// moduleList control.
+        /// ModuleLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList moduleList;
+        protected global::System.Web.UI.WebControls.Label ModuleLabel;
         
         /// <summary>
-        /// groupTextBox control.
+        /// ModuleDropdownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox groupTextBox;
+        protected global::System.Web.UI.WebControls.DropDownList ModuleDropdownList;
         
         /// <summary>
-        /// StartTimeTextBox control.
+        /// ClassroomLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox StartTimeTextBox;
+        protected global::System.Web.UI.WebControls.Label ClassroomLabel;
         
         /// <summary>
-        /// EndTimeTextBox control.
+        /// ClassroomTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox EndTimeTextBox;
+        protected global::System.Web.UI.WebControls.TextBox ClassroomTextBox;
         
         /// <summary>
-        /// roomTextBox control.
+        /// StudentGroupLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox roomTextBox;
+        protected global::System.Web.UI.WebControls.Label StudentGroupLabel;
         
         /// <summary>
-        /// addButton control.
+        /// StudentGroupTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addButton;
+        protected global::System.Web.UI.WebControls.TextBox StudentGroupTextBox;
         
         /// <summary>
-        /// LectureListBoxR control.
+        /// TimeStartLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox LectureListBoxR;
+        protected global::System.Web.UI.WebControls.Label TimeStartLabel;
         
         /// <summary>
-        /// deleteButton control.
+        /// TimeStartHourTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button deleteButton;
+        protected global::System.Web.UI.WebControls.TextBox TimeStartHourTextBox;
+        
+        /// <summary>
+        /// TimeStartMinuteTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TimeStartMinuteTextBox;
+        
+        /// <summary>
+        /// TimeEndLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TimeEndLabel;
+        
+        /// <summary>
+        /// TimeEndHourTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TimeEndHourTextBox;
+        
+        /// <summary>
+        /// TimeEndMinuteTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TimeEndMinuteTextBox;
+        
+        /// <summary>
+        /// AddButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddButton;
+        
+        /// <summary>
+        /// edit_controls control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl edit_controls;
+        
+        /// <summary>
+        /// LectureDataList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList LectureDataList;
+        
+        /// <summary>
+        /// remove_controls control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl remove_controls;
     }
 }

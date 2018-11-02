@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
 
 namespace BureauOnderwijs.Models.CC
 {
@@ -79,6 +80,11 @@ namespace BureauOnderwijs.Models.CC
         public int CheckIfLectureAlreadyExists(Models.BU.Lecture lecture)
         {
             return (s.CheckIfLectureAlreadyExists(lecture));
+        }
+
+        public DataTable GetLectureOfTeacherAsDataTable(int userId, int period, int week)
+        {
+            return (s.GetLectureOfTeacherAsDataTable(userId, period, week));
         }
     }
 }
