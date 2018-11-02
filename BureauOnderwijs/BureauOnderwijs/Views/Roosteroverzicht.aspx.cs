@@ -445,7 +445,7 @@ namespace BureauOnderwijs.Views
         {
             Models.CC.Scheduler_ShowConflicts ssc = new Models.CC.Scheduler_ShowConflicts();
             string returnvalue = ssc.Conflicts();
-            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Aantal Lessen zonder toegewezen lokaal: '" + returnvalue +"'');", true);
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Aantal Lessen zonder toegewezen lokaal: " + returnvalue +"');", true);
         }
 
         protected void deleteButton_Click(object sender, EventArgs e)
