@@ -549,9 +549,11 @@ namespace BureauOnderwijs.Views
         protected void ButtonFoutControle_Click(object sender, EventArgs e)
         {
             Models.CC.Scheduler_ShowConflicts ssc = new Models.CC.Scheduler_ShowConflicts();
-            string returnvalue = ssc.Conflicts();
-            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Aantal Lessen zonder toegewezen lokaal: " + returnvalue +"');", true);
-        }
+            string returnvalueclassroom = ssc.ConflictsClassroomEmpty();
+            string returnvalueteacher = ssc.ConflictsTeacherEmpty();
+            string returnvaluestudentgroup = ssc.ConflictsStudentgroupEmpty();
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Aantal Lessen zonder toegewezen lokaal: " + returnvalueclassroom + "\\nAantal Lessen zonder toegewezen docent: " + returnvalueteacher + "\\nAantal Lessen zonder toegewezen klas: " + returnvaluestudentgroup + "');", true);
+        }   
 
         protected void deleteButton_Click(object sender, EventArgs e)
         {
