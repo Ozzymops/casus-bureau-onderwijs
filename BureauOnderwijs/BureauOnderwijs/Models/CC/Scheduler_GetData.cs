@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
 
 namespace BureauOnderwijs.Models.CC
 {
@@ -47,6 +48,11 @@ namespace BureauOnderwijs.Models.CC
             return (s.GetLecturesOfTeacher(userId));
         }
 
+        public List<Models.BU.Wish> GetTeacherWishes(int userId)
+        {
+            return (s.GetTeacherWishes(userId));
+        }
+
         /// <summary>
         /// Return een lijst van Modules op basis van userId.
         /// </summary>
@@ -74,6 +80,11 @@ namespace BureauOnderwijs.Models.CC
         public int CheckIfLectureAlreadyExists(Models.BU.Lecture lecture)
         {
             return (s.CheckIfLectureAlreadyExists(lecture));
+        }
+
+        public DataTable GetLectureOfTeacherAsDataTable(int userId, int period, int week)
+        {
+            return (s.GetLectureOfTeacherAsDataTable(userId, period, week));
         }
     }
 }

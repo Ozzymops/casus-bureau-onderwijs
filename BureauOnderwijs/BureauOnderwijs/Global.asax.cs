@@ -27,6 +27,7 @@ namespace BureauOnderwijs
             Session["ScheduleChangeList"] = new List<Models.BU.Lecture>();
             Session["ScheduleDatabaseList"] = new List<Models.BU.Lecture>();
             Session["CurrentUser"] = "Roy"; // los dit op!
+            Session["ControlPanel"] = 0;
             Session["FirstTimeSchedule"] = true;
         }
     }

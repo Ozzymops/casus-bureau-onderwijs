@@ -4,6 +4,7 @@ using System.Linq;
 using System.Diagnostics;
 using System.Web;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace BureauOnderwijs.Models.BU
 {
@@ -93,6 +94,13 @@ namespace BureauOnderwijs.Models.BU
             return (db.GetLecturesOfTeacher(query, userId));
         }
 
+        public List<Models.BU.Wish> GetTeacherWishes(int userId)
+        {
+            Models.Database db = new Models.Database();
+            string query = "SELECT * FROM Wish WHERE UserId = '" + userId + "'";
+            return (db.GetTeacherWishes(query));
+        }
+
         public List<Models.BU.Module> GetModuleListOfTeacher(int userId)
         {
             Models.Database db = new Models.Database();
@@ -121,6 +129,13 @@ namespace BureauOnderwijs.Models.BU
                            "AND Day = '" + lecture.day + "' AND StartHour = '" + lecture.startHour + "' AND StartMinute = '" + lecture.startMinute + "'" +
                            "AND EndHour = '" + lecture.endHour + "' AND EndMinute = '" + lecture.endMinute + "'";
             return (db.CheckIfLectureAlreadyExists(query));
+        }
+
+        public DataTable GetLectureOfTeacherAsDataTable(int userId, int period, int week)
+        {
+            Models.Database db = new Models.Database();
+            string query = "SELECT * FROM Lecture WHERE TeacherId = '" + userId + "' AND Period = '" + period + "' AND Week = '" + week + "'";
+            return (db.GetLectureOfTeacherAsDataTable(query));
         }
     }
 }
