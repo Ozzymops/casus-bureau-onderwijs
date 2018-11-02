@@ -23,7 +23,6 @@
             <SortedDescendingCellStyle BackColor="#FCF6C0" />
             <SortedDescendingHeaderStyle BackColor="#820000" />
         </asp:GridView>
-        <p><asp:Button ID="saveButton" runat="server" Text="Opslaan" OnClick="saveButton_Click" /></p>
     </div>
     <div id="controls" class="controls_div_main" style="float: left;">
         <div id="controls_persistent">
@@ -55,7 +54,7 @@
                 <asp:TextBox ID="TimeEndHourTextBox" CssClass="controls_textbox" Width="45px" runat="server"></asp:TextBox>
                 <asp:TextBox ID="TimeEndMinuteTextBox" CssClass="controls_textbox" Width="45px" runat="server"></asp:TextBox>
             </p>
-            <p><asp:Button ID="AddButton" runat="server" Text="Toevoegen aan rooster" /></p>
+            <p><asp:Button ID="AddButton" runat="server" Text="Toevoegen aan rooster" OnClick="AddButton_Click" /></p>
         </div>
         <div id="edit_controls" runat="server">
             <p id="edit_top">
@@ -70,8 +69,7 @@
                     <SortedAscendingCellStyle BackColor="#FDF5AC" />
                     <SortedAscendingHeaderStyle BackColor="#4D0000" />
                     <SortedDescendingCellStyle BackColor="#FCF6C0" />
-                    <SortedDescendingHeaderStyle BackColor="#820000" />
-                </asp:GridView>
+                    <SortedDescendingHeaderStyle BackColor="#820000" /></asp:GridView>
             </p>
         </div>
         <div id="remove_controls" runat="server" style="display: none">
