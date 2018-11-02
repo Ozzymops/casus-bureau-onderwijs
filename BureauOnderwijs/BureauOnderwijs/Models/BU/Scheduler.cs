@@ -180,12 +180,5 @@ namespace BureauOnderwijs.Models.BU
                            "AND EndHour = '" + lecture.endHour + "' AND EndMinute = '" + lecture.endMinute + "'";
             return (db.CheckIfLectureAlreadyExists(query));
         }
-
-        public DataTable GetLectureOfTeacherAsDataTable(int userId, int period, int week)
-        {
-            Models.Database db = new Models.Database();
-            string query = "SELECT * FROM Lecture WHERE TeacherId = '" + userId + "' AND Period = '" + period + "' AND Week = '" + week + "'";
-            return (db.GetLectureOfTeacherAsDataTable(query));
-        }
     }
 }
