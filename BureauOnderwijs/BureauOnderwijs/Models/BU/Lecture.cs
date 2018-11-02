@@ -43,28 +43,9 @@ namespace BureauOnderwijs.Models.BU
             // Leeg: anders verschijnen er enge rode lijntjes.
         }
 
-        // Get Lecture
         public Lecture(Teacher teacher, Module module, string classroom, string studentGroup,
                        int period, int week, int day, int startHour, int startMinute, int endHour, int endMinute)
         {
-            this.teacher = teacher;
-            this.module = module;
-            this.classroom = classroom;
-            this.studentGroup = studentGroup;
-            this.period = period;
-            this.week = week;
-            this.day = day;
-            this.startHour = startHour;
-            this.startMinute = startMinute;
-            this.endHour = endHour;
-            this.endMinute = endMinute;
-        }
-
-        // Read Lecture
-        public Lecture(int lectureId, Teacher teacher, Module module, string classroom, string studentGroup,
-               int period, int week, int day, int startHour, int startMinute, int endHour, int endMinute)
-        {
-            this.lectureId = lectureId;
             this.teacher = teacher;
             this.module = module;
             this.classroom = classroom;

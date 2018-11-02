@@ -81,10 +81,5 @@ namespace BureauOnderwijs.Models.CC
         {
             return (s.CheckIfLectureAlreadyExists(lecture));
         }
-
-        public DataTable GetLectureOfTeacherAsDataTable(int userId, int period, int week)
-        {
-            return (s.GetLectureOfTeacherAsDataTable(userId, period, week));
-        }
     }
 }

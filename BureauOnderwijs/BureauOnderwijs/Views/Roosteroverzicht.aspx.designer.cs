@@ -67,15 +67,6 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.GridView gr_schedule;
         
         /// <summary>
-        /// saveButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button saveButton;
-        
-        /// <summary>
         /// PanelDropdownList control.
         /// </summary>
         /// <remarks>
@@ -247,13 +238,22 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl edit_controls;
         
         /// <summary>
-        /// LectureDataList control.
+        /// LectureLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList LectureDataList;
+        protected global::System.Web.UI.WebControls.Label LectureLabel;
+        
+        /// <summary>
+        /// LectureGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView LectureGridView;
         
         /// <summary>
         /// remove_controls control.
