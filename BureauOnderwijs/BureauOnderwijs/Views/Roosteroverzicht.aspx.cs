@@ -117,8 +117,29 @@ namespace BureauOnderwijs.Views
             // Reset tabel
             gr_schedule.DataSource = null;
             gr_schedule.DataBind();
+            LectureGridView.DataSource = null;
+            LectureGridView.DataBind();
             GenerateTable();
 
+            // Maak een tabel voor de LectureGridView
+            DataTable dt2 = new DataTable();
+            if (dt2.Columns.Count == 0)
+            {
+                dt2.Columns.Add("LesId", typeof(int));
+                dt2.Columns.Add("DocentId", typeof(int));
+                dt2.Columns.Add("Module", typeof(string));
+                dt2.Columns.Add("Lokaal", typeof(string));
+                dt2.Columns.Add("Groep", typeof(string));
+                dt2.Columns.Add("Blok", typeof(int));
+                dt2.Columns.Add("Week", typeof(int));
+                dt2.Columns.Add("Dag", typeof(int));
+                dt2.Columns.Add("Start [H]", typeof(int));
+                dt2.Columns.Add("Start [M]", typeof(int));
+                dt2.Columns.Add("Eind [H]", typeof(int));
+                dt2.Columns.Add("Eind [M]", typeof(int));
+            }
+
+            int lectureId = 1;
             // Vanuit database
             List<Models.BU.Lecture> retrievedData = RetrieveData();
             if (retrievedData.Count != 0)
@@ -130,6 +151,23 @@ namespace BureauOnderwijs.Views
                         int[] cell = DetermineCell(lecture.day, lecture.startHour, lecture.startMinute);
                         string entry = ConstructScheduleString(lecture.day, new int[] { lecture.startHour, lecture.startMinute }, new int[] { lecture.endHour, lecture.endMinute }, lecture.module.name, lecture.studentGroup, lecture.classroom);
                         gr_schedule.Rows[cell[0]].Cells[cell[1]].Text = entry;
+
+                        // Vul LectureGridView
+                        DataRow dr2 = dt2.NewRow();
+                        dr2["LesId"] = lectureId;
+                        dr2["DocentId"] = lecture.teacher.UserID;
+                        dr2["Module"] = lecture.module.moduleCode;
+                        dr2["Lokaal"] = lecture.classroom;
+                        dr2["Groep"] = lecture.studentGroup;
+                        dr2["Blok"] = lecture.period;
+                        dr2["Week"] = lecture.week;
+                        dr2["Dag"] = lecture.day;
+                        dr2["Start [H]"] = lecture.startHour;
+                        dr2["Start [M]"] = lecture.startMinute;
+                        dr2["Eind [H]"] = lecture.endHour;
+                        dr2["Eind [M]"] = lecture.endMinute;
+                        dt2.Rows.Add(dr2);
+                        lectureId++;
                     }
                 }
             }
@@ -145,8 +183,36 @@ namespace BureauOnderwijs.Views
                         int[] cell = DetermineCell(lecture.day, lecture.startHour, lecture.startMinute);
                         string entry = ConstructScheduleString(lecture.day, new int[] { lecture.startHour, lecture.startMinute }, new int[] { lecture.endHour, lecture.endMinute }, lecture.module.name, lecture.studentGroup, lecture.classroom);
                         gr_schedule.Rows[cell[0]].Cells[cell[1]].Text = entry;
+
+                        // Vul LectureGridView
+                        DataRow dr2 = dt2.NewRow();
+                        dr2["LesId"] = lectureId;
+                        dr2["DocentId"] = lecture.teacher.UserID;
+                        dr2["Module"] = lecture.module.moduleCode;
+                        dr2["Lokaal"] = lecture.classroom;
+                        dr2["Groep"] = lecture.studentGroup;
+                        dr2["Blok"] = lecture.period;
+                        dr2["Week"] = lecture.week;
+                        dr2["Dag"] = lecture.day;
+                        dr2["Start [H]"] = lecture.startHour;
+                        dr2["Start [M]"] = lecture.startMinute;
+                        dr2["Eind [H]"] = lecture.endHour;
+                        dr2["Eind [M]"] = lecture.endMinute;
+                        dt2.Rows.Add(dr2);
+                        lectureId++;
                     }
                 }
+            }
+
+            LectureGridView.DataSource = dt2;
+            LectureGridView.DataBind();
+            if (LectureGridView.Rows.Count == 0)
+            {
+                LectureLabel.Text = "Lectures = null. Geen resultaten.";
+            }
+            else
+            {
+                LectureLabel.Text = "Lectures van " + UserIdToUsername(Convert.ToInt32(UserDropdownList.SelectedValue));
             }
         }
 
@@ -262,15 +328,6 @@ namespace BureauOnderwijs.Views
             if ((bool)Session["FirstTimeSchedule"] || UserDropdownList.SelectedValue != Session["CurrentUser"].ToString())
             {
 
-            }
-
-            // Vul LectureDataList
-            if ((bool)Session["FirstTimeSchedule"] || UserDropdownList.SelectedValue != Session["CurrentUser"].ToString() || PeriodDropdownList.SelectedValue != Session["CurrentPeriod"].ToString() || WeekDropdownList.SelectedValue != Session["CurrentWeek"].ToString())
-            {
-                LectureDataList.DataSource = null;
-                LectureDataList.DataBind();
-                LectureDataList.DataSource = sgd.GetLectureOfTeacherAsDataTable(Convert.ToInt32(UserDropdownList.SelectedValue), Convert.ToInt32(PeriodDropdownList.SelectedValue), Convert.ToInt32(WeekDropdownList.SelectedValue));
-                LectureDataList.DataBind();
             }
 
             // Zet Session variabelen

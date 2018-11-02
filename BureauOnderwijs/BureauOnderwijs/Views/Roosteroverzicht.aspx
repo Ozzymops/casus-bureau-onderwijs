@@ -11,7 +11,7 @@
            Week: <asp:DropDownList ID="WeekDropdownList" runat="server" AutoPostBack="True"></asp:DropDownList>
             <asp:Button ID="RefreshButton" runat="server" OnClick="RefreshButton_Click" Text="Refresh" />
         </p>
-        <asp:GridView ID="gr_schedule" runat="server" Width="1140px" CellPadding="4" ForeColor="#333333" GridLines="Both" CssClass="schedule">
+        <asp:GridView ID="gr_schedule" runat="server" Width="1000px" CellPadding="4" ForeColor="#333333" GridLines="Both" CssClass="schedule">
             <AlternatingRowStyle BackColor="White" />
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -25,7 +25,7 @@
         </asp:GridView>
         <p><asp:Button ID="saveButton" runat="server" Text="Opslaan" OnClick="saveButton_Click" /></p>
     </div>
-    <div id="controls" class="controls_div_main">
+    <div id="controls" class="controls_div_main" style="float: left;">
         <div id="controls_persistent">
             <asp:DropDownList ID="PanelDropdownList" CssStyle="controls_label" runat="server" AutoPostBack="True" OnSelectedIndexChanged="PanelDropdownList_SelectedIndexChanged">
                 <asp:ListItem Value="0">Toevoegen</asp:ListItem>
@@ -59,37 +59,19 @@
         </div>
         <div id="edit_controls" runat="server">
             <p id="edit_top">
-                <asp:DataList ID="LectureDataList" runat="server" CellPadding="4" ForeColor="#333333">
-                    <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                    <HeaderTemplate>
-                        <table style="border:2px solid black; text-align:left; width:800px;">
-                            <thead>
-                                 <tr>
-                                    <th>Id</th>
-                                    <th>Docent</th>
-                                    <th>Module</th>
-                                </tr>
-                            </thead>       
-                        <tbody>
-                            </HeaderTemplate>
-                        <ItemStyle BackColor="#FFFBD6" ForeColor="#333333" />
-                        <ItemTemplate>
-                            <tr>
-                                <td><%#Eval("LectureId") %></td>
-                                <td><%#Eval("TeacherId") %></td>
-                                <td><%#Eval("ModuleCode") %></td>
-                            </tr>
-                        </ItemTemplate>
-           
-                        <AlternatingItemStyle BackColor="White" />
+                <asp:Label ID="LectureLabel" runat="server" Text="Lessen voor xxx:"></asp:Label>
+                <asp:GridView ID="LectureGridView" runat="server" Width="600px" CellPadding="4" ForeColor="#333333" GridLines="Both">
+                    <AlternatingRowStyle BackColor="White" />
                     <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-           
-                        <FooterTemplate>
-                            </tbody>
-                        </table>
-                    </FooterTemplate>
-                    <SelectedItemStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
-                </asp:DataList>
+                    <HeaderStyle BackColor="#990000" Font-Bold="False" ForeColor="White" />
+                    <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                    <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+                    <SortedAscendingCellStyle BackColor="#FDF5AC" />
+                    <SortedAscendingHeaderStyle BackColor="#4D0000" />
+                    <SortedDescendingCellStyle BackColor="#FCF6C0" />
+                    <SortedDescendingHeaderStyle BackColor="#820000" />
+                </asp:GridView>
             </p>
         </div>
         <div id="remove_controls" runat="server" style="display: none">
