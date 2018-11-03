@@ -165,6 +165,13 @@ namespace BureauOnderwijs.Models.BU
             return (db.GetSingleModule(query));
         }
 
+        public Models.BU.Module GetModuleByModuleCode(string moduleCode)
+        {
+            Models.Database db = new Models.Database();
+            string query = "SELECT * FROM Module WHERE Code = '" + moduleCode + "'";
+            return (db.GetSingleModule(query));
+        }
+
         public List<int> GetAvailableDays(int userId, int period, int week)
         {
             Models.Database db = new Models.Database();

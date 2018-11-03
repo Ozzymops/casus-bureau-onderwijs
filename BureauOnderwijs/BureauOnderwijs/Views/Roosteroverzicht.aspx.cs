@@ -112,6 +112,82 @@ namespace BureauOnderwijs.Views
         }
 
         /// <summary>
+        /// Wijzig een Lecture in de database.
+        /// </summary>
+        private void EditLecture()
+        {
+            if (LectureIdDropdownList != null && LectureIdDropdownList.Items.Count != 0)
+            {
+                if (ClassroomTextBox_E.Text != "" && StudentGroupTextBox_E.Text != "" && TimeStartHourTextBox_E.Text != "" && TimeStartMinuteTextBox_E.Text != "" && TimeEndHourTextBox_E.Text != "" && TimeEndMinuteTextBox_E.Text != "")
+                {
+                    // edit entry
+                }
+            }
+        }
+
+        /// <summary>
+        /// Vul de textboxes en dropdownlists in de Edit panel.
+        /// </summary>
+        private void FillEditInputs()
+        {
+            Debug.WriteLine(Session["CurrentLectureId"].ToString());
+            Debug.WriteLine(LectureIdDropdownList.SelectedValue.ToString());
+            if (LectureIdDropdownList != null && LectureIdDropdownList.Items.Count != 0)
+            {
+                if (LectureGridView != null && LectureGridView.Rows.Count != 0)
+                {
+                    foreach (GridViewRow row in LectureGridView.Rows)
+                    {
+                        if (row.Cells[0].Text == LectureIdDropdownList.SelectedValue.ToString())
+                        {
+                            // vul lijsten en zo met data uit de row
+                            // commence herhaalde code
+
+                            // Fill lists with available stuff
+                            // Day
+                            DayDropdownList_E.Items.Clear();
+                            List<Models.BU.Wish> teacherWishList = (List<Models.BU.Wish>)Session["TeacherWishList"];
+                            if (teacherWishList.Count != 0)
+                            {
+                                foreach (Models.BU.Wish wish in teacherWishList)
+                                {
+                                    if (wish.period == Convert.ToInt32(PeriodDropdownList.SelectedValue) && wish.week == Convert.ToInt32(WeekDropdownList.SelectedValue))
+                                    {
+                                        if (DayDropdownList_E.Items.FindByText(DayIntToString(wish.day)) == null)
+                                        {
+                                            DayDropdownList_E.Items.Add(DayIntToString(wish.day));
+                                        }
+                                    }
+                                }
+                            }
+
+                            // Module
+                            ModuleDropdownList_E.Items.Clear();
+                            List<Models.BU.Module> modulesList = (List<Models.BU.Module>)Session["TeacherModuleList"];
+                            ModuleDropdownList_E.DataSource = modulesList;
+                            ModuleDropdownList_E.DataValueField = "ModuleId";
+                            ModuleDropdownList_E.DataTextField = "ModuleCode";
+                            ModuleDropdownList_E.DataBind();
+
+                            // Set values
+                            Models.CC.Scheduler_GetData sgd = new Models.CC.Scheduler_GetData();
+                            int selectedModuleId = sgd.GetModuleByModuleCode(row.Cells[2].Text).moduleId;
+                            ModuleDropdownList_E.SelectedValue = selectedModuleId.ToString();
+                            ClassroomTextBox_E.Text = row.Cells[3].Text;
+                            StudentGroupTextBox_E.Text = row.Cells[4].Text;
+                            DayDropdownList_E.SelectedValue = DayIntToString(Convert.ToInt32(row.Cells[7].Text));
+                            TimeStartHourTextBox_E.Text = row.Cells[8].Text;
+                            TimeStartMinuteTextBox_E.Text = row.Cells[9].Text;
+                            TimeEndHourTextBox_E.Text = row.Cells[10].Text;
+                            TimeEndMinuteTextBox_E.Text = row.Cells[11].Text;
+                        }
+                    }
+                }
+            }
+            Session["CurrentLectureId"] = LectureIdDropdownList.SelectedValue;
+        }
+
+        /// <summary>
         /// Plak data vanuit de huidige sessie en de database in de tabel.
         /// </summary>
         private void PasteData()
@@ -142,8 +218,8 @@ namespace BureauOnderwijs.Views
             }
 
             int lectureId = 1;
-            // Vanuit database
             List<Models.BU.Lecture> retrievedData = RetrieveData();
+            List<int> lectureIdList = new List<int>();
             if (retrievedData.Count != 0)
             {
                 foreach (Models.BU.Lecture lecture in retrievedData)
@@ -153,6 +229,8 @@ namespace BureauOnderwijs.Views
                         int[] cell = DetermineCell(lecture.day, lecture.startHour, lecture.startMinute);
                         string entry = ConstructScheduleString(lecture.day, new int[] { lecture.startHour, lecture.startMinute }, new int[] { lecture.endHour, lecture.endMinute }, lecture.module.name, lecture.studentGroup, lecture.classroom);
                         gr_schedule.Rows[cell[0]].Cells[cell[1]].Text = entry;
+
+                        lectureIdList.Add(lectureId);
 
                         // Vul LectureGridView
                         DataRow dr2 = dt2.NewRow();
@@ -174,15 +252,36 @@ namespace BureauOnderwijs.Views
                 }
             }
 
+            // Vul Edit dropdownlist
+            if ((bool)Session["FirstTimeSchedule"] || UserDropdownList.SelectedValue != Session["CurrentUser"].ToString() || PeriodDropdownList.SelectedValue != Session["CurrentPeriod"].ToString() || WeekDropdownList.SelectedValue != Session["CurrentWeek"].ToString())
+            {
+                LectureIdDropdownList.DataSource = lectureIdList;
+                LectureIdDropdownList.DataBind();
+                if((bool)Session["FirstTimeSchedule"])
+                {
+                    Session["CurrentLectureId"] = LectureIdDropdownList.SelectedValue;
+                }            
+            }
+
             LectureGridView.DataSource = dt2;
             LectureGridView.DataBind();
             if (LectureGridView.Rows.Count == 0)
             {
                 LectureLabel.Text = "Lectures = null. Geen resultaten.";
+                edit_topmid.Visible = false;
+                edit_mid.Visible = false;
+                edit_botmid.Visible = false;
+                edit_bot.Visible = false;
+                edit_but.Visible = false;
             }
             else
             {
                 LectureLabel.Text = "Lectures van " + UserIdToUsername(Convert.ToInt32(UserDropdownList.SelectedValue));
+                edit_topmid.Visible = true;
+                edit_mid.Visible = true;
+                edit_botmid.Visible = true;
+                edit_bot.Visible = true;
+                edit_but.Visible = true;
             }
         }
 
@@ -221,12 +320,15 @@ namespace BureauOnderwijs.Views
         /// </summary>
         private List<Models.BU.Lecture> RetrieveData()
         {
-            // Vul een Session list op basis van userId, wordt eenmalig opgehaald of wanneer de UserDropdownList een andere waarde krijgt.
-            if ((bool)Session["FirstTimeSchedule"] || UserDropdownList.SelectedValue != Session["CurrentUser"].ToString())
+            Debug.WriteLine("RetrieveData - UserDropdownList = " + UserDropdownList.SelectedValue + ", Session[CurrentUser] = " + Session["CurrentUser"]);
+            // Vul een Session list op basis van userId, wordt eenmalig opgehaald of wanneer de UserDropdownList een andere waarde krijgt OF wanneer er iets nieuws toegevoegd wordt.
+            if ((bool)Session["FirstTimeSchedule"] || UserDropdownList.SelectedValue != Session["CurrentUser"].ToString() || (bool)Session["NewChanges"])
             {
                 Models.CC.Scheduler_GetData sgd = new Models.CC.Scheduler_GetData();
                 List<Models.BU.Lecture> teacherLectureList = sgd.GetLecturesOfTeacher(Convert.ToInt32(UserDropdownList.SelectedValue));
                 Session["TeacherLectureList"] = teacherLectureList;
+                Session["NewChanges"] = false;
+                Session["CurrentUser"] = UserDropdownList.SelectedValue;
             }
             List<Models.BU.Lecture> retrievedData = (List<Models.BU.Lecture>)Session["TeacherLectureList"];
             return retrievedData;
@@ -317,7 +419,7 @@ namespace BureauOnderwijs.Views
             }
 
             // Zet Session variabelen
-            Session["CurrentUser"] = UserDropdownList.SelectedValue;
+            //Session["CurrentUser"] = UserDropdownList.SelectedValue;
             Session["CurrentPeriod"] = PeriodDropdownList.SelectedValue;
             Session["CurrentWeek"] = WeekDropdownList.SelectedValue;
         }
@@ -495,19 +597,16 @@ namespace BureauOnderwijs.Views
             {
                 add_controls.Visible = true;
                 edit_controls.Visible = false;
-                remove_controls.Visible = false;
             }
             else if ((int)Session["ControlPanel"] == 1)
             {
                 add_controls.Visible = false;
                 edit_controls.Visible = true;
-                remove_controls.Visible = false;
             }
             else if ((int)Session["ControlPanel"] == 2)
             {
                 add_controls.Visible = false;
                 edit_controls.Visible = false;
-                remove_controls.Visible = true;
             }
         }
         #endregion
@@ -515,6 +614,7 @@ namespace BureauOnderwijs.Views
         #region Buttons
         protected void AddButton_Click(object sender, EventArgs e)
         {
+            Session["NewChanges"] = true;
             GenerateLecture();
         }
 
@@ -522,7 +622,7 @@ namespace BureauOnderwijs.Views
         {
 
         }
-        protected void userList_SelectedIndexChanged(object sender, EventArgs e)
+        protected void UserDropdownList_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
@@ -546,6 +646,14 @@ namespace BureauOnderwijs.Views
             Session["ControlPanel"] = Convert.ToInt32(PanelDropdownList.SelectedValue);
             ChangeVisibleControlPanel();
         }
+
+        protected void LectureIdDropdownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Session["CurrentLectureId"] = LectureIdDropdownList.SelectedValue;
+            FillEditInputs();
+        }
         #endregion
+
+
     }
 }

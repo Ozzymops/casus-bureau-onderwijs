@@ -6,7 +6,7 @@
     <asp:ScriptManager ID="manager" runat="server"></asp:ScriptManager>
     <!-- On screen -->
     <div id="schedule" style="padding: 10px; float: left;">
-        <p>Rooster van: <asp:DropDownList ID="UserDropdownList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="userList_SelectedIndexChanged"></asp:DropDownList>
+        <p>Rooster van: <asp:DropDownList ID="UserDropdownList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="UserDropdownList_SelectedIndexChanged"></asp:DropDownList>
            Periode: <asp:DropDownList ID="PeriodDropdownList" runat="server" AutoPostBack="True"></asp:DropDownList>
            Week: <asp:DropDownList ID="WeekDropdownList" runat="server" AutoPostBack="True"></asp:DropDownList>
             <asp:Button ID="RefreshButton" runat="server" OnClick="RefreshButton_Click" Text="Refresh" />
@@ -70,9 +70,31 @@
                     <SortedDescendingCellStyle BackColor="#FCF6C0" />
                     <SortedDescendingHeaderStyle BackColor="#820000" /></asp:GridView>
             </p>
-        </div>
-        <div id="remove_controls" runat="server" style="display: none">
-
+            <p id="edit_topmid" runat="server">
+                <asp:Label ID="LectureIdLabel" Font-Bold="true" CssClass="controls_label" runat="server" Text="LesId:"></asp:Label>
+                <asp:DropDownList ID="LectureIdDropdownList" CssClass="controls_dropdownlist" runat="server" AutoPostBack="True" OnSelectedIndexChanged="LectureIdDropdownList_SelectedIndexChanged"></asp:DropDownList>
+            </p>
+            <p id="edit_mid" runat="server">
+                <asp:Label ID="DayLabel_E" Font-Bold="true" CssClass="controls_label" Width="50px" runat="server" Text="Dag:"></asp:Label>
+                <asp:DropDownList ID="DayDropdownList_E" CssClass="controls_dropdownlist" Width="100px" runat="server"></asp:DropDownList>
+                <asp:Label ID="ModuleLabel_E" Font-Bold="true" CssClass="controls_label" Width="50px" runat="server" Text="Module:"></asp:Label>
+                <asp:DropDownList ID="ModuleDropdownList_E" CssClass="controls_dropdownlist" Width="100px" runat="server"></asp:DropDownList>
+            </p>
+            <p id="edit_botmid" runat="server">
+                <asp:Label ID="ClassroomLabel_E" Font-Bold="true" CssClass="controls_label" Width="50px" runat="server" Text="Lokaal:"></asp:Label>
+                <asp:TextBox ID="ClassroomTextBox_E" CssClass="controls_textbox" Width="97px" runat="server"></asp:TextBox>
+                <asp:Label ID="StudentGroupLabel_E" Font-Bold="true" CssClass="controls_label" Width="50px" runat="server" Text="Klas:"></asp:Label>
+                <asp:TextBox ID="StudentGroupTextBox_E" CssClass="controls_textbox" Width="96px" runat="server"></asp:TextBox>
+            </p>
+            <p id="edit_bot" runat="server">
+                <asp:Label ID="TimeStartLabel_E" Font-Bold="true" CssClass="controls_label" Width="50px" runat="server" Text="Start:"></asp:Label>
+                <asp:TextBox ID="TimeStartHourTextBox_E" CssClass="controls_textbox" Width="45px" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TimeStartMinuteTextBox_E" CssClass="controls_textbox" Width="45px" runat="server"></asp:TextBox>
+                <asp:Label ID="TimeEndLabel_E" Font-Bold="true" CssClass="controls_label" Width="50px" runat="server" Text="Eind:"></asp:Label>
+                <asp:TextBox ID="TimeEndHourTextBox_E" CssClass="controls_textbox" Width="45px" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TimeEndMinuteTextBox_E" CssClass="controls_textbox" Width="45px" runat="server"></asp:TextBox>
+            </p>
+            <p id="edit_but" runat="server"><asp:Button ID="EditButton" runat="server" Text="Wijzigen in rooster"/><asp:Button ID="DeleteButton" runat="server" Text="Verwijderen uit rooster"/></p>
         </div>
     </div>
 </asp:Content>

@@ -29,6 +29,7 @@ namespace BureauOnderwijs
             Session["CurrentUser"] = "Roy"; // los dit op!
             Session["ControlPanel"] = 0;
             Session["FirstTimeSchedule"] = true;
+            Session["NewChanges"] = false;
         }
     }
 }

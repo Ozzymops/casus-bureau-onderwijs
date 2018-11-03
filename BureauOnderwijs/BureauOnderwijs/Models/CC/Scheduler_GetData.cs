@@ -69,6 +69,11 @@ namespace BureauOnderwijs.Models.CC
             return (s.GetSingleModule(moduleId));
         }
 
+        public Models.BU.Module GetModuleByModuleCode(string moduleCode)
+        {
+            return (s.GetModuleByModuleCode(moduleCode));
+        }
+
         /// <summary>
         /// Return een lijst van beschikbare werkdagen.
         /// </summary>
