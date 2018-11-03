@@ -10,17 +10,17 @@ namespace BureauOnderwijs.Models.BU
 {
     public class Scheduler : User   // inherit from User.cs
     {
-        public string ConflictCheck()
+        public string ConflictCheckClassroomEmpty()
         {
-            string conStringetje = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
-            string sqlQuerytje = "SELECT COUNT (*) FROM Lecture WHERE 'Classroom' = ''";
+            string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQueryclassroom = "SELECT COUNT (*) FROM Lecture WHERE 'Classroom' = ''";
             string rv = "";
             try
             {
-                SqlConnection connetje = new SqlConnection(conStringetje);
-                SqlCommand cmdtje = new SqlCommand(sqlQuerytje, connetje); 
+                SqlConnection connetje = new SqlConnection(conString);
+                SqlCommand cmd = new SqlCommand(sqlQueryclassroom, connetje); 
                 connetje.Open();
-                SqlDataReader reader = cmdtje.ExecuteReader();
+                SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
@@ -31,6 +31,56 @@ namespace BureauOnderwijs.Models.BU
             }
             catch (Exception ex)
             {                
+                return Convert.ToString(ex);
+            }
+        }
+
+        public string ConflictCheckTeacherEmpty()
+        {
+            string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQueryteacher = "SELECT COUNT (*) FROM Lecture WHERE 'Teacher' = ''";
+            string rv = "";
+            try
+            {
+                SqlConnection connetje = new SqlConnection(conString);
+                SqlCommand cmd = new SqlCommand(sqlQueryteacher, connetje);
+                connetje.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    rv = reader.GetInt32(0).ToString();
+                }
+                connetje.Close();
+                return rv;
+            }
+            catch (Exception ex)
+            {
+                return Convert.ToString(ex);
+            }
+        }
+
+        public string ConflictCheckStudentgroupEmpty()
+        {
+            string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQuerystudentgroup = "SELECT COUNT (*) FROM Lecture WHERE 'Studentgroup' = ''";
+            string rv = "";
+            try
+            {
+                SqlConnection connetje = new SqlConnection(conString);
+                SqlCommand cmd = new SqlCommand(sqlQuerystudentgroup, connetje);
+                connetje.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    rv = reader.GetInt32(0).ToString();
+                }
+                connetje.Close();
+                return rv;
+            }
+            catch (Exception ex)
+            {
                 return Convert.ToString(ex);
             }
         }

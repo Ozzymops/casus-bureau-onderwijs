@@ -8,10 +8,20 @@ namespace BureauOnderwijs.Models.CC
 {
     public class Scheduler_ShowConflicts
     {
-        public string Conflicts()
+        public string ConflictsClassroomEmpty()
         {
             Models.BU.Scheduler s = new Scheduler();
-            return s.ConflictCheck();
+            return s.ConflictCheckClassroomEmpty();
+        }
+        public string ConflictsTeacherEmpty()
+        {
+            Models.BU.Scheduler s = new Scheduler();
+            return s.ConflictCheckTeacherEmpty();
+        }
+        public string ConflictsStudentgroupEmpty()
+        {
+            Models.BU.Scheduler s = new Scheduler();
+            return s.ConflictCheckStudentgroupEmpty();
         }
     }
 }
