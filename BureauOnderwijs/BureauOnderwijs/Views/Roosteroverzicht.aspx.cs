@@ -29,7 +29,7 @@ namespace BureauOnderwijs.Views
             }
             ChangeVisibleControlPanel();
             FillDynamicLists();
-            //PasteData();
+            PasteData();
             Session["FirstTimeSchedule"] = false;
         }
 
@@ -268,7 +268,7 @@ namespace BureauOnderwijs.Views
         {
             Models.CC.Scheduler_GetData sgd = new Models.CC.Scheduler_GetData();
 
-            // Get dayList op basis van userId, wordt eenmalig opgehaald.
+            // Vul een Session list op basis van userId, wordt eenmalig opgehaald of wanneer de UserDropdownList een andere waarde krijgt.
             if ((bool)Session["FirstTimeSchedule"] || UserDropdownList.SelectedValue != Session["CurrentUser"].ToString())
             {
                 List<Models.BU.Wish> teacherWishList = sgd.GetTeacherWishes(Convert.ToInt32(UserDropdownList.SelectedValue));
@@ -276,7 +276,7 @@ namespace BureauOnderwijs.Views
                 Debug.WriteLine("DayList filled.");
             }
 
-            // Pas dayList aan op basis van periode / week.
+            // Vul DayDropdownList op basis van period en week. Data wordt uit de Session list gehaald.
             if ((bool)Session["FirstTimeSchedule"] || PeriodDropdownList.SelectedValue != Session["CurrentPeriod"].ToString() || WeekDropdownList.SelectedValue != Session["CurrentWeek"].ToString())
             {
                 DayDropdownList.Items.Clear();
