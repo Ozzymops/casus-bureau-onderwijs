@@ -28,8 +28,7 @@
         <div id="controls_persistent">
             <asp:DropDownList ID="PanelDropdownList" CssStyle="controls_label" runat="server" AutoPostBack="True" OnSelectedIndexChanged="PanelDropdownList_SelectedIndexChanged">
                 <asp:ListItem Value="0">Toevoegen</asp:ListItem>
-                <asp:ListItem Value="1">Wijzigen</asp:ListItem>
-                <asp:ListItem Value="2">Verwijderen</asp:ListItem>
+                <asp:ListItem Value="1">Wijzigen/Verwijderen</asp:ListItem>
             </asp:DropDownList>
             <!-- niet verwijderen! --><asp:Button ID="ButtonFoutControle" runat="server" OnClick="ButtonFoutControle_Click" style="margin-left: 31px" Text="Fout Controle" Width="112px" />
         </div>

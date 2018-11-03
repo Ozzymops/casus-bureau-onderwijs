@@ -221,8 +221,14 @@ namespace BureauOnderwijs.Views
         /// </summary>
         private List<Models.BU.Lecture> RetrieveData()
         {
-            Models.CC.Scheduler_GetData sgd = new Models.CC.Scheduler_GetData();
-            List<Models.BU.Lecture> retrievedData = sgd.GetLecturesOfTeacher(Convert.ToInt32(UserDropdownList.SelectedValue));
+            // Vul een Session list op basis van userId, wordt eenmalig opgehaald of wanneer de UserDropdownList een andere waarde krijgt.
+            if ((bool)Session["FirstTimeSchedule"] || UserDropdownList.SelectedValue != Session["CurrentUser"].ToString())
+            {
+                Models.CC.Scheduler_GetData sgd = new Models.CC.Scheduler_GetData();
+                List<Models.BU.Lecture> teacherLectureList = sgd.GetLecturesOfTeacher(Convert.ToInt32(UserDropdownList.SelectedValue));
+                Session["TeacherLectureList"] = teacherLectureList;
+            }
+            List<Models.BU.Lecture> retrievedData = (List<Models.BU.Lecture>)Session["TeacherLectureList"];
             return retrievedData;
         }
 
@@ -297,18 +303,18 @@ namespace BureauOnderwijs.Views
                 }               
             }
             
-            // Vul moduleList
-            //if ((bool)Session["FirstTimeSchedule"] || UserDropdownList.SelectedValue != Session["CurrentUser"].ToString())
-            //{
-            //    ModuleDropdownList.Items.Clear();
-            //    List<Models.BU.Module> modulesList = sgd.GetModuleListOfTeacher(Convert.ToInt32(UserDropdownList.SelectedValue));
-            //    ModuleDropdownList.DataSource = modulesList;
-            //    ModuleDropdownList.DataValueField = "ModuleId";
-            //    ModuleDropdownList.DataTextField = "ModuleCode";
-            //    ModuleDropdownList.DataBind();
-            //    Session["TempModuleList"] = modulesList;
-            //    Debug.WriteLine("ModuleList succes.");
-            //}
+            // Vul ModuleDropdownList op basis van geselecteerde gebruiker.
+            if ((bool)Session["FirstTimeSchedule"] || UserDropdownList.SelectedValue != Session["CurrentUser"].ToString())
+            {
+                ModuleDropdownList.Items.Clear();
+                List<Models.BU.Module> modulesList = sgd.GetModuleListOfTeacher(Convert.ToInt32(UserDropdownList.SelectedValue));
+                ModuleDropdownList.DataSource = modulesList;
+                ModuleDropdownList.DataValueField = "ModuleId";
+                ModuleDropdownList.DataTextField = "ModuleCode";
+                ModuleDropdownList.DataBind();
+                Session["TeacherModuleList"] = modulesList;
+                Debug.WriteLine("ModuleList succes.");
+            }
 
             // Zet Session variabelen
             Session["CurrentUser"] = UserDropdownList.SelectedValue;
