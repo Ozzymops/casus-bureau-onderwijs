@@ -148,10 +148,10 @@ namespace BureauOnderwijs.Models.BU
                     }
                     catch
                     {
-                        return new int[] { -4, 0, 0 };
+                        throw new Exception("Problemen met de mailingdinghusus.")
                     }
                     */
-                                        
+
                     return true;
                 }
                 else

@@ -77,7 +77,23 @@ namespace BureauOnderwijs.Models.BU
 
         public int UpdateWish(int period, int week, int day, int startTijdUur, int startTijdMinuut, int eindTijdUur, int EindTijdMinuut, int ingelogd, int wishId)
         {
-            return 0;
+            string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQuery = "UPDATE Wish SET Period='"+ period +"', Week='" + week +"', Day='" + day +"', StartHour='" + startTijdUur +"', StartMinute='" + startTijdMinuut + "', EndHour='" + eindTijdUur + "', EndMinute='" + EindTijdMinuut + "' WHERE UserId='" + ingelogd + "' AND WishId='" + wishId + "'";
+
+            try
+            {
+                SqlConnection con = new SqlConnection(conString);
+                SqlCommand cmd = new SqlCommand(sqlQuery, con);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return 0;
+            }
+            catch (Exception)
+            {
+                return 1;
+            }
         }
 
         public int ExportWishlist()
