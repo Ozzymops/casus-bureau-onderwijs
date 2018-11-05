@@ -49,6 +49,15 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Button UpdateModuleButton;
         
         /// <summary>
+        /// LinkModuleButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button LinkModuleButton;
+        
+        /// <summary>
         /// NestedPlaceholder1 control.
         /// </summary>
         /// <remarks>

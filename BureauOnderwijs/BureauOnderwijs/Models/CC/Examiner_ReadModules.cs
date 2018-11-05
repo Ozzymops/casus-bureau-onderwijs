@@ -14,5 +14,11 @@ namespace BureauOnderwijs.Models.CC
             Models.BU.Examiner M = new Models.BU.Examiner();
             return M.ReadModules(ingelogd);
         }
+
+        public DataTable ReadModulesLinkedToTeachers(string ingelogd)
+        {
+            Models.BU.Examiner M = new Models.BU.Examiner();
+            return M.ReadModulesLinkedToTeacher(ingelogd);
+        }
     }
 }
