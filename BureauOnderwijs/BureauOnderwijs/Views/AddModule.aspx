@@ -33,39 +33,17 @@
         <asp:Label ID="LBYear" runat="server" Text="Year: " Width="95px"></asp:Label>
         <asp:TextBox ID="TBYear" runat="server" style="margin-right:20px" ></asp:TextBox>
         <asp:Label ID="LBDocent" runat="server" Text="Docent:" Width="95px"></asp:Label>
-        <asp:DropDownList ID="DDDocent1" runat="server">
-            <asp:ListItem>Docent 1</asp:ListItem>
-            <asp:ListItem>Docent 2</asp:ListItem>
-            <asp:ListItem>Docent 3</asp:ListItem>
-            <asp:ListItem>Docent 4</asp:ListItem>
-            <asp:ListItem>Docent 5</asp:ListItem>
-        </asp:DropDownList>
+        <asp:TextBox ID="TBTeacher1" runat="server"></asp:TextBox>
         </div>
     <div>
         <asp:Label ID="LBDescription" runat="server" Text="Omschrijving: " Width="95px"></asp:Label>
         <asp:TextBox ID="TBDescription" runat="server" style="margin-right:20px" ></asp:TextBox>
         <asp:Label ID="LBDocent2" runat="server" Text="Docent 2:" Width="95px"></asp:Label>
-        <asp:DropDownList ID="DDDocent2" runat="server">
-            <asp:ListItem>Docent 1</asp:ListItem>
-            <asp:ListItem>Docent 2</asp:ListItem>
-            <asp:ListItem>Docent 3</asp:ListItem>
-            <asp:ListItem>Docent 4</asp:ListItem>
-            <asp:ListItem>Docent 5</asp:ListItem>
-            <asp:ListItem>N.V.T.</asp:ListItem>
-        </asp:DropDownList>
+        <asp:TextBox ID="TBTeacher2" runat="server"></asp:TextBox>
         </div>
     <div>
         <asp:Label ID="LBExaminor" runat="server" Text="Examinator: " Width="95px"></asp:Label>
         <asp:TextBox ID="DropDownListExaminor" runat="server" style="margin-right:20px" ></asp:TextBox>
-        <asp:Label ID="LBDocent3" runat="server" Text="Docent 3:" Width="95px"></asp:Label>
-        <asp:DropDownList ID="DDDocent3" runat="server">
-            <asp:ListItem>Docent 1</asp:ListItem>
-            <asp:ListItem>Docent 2</asp:ListItem>
-            <asp:ListItem>Docent 3</asp:ListItem>
-            <asp:ListItem>Docent 4</asp:ListItem>
-            <asp:ListItem>Docent 5</asp:ListItem>
-            <asp:ListItem>N.V.T.</asp:ListItem>
-        </asp:DropDownList>
         </div>
     <h6>Alle velden moeten worden ingevuld behalve Docent 2 en Docent 3</h6>
 </asp:Content>

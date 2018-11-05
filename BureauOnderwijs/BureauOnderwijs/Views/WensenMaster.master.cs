@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BureauOnderwijs.Models.CC;
 
 namespace BureauOnderwijs.Views
 {
@@ -11,7 +12,21 @@ namespace BureauOnderwijs.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            int Check = Convert.ToInt32(Session["UserId"]);
 
+            Scheduler_Authentication oAuthentication = new Scheduler_Authentication();
+            int result = oAuthentication.Authentication(Check);
+            if (result == 0)
+            {
+            }
+            else if (result == 1)
+            {
+                ExportWishesButton.Visible = false;
+            }
+            else
+            {
+                ExportWishesButton.Visible = false;
+            }
         }
 
         protected void showWishesButton_Click(object sender, EventArgs e)
@@ -21,7 +36,7 @@ namespace BureauOnderwijs.Views
 
         protected void exportWishesButton_Click(object sender, EventArgs e)
         {
-            Models.CC.Teacher_ExportWishes Export = new Models.CC.Teacher_ExportWishes();
+            Scheduler_ExportWishlist Export = new Scheduler_ExportWishlist();
             int result = Export.ExportWishesCC();
 
             if (result == 0)

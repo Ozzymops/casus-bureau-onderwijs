@@ -220,13 +220,13 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Label LBDocent;
         
         /// <summary>
-        /// DDDocent1 control.
+        /// TBTeacher1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDDocent1;
+        protected global::System.Web.UI.WebControls.TextBox TBTeacher1;
         
         /// <summary>
         /// LBDescription control.
@@ -256,13 +256,13 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Label LBDocent2;
         
         /// <summary>
-        /// DDDocent2 control.
+        /// TBTeacher2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDDocent2;
+        protected global::System.Web.UI.WebControls.TextBox TBTeacher2;
         
         /// <summary>
         /// LBExaminor control.
@@ -281,23 +281,5 @@ namespace BureauOnderwijs.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox DropDownListExaminor;
-        
-        /// <summary>
-        /// LBDocent3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LBDocent3;
-        
-        /// <summary>
-        /// DDDocent3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDDocent3;
     }
 }

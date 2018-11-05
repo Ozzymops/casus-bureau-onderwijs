@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BureauOnderwijs.Models.BU;
+using BureauOnderwijs.Models.CC;
 
 namespace BureauOnderwijs.Views
 {
@@ -24,6 +25,25 @@ namespace BureauOnderwijs.Views
             {
                 welcomeLabel.Text = "Welkom";
             }
+            
+
+            //Admin wordt invisible voor andere users
+            int Check = Convert.ToInt32(Session["UserId"]);
+
+            Admin_Authentication oAuthentication = new Admin_Authentication();
+            int result = oAuthentication.Authentication(Check);
+            if (result == 0)
+            {
+            }
+            else if (result == 1)
+            {
+                AdminButton.Visible = false;
+            }
+            else
+            {
+                AdminButton.Visible = false;
+            }
+
         }
     }
 }
