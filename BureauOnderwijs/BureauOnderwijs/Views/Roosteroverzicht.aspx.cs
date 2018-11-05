@@ -121,6 +121,33 @@ namespace BureauOnderwijs.Views
                 if (ClassroomTextBox_E.Text != "" && StudentGroupTextBox_E.Text != "" && TimeStartHourTextBox_E.Text != "" && TimeStartMinuteTextBox_E.Text != "" && TimeEndHourTextBox_E.Text != "" && TimeEndMinuteTextBox_E.Text != "")
                 {
                     // edit entry
+                    Models.CC.Scheduler_GetData sgd = new Models.CC.Scheduler_GetData();
+                    Models.BU.Lecture oldLecture = new Models.BU.Lecture(); // al eerder gevuld met data, session!
+                    Models.BU.Lecture updatedLecture = new Models.BU.Lecture(); // vul met data!
+
+                    Models.CC.Scheduler_UpdateEntry sue = new Models.CC.Scheduler_UpdateEntry();
+                    int lectureId = sgd.CheckIfLectureAlreadyExists(oldLecture);
+                    if (lectureId != -1)
+                    {
+                        sue.UpdateEntry(updatedLecture, lectureId);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Verwijder een Lecture uit de database.
+        /// </summary>
+        private void DeleteLecture()
+        {
+            if (LectureIdDropdownList != null && LectureIdDropdownList.Items.Count != 0)
+            {
+                bool confirm = false;
+
+                if (confirm)
+                {
+                    Models.CC.Scheduler_DeleteEntry sde = new Models.CC.Scheduler_DeleteEntry();
+                    // delete entry
                 }
             }
         }

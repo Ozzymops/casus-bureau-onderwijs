@@ -288,8 +288,6 @@
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Views\WensToevoegen.aspx" />
-    <Content Include="Views\WensVerwijderen.aspx" />
-    <Content Include="Views\WensWijzigen.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -543,20 +541,6 @@
     </Compile>
     <Compile Include="Views\WensToevoegen.aspx.designer.cs">
       <DependentUpon>WensToevoegen.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\WensVerwijderen.aspx.cs">
-      <DependentUpon>WensVerwijderen.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\WensVerwijderen.aspx.designer.cs">
-      <DependentUpon>WensVerwijderen.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\WensWijzigen.aspx.cs">
-      <DependentUpon>WensWijzigen.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\WensWijzigen.aspx.designer.cs">
-      <DependentUpon>WensWijzigen.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
