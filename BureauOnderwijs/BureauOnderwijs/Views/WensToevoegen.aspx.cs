@@ -64,7 +64,7 @@ namespace BureauOnderwijs.Views
             //int ingelogd = Convert.ToInt32(Session["UserId"]);
             int ingelogd = 1;
 
-           // string test = (gvUserWishes.Rows[e.RowIndex].FindControl("textboxPeriod") as TextBox).Text;
+            //string test = (gvUserWishes.Rows[e.RowIndex].FindControl("textboxPeriod") as TextBox).Text;
             //GridViewRow test2 = gvUserWishes.Rows[e.RowIndex];
             //DataControlField test3 = gvUserWishes.Columns[1];
 
@@ -126,7 +126,5 @@ namespace BureauOnderwijs.Views
                 gvUserWishes.DataBind();
             }
         }
-
-
     }
 }

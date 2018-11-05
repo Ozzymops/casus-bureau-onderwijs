@@ -22,33 +22,6 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Button showWishesButton;
         
         /// <summary>
-        /// addWishButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addWishButton;
-        
-        /// <summary>
-        /// editWishButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button editWishButton;
-        
-        /// <summary>
-        /// deleteWishButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button deleteWishButton;
-        
-        /// <summary>
         /// ExportWishesButton control.
         /// </summary>
         /// <remarks>
