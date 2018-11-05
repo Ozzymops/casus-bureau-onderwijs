@@ -10,6 +10,36 @@ namespace BureauOnderwijs.Models.BU
 {
     public class Scheduler : User   // inherit from User.cs
     {
+        public int CheckScheduler(int UserID)
+        //Functie die checkt of de ingelogde user een Admin is
+        {
+            string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+            string sqlQuery = ("SELECT Role FROM UserAccount WHERE UserId = " + UserID + "");
+
+            try
+            {
+                SqlConnection con = new SqlConnection(conString);
+                SqlCommand cmd = new SqlCommand(sqlQuery, con);
+
+                con.Open();
+                int UserRole = (int)cmd.ExecuteScalar();
+                con.Close();
+
+                if (UserRole == 1)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+            catch (Exception)
+            {
+                return 2;
+            }
+        }
+
         public string ConflictCheckClassroomEmpty()
         {
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";

@@ -313,6 +313,7 @@
     <Compile Include="Models\CC\LogIn.cs" />
     <Compile Include="Models\CC\ReadClassSchedule.cs" />
     <Compile Include="Models\CC\RecoverPassword.cs" />
+    <Compile Include="Models\CC\Scheduler_Authentication.cs" />
     <Compile Include="Models\CC\Scheduler_CreateEntry.cs" />
     <Compile Include="Models\CC\Scheduler_DeleteEntry.cs" />
     <Compile Include="Models\CC\Scheduler_ExportWishlist.cs" />
