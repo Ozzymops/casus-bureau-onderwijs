@@ -64,7 +64,11 @@ namespace BureauOnderwijs.Views
             //int ingelogd = Convert.ToInt32(Session["UserId"]);
             int ingelogd = 1;
 
-            string tekstboxPeriod = (gvUserWishes.Rows[e.RowIndex].FindControl("textboxPeriod") as TextBox).Text.Trim();
+           // string test = (gvUserWishes.Rows[e.RowIndex].FindControl("textboxPeriod") as TextBox).Text;
+            //GridViewRow test2 = gvUserWishes.Rows[e.RowIndex];
+            //DataControlField test3 = gvUserWishes.Columns[1];
+
+            int tekstboxPeriod = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("textboxPeriod") as TextBox).Text.Trim());
             int tekstboxtWeek = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("textboxWeek") as TextBox).Text.Trim());
             string tekstboxDag = (gvUserWishes.Rows[e.RowIndex].FindControl("textboxDay") as TextBox).Text.Trim();
             int tekstboxStartTijdUur = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("textboxWStartTimeHour") as TextBox).Text.Trim());

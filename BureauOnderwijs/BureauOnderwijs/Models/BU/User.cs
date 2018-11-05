@@ -110,68 +110,69 @@ namespace BureauOnderwijs.Models.BU
             string sqlQuery = "SELECT UserId, Username, Password, Role, Emailadress FROM UserAccount WHERE Username = '" + username + "' and Password = '" + password + "'";
             //string sqlQueryGetEmailAdress = "SELECT Emailadress FROM UserAccount WHERE Username = '" + username + "' and Password = '" + password + "'";
 
-            //try
-            //{
-            SqlConnection con = new SqlConnection(conString);
-            SqlCommand cmd = new SqlCommand(sqlQuery, con);
-            //SqlCommand cmdEmail = new SqlCommand(sqlQueryGetEmailAdress, con);
-
-            con.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            if (reader.HasRows)
+            try
             {
-                while (reader.Read())
+                SqlConnection con = new SqlConnection(conString);
+                SqlCommand cmd = new SqlCommand(sqlQuery, con);
+                //SqlCommand cmdEmail = new SqlCommand(sqlQueryGetEmailAdress, con);
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
                 {
-                    //result[0] = reader.GetInt32(0);
-                    //result[1] = reader.GetInt32(1);
+                    while (reader.Read())
+                    {
+                        //result[0] = reader.GetInt32(0);
+                        //result[1] = reader.GetInt32(1);
 
-                    //Alle gegevens opslaan in het User object 
-                    //-> Nu alleen deze 5 gebruikt: UserId, Username, Password, Role, Emailadress
-                    userId = reader.GetInt32(0);
-                    username = reader.GetString(1);
-                    password = reader.GetString(2);
-                    role = reader.GetInt32(3);
-                    emailAdress = reader.GetString(4);
+                        //Alle gegevens opslaan in het User object 
+                        //-> Nu alleen deze 5 gebruikt: UserId, Username, Password, Role, Emailadress
+                        userId = reader.GetInt32(0);
+                        username = reader.GetString(1);
+                        password = reader.GetString(2);
+                        role = reader.GetInt32(3);
+                        emailAdress = reader.GetString(4);
+                    }
+                    con.Close();
+                    //}
+
+
+                    //if (result.First() > 0)
+                    //{
+                    /// login succesvol, gaat een 2FA code genereren met RandomNumerGenerator
+                    /// en stuurt vervolgens deze 2FA code naar het email adres van de persoon die wilt inloggen.
+
+                    RandomNumberGenerator r = new RandomNumberGenerator();
+                    twoFactorCode = r.GenerateNumber(1000, 9999);
+                    //result[2] = r.GenerateNumber(1000, 9999);
+                    /*
+                    try
+                    {
+                        //send2facodeLogin();
+                    }
+                    catch
+                    {
+                        return new int[] { -4, 0, 0 };
+                    }
+                    */
+
+                    //return new int[] { result[0], result[1], result[2] };
+                    return true;//new int[] { result[0], result[1] };
                 }
-                con.Close();
-                //}
-
-
-                //if (result.First() > 0)
-                //{
-                /// login succesvol, gaat een 2FA code genereren met RandomNumerGenerator
-                /// en stuurt vervolgens deze 2FA code naar het email adres van de persoon die wilt inloggen.
-
-                RandomNumberGenerator r = new RandomNumberGenerator();
-                twoFactorCode = r.GenerateNumber(1000, 9999);
-                //result[2] = r.GenerateNumber(1000, 9999);
-                /*
-                try
+                else //if (result.First() == 0)
                 {
-                    //send2facodeLogin(result[2], username, password);
+                    con.Close();
+                    //return new int[] { -1, 0, 0 };
+                    throw new Exception("Ongeldige gebruikersnaam en of wachtwoord.");
                 }
-                catch
-                {
-                    return new int[] { -4, 0, 0 };
-                }
-                */
-
-                //return new int[] { result[0], result[1], result[2] };
-                return true;//new int[] { result[0], result[1] };
             }
-            else //if (result.First() == 0)
+            catch (SqlException)
             {
-                con.Close();
-                //return new int[] { -1, 0, 0 };
-                throw new Exception("Ongeldige gebruikersnaam en of wachtwoord.");
+                throw new Exception("Problemen met de connectie van de database.");
             }
-            /*}
-            catch
-            {
-                return new int[] { -2, 0, 0 };
-            }*/
-
+            throw new Exception("Kom op kerel, je code klopt voor de klote niet ;)");
+            
             //return new int[] { -3, 0, 0 };
         }
 
@@ -283,11 +284,11 @@ namespace BureauOnderwijs.Models.BU
             }
         }
 
-        public string UpdateVoornaam(string voornaam, string ingelogd)
+        public string UpdateVoornaam(string voornaam)
         {
             //legt de locatie van de database vast en de query welke er naar toe verstuurd dient te worden met deze methode
             string conStringVn = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
-            string sqlQueryVn = "UPDATE UserAccount SET Firstname = '" + voornaam + "' WHERE UserId = '" + ingelogd + "'";
+            string sqlQueryVn = "UPDATE UserAccount SET Firstname = '" + voornaam + "' WHERE UserId = '" + userId + "'";
             //poogt de query uit te voeren, als dit succesvol verloopt wordt de return waarde succes op string value "1" gezet.
             try
             {
@@ -396,7 +397,7 @@ namespace BureauOnderwijs.Models.BU
                 return "2";
             }
         }
-        public void send2facodeLogin(int randomnumer2facode, string username, string password)
+        public void send2facodeLogin()
         {
             /// Onderstaande stuur de gebruiker een email met daarin de authenticatiecode
             /// De code werkt maar is uitgecomment zodat er niet iedere keer een email verstuurd wordt.
@@ -407,7 +408,7 @@ namespace BureauOnderwijs.Models.BU
             string credentialWachtwoord = "glasGG!7481";
             string smtp = "smtp.gmail.com";
             string onderwerpMail = "Uw 2FA code om in te loggen";
-            string inhoudMail = "Uw authenticatie code is: " + randomnumer2facode + ".";
+            string inhoudMail = "Uw authenticatie code is: " + twoFactorCode + ".";
 
             SqlConnection con = new SqlConnection(conString);
             SqlCommand cmdEmail = new SqlCommand(sqlQueryGetEmailAdress, con);

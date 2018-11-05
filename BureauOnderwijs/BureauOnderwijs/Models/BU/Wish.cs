@@ -75,7 +75,7 @@ namespace BureauOnderwijs.Models.BU
             }
         }
 
-        public int UpdateWish(string period, int week, int day, int startTijdUur, int startTijdMinuut, int eindTijdUur, int EindTijdMinuut, int ingelogd, int wishId)
+        public int UpdateWish(int period, int week, int day, int startTijdUur, int startTijdMinuut, int eindTijdUur, int EindTijdMinuut, int ingelogd, int wishId)
         {
             return 0;
         }
