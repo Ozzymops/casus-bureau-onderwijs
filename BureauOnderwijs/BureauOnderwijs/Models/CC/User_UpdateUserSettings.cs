@@ -11,8 +11,8 @@ namespace BureauOnderwijs.Models.CC
     {
         public string UpdateVoornaamCC(string voornaam, string ingelogd)
         {
-            User u = new User();
-            return u.UpdateVoornaam(voornaam, ingelogd);
+            User u = new User(Convert.ToInt32(ingelogd));
+            return u.UpdateVoornaam(voornaam);
         }
 
         public string UpdateAchternaamCC(string achternaam, string ingelogd)

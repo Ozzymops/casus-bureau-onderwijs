@@ -7,7 +7,7 @@ namespace BureauOnderwijs.Models.CC
 {
     public class Teacher_UpdateWish
     {
-        public int UpdateWish(string period, int week, int day, int startTijdUur, int startTijdMinuut, int eindTijdUur, int EindTijdMinuut, int ingelogd, int wishId)
+        public int UpdateWish(int period, int week, int day, int startTijdUur, int startTijdMinuut, int eindTijdUur, int EindTijdMinuut, int ingelogd, int wishId)
         {
             Models.BU.Wish w = new Models.BU.Wish();
             return w.UpdateWish(period, week, day, startTijdUur, startTijdMinuut, eindTijdUur, EindTijdMinuut, ingelogd, wishId);
@@ -40,9 +40,9 @@ namespace BureauOnderwijs.Models.CC
         }
 
 
-        public int CheckInput(string period, int week, string day, int startTijdUur, int startTijdMinuut, int eindTijdUur, int EindTijdMinuut)
+        public int CheckInput(int period, int week, string day, int startTijdUur, int startTijdMinuut, int eindTijdUur, int EindTijdMinuut)
         {
-            if (new string[] { "1", "2", "3", "4" }.Contains(period) == false)
+            if (!new int[] { 1, 2, 3, 4 }.Contains(period))
             {
                 return 1;
             }
@@ -50,7 +50,7 @@ namespace BureauOnderwijs.Models.CC
             {
                 return 2;
             }
-            if (new string[] { "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag" }.Contains(day) == false)
+            if (!new string[] { "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag" }.Contains(day))
             {
                 return 3;
             }
@@ -58,7 +58,7 @@ namespace BureauOnderwijs.Models.CC
             {
                 return 4;
             }
-            if (new int[] { 0, 30 }.Contains(startTijdMinuut) == false)
+            if (!new int[] { 0, 30 }.Contains(startTijdMinuut))
             {
                 return 5;
             }
@@ -66,7 +66,7 @@ namespace BureauOnderwijs.Models.CC
             {
                 return 6;
             }
-            if (new int[] { 0, 30 }.Contains(EindTijdMinuut) == false)
+            if (!new int[] { 0, 30 }.Contains(EindTijdMinuut))
             {
                 return 7;
             }
