@@ -244,6 +244,7 @@
     <Content Include="Views\AdminDelete.aspx" />
     <Content Include="Views\AdminRead.aspx" />
     <Content Include="Views\DeleteModule.aspx" />
+    <Content Include="Views\ModuleLink.aspx" />
     <Content Include="Views\PasswordRecovery.aspx" />
     <Content Include="Views\ReadModules.aspx" />
     <Content Include="Views\TestNest.aspx" />
@@ -409,6 +410,13 @@
     </Compile>
     <Compile Include="Views\DeleteModule.aspx.designer.cs">
       <DependentUpon>DeleteModule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleLink.aspx.cs">
+      <DependentUpon>ModuleLink.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ModuleLink.aspx.designer.cs">
+      <DependentUpon>ModuleLink.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\ModuleMaster.master.cs">
       <DependentUpon>ModuleMaster.master</DependentUpon>
