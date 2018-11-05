@@ -13,3 +13,12 @@ Casus Bureau Onderwijs rooster- en planningsysteem.
 5. Typ in:
    Install-Package Microsoft.Aspnet.Mvc
    Install-Package Microsoft.Net.Compilers
+
+### Database
+1. Download het .bak bestand - https://drive.google.com/open?id=1Y6YrYevyeV7TnCaLGK5tHP5JIRjjA_xt
+2. Open SQL Server Management Studio.
+3. Klik met de rechtermuisknop op het foldertje 'Databases' in je huidige sessie.
+4. Selecteer 'Restore Database'.
+5. Kies bij Source het bolletje 'Device:' en druk op de drie puntjes [...]
+6. Klik op 'Add' en blader naar uw Downloads folder of waar het .bak bestand ook staat.
+7. Selecteer het .bak bestand en druk op 'Ok'. Klik nog eens op 'Ok' en wacht tot de database klaar staat.
