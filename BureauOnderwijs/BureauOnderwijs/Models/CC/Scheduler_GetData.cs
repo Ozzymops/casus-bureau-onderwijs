@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
 
 namespace BureauOnderwijs.Models.CC
 {
@@ -66,6 +67,11 @@ namespace BureauOnderwijs.Models.CC
         public Models.BU.Module GetSingleModule(int moduleId)
         {
             return (s.GetSingleModule(moduleId));
+        }
+
+        public Models.BU.Module GetModuleByModuleCode(string moduleCode)
+        {
+            return (s.GetModuleByModuleCode(moduleCode));
         }
 
         /// <summary>

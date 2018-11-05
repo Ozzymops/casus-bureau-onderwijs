@@ -7,6 +7,7 @@ namespace BureauOnderwijs.Models.BU
 {
     public class Lecture
     {
+        public int lectureId;
         public Teacher teacher;
         public Module module;
         public string classroom;
@@ -18,6 +19,24 @@ namespace BureauOnderwijs.Models.BU
         public int startMinute;
         public int endHour;
         public int endMinute;
+
+        public int LectureId
+        {
+            get { return this.lectureId; }
+            set { this.lectureId = value; }
+        }
+
+        public Teacher Teacher
+        {
+            get { return this.teacher; }
+            set { this.teacher = value; }
+        }
+
+        public Module Module
+        {
+            get { return this.module; }
+            set { this.module = value; }
+        }
 
         public Lecture()
         {

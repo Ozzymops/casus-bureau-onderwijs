@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Diagnostics;
+using System.Data;
 
 namespace BureauOnderwijs.Models
 {
@@ -127,10 +128,12 @@ namespace BureauOnderwijs.Models
                     Models.BU.Teacher tempTeacher = new Models.BU.Teacher(Convert.ToInt32(reader["UserId"]), reader["Username"].ToString(), reader["EmailAdress"].ToString(), reader["Firstname"].ToString(), reader["Lastname"].ToString());
                     teacherList.Add(tempTeacher);
                 }
+                Debug.WriteLine("GetTeacherList - Succes.");
                 return teacherList;
             }
             catch (Exception)
             {
+                Debug.WriteLine("GetTeacherList - Exception!");
                 return null;
             }
         }
@@ -151,13 +154,16 @@ namespace BureauOnderwijs.Models
                 while (reader.Read())
                 {
                     Models.BU.Teacher singleTeacher = new Models.BU.Teacher(Convert.ToInt32(reader["UserId"]), reader["Username"].ToString(), reader["EmailAdress"].ToString(), reader["Firstname"].ToString(), reader["Lastname"].ToString());
+                    Debug.WriteLine("GetSingleTeacher - Succes.");
                     return singleTeacher;
                 }
             }
             catch (Exception)
             {
+                Debug.WriteLine("GetSingleTeacher - Exception!");
                 return null;
             }
+            Debug.WriteLine("GetSingleTeacher - Niks gevonden.");
             return null;
         }
 
@@ -174,15 +180,18 @@ namespace BureauOnderwijs.Models
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 List<Models.BU.Lecture> lectureList = new List<Models.BU.Lecture>();
+                Models.BU.Teacher tempTeacher = GetSingleTeacher("SELECT * from UserAccount WHERE UserId = '" + userId + "'");
                 while (reader.Read())
                 {
-                    Models.BU.Lecture tempLecture = new Models.BU.Lecture(GetSingleTeacher("SELECT * FROM UserAccount WHERE UserId = '" + userId + "'"), GetSingleModule("SELECT * FROM Module WHERE Code = '" + reader["ModuleCode"].ToString() + "'"), reader["Classroom"].ToString(), reader["StudentGroup"].ToString(), Convert.ToInt32(reader["Period"]), Convert.ToInt32(reader["Week"]), Convert.ToInt32(reader["Day"]), Convert.ToInt32(reader["StartHour"]), Convert.ToInt32(reader["StartMinute"]), Convert.ToInt32(reader["EndHour"]), Convert.ToInt32(reader["EndMinute"]));
+                    Models.BU.Lecture tempLecture = new Models.BU.Lecture(tempTeacher, GetSingleModule("SELECT * FROM Module WHERE Code = '" + reader["ModuleCode"].ToString() + "'"), reader["Classroom"].ToString(), reader["StudentGroup"].ToString(), Convert.ToInt32(reader["Period"]), Convert.ToInt32(reader["Week"]), Convert.ToInt32(reader["Day"]), Convert.ToInt32(reader["StartHour"]), Convert.ToInt32(reader["StartMinute"]), Convert.ToInt32(reader["EndHour"]), Convert.ToInt32(reader["EndMinute"]));
                     lectureList.Add(tempLecture);
                 }
+                Debug.WriteLine("GetLecturesOfTeacher - Succes.");
                 return lectureList;
             }
             catch (Exception)
             {
+                Debug.WriteLine("GetLecturesOfTeacher - Exception!");
                 return null;
             }
         }
@@ -205,14 +214,19 @@ namespace BureauOnderwijs.Models
                     Models.BU.Wish tempWish = new Models.BU.Wish(Convert.ToInt32(reader["WishId"]), Convert.ToInt32(reader["Period"]), Convert.ToInt32(reader["Week"]), Convert.ToInt32(reader["Day"]), Convert.ToInt32(reader["StartHour"]), Convert.ToInt32(reader["StartMinute"]), Convert.ToInt32(reader["EndHour"]), Convert.ToInt32(reader["EndMinute"]));
                     wishList.Add(tempWish);
                 }
+                Debug.WriteLine("GetTeacherWishes - Succes.");
                 return wishList;
             }
             catch (Exception)
             {
+                Debug.WriteLine("GetTeacherWishes - Exception!");
                 return null;
             }
         }
 
+        /// <summary>
+        /// Return één Examiner.
+        /// </summary>
         public Models.BU.Examiner GetSingleExaminer(string query)
         {
             Connect();
@@ -226,16 +240,22 @@ namespace BureauOnderwijs.Models
                 while (reader.Read())
                 {
                     Models.BU.Examiner singleExaminer = new Models.BU.Examiner(Convert.ToInt32(reader["UserId"]), reader["Username"].ToString(), reader["EmailAdress"].ToString(), reader["Firstname"].ToString(), reader["Lastname"].ToString());
+                    Debug.WriteLine("GetSingleExaminer - Succes.");
                     return singleExaminer;
                 }
             }
             catch (Exception)
             {
+                Debug.WriteLine("GetSingleExaminer - Exception!");
                 return null;
             }
+            Debug.WriteLine("GetSingleExaminer - Niks gevonden.");
             return null;
         }
 
+        /// <summary>
+        /// Return een lijst van Wishes op basis van userId.
+        /// </summary>
         public List<Models.BU.Wish> GetWishListOfTeacher(string query)
         {
             Connect();
@@ -251,10 +271,12 @@ namespace BureauOnderwijs.Models
                     Models.BU.Wish tempWish = new Models.BU.Wish(Convert.ToInt32(reader["WishId"]), Convert.ToInt32(reader["Period"]), Convert.ToInt32(reader["Week"]), Convert.ToInt32(reader["Day"]), Convert.ToInt32(reader["StartHour"]), Convert.ToInt32(reader["StartMinute"]), Convert.ToInt32(reader["EndHour"]), Convert.ToInt32(reader["EndMinute"]));
                     wishList.Add(tempWish);
                 }
+                Debug.WriteLine("GetWishListOfTeacher - Succes.");
                 return wishList;
             }
             catch (Exception)
             {
+                Debug.WriteLine("GetWishListOfTeacher - Exception!");
                 return null;
             }
         }
@@ -277,11 +299,13 @@ namespace BureauOnderwijs.Models
                     Models.BU.Module tempModule = new Models.BU.Module(Convert.ToInt32(reader["ModuleId"]), reader["Name"].ToString(), reader["Code"].ToString(), Convert.ToInt32(reader["Period"]), Convert.ToInt32(reader["Year"]), reader["Faculty"].ToString(), reader["Profile"].ToString(), Convert.ToInt32(reader["Credits"]), GetSingleExaminer("SELECT * FROM UserAccount WHERE Role = '2' AND UserId = '" + reader["ExaminerId"] + "'"), reader["Description"].ToString(), (bool)reader["GeneralModule"], Convert.ToInt32(reader["LectureHours"]), Convert.ToInt32(reader["PracticalHours"]));
                     modulesList.Add(tempModule);
                 }
+                Debug.WriteLine("GetModuleListOfTeacher - Succes.");
                 return modulesList;
             }
             catch (Exception)
             {
-               return null;
+                Debug.WriteLine("GetModuleListOfTeacher - Exception!");
+                return null;
             }
         }
 
@@ -301,13 +325,16 @@ namespace BureauOnderwijs.Models
                 while (reader.Read())
                 {
                     Models.BU.Module singleModule = new Models.BU.Module(Convert.ToInt32(reader["ModuleId"]), reader["Name"].ToString(), reader["Code"].ToString(), Convert.ToInt32(reader["Period"]), Convert.ToInt32(reader["Year"]), reader["Faculty"].ToString(), reader["Profile"].ToString(), Convert.ToInt32(reader["Credits"]), null, reader["Description"].ToString(), (bool)reader["GeneralModule"], Convert.ToInt32(reader["LectureHours"]), Convert.ToInt32(reader["PracticalHours"]));
+                    Debug.WriteLine("GetSingleModule - Succes.");
                     return singleModule;
                 }
             }
             catch (Exception)
             {
+                Debug.WriteLine("GetSingleModule - Exception!");
                 return null;
             }
+            Debug.WriteLine("GetSingleModule - Niks gevonden.");
             return null;
         }
 
@@ -330,10 +357,12 @@ namespace BureauOnderwijs.Models
                 {
                     availableDayList.Add(Convert.ToInt32(reader["Day"]));
                 }
+                Debug.WriteLine("GetAvailableDays - Succes.");
                 return availableDayList;
             }
             catch (Exception)
             {
+                Debug.WriteLine("GetAvailableDays - Exception!");
                 return null;
             }
         }
@@ -351,17 +380,17 @@ namespace BureauOnderwijs.Models
                 {
                     if (reader.HasRows)
                     {
-                        Debug.WriteLine("Goed gedaan ouwe, je hebt zomaar even een LectureId gevonden, proficiat! - " + reader["LectureId"]);
+                        Debug.WriteLine("CheckIfLectureAlreadyExists - gevonden: " + reader["LectureId"]);
                         return Convert.ToInt32(reader["LectureId"]);
                     }
                 }
             }
             catch (Exception)
             {
-                Debug.WriteLine("Oepsie woepsie, er was een foutje uWu");
+                Debug.WriteLine("CheckIfLectureAlreadyExists - Exception!");
                 return -1;
             }
-            Debug.WriteLine("Oepsie woepsie, niks gevonden uWu");
+            Debug.WriteLine("CheckIfLectureAlreadyExists - Niks gevonden.");
             return -1;
         }
         #endregion
@@ -379,10 +408,11 @@ namespace BureauOnderwijs.Models
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Dispose();
+                Debug.WriteLine("CreateEntry - Succes.");
             }
             catch (Exception)
             {
-                Debug.WriteLine("Oepsie woepsie, er was een foutje uWu");
+                Debug.WriteLine("CreateEntry - Exception!");
             }
         }
         #endregion
