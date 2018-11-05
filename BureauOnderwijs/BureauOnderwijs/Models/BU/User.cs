@@ -135,17 +135,12 @@ namespace BureauOnderwijs.Models.BU
                         emailAdress = reader.GetString(4);
                     }
                     con.Close();
-                    //}
 
-
-                    //if (result.First() > 0)
-                    //{
                     /// login succesvol, gaat een 2FA code genereren met RandomNumerGenerator
                     /// en stuurt vervolgens deze 2FA code naar het email adres van de persoon die wilt inloggen.
 
                     RandomNumberGenerator r = new RandomNumberGenerator();
                     twoFactorCode = r.GenerateNumber(1000, 9999);
-                    //result[2] = r.GenerateNumber(1000, 9999);
                     /*
                     try
                     {
@@ -156,14 +151,12 @@ namespace BureauOnderwijs.Models.BU
                         return new int[] { -4, 0, 0 };
                     }
                     */
-
-                    //return new int[] { result[0], result[1], result[2] };
-                    return true;//new int[] { result[0], result[1] };
+                                        
+                    return true;
                 }
-                else //if (result.First() == 0)
+                else
                 {
                     con.Close();
-                    //return new int[] { -1, 0, 0 };
                     throw new Exception("Ongeldige gebruikersnaam en of wachtwoord.");
                 }
             }
@@ -172,8 +165,6 @@ namespace BureauOnderwijs.Models.BU
                 throw new Exception("Problemen met de connectie van de database.");
             }
             throw new Exception("Kom op kerel, je code klopt voor de klote niet ;)");
-            
-            //return new int[] { -3, 0, 0 };
         }
 
         public void LogOut()
