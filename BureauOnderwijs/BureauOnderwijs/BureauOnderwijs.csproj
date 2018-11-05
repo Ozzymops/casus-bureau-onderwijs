@@ -325,7 +325,6 @@
     <Compile Include="Models\CC\Scheduler_UpdateEntry.cs" />
     <Compile Include="Models\CC\Teacher_CreateWish.cs" />
     <Compile Include="Models\CC\Teacher_DeleteWish.cs" />
-    <Compile Include="Models\CC\Teacher_ExportWishes.cs" />
     <Compile Include="Models\CC\Teacher_ReadWishes.cs" />
     <Compile Include="Models\CC\Teacher_UpdateWish.cs" />
     <Compile Include="Models\CC\User_UpdateUserSettings.cs" />

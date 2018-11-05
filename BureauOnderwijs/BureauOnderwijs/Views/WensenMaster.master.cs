@@ -36,7 +36,7 @@ namespace BureauOnderwijs.Views
 
         protected void exportWishesButton_Click(object sender, EventArgs e)
         {
-            Models.CC.Teacher_ExportWishes Export = new Models.CC.Teacher_ExportWishes();
+            Scheduler_ExportWishlist Export = new Scheduler_ExportWishlist();
             int result = Export.ExportWishesCC();
 
             if (result == 0)
