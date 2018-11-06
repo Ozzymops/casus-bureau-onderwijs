@@ -32,6 +32,8 @@
     <div>
         <asp:Label ID="LBYear" runat="server" Text="Year: " Width="95px"></asp:Label>
         <asp:TextBox ID="TBYear" runat="server" style="margin-right:20px" ></asp:TextBox>
+        <asp:Label ID="LBDocent" runat="server" Text="Docent:" Width="95px"></asp:Label>
+        <asp:TextBox ID="TBDocent" runat="server"></asp:TextBox>
         </div>
     <div>
         <asp:Label ID="LBDescription" runat="server" Text="Omschrijving: " Width="95px"></asp:Label>
@@ -41,5 +43,5 @@
         <asp:Label ID="LBExaminor" runat="server" Text="Examinator: " Width="95px"></asp:Label>
         <asp:TextBox ID="DropDownListExaminor" runat="server" style="margin-right:20px" ></asp:TextBox>
         </div>
-    <h6>Alle velden moeten worden ingevuld behalve Docent 2 en Docent 3</h6>
+    <h6>Alle velden moeten worden ingevuld</h6>
 </asp:Content>

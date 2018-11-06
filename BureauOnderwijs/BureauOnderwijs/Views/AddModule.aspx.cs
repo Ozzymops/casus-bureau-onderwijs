@@ -19,7 +19,7 @@ namespace BureauOnderwijs.Views
             //sessie id wordt opgehaald om te controleren of er daadwerkelijke een examinator is ingelogd
             string ingelogd = Session["UserId"].ToString();
             Models.CC.Examiner_CreateModule m = new Models.CC.Examiner_CreateModule();
-            string name = m.AddModuleCC(TBName.Text, TBModuleCode.Text, Convert.ToInt32(TBPeriod.Text), Convert.ToInt32(TBYear.Text), TBFaculty.Text, TBProfile.Text, Convert.ToInt32(TBCredits.Text), CheckBoxGeneralModule.Checked ,Convert.ToInt32(DropDownListExaminor.Text), TBDescription.Text, Convert.ToInt32(TBLectureHours.Text), Convert.ToInt32(TBPracticalHours.Text),ingelogd);
+            string name = m.AddModuleCC(TBName.Text, TBModuleCode.Text, Convert.ToInt32(TBPeriod.Text), Convert.ToInt32(TBYear.Text), TBFaculty.Text, TBProfile.Text, Convert.ToInt32(TBCredits.Text), CheckBoxGeneralModule.Checked ,Convert.ToInt32(DropDownListExaminor.Text), TBDescription.Text, Convert.ToInt32(TBLectureHours.Text), Convert.ToInt32(TBPracticalHours.Text), /*Convert.ToInt32(TBDocent.Text)*/ ingelogd);
 
             //Er komt een return waarde terug voor het toevoegen van de nieuwe module. wanneer dit NIET gelukt is komt er de volgende melding: 
             if (name == "1")
