@@ -29,8 +29,8 @@ namespace BureauOnderwijs.Views
         {
             if (e.CommandName == "AddNew")
             {
-                //int ingelogd = Convert.ToInt32(Session["UserId"]);
-                int ingelogd = 1;
+                int ingelogd = Convert.ToInt32(Session["UserId"]);
+                //int ingelogd = 1;
 
                 string dropDownListPeriod = (gvUserWishes.FooterRow.FindControl("DropDownListPeriod") as DropDownList).SelectedValue;
                 int dropDownListWeek = Convert.ToInt32((gvUserWishes.FooterRow.FindControl("DropDownListWeek") as DropDownList).SelectedValue);
@@ -69,10 +69,6 @@ namespace BureauOnderwijs.Views
             
             int ingelogd = Convert.ToInt32(Session["UserId"]);
             //int ingelogd = 1;
-            
-            //string test = (gvUserWishes.Rows[e.RowIndex].FindControl("textboxPeriod") as TextBox).Text;
-            //GridViewRow test2 = gvUserWishes.Rows[e.RowIndex];
-            //DataControlField test3 = gvUserWishes.Columns[1];
 
             int dropDownListEditPeriod = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("DropDownListEditPeriod") as DropDownList).SelectedValue);
             int dropDownListEditWeek = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("DropDownListEditWeek") as DropDownList).SelectedValue);
@@ -82,17 +78,6 @@ namespace BureauOnderwijs.Views
             int dropDownListEditEindTijdUur = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("DropDownListEditEindTijdUur") as DropDownList).SelectedValue);
             int dropDownListEditEndTijdMinuut = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("DropDownListEditEndTijdMinuut") as DropDownList).SelectedValue);
             int wishId = Convert.ToInt32((gvUserWishes.DataKeys[e.RowIndex].Value));
-
-            /*
-            int tekstboxPeriod = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("textboxPeriod") as TextBox).Text.Trim());
-            int tekstboxtWeek = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("textboxWeek") as TextBox).Text.Trim());
-            string tekstboxDag = (gvUserWishes.Rows[e.RowIndex].FindControl("textboxDay") as TextBox).Text.Trim();
-            int tekstboxStartTijdUur = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("textboxWStartTimeHour") as TextBox).Text.Trim());
-            int tekstboxStartTijdMinuut = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("textboxWStartTimeMinute") as TextBox).Text.Trim());
-            int tekstboxEindTijdUur = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("textboxEndTime") as TextBox).Text.Trim());
-            int tekstboxEndTijdMinuut = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("textboxEndTimeMinute") as TextBox).Text.Trim());
-            int wishId = Convert.ToInt32((gvUserWishes.DataKeys[e.RowIndex].Value));
-            */
 
             Models.CC.Teacher_UpdateWish c = new Models.CC.Teacher_UpdateWish();
             int intdag = c.getIntFromDayInput(dropDownListEditDag);
