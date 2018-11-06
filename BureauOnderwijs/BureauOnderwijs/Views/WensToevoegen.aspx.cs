@@ -29,8 +29,8 @@ namespace BureauOnderwijs.Views
         {
             if (e.CommandName == "AddNew")
             {
-                int ingelogd = Convert.ToInt32(Session["UserId"]);
-                //int ingelogd = 1;
+                //int ingelogd = Convert.ToInt32(Session["UserId"]);
+                int ingelogd = 1;
 
                 string dropDownListPeriod = (gvUserWishes.FooterRow.FindControl("DropDownListPeriod") as DropDownList).SelectedValue;
                 int dropDownListWeek = Convert.ToInt32((gvUserWishes.FooterRow.FindControl("DropDownListWeek") as DropDownList).SelectedValue);
@@ -135,8 +135,8 @@ namespace BureauOnderwijs.Views
 
         private void fillGvUserWishes()
         {
-            //string ingelogd = "1";
-            string ingelogd = Session["UserId"].ToString();
+            string ingelogd = "1";
+            //string ingelogd = Session["UserId"].ToString();
 
             dt = new DataTable();
             Models.CC.Teacher_ReadWishes r = new Models.CC.Teacher_ReadWishes();

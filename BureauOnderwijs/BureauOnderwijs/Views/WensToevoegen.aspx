@@ -67,7 +67,7 @@
                         <asp:Label Text='<%# Eval("Week")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>                        
-                        <asp:DropDownList ID="DropDownListEditWeek" runat="server" SelectedValue='<%# Bind("Week") %>'>
+                        <asp:DropDownList ID="DropDownListEditWeek" runat="server" SelectedValue='<%# Eval("Week") %>'>
                             <asp:ListItem>1</asp:ListItem>
                             <asp:ListItem>2</asp:ListItem>
                             <asp:ListItem>3</asp:ListItem>
@@ -102,7 +102,7 @@
                         <asp:Label Text='<%# Eval("Day")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListEditDag" runat="server" SelectedValue='<%# Bind("Day") %>'>
+                        <asp:DropDownList ID="DropDownListEditDag" runat="server" SelectedValue='<%# Eval("Day") %>'>
                             <asp:ListItem>Maandag</asp:ListItem>
                             <asp:ListItem>Dinsdag</asp:ListItem>
                             <asp:ListItem>Woensdag</asp:ListItem>
@@ -127,7 +127,7 @@
                         <asp:Label Text='<%# Eval("StartHour")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListEditStartTijdUur" runat="server" SelectedValue='<%# Bind("StartHour") %>'>
+                        <asp:DropDownList ID="DropDownListEditStartTijdUur" runat="server" SelectedValue='<%# Eval("StartHour") %>'>
                             <asp:ListItem>9</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>11</asp:ListItem>
@@ -162,7 +162,7 @@
                         <asp:Label Text='<%# Eval("StartMinute")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListEditStartTijdMinuut" runat="server" SelectedValue='<%# Bind("StartMinute") %>'>
+                        <asp:DropDownList ID="DropDownListEditStartTijdMinuut" runat="server" SelectedValue='<%# Eval("StartMinute") %>'>
                             <asp:ListItem>00</asp:ListItem>
                             <asp:ListItem>30</asp:ListItem>
                         </asp:DropDownList>
@@ -181,7 +181,7 @@
                         <asp:Label Text='<%# Eval("EndHour")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListEditEindTijdUur" runat="server" SelectedValue='<%# Bind("EndHour") %>'>
+                        <asp:DropDownList ID="DropDownListEditEindTijdUur" runat="server" SelectedValue='<%# Eval("EndHour") %>'>
                             <asp:ListItem>9</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>11</asp:ListItem>
@@ -216,7 +216,7 @@
                         <asp:Label Text='<%# Eval("EndMinute")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListEditEndTijdMinuut" runat="server" SelectedValue='<%# Bind("EndMinute") %>'>
+                        <asp:DropDownList ID="DropDownListEditEndTijdMinuut" runat="server" SelectedValue='<%# Eval("EndMinute") %>'>
                             <asp:ListItem>00</asp:ListItem>
                             <asp:ListItem>30</asp:ListItem>
                         </asp:DropDownList>
