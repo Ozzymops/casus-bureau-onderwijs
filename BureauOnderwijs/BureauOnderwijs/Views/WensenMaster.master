@@ -4,8 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceholder1" runat="server">
     <!-- nav bar -->
     <ul>
-        <asp:Button ID="showWishesButton" runat="server" Text="Wensen" Width="250px" OnClick="showWishesButton_Click"/>
-        <asp:Button ID="ExportWishesButton" runat="server" Text="Wensen Exporteren" Width="250px" OnClick="exportWishesButton_Click" />
+        <asp:Button ID="showWishesButton" runat="server" Text="Wensen" Width="500px" OnClick="showWishesButton_Click"/>
+        <asp:Button ID="ExportWishesButton" runat="server" Text="Wensen Exporteren" Width="500px" OnClick="exportWishesButton_Click" />
     </ul>
     <asp:ContentPlaceHolder ID="NestedPlaceholder1" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>

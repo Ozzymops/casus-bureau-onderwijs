@@ -13,6 +13,12 @@ namespace BureauOnderwijs.Models.CC
             return w.UpdateWish(period, week, day, startTijdUur, startTijdMinuut, eindTijdUur, EindTijdMinuut, ingelogd, wishId);
         }
 
+        public bool checkWishId(int wishId, int ingelogd)
+        {
+            Models.BU.Wish w = new Models.BU.Wish();
+            return w.checkWishId(wishId, ingelogd);
+        }
+
         public int getIntFromDayInput(string dag)
         {
             if (dag == "Maandag")
