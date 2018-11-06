@@ -44,7 +44,12 @@
                         <asp:Label Text='<%# Eval("Period")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="textboxPeriod" Text='<%# Eval("Period")%>' runat="server" />
+                        <asp:DropDownList ID ="dropdownlistEditPeriod" runat="server">
+                            <asp:ListItem>1</asp:ListItem>
+                            <asp:ListItem>2</asp:ListItem>
+                            <asp:ListItem>3</asp:ListItem>
+                            <asp:ListItem>4</asp:ListItem>
+                        </asp:dropdownlist>
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:DropDownList ID="DropDownListPeriod" runat="server">
@@ -62,7 +67,18 @@
                         <asp:Label Text='<%# Eval("Week")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="textboxWeek" Text='<%# Eval("Week")%>' runat="server" />
+                        <asp:DropDownList ID="DropDownListEditWeek" runat="server">
+                            <asp:ListItem>1</asp:ListItem>
+                            <asp:ListItem>2</asp:ListItem>
+                            <asp:ListItem>3</asp:ListItem>
+                            <asp:ListItem>4</asp:ListItem>
+                            <asp:ListItem>5</asp:ListItem>
+                            <asp:ListItem>6</asp:ListItem>
+                            <asp:ListItem>7</asp:ListItem>
+                            <asp:ListItem>8</asp:ListItem>
+                            <asp:ListItem>9</asp:ListItem>
+                            <asp:ListItem>10</asp:ListItem>
+                        </asp:DropDownList>
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:DropDownList ID="DropDownListWeek" runat="server">
@@ -86,7 +102,13 @@
                         <asp:Label Text='<%# Eval("Day")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="textboxDay" Text='<%# Eval("Day")%>' runat="server" />
+                        <asp:DropDownList ID="DropDownListEditDag" runat="server">
+                            <asp:ListItem>Maandag</asp:ListItem>
+                            <asp:ListItem>Dinsdag</asp:ListItem>
+                            <asp:ListItem>Woensdag</asp:ListItem>
+                            <asp:ListItem>Donderdag</asp:ListItem>
+                            <asp:ListItem>Vrijdag</asp:ListItem>
+                        </asp:DropDownList>
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:DropDownList ID="DropDownListDag" runat="server">
@@ -105,7 +127,18 @@
                         <asp:Label Text='<%# Eval("StartHour")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="textboxWStartTimeHour" Text='<%# Eval("StartHour")%>' runat="server" />
+                        <asp:DropDownList ID="DropDownListEditStartTijdUur" runat="server">
+                            <asp:ListItem>9</asp:ListItem>
+                            <asp:ListItem>10</asp:ListItem>
+                            <asp:ListItem>11</asp:ListItem>
+                            <asp:ListItem>12</asp:ListItem>
+                            <asp:ListItem>13</asp:ListItem>
+                            <asp:ListItem>14</asp:ListItem>
+                            <asp:ListItem>15</asp:ListItem>
+                            <asp:ListItem>16</asp:ListItem>
+                            <asp:ListItem>17</asp:ListItem>
+                            <asp:ListItem>18</asp:ListItem>
+                        </asp:DropDownList>
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:DropDownList ID="DropDownListStartTijdUur" runat="server">
@@ -129,7 +162,10 @@
                         <asp:Label Text='<%# Eval("StartMinute")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="textboxWStartTimeMinute" Text='<%# Eval("StartMinute")%>' runat="server" />
+                        <asp:DropDownList ID="DropDownListEditStartTijdMinuut" runat="server">
+                            <asp:ListItem>00</asp:ListItem>
+                            <asp:ListItem>30</asp:ListItem>
+                        </asp:DropDownList>
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:DropDownList ID="DropDownListStartTijdMinuut" runat="server">
@@ -145,7 +181,18 @@
                         <asp:Label Text='<%# Eval("EndHour")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="textboxEndTime" Text='<%# Eval("EndHour")%>' runat="server" />
+                        <asp:DropDownList ID="DropDownListEditEindTijdUur" runat="server">
+                            <asp:ListItem>9</asp:ListItem>
+                            <asp:ListItem>10</asp:ListItem>
+                            <asp:ListItem>11</asp:ListItem>
+                            <asp:ListItem>12</asp:ListItem>
+                            <asp:ListItem>13</asp:ListItem>
+                            <asp:ListItem>14</asp:ListItem>
+                            <asp:ListItem>15</asp:ListItem>
+                            <asp:ListItem>16</asp:ListItem>
+                            <asp:ListItem>17</asp:ListItem>
+                            <asp:ListItem>18</asp:ListItem>
+                        </asp:DropDownList>
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:DropDownList ID="DropDownListEindTijdUur" runat="server">
@@ -169,7 +216,10 @@
                         <asp:Label Text='<%# Eval("EndMinute")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="textboxEndTimeMinute" Text='<%# Eval("EndMinute")%>' runat="server" />
+                        <asp:DropDownList ID="DropDownListEditEndTijdMinuut" runat="server">
+                            <asp:ListItem>00</asp:ListItem>
+                            <asp:ListItem>30</asp:ListItem>
+                        </asp:DropDownList>
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:DropDownList ID="DropDownListEndTijdMinuut" runat="server">

@@ -68,6 +68,16 @@ namespace BureauOnderwijs.Views
             //GridViewRow test2 = gvUserWishes.Rows[e.RowIndex];
             //DataControlField test3 = gvUserWishes.Columns[1];
 
+            int dropDownListEditPeriod = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("DropDownListEditPeriod") as DropDownList).SelectedValue);
+            int dropDownListEditWeek = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("DropDownListEditWeek") as DropDownList).SelectedValue);
+            string dropDownListEditDag = (gvUserWishes.Rows[e.RowIndex].FindControl("DropDownListEditDag") as DropDownList).SelectedValue;
+            int dropDownListEditStartTijdUur = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("DropDownListEditStartTijdUur") as DropDownList).SelectedValue);
+            int dropDownListEditStartTijdMinuut = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("DropDownListEditStartTijdMinuut") as DropDownList).SelectedValue);
+            int dropDownListEditEindTijdUur = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("DropDownListEditEindTijdUur") as DropDownList).SelectedValue);
+            int dropDownListEditEndTijdMinuut = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("DropDownListEditEndTijdMinuut") as DropDownList).SelectedValue);
+            int wishId = Convert.ToInt32((gvUserWishes.DataKeys[e.RowIndex].Value));
+
+            /*
             int tekstboxPeriod = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("textboxPeriod") as TextBox).Text.Trim());
             int tekstboxtWeek = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("textboxWeek") as TextBox).Text.Trim());
             string tekstboxDag = (gvUserWishes.Rows[e.RowIndex].FindControl("textboxDay") as TextBox).Text.Trim();
@@ -76,21 +86,14 @@ namespace BureauOnderwijs.Views
             int tekstboxEindTijdUur = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("textboxEndTime") as TextBox).Text.Trim());
             int tekstboxEndTijdMinuut = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("textboxEndTimeMinute") as TextBox).Text.Trim());
             int wishId = Convert.ToInt32((gvUserWishes.DataKeys[e.RowIndex].Value));
-
+            */
 
             Models.CC.Teacher_UpdateWish c = new Models.CC.Teacher_UpdateWish();
-            int checkresult = c.CheckInput(tekstboxPeriod, tekstboxtWeek, tekstboxDag, tekstboxStartTijdUur, tekstboxStartTijdMinuut, tekstboxEindTijdUur, tekstboxEndTijdMinuut);
-            if (checkresult == 0)
-            {
-                int intdag = c.getIntFromDayInput(tekstboxDag);
-                int result = c.UpdateWish(tekstboxPeriod, tekstboxtWeek, intdag, tekstboxStartTijdUur, tekstboxStartTijdMinuut, tekstboxEindTijdUur, tekstboxEndTijdMinuut, ingelogd, wishId);
-                ClientScript.RegisterStartupScript(this.GetType(), "myalert", c.GetMessage(result), true);
-            }
-            else
-            {
-                ClientScript.RegisterStartupScript(this.GetType(), "myalert", c.GetMessageInputError(checkresult), true);
-            }
-            
+            int intdag = c.getIntFromDayInput(dropDownListEditDag);
+            int result = c.UpdateWish(dropDownListEditPeriod, dropDownListEditWeek, intdag, dropDownListEditStartTijdUur, dropDownListEditStartTijdMinuut, dropDownListEditEindTijdUur, dropDownListEditEndTijdMinuut, ingelogd, wishId);
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", c.GetMessage(result), true);
+            gvUserWishes.EditIndex = -1;
+            fillGvUserWishes();
         }
 
         protected void gvUserWishes_RowDeleting(object sender, GridViewDeleteEventArgs e)
