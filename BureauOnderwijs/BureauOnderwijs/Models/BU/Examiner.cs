@@ -51,7 +51,7 @@ namespace BureauOnderwijs.Models.BU
         public DataTable ReadModulesLinkedToTeacher(string ingelogd)
         {
             string connectionString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
-            string sqlquery = "SELECT m.*, u.UserId FROM Module m, UserAccount u, ModuleUser mu WHERE m.ModuleId = mu.ModuleId AND u.UserId = mu.UserId AND Deleted = 0";
+            string sqlquery = "SELECT m.*, u.UserId FROM Module m, UserAccount u, ModuleUser mu WHERE m.ModuleId = mu.ModuleId AND u.UserId = mu.UserId AND Deleted = 0 ORDER BY m.ModuleId";
 
             try
             {
