@@ -220,13 +220,13 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Label LBDocent;
         
         /// <summary>
-        /// TBTeacher1 control.
+        /// TBDocent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBTeacher1;
+        protected global::System.Web.UI.WebControls.TextBox TBDocent;
         
         /// <summary>
         /// LBDescription control.
@@ -245,24 +245,6 @@ namespace BureauOnderwijs.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TBDescription;
-        
-        /// <summary>
-        /// LBDocent2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LBDocent2;
-        
-        /// <summary>
-        /// TBTeacher2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBTeacher2;
         
         /// <summary>
         /// LBExaminor control.

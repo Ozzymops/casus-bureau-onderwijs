@@ -15,7 +15,7 @@ namespace BureauOnderwijs.Views
             string ingelogd = Session["UserId"].ToString();
             DataTable dtbl = new DataTable();
             Models.CC.Examiner_ReadModules RM = new Models.CC.Examiner_ReadModules();
-            dtbl = RM.ReadModulesLinkedToTeachers(ingelogd);
+            dtbl = RM.ReadModulesLinkedToExaminor(ingelogd);
             GVLinkedModules.DataSource = dtbl;
             GVLinkedModules.DataBind();
         }
