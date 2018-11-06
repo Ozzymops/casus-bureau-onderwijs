@@ -1,42 +1,42 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/WensenMaster.master" AutoEventWireup="true" CodeBehind="WensToevoegen.aspx.cs" Inherits="BureauOnderwijs.Views.WensToevoegen" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="NestedPlaceholder1" runat="server">
     <div>
-        <h1>
-            Wens toevoegen
-        </h1>
-
-
-        <asp:GridView ID="gvUserWishes" runat="server" AutoGenerateColumns="false" ShowFooter="true" DataKeyNames="WishId" 
-            ShowHeaderWhenEmpty="true" 
+        <div id="Wensenlijst" style="padding:10px; float:left;">
+            <h2>
+                Wens toevoegen
+            </h2>
             
-            OnRowCommand="gvUserWishes_RowCommand" OnRowEditing="gvUserWishes_RowEditing" OnRowCancelingEdit="gvUserWishes_RowCancelingEdit"
-            OnRowUpdating="gvUserWishes_RowUpdating" OnRowDeleting="gvUserWishes_RowDeleting"
+            <asp:GridView ID="gvUserWishes" runat="server" AutoGenerateColumns="false" ShowFooter="true" DataKeyNames="WishId" 
+                ShowHeaderWhenEmpty="true" 
             
-            BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4" OnSelectedIndexChanged="gvUserWishes_SelectedIndexChanged">
-            <%-- THEME VAN DE GV --%>
-            <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
-            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
-            <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Center" />
-            <RowStyle BackColor="White" ForeColor="#330099" />
-            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="#663399" />
-            <SortedAscendingCellStyle BackColor="#FEFCEB" />
-            <SortedAscendingHeaderStyle BackColor="#AF0101" />
-            <SortedDescendingCellStyle BackColor="#F6F0C0" />
-            <SortedDescendingHeaderStyle BackColor="#7E0000" />
+                OnRowCommand="gvUserWishes_RowCommand" OnRowEditing="gvUserWishes_RowEditing" OnRowCancelingEdit="gvUserWishes_RowCancelingEdit"
+                OnRowUpdating="gvUserWishes_RowUpdating" OnRowDeleting="gvUserWishes_RowDeleting"
+            
+                BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4" OnSelectedIndexChanged="gvUserWishes_SelectedIndexChanged">
+                <%-- THEME VAN DE GV --%>
+                <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
+                <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
+                <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Center" />
+                <RowStyle BackColor="White" ForeColor="#330099" />
+                <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="#663399" />
+                <SortedAscendingCellStyle BackColor="#FEFCEB" />
+                <SortedAscendingHeaderStyle BackColor="#AF0101" />
+                <SortedDescendingCellStyle BackColor="#F6F0C0" />
+                <SortedDescendingHeaderStyle BackColor="#7E0000" />
 
-            <Columns>
-                <%-- Wens ID --%>
-                <asp:TemplateField HeaderText="Wens ID">
-                    <ItemTemplate>
-                        <asp:Label Text='<%# Eval("WishId")%>' runat="server" />
-                    </ItemTemplate>
-                    <EditItemTemplate>
+                <Columns>
+                    <%-- Wens ID --%>
+                    <asp:TemplateField HeaderText="Wens ID">
+                        <ItemTemplate>
+                            <asp:Label Text='<%# Eval("WishId")%>' runat="server" />
+                        </ItemTemplate>
+                        <EditItemTemplate>
                         
-                    </EditItemTemplate>
-                    <FooterTemplate>
+                        </EditItemTemplate>
+                        <FooterTemplate>
                         
-                    </FooterTemplate>
-                </asp:TemplateField>
+                        </FooterTemplate>
+                    </asp:TemplateField>
 
                 <%-- Blok periode --%>
                 <asp:TemplateField HeaderText="Blok">
@@ -44,7 +44,7 @@
                         <asp:Label Text='<%# Eval("Period")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID ="dropdownlistEditPeriod" runat="server">
+                        <asp:DropDownList ID ="dropdownlistEditPeriod" runat="server" SelectedValue='<%# Bind("Period") %>'>
                             <asp:ListItem>1</asp:ListItem>
                             <asp:ListItem>2</asp:ListItem>
                             <asp:ListItem>3</asp:ListItem>
@@ -66,8 +66,8 @@
                     <ItemTemplate>
                         <asp:Label Text='<%# Eval("Week")%>' runat="server" />
                     </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListEditWeek" runat="server">
+                    <EditItemTemplate>                        
+                        <asp:DropDownList ID="DropDownListEditWeek" runat="server" SelectedValue='<%# Eval("Week") %>'>
                             <asp:ListItem>1</asp:ListItem>
                             <asp:ListItem>2</asp:ListItem>
                             <asp:ListItem>3</asp:ListItem>
@@ -102,7 +102,7 @@
                         <asp:Label Text='<%# Eval("Day")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListEditDag" runat="server">
+                        <asp:DropDownList ID="DropDownListEditDag" runat="server" SelectedValue='<%# Eval("Day") %>'>
                             <asp:ListItem>Maandag</asp:ListItem>
                             <asp:ListItem>Dinsdag</asp:ListItem>
                             <asp:ListItem>Woensdag</asp:ListItem>
@@ -127,7 +127,7 @@
                         <asp:Label Text='<%# Eval("StartHour")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListEditStartTijdUur" runat="server">
+                        <asp:DropDownList ID="DropDownListEditStartTijdUur" runat="server" SelectedValue='<%# Eval("StartHour") %>'>
                             <asp:ListItem>9</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>11</asp:ListItem>
@@ -162,7 +162,7 @@
                         <asp:Label Text='<%# Eval("StartMinute")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListEditStartTijdMinuut" runat="server">
+                        <asp:DropDownList ID="DropDownListEditStartTijdMinuut" runat="server" SelectedValue='<%# Eval("StartMinute") %>'>
                             <asp:ListItem>00</asp:ListItem>
                             <asp:ListItem>30</asp:ListItem>
                         </asp:DropDownList>
@@ -181,7 +181,7 @@
                         <asp:Label Text='<%# Eval("EndHour")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListEditEindTijdUur" runat="server">
+                        <asp:DropDownList ID="DropDownListEditEindTijdUur" runat="server" SelectedValue='<%# Eval("EndHour") %>'>
                             <asp:ListItem>9</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>11</asp:ListItem>
@@ -216,7 +216,7 @@
                         <asp:Label Text='<%# Eval("EndMinute")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListEditEndTijdMinuut" runat="server">
+                        <asp:DropDownList ID="DropDownListEditEndTijdMinuut" runat="server" SelectedValue='<%# Eval("EndMinute") %>'>
                             <asp:ListItem>00</asp:ListItem>
                             <asp:ListItem>30</asp:ListItem>
                         </asp:DropDownList>
@@ -245,6 +245,97 @@
             </Columns>
         </asp:GridView>
 
-        <asp:Label ID="LabelSuccesvol" runat="server" Text=""></asp:Label>
+        </div>
+       
+        <div id ="WensWijzigen" class="controls_div_main" style="float:left;">
+            <h1>
+                Wens wijzigen
+            </h1>
+            <div>
+                <asp:Label ID="LabelWishId" runat="server" Text="Wish id: " Width="125px"></asp:Label>
+                <asp:Textbox ID="TextBoxWishIdEditBackup" runat="server">
+                </asp:Textbox>
+            </div>
+            <div>
+                <asp:Label ID="LabelPeriod" runat="server" Text="Blok: " Width="125px"></asp:Label>
+                <asp:DropDownList ID="DropDownListPeriodEditBackup" runat="server">
+                    <asp:ListItem>1</asp:ListItem>
+                    <asp:ListItem>2</asp:ListItem>
+                    <asp:ListItem>3</asp:ListItem>
+                    <asp:ListItem>4</asp:ListItem>
+                </asp:DropDownList>
+            </div>
+            <div>
+                <asp:Label ID="LabelWeek" runat="server" Text="Week: " Width="125px"></asp:Label>
+                <asp:DropDownList ID="DropDownListWeekBackup" runat="server">
+                    <asp:ListItem>1</asp:ListItem>
+                    <asp:ListItem>2</asp:ListItem>
+                    <asp:ListItem>3</asp:ListItem>
+                    <asp:ListItem>4</asp:ListItem>
+                    <asp:ListItem>5</asp:ListItem>
+                    <asp:ListItem>6</asp:ListItem>
+                    <asp:ListItem>7</asp:ListItem>
+                    <asp:ListItem>8</asp:ListItem>
+                    <asp:ListItem>9</asp:ListItem>
+                    <asp:ListItem>10</asp:ListItem>
+                </asp:DropDownList>
+            </div>
+            <div>
+                <asp:Label ID="LabelDag" runat="server" Text="Dag: " Width="125px"></asp:Label>
+                <asp:DropDownList ID="DropDownListDagBackup" runat="server">
+                    <asp:ListItem>Maandag</asp:ListItem>
+                    <asp:ListItem>Dinsdag</asp:ListItem>
+                    <asp:ListItem>Woensdag</asp:ListItem>
+                    <asp:ListItem>Donderdag</asp:ListItem>
+                    <asp:ListItem>Vrijdag</asp:ListItem>                
+                </asp:DropDownList>
+            </div>
+            <div>
+                <asp:Label ID="Labelstarttijd" runat="server" Text="Starttijd: " Width="125px"></asp:Label>
+                <asp:DropDownList ID="DropDownListStartTijdUurBackup" runat="server">
+                    <asp:ListItem>9</asp:ListItem>
+                    <asp:ListItem>10</asp:ListItem>
+                    <asp:ListItem>11</asp:ListItem>
+                    <asp:ListItem>12</asp:ListItem>
+                    <asp:ListItem>13</asp:ListItem>
+                    <asp:ListItem>14</asp:ListItem>
+                    <asp:ListItem>15</asp:ListItem>
+                    <asp:ListItem>16</asp:ListItem>
+                    <asp:ListItem>17</asp:ListItem>
+                    <asp:ListItem>18</asp:ListItem>
+                </asp:DropDownList>
+                <asp:Label ID="LabelDubbelepuntStartTijd" runat="server" Text=":"></asp:Label>
+                <asp:DropDownList ID="DropDownListStartTijdMinuutBackup" runat="server">
+                    <asp:ListItem>00</asp:ListItem>
+                    <asp:ListItem>30</asp:ListItem>
+                </asp:DropDownList>
+            </div>
+            <div>
+                <asp:Label ID="Labeleindtijd" runat="server" Text="Eindtijd: " Width="125px"></asp:Label>
+                <asp:DropDownList ID="DropDownListEindTijdUurBackup" runat="server">
+                    <asp:ListItem>9</asp:ListItem>
+                    <asp:ListItem>10</asp:ListItem>
+                    <asp:ListItem>11</asp:ListItem>
+                    <asp:ListItem>12</asp:ListItem>
+                    <asp:ListItem>13</asp:ListItem>
+                    <asp:ListItem>14</asp:ListItem>
+                    <asp:ListItem>15</asp:ListItem>
+                    <asp:ListItem>16</asp:ListItem>
+                    <asp:ListItem>17</asp:ListItem>
+                    <asp:ListItem>18</asp:ListItem>
+                </asp:DropDownList>
+                <asp:Label ID="LabelDubbelepuntEindtijd" runat="server" Text=":"></asp:Label>
+                <asp:DropDownList ID="DropDownListEindTijdMinuutBackup" runat="server">
+                    <asp:ListItem>00</asp:ListItem>
+                    <asp:ListItem>30</asp:ListItem>
+                </asp:DropDownList>
+            </div>
+            <div>
+
+            </div>
+            <asp:Button ID="ButtonWijigenWens" runat="server" Text="Wijzigen" OnClick="ButtonWijigenWens_Click" />
+        </div>
+        
+
     </div>
 </asp:Content>

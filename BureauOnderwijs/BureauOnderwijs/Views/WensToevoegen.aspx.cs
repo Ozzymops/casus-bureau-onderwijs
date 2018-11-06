@@ -10,7 +10,8 @@ namespace BureauOnderwijs.Views
 {
     public partial class WensToevoegen : System.Web.UI.Page
     {
-
+        private DataTable dt;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -28,8 +29,8 @@ namespace BureauOnderwijs.Views
         {
             if (e.CommandName == "AddNew")
             {
-                //int ingelogd = Convert.ToInt32(Session["UserId"]);
-                int ingelogd = 1;
+                int ingelogd = Convert.ToInt32(Session["UserId"]);
+                //int ingelogd = 1;
 
                 string dropDownListPeriod = (gvUserWishes.FooterRow.FindControl("DropDownListPeriod") as DropDownList).SelectedValue;
                 int dropDownListWeek = Convert.ToInt32((gvUserWishes.FooterRow.FindControl("DropDownListWeek") as DropDownList).SelectedValue);
@@ -43,30 +44,31 @@ namespace BureauOnderwijs.Views
                 int intdag = c.getIntFromDayinput(dropDownListDag);
                 int result = c.CreateWishCC(dropDownListPeriod, dropDownListWeek, intdag, dropDownListStartTijdUur, dropDownListStartTijdMinuut, dropDownListEindTijdUur, dropDownListEndTijdMinuut, ingelogd);
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", c.getMessage(result), true);
-            }
-            fillGvUserWishes();
+
+                //fillGvUserWishes();
+                BindData();
+            }            
         }
 
         protected void gvUserWishes_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gvUserWishes.EditIndex = e.NewEditIndex;
-            fillGvUserWishes();
+            //fillGvUserWishes();
+            BindData();
         }
 
         protected void gvUserWishes_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gvUserWishes.EditIndex = -1;
-            fillGvUserWishes();
+            //fillGvUserWishes();
+            BindData();
         }
 
         protected void gvUserWishes_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            //int ingelogd = Convert.ToInt32(Session["UserId"]);
-            int ingelogd = 1;
-
-            //string test = (gvUserWishes.Rows[e.RowIndex].FindControl("textboxPeriod") as TextBox).Text;
-            //GridViewRow test2 = gvUserWishes.Rows[e.RowIndex];
-            //DataControlField test3 = gvUserWishes.Columns[1];
+            
+            int ingelogd = Convert.ToInt32(Session["UserId"]);
+            //int ingelogd = 1;
 
             int dropDownListEditPeriod = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("DropDownListEditPeriod") as DropDownList).SelectedValue);
             int dropDownListEditWeek = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("DropDownListEditWeek") as DropDownList).SelectedValue);
@@ -77,24 +79,15 @@ namespace BureauOnderwijs.Views
             int dropDownListEditEndTijdMinuut = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("DropDownListEditEndTijdMinuut") as DropDownList).SelectedValue);
             int wishId = Convert.ToInt32((gvUserWishes.DataKeys[e.RowIndex].Value));
 
-            /*
-            int tekstboxPeriod = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("textboxPeriod") as TextBox).Text.Trim());
-            int tekstboxtWeek = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("textboxWeek") as TextBox).Text.Trim());
-            string tekstboxDag = (gvUserWishes.Rows[e.RowIndex].FindControl("textboxDay") as TextBox).Text.Trim();
-            int tekstboxStartTijdUur = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("textboxWStartTimeHour") as TextBox).Text.Trim());
-            int tekstboxStartTijdMinuut = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("textboxWStartTimeMinute") as TextBox).Text.Trim());
-            int tekstboxEindTijdUur = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("textboxEndTime") as TextBox).Text.Trim());
-            int tekstboxEndTijdMinuut = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("textboxEndTimeMinute") as TextBox).Text.Trim());
-            int wishId = Convert.ToInt32((gvUserWishes.DataKeys[e.RowIndex].Value));
-            */
-
             Models.CC.Teacher_UpdateWish c = new Models.CC.Teacher_UpdateWish();
             int intdag = c.getIntFromDayInput(dropDownListEditDag);
             int result = c.UpdateWish(dropDownListEditPeriod, dropDownListEditWeek, intdag, dropDownListEditStartTijdUur, dropDownListEditStartTijdMinuut, dropDownListEditEindTijdUur, dropDownListEditEndTijdMinuut, ingelogd, wishId);
             ClientScript.RegisterStartupScript(this.GetType(), "myalert", c.GetMessage(result), true);
             gvUserWishes.EditIndex = -1;
-            fillGvUserWishes();
+            //fillGvUserWishes();
+            BindData();
         }
+
 
         protected void gvUserWishes_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
@@ -103,7 +96,26 @@ namespace BureauOnderwijs.Views
             Models.CC.Teacher_DeleteWish dw = new Models.CC.Teacher_DeleteWish();
             int result = dw.DeleteWish(wishId);
             ClientScript.RegisterStartupScript(this.GetType(), "myalert", dw.GetMessage(result), true);
-            fillGvUserWishes();
+            //fillGvUserWishes();
+            BindData();
+        }
+
+        /// <summary>
+        /// Nieuwe functie toegevoegd:
+        /// In plaats van iedere keer de data op te halen, wordt de huidige datasource nu gebruikt
+        /// Een nieuwe wordt alleen nog gecreerd op het moment dat de datasource leeg is.
+        /// </summary>
+        private void BindData()
+        {
+            if (dt == null)
+            {
+                fillGvUserWishes();
+            }
+            else
+            {
+                gvUserWishes.DataSource = dt;
+                gvUserWishes.DataBind();
+            }
         }
 
         private void fillGvUserWishes()
@@ -111,7 +123,7 @@ namespace BureauOnderwijs.Views
             string ingelogd = "1";
             //string ingelogd = Session["UserId"].ToString();
 
-            DataTable dt = new DataTable();
+            dt = new DataTable();
             Models.CC.Teacher_ReadWishes r = new Models.CC.Teacher_ReadWishes();
             dt = r.GetUserWishesCC(ingelogd);
 
@@ -127,6 +139,34 @@ namespace BureauOnderwijs.Views
                 dt.Rows.Add("0", "0", "0", "0", "0", "0", "0", "0");
                 gvUserWishes.DataSource = dt;
                 gvUserWishes.DataBind();
+            }
+        }
+
+        protected void ButtonWijigenWens_Click(object sender, EventArgs e)
+        {
+            int wishId = Convert.ToInt32(TextBoxWishIdEditBackup.Text.Trim());
+            int dropDownListEditPeriod = Convert.ToInt32(DropDownListPeriodEditBackup.SelectedValue);
+            int dropDownListEditWeek = Convert.ToInt32(DropDownListWeekBackup.SelectedValue);
+            string dropDownListEditDag = DropDownListDagBackup.SelectedValue;
+            int dropDownListEditStartTijdUur = Convert.ToInt32(DropDownListStartTijdUurBackup.SelectedValue);
+            int dropDownListEditStartTijdMinuut = Convert.ToInt32(DropDownListStartTijdMinuutBackup.SelectedValue);
+            int dropDownListEditEindTijdUur = Convert.ToInt32(DropDownListEindTijdUurBackup.SelectedValue);
+            int dropDownListEditEndTijdMinuut = Convert.ToInt32(DropDownListEindTijdMinuutBackup.SelectedValue);
+            int ingelogd = Convert.ToInt32(Session["UserId"]);
+
+
+            Models.CC.Teacher_UpdateWish c = new Models.CC.Teacher_UpdateWish();
+            int intdag = c.getIntFromDayInput(dropDownListEditDag);
+            bool resultCheckWishId = c.checkWishId(wishId, ingelogd);
+            if (resultCheckWishId)
+            {
+                int result = c.UpdateWish(dropDownListEditPeriod, dropDownListEditWeek, intdag, dropDownListEditStartTijdUur, dropDownListEditStartTijdMinuut, dropDownListEditEindTijdUur, dropDownListEditEndTijdMinuut, ingelogd, wishId);
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", c.GetMessage(result), true);
+                fillGvUserWishes();
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een juist wens ID in!');", true);
             }
         }
     }
