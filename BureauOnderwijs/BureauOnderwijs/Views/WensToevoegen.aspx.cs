@@ -10,7 +10,8 @@ namespace BureauOnderwijs.Views
 {
     public partial class WensToevoegen : System.Web.UI.Page
     {
-
+        private DataTable dt;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -43,20 +44,24 @@ namespace BureauOnderwijs.Views
                 int intdag = c.getIntFromDayinput(dropDownListDag);
                 int result = c.CreateWishCC(dropDownListPeriod, dropDownListWeek, intdag, dropDownListStartTijdUur, dropDownListStartTijdMinuut, dropDownListEindTijdUur, dropDownListEndTijdMinuut, ingelogd);
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", c.getMessage(result), true);
-            }
-            fillGvUserWishes();
+
+                //fillGvUserWishes();
+                BindData();
+            }            
         }
 
         protected void gvUserWishes_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gvUserWishes.EditIndex = e.NewEditIndex;
-            fillGvUserWishes();
+            //fillGvUserWishes();
+            BindData();
         }
 
         protected void gvUserWishes_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gvUserWishes.EditIndex = -1;
-            fillGvUserWishes();
+            //fillGvUserWishes();
+            BindData();
         }
 
         protected void gvUserWishes_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -93,7 +98,8 @@ namespace BureauOnderwijs.Views
             int result = c.UpdateWish(dropDownListEditPeriod, dropDownListEditWeek, intdag, dropDownListEditStartTijdUur, dropDownListEditStartTijdMinuut, dropDownListEditEindTijdUur, dropDownListEditEndTijdMinuut, ingelogd, wishId);
             ClientScript.RegisterStartupScript(this.GetType(), "myalert", c.GetMessage(result), true);
             gvUserWishes.EditIndex = -1;
-            fillGvUserWishes();
+            //fillGvUserWishes();
+            BindData();
         }
 
         protected void gvUserWishes_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -103,7 +109,26 @@ namespace BureauOnderwijs.Views
             Models.CC.Teacher_DeleteWish dw = new Models.CC.Teacher_DeleteWish();
             int result = dw.DeleteWish(wishId);
             ClientScript.RegisterStartupScript(this.GetType(), "myalert", dw.GetMessage(result), true);
-            fillGvUserWishes();
+            //fillGvUserWishes();
+            BindData();
+        }
+
+        /// <summary>
+        /// Nieuwe functie toegevoegd:
+        /// In plaats van iedere keer de data op te halen, wordt de huidige datasource nu gebruikt
+        /// Een nieuwe wordt alleen nog gecreerd op het moment dat de datasource leeg is.
+        /// </summary>
+        private void BindData()
+        {
+            if (dt == null)
+            {
+                fillGvUserWishes();
+            }
+            else
+            {
+                gvUserWishes.DataSource = dt;
+                gvUserWishes.DataBind();
+            }
         }
 
         private void fillGvUserWishes()
@@ -111,7 +136,7 @@ namespace BureauOnderwijs.Views
             string ingelogd = "1";
             //string ingelogd = Session["UserId"].ToString();
 
-            DataTable dt = new DataTable();
+            dt = new DataTable();
             Models.CC.Teacher_ReadWishes r = new Models.CC.Teacher_ReadWishes();
             dt = r.GetUserWishesCC(ingelogd);
 

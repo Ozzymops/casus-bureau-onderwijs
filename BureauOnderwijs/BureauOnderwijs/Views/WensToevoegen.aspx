@@ -44,7 +44,7 @@
                         <asp:Label Text='<%# Eval("Period")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID ="dropdownlistEditPeriod" runat="server">
+                        <asp:DropDownList ID ="dropdownlistEditPeriod" runat="server" SelectedValue='<%# Bind("Period") %>'>
                             <asp:ListItem>1</asp:ListItem>
                             <asp:ListItem>2</asp:ListItem>
                             <asp:ListItem>3</asp:ListItem>
@@ -66,8 +66,8 @@
                     <ItemTemplate>
                         <asp:Label Text='<%# Eval("Week")%>' runat="server" />
                     </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListEditWeek" runat="server">
+                    <EditItemTemplate>                        
+                        <asp:DropDownList ID="DropDownListEditWeek" runat="server" SelectedValue='<%# Bind("Week") %>'>
                             <asp:ListItem>1</asp:ListItem>
                             <asp:ListItem>2</asp:ListItem>
                             <asp:ListItem>3</asp:ListItem>
@@ -102,7 +102,7 @@
                         <asp:Label Text='<%# Eval("Day")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListEditDag" runat="server">
+                        <asp:DropDownList ID="DropDownListEditDag" runat="server" SelectedValue='<%# Bind("Day") %>'>
                             <asp:ListItem>Maandag</asp:ListItem>
                             <asp:ListItem>Dinsdag</asp:ListItem>
                             <asp:ListItem>Woensdag</asp:ListItem>
@@ -127,7 +127,7 @@
                         <asp:Label Text='<%# Eval("StartHour")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListEditStartTijdUur" runat="server">
+                        <asp:DropDownList ID="DropDownListEditStartTijdUur" runat="server" SelectedValue='<%# Bind("StartHour") %>'>
                             <asp:ListItem>9</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>11</asp:ListItem>
@@ -162,7 +162,7 @@
                         <asp:Label Text='<%# Eval("StartMinute")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListEditStartTijdMinuut" runat="server">
+                        <asp:DropDownList ID="DropDownListEditStartTijdMinuut" runat="server" SelectedValue='<%# Bind("StartMinute") %>'>
                             <asp:ListItem>00</asp:ListItem>
                             <asp:ListItem>30</asp:ListItem>
                         </asp:DropDownList>
@@ -181,7 +181,7 @@
                         <asp:Label Text='<%# Eval("EndHour")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListEditEindTijdUur" runat="server">
+                        <asp:DropDownList ID="DropDownListEditEindTijdUur" runat="server" SelectedValue='<%# Bind("EndHour") %>'>
                             <asp:ListItem>9</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>11</asp:ListItem>
@@ -216,7 +216,7 @@
                         <asp:Label Text='<%# Eval("EndMinute")%>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListEditEndTijdMinuut" runat="server">
+                        <asp:DropDownList ID="DropDownListEditEndTijdMinuut" runat="server" SelectedValue='<%# Bind("EndMinute") %>'>
                             <asp:ListItem>00</asp:ListItem>
                             <asp:ListItem>30</asp:ListItem>
                         </asp:DropDownList>
