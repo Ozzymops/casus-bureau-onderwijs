@@ -32,8 +32,8 @@
     <div>
         <asp:Label ID="LBYear" runat="server" Text="Year: " Width="95px"></asp:Label>
         <asp:TextBox ID="TBYear" runat="server" style="margin-right:20px" ></asp:TextBox>
-        <asp:Label ID="LBDocent" runat="server" Text="Docent:" Width="95px"></asp:Label>
-        <asp:TextBox ID="TBDocent" runat="server"></asp:TextBox>
+<%--        <asp:Label ID="LBDocent" runat="server" Text="Docent:" Width="95px"></asp:Label>
+        <asp:TextBox ID="TBDocent" runat="server"></asp:TextBox>--%>
         </div>
     <div>
         <asp:Label ID="LBDescription" runat="server" Text="Omschrijving: " Width="95px"></asp:Label>
