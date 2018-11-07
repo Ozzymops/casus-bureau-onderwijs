@@ -29,7 +29,7 @@ namespace BureauOnderwijs.Models.BU
     public DataTable ReadModules(string ingelogd)
         {
             string connectionString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
-            string sqlquery = "SELECT [Name],[Code],[Period],[Year],[Faculty],[Profile],[Credits],[ExaminerId] ,[Description],[GeneralModule],[LectureHours],[PracticalHours] FROM[Module] WHERE Deleted = 0";
+            string sqlquery = "SELECT [ModuleId],[Name],[Code],[Period],[Year],[Faculty],[Profile],[Credits],[ExaminerId] ,[Description],[GeneralModule],[LectureHours],[PracticalHours] FROM[Module] WHERE Deleted = 0";
 
             try
             {
@@ -79,7 +79,7 @@ namespace BureauOnderwijs.Models.BU
             string sqlquery =   "INSERT INTO Module(Name, Code, Period, Year, Faculty, Profile, Credits, GeneralModule, ExaminerId, Description, LectureHours, PracticalHours, Deleted)" +
                                 "VALUES('" + Name + "', '" + Code + "','" + Period + "','" + Year + "','" + Faculty + "','" + Profile + "','" + Credits + "','" + GeneralModule + "', '" + ExaminerId + "', '" + Description + "','" + LectureHours + "','" + PracticalHours + "', 0);";
             string sqlquery2 = "SELECT ModuleId FROM Module WHERE Name = '" + Name + "' AND Code = '" + Code + "'";
-            string sqlquery3 = "INSERT INTO ModuleUser(ModuleId, UserId) VALUES( '" + ModuleId + "','" + Docent + "')";
+
             try
             {
                 string connectionString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
@@ -92,7 +92,7 @@ namespace BureauOnderwijs.Models.BU
 
                 ModuleId = Convert.ToInt32(cmd2.ExecuteScalar());
 
-
+                string sqlquery3 = "INSERT INTO ModuleUser(ModuleId, UserId) VALUES( '" + ModuleId + "','" + Docent + "')";
                 SqlCommand cmd3 = new SqlCommand(sqlquery3, con);
                 cmd3.ExecuteNonQuery();
                 con.Close();
@@ -109,8 +109,7 @@ namespace BureauOnderwijs.Models.BU
         public string UpdateModule(string Name, string Code, int Period, int Year, string Faculty, string Profile, int Credits, bool GeneralModule, int ExaminerId, string Description, int LectureHours, int PracticalHours, int ModuleId, string ingelogd)
         {
             string connectionString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
-            string sqlqueryUpdate = "UPDATE Module SET [Name] = '" + Name + "', [Code] = '" + Code + "', [Period] = '" + Period + "', [Year] ='" + Year + "', [Faculty] ='" + Faculty + "', [Profile] = '" + Profile + "', [Credits] ='" + Credits + "', [GeneralModule] = '" + GeneralModule + "', [ExaminerId] ='" + ExaminerId + "', [Description]='" + Description + "', [LectureHours] ='" + LectureHours + "', [PracticalHours] = '" + PracticalHours + "', Deleted = 0  WHERE ModuleId = '" + ModuleId + "'"; 
-
+            string sqlqueryUpdate = "UPDATE Module SET [Name] = '" + Name + "', [Code] = '" + Code + "', [Period] = '" + Period + "', [Year] ='" + Year + "', [Faculty] ='" + Faculty + "', [Profile] = '" + Profile + "', [Credits] ='" + Credits + "', [GeneralModule] = '" + GeneralModule + "', [ExaminerId] ='" + ExaminerId + "', [Description]='" + Description + "', [LectureHours] ='" + LectureHours + "', [PracticalHours] = '" + PracticalHours + "', Deleted = 0  WHERE ModuleId = '" + ModuleId + "'";
 
             try
             {
