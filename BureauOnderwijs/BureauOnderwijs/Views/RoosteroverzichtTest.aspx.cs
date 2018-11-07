@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 namespace BureauOnderwijs.Views
 {
-    public partial class Roosteroverzicht : System.Web.UI.Page
+    public partial class RoosteroverzichtTest : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -222,7 +222,7 @@ namespace BureauOnderwijs.Views
             Session["Period_Current"] = PeriodDropdownList.Items[0];
             Session["Week_Current"] = WeekDropdownList.Items[0];
         }
-
+        
         /// <summary>
         /// Vul DayDropdownList en ModuleDropdownList en de edit equivalenten.
         /// </summary>
@@ -386,7 +386,7 @@ namespace BureauOnderwijs.Views
             }
             Session["Database_Modules_" + UserDropdownList.SelectedValue] = sessionModuleList;
         }
-
+        
         /// <summary>
         /// Sla nieuwe data op in de DB en refresh alle data.
         /// </summary>
@@ -525,9 +525,9 @@ namespace BureauOnderwijs.Views
         {
             int cellRow = -1;               // default waarde, buiten de tabel
             int cellColumn = lecture.day;   // waarde is dagnummer van Lecture
-
+            
             // Bepaal cellRow
-            switch (lecture.startHour)
+            switch(lecture.startHour)
             {
                 case 9:
                     cellRow = 0;
@@ -574,7 +574,7 @@ namespace BureauOnderwijs.Views
         public string DayString(int day)
         {
             string[] dagen = { "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag" };
-            switch (day)
+            switch(day)
             {
                 case 1:
                     return dagen[0];

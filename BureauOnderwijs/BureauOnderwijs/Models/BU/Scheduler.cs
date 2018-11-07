@@ -127,9 +127,18 @@ namespace BureauOnderwijs.Models.BU
         public void UpdateEntry(Models.BU.Lecture lecture, int lectureId)
         {
             Models.Database db = new Models.Database();
-            string query = "UPDATE Lecture SET ModuleCode = '" + lecture.module.moduleCode + "', Classroom = '" + lecture.classroom + "', " +
-                "StudentGroup = '" + lecture.studentGroup + "' WHERE LectureId = '" + lectureId + "'";
+            string query = "UPDATE Lecture SET TeacherId = '" + lecture.teacher.UserID + "', ModuleCode = '" + lecture.module.moduleCode + "', Classroom = '" + lecture.classroom +
+                            "', StudentGroup = '" + lecture.studentGroup + "', Day = '" + lecture.day + "', StartHour = '" + lecture.startHour + 
+                            "', StartMinute = '" + lecture.startMinute + "', EndHour = '" + lecture.endHour + "', EndMinute = '" + lecture.endMinute + "'" +
+                            "WHERE LectureId = '" + lectureId + "'";
             db.UpdateEntry(query);
+        }
+
+        public void DeleteEntry(int lectureId)
+        {
+            Models.Database db = new Models.Database();
+            string query = "DELETE FROM Lecture WHERE lectureId = '" + lectureId + "'";
+            db.DeleteEntry(query);
         }
 
         public string UserIdToUsername(int userId)
@@ -149,7 +158,7 @@ namespace BureauOnderwijs.Models.BU
         public List<Models.BU.Teacher> GetTeacherList()
         {
             Models.Database db = new Models.Database();
-            string query = "SELECT * FROM UserAccount WHERE Role = '3'";
+            string query = "SELECT * FROM UserAccount WHERE Role = '2' OR Role = '3'";  // Teacher en Examiner
             List<Models.BU.Teacher> teacherList = db.GetTeacherList(query);
             // Vul wishList van Teachers
             foreach (Models.BU.Teacher teacher in teacherList)
@@ -163,7 +172,7 @@ namespace BureauOnderwijs.Models.BU
         public Models.BU.Teacher GetSingleTeacher(int userId)
         {
             Models.Database db = new Models.Database();
-            string query = "SELECT * FROM UserAccount WHERE Role = '3' AND UserId = '" + userId + "'";
+            string query = "SELECT * FROM UserAccount WHERE Role = '2' AND UserId = '" + userId + "' OR Role = '3' AND UserId = '" + userId + "'";
             return (db.GetSingleTeacher(query));
         }
 

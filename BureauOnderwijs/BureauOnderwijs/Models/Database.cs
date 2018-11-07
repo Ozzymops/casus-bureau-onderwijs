@@ -455,5 +455,26 @@ namespace BureauOnderwijs.Models
             }
         }
         #endregion
+
+        #region Delete
+        /// <summary>
+        /// Delete een entry in de database.
+        /// </summary>
+        public void DeleteEntry(string query)
+        {
+            Connect();
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Dispose();
+            }
+            catch (Exception)
+            {
+                Debug.WriteLine("Oepsie woepsie, er was een foutje uWu");
+            }
+        }
+        #endregion
     }
 }
