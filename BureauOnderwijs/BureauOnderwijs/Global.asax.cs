@@ -23,13 +23,15 @@ namespace BureauOnderwijs
         protected void Session_Start(object sender, EventArgs e)
         {
             Session["RecoveryStep"] = "1";
+            Session["Database_FirstTime"] = true;
+
+            // TO DELETE
             // Roosteroverzicht.aspx.cs
             Session["ScheduleChangeList"] = new List<Models.BU.Lecture>();
             Session["ScheduleDatabaseList"] = new List<Models.BU.Lecture>();
-            Session["CurrentUser"] = "Roy"; // los dit op!
-            Session["ControlPanel"] = 0;
-            Session["FirstTimeSchedule"] = true;
-            Session["NewChanges"] = false;
+            //Session["CurrentUser"] = "Roy"; // los dit op!
+            //Session["ControlPanel"] = 0;
+            Session["Database_FirstTime"] = true;
         }
     }
 }

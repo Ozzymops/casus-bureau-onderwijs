@@ -10,7 +10,7 @@
 namespace BureauOnderwijs.Views {
     
     
-    public partial class Roosteroverzicht {
+    public partial class RoosteroverzichtTest {
         
         /// <summary>
         /// manager control.
