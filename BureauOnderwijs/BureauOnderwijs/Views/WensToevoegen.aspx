@@ -128,7 +128,7 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:DropDownList ID="DropDownListEditStartTijdUur" runat="server" SelectedValue='<%# Eval("StartHour") %>'>
-                            <asp:ListItem>9</asp:ListItem>
+                            <asp:ListItem>09</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>11</asp:ListItem>
                             <asp:ListItem>12</asp:ListItem>
@@ -142,7 +142,7 @@
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:DropDownList ID="DropDownListStartTijdUur" runat="server">
-                            <asp:ListItem>9</asp:ListItem>
+                            <asp:ListItem>09</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>11</asp:ListItem>
                             <asp:ListItem>12</asp:ListItem>
@@ -182,7 +182,7 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:DropDownList ID="DropDownListEditEindTijdUur" runat="server" SelectedValue='<%# Eval("EndHour") %>'>
-                            <asp:ListItem>9</asp:ListItem>
+                            <asp:ListItem>09</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>11</asp:ListItem>
                             <asp:ListItem>12</asp:ListItem>
@@ -196,7 +196,7 @@
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:DropDownList ID="DropDownListEindTijdUur" runat="server">
-                            <asp:ListItem>9</asp:ListItem>
+                            <asp:ListItem>09</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>11</asp:ListItem>
                             <asp:ListItem>12</asp:ListItem>
@@ -293,7 +293,7 @@
             <div>
                 <asp:Label ID="Labelstarttijd" runat="server" Text="Starttijd: " Width="125px"></asp:Label>
                 <asp:DropDownList ID="DropDownListStartTijdUurBackup" runat="server">
-                    <asp:ListItem>9</asp:ListItem>
+                    <asp:ListItem>09</asp:ListItem>
                     <asp:ListItem>10</asp:ListItem>
                     <asp:ListItem>11</asp:ListItem>
                     <asp:ListItem>12</asp:ListItem>
@@ -313,7 +313,7 @@
             <div>
                 <asp:Label ID="Labeleindtijd" runat="server" Text="Eindtijd: " Width="125px"></asp:Label>
                 <asp:DropDownList ID="DropDownListEindTijdUurBackup" runat="server">
-                    <asp:ListItem>9</asp:ListItem>
+                    <asp:ListItem>09</asp:ListItem>
                     <asp:ListItem>10</asp:ListItem>
                     <asp:ListItem>11</asp:ListItem>
                     <asp:ListItem>12</asp:ListItem>
