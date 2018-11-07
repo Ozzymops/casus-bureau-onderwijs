@@ -26,6 +26,10 @@ namespace BureauOnderwijs.Views
                 RetrieveData();
                 ImportData();
 
+                // Verstop edit panel
+                add_controls.Visible = true;
+                edit_controls.Visible = false;
+
                 Session["Database_FirstTime"] = false;
             }
         }
@@ -112,8 +116,9 @@ namespace BureauOnderwijs.Views
                 LectureIdDropdownList.Items.Clear();
                 int lectureId = 1;
                 List<Models.BU.Lecture> lectureList = (List<Models.BU.Lecture>)Session["Database_Lectures_" + UserDropdownList.SelectedValue];
-                if (lectureList != null)
+                if (lectureList != null || lectureList.Count == 0)
                 {
+                    LectureLabel.Text = "Lectures gevonden voor docent " + UserDropdownList.SelectedValue;
                     foreach (Models.BU.Lecture lecture in (List<Models.BU.Lecture>)Session["Database_Lectures_" + UserDropdownList.SelectedValue])
                     {
                         if (UserDropdownList.SelectedValue == lecture.teacher.UserID.ToString() && PeriodDropdownList.SelectedValue == lecture.period.ToString() && WeekDropdownList.SelectedValue == lecture.week.ToString())
@@ -673,5 +678,19 @@ namespace BureauOnderwijs.Views
             DeleteLecture();
         }
         #endregion
+
+        protected void PanelDropdownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PanelDropdownList.SelectedIndex == 0)
+            {
+                add_controls.Visible = true;
+                edit_controls.Visible = false;
+            }
+            else
+            {
+                add_controls.Visible = false;
+                edit_controls.Visible = true;
+            }
+        }
     }
 }
