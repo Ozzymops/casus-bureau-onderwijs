@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/ModuleMaster.master" AutoEventWireup="true" CodeBehind="UpdateModule.aspx.cs" Inherits="BureauOnderwijs.Views.UpdateModule" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="NestedPlaceholder1" runat="server">
 <h1>Module wijzigen</h1>
-    <h4>KlikKlik op wijzigen bij een module op de gegevens op te halen</h4>
+    <h4>Klik op wijzigen bij een module op de gegevens op te halen</h4>
         <asp:Label ID="LBModuleId" runat="server" Text="ID: " Width="95px"></asp:Label>
         <asp:TextBox ID="TBModuleId" runat="server" style="margin-right:20px" ></asp:TextBox>
         <div>
@@ -40,8 +40,8 @@
     <div>
         <asp:Label ID="LBYear" runat="server" Text="Year: " Width="95px"></asp:Label>
         <asp:TextBox ID="TBYear" runat="server" style="margin-right:20px"  ></asp:TextBox>
-        <%--        <asp:Label ID="LBDocent" runat="server" Text="Docent:" Width="95px"></asp:Label>
-        <asp:TextBox ID="TBDocent" runat="server"></asp:TextBox>--%>
+        <asp:Label ID="LBDocent" runat="server" Text="Docent:" Width="95px"></asp:Label>
+        <asp:TextBox ID="TBDocent" runat="server"></asp:TextBox>
         </div>
     <div>
         <asp:Label ID="LBDescription" runat="server" Text="Omschrijving: " Width="95px"></asp:Label>

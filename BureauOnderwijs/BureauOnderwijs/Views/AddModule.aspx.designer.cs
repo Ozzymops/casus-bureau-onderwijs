@@ -211,6 +211,24 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.TextBox TBYear;
         
         /// <summary>
+        /// LBDocent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LBDocent;
+        
+        /// <summary>
+        /// TBDocent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBDocent;
+        
+        /// <summary>
         /// LBDescription control.
         /// </summary>
         /// <remarks>

@@ -29,7 +29,7 @@ namespace BureauOnderwijs.Models.BU
     public DataTable ReadModules(string ingelogd)
         {
             string connectionString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
-            string sqlquery = "SELECT [ModuleId],[Name],[Code],[Period],[Year],[Faculty],[Profile],[Credits],[ExaminerId] ,[Description],[GeneralModule],[LectureHours],[PracticalHours] FROM[Module] WHERE Deleted = 0";
+            string sqlquery = "SELECT [Name],[Code],[Period],[Year],[Faculty],[Profile],[Credits],[ExaminerId] ,[Description],[GeneralModule],[LectureHours],[PracticalHours] FROM[Module] WHERE Deleted = 0";
 
             try
             {
@@ -72,14 +72,14 @@ namespace BureauOnderwijs.Models.BU
             }
         }
 
-        public string AddNewModule(string Name, string Code,int Period, int Year, string Faculty, string Profile, int Credits, bool GeneralModule ,int ExaminerId, string Description, int LectureHours, int PracticalHours, /*int Docent,*/ string ingelogd)
+        public string AddNewModule(string Name, string Code,int Period, int Year, string Faculty, string Profile, int Credits, bool GeneralModule ,int ExaminerId, string Description, int LectureHours, int PracticalHours, int Docent, string ingelogd)
         {
 
-            //int ModuleId = 0;
+            int ModuleId = 0;
             string sqlquery =   "INSERT INTO Module(Name, Code, Period, Year, Faculty, Profile, Credits, GeneralModule, ExaminerId, Description, LectureHours, PracticalHours, Deleted)" +
                                 "VALUES('" + Name + "', '" + Code + "','" + Period + "','" + Year + "','" + Faculty + "','" + Profile + "','" + Credits + "','" + GeneralModule + "', '" + ExaminerId + "', '" + Description + "','" + LectureHours + "','" + PracticalHours + "', 0);";
-            //string sqlquery2 = "SELECT ModuleId FROM Module WHERE Name = '" + Name + "' AND Code = '" + Code + "'";
-            //string sqlquery3 = "INSERT INTO ModuleUser(UserId, ModuleId) VALUES( '" + Docent + "','" + ModuleId + "',)";
+            string sqlquery2 = "SELECT ModuleId FROM Module WHERE Name = '" + Name + "' AND Code = '" + Code + "'";
+            string sqlquery3 = "INSERT INTO ModuleUser(UserId, ModuleId) VALUES( '" + Docent + "','" + ModuleId + "',)";
             try
             {
                 string connectionString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
@@ -88,13 +88,13 @@ namespace BureauOnderwijs.Models.BU
                 SqlCommand cmd = new SqlCommand(sqlquery, con);
                 cmd.ExecuteNonQuery();
 
-                //SqlCommand cmd2 = new SqlCommand(sqlquery2, con);
+                SqlCommand cmd2 = new SqlCommand(sqlquery2, con);
 
-                //ModuleId = Convert.ToInt32(cmd2.ExecuteScalar());
+                ModuleId = Convert.ToInt32(cmd2.ExecuteScalar());
 
 
-                //SqlCommand cmd3 = new SqlCommand(sqlquery3, con);
-                //cmd3.ExecuteNonQuery();
+                SqlCommand cmd3 = new SqlCommand(sqlquery3, con);
+                cmd3.ExecuteNonQuery();
                 con.Close();
 
                 return "0";
@@ -109,7 +109,6 @@ namespace BureauOnderwijs.Models.BU
         public string UpdateModule(string Name, string Code, int Period, int Year, string Faculty, string Profile, int Credits, bool GeneralModule, int ExaminerId, string Description, int LectureHours, int PracticalHours, int ModuleId, string ingelogd)
         {
             string connectionString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
-            //string sqlquerySelect = "SELECT[Name], [ModuleCode], [Period], [Year], [Faculty], [Profile], [Credits], [Examinor], [Description], [GeneralModule], [LectureHours], [PracticalHours], [Docent], [Docent1] [ModuleId] FROM[Module]";
             string sqlqueryUpdate = "UPDATE Module SET [Name] = '" + Name + "', [Code] = '" + Code + "', [Period] = '" + Period + "', [Year] ='" + Year + "', [Faculty] ='" + Faculty + "', [Profile] = '" + Profile + "', [Credits] ='" + Credits + "', [GeneralModule] = '" + GeneralModule + "', [ExaminerId] ='" + ExaminerId + "', [Description]='" + Description + "', [LectureHours] ='" + LectureHours + "', [PracticalHours] = '" + PracticalHours + "', Deleted = 0  WHERE ModuleId = '" + ModuleId + "'"; 
 
 
