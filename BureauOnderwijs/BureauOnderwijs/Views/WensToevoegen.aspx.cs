@@ -120,8 +120,8 @@ namespace BureauOnderwijs.Views
 
         private void fillGvUserWishes()
         {
-            string ingelogd = "1";
-            //string ingelogd = Session["UserId"].ToString();
+            //string ingelogd = "1";
+            string ingelogd = Session["UserId"].ToString();
 
             dt = new DataTable();
             Models.CC.Teacher_ReadWishes r = new Models.CC.Teacher_ReadWishes();
