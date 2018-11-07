@@ -79,7 +79,7 @@ namespace BureauOnderwijs.Models.BU
             string sqlquery =   "INSERT INTO Module(Name, Code, Period, Year, Faculty, Profile, Credits, GeneralModule, ExaminerId, Description, LectureHours, PracticalHours, Deleted)" +
                                 "VALUES('" + Name + "', '" + Code + "','" + Period + "','" + Year + "','" + Faculty + "','" + Profile + "','" + Credits + "','" + GeneralModule + "', '" + ExaminerId + "', '" + Description + "','" + LectureHours + "','" + PracticalHours + "', 0);";
             string sqlquery2 = "SELECT ModuleId FROM Module WHERE Name = '" + Name + "' AND Code = '" + Code + "'";
-            string sqlquery3 = "INSERT INTO ModuleUser(UserId, ModuleId) VALUES( '" + Docent + "','" + ModuleId + "',)";
+            string sqlquery3 = "INSERT INTO ModuleUser(ModuleId, UserId) VALUES( '" + ModuleId + "','" + Docent + "')";
             try
             {
                 string connectionString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
