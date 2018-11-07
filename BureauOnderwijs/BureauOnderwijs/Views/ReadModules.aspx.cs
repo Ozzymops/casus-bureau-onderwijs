@@ -19,6 +19,7 @@ namespace BureauOnderwijs.Views
             dtbl = RM.ReadModuleCC(ingelogd);
             GVReadModule.DataSource = dtbl;
             GVReadModule.DataBind();
+
         }
     }
 }

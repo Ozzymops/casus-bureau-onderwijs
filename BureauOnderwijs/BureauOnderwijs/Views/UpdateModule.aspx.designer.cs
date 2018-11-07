@@ -13,6 +13,24 @@ namespace BureauOnderwijs.Views {
     public partial class UpdateModule {
         
         /// <summary>
+        /// LBModuleId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LBModuleId;
+        
+        /// <summary>
+        /// TBModuleId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBModuleId;
+        
+        /// <summary>
         /// LBName control.
         /// </summary>
         /// <remarks>
@@ -40,13 +58,13 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Label LBFaculty;
         
         /// <summary>
-        /// TBFaculty control.
+        /// DDFaculty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBFaculty;
+        protected global::System.Web.UI.WebControls.DropDownList DDFaculty;
         
         /// <summary>
         /// LBLectureHours control.
@@ -103,13 +121,13 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Label LBProfile;
         
         /// <summary>
-        /// TBProfile control.
+        /// DDProfile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBProfile;
+        protected global::System.Web.UI.WebControls.DropDownList DDProfile;
         
         /// <summary>
         /// LbPracticalHours control.
@@ -211,24 +229,6 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.TextBox TBYear;
         
         /// <summary>
-        /// LBDocent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LBDocent;
-        
-        /// <summary>
-        /// DDDocent1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDDocent1;
-        
-        /// <summary>
         /// LBDescription control.
         /// </summary>
         /// <remarks>
@@ -247,24 +247,6 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.TextBox TBDescription;
         
         /// <summary>
-        /// LBDocent2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LBDocent2;
-        
-        /// <summary>
-        /// DDDocent2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDDocent2;
-        
-        /// <summary>
         /// LBExaminor control.
         /// </summary>
         /// <remarks>
@@ -274,31 +256,13 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.Label LBExaminor;
         
         /// <summary>
-        /// DropDownListExaminor control.
+        /// DDExaminer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox DropDownListExaminor;
-        
-        /// <summary>
-        /// LBDocent3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LBDocent3;
-        
-        /// <summary>
-        /// DDDocent3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDDocent3;
+        protected global::System.Web.UI.WebControls.DropDownList DDExaminer;
         
         /// <summary>
         /// GVUpdateModule control.
