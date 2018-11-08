@@ -57,7 +57,7 @@ namespace BureauOnderwijs.Models.BU
         {
             //connectie gemaakt naar de datanase en een query SELECT om de moduleID te selecteren uit Module en die te linken aan een Userid in ModuleUser
             string connectionString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
-            string sqlquery = "SELECT m.*, u.UserId FROM Module m, UserAccount u, ModuleUser mu WHERE m.ModuleId = mu.ModuleId AND u.UserId = mu.UserId AND Deleted = 0 ORDER BY m.ModuleId";
+            string sqlquery = "SELECT m.ModuleId, m.Name, m.Code, m.Period, m.Year, m.Faculty, m.Profile, m.Credits, m.ExaminerId, m.Description, m.GeneralModule, m.LectureHours, m.PracticalHours, u.userId FROM Module m, UserAccount u, ModuleUser mu WHERE m.ModuleId = mu.ModuleId AND u.UserId = mu.UserId ORDER BY m.ModuleId";
 
             try
             {
