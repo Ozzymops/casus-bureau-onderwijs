@@ -29,7 +29,7 @@
                 <asp:ListItem Value="0">Toevoegen</asp:ListItem>
                 <asp:ListItem Value="1">Wijzigen/Verwijderen</asp:ListItem>
             </asp:DropDownList>
-            <!-- niet verwijderen! --><asp:Button ID="ButtonFoutControle" runat="server" style="margin-left: 31px" Text="Fout Controle" Width="112px" />
+            <!-- niet verwijderen! --><asp:Button ID="ButtonFoutControle" runat="server" style="margin-left: 31px" Text="Fout Controle" Width="112px" OnClick="ButtonFoutControle_Click" />
         </div>
         <div id="add_controls" runat="server">          
             <p id="add_top">

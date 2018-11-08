@@ -677,7 +677,6 @@ namespace BureauOnderwijs.Views
         {
             DeleteLecture();
         }
-        #endregion
 
         protected void PanelDropdownList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -692,5 +691,15 @@ namespace BureauOnderwijs.Views
                 edit_controls.Visible = true;
             }
         }
+
+        protected void ButtonFoutControle_Click(object sender, EventArgs e)
+        {
+            Models.CC.Scheduler_ShowConflicts ssc = new Models.CC.Scheduler_ShowConflicts();
+            string returnvalueclassroom = ssc.ConflictsClassroomEmpty();
+            string returnvalueteacher = ssc.ConflictsTeacherEmpty();
+            string returnvaluestudentgroup = ssc.ConflictsStudentgroupEmpty();
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Aantal Lessen zonder toegewezen lokaal: " + returnvalueclassroom + "\\nAantal Lessen zonder toegewezen docent: " + returnvalueteacher + "\\nAantal Lessen zonder toegewezen klas: " + returnvaluestudentgroup + "');", true);
+        }
+        #endregion
     }
 }
