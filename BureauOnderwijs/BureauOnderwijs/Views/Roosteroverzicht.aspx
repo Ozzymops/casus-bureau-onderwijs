@@ -96,4 +96,19 @@
             <p id="edit_but" runat="server"><asp:Button ID="EditButton" runat="server" Text="Wijzigen in rooster" OnClick="EditButton_Click"/><asp:Button ID="DeleteButton" runat="server" Text="Verwijderen uit rooster" OnClick="DeleteButton_Click"/></p>
         </div>
     </div>
+    <div id="show_wishes" runat="server" style="display: block; float: right; clear:left">
+    <asp:Label ID="WishLabel" Font-Bold="true" CssClass="controls_label" Width="200px" runat="server" Text="Wishes gevonden voor docent x"></asp:Label>
+        <asp:GridView ID="WishGridView" runat="server" Width="600px" CellPadding="4" ForeColor="#333333" GridLines="Both">
+            <AlternatingRowStyle BackColor="White" />
+            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#990000" Font-Bold="False" ForeColor="White" />
+            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+            <SortedAscendingCellStyle BackColor="#FDF5AC" />
+            <SortedAscendingHeaderStyle BackColor="#4D0000" />
+            <SortedDescendingCellStyle BackColor="#FCF6C0" />
+            <SortedDescendingHeaderStyle BackColor="#820000" />
+        </asp:GridView>
+</div>
 </asp:Content>

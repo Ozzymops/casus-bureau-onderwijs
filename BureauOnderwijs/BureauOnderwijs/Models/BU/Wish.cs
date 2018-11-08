@@ -19,6 +19,7 @@ namespace BureauOnderwijs.Models.BU
         public int startMinute;
         public int endHour;
         public int endMinute;
+        public int userId;
 
         public int WishId
         {
@@ -52,6 +53,19 @@ namespace BureauOnderwijs.Models.BU
             this.startMinute = startMinute;
             this.endHour = endHour;
             this.endMinute = endMinute;
+        }
+
+        public Wish(int wishId, int period, int week, int day, int startHour, int startMinute, int endHour, int endMinute, int userId)
+        {
+            this.wishId = wishId;
+            this.period = period;
+            this.week = week;
+            this.day = day;
+            this.startHour = startHour;
+            this.startMinute = startMinute;
+            this.endHour = endHour;
+            this.endMinute = endMinute;
+            this.userId = userId;
         }
 
         public int CreateWish(string period, int week, int day, int startHour, int startMinute, int endHour, int endMinute, int ingelogd)

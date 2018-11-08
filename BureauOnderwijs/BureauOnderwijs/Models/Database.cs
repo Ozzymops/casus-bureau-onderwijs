@@ -211,7 +211,7 @@ namespace BureauOnderwijs.Models
                 List<Models.BU.Wish> wishList = new List<Models.BU.Wish>();
                 while (reader.Read())
                 {
-                    Models.BU.Wish tempWish = new Models.BU.Wish(Convert.ToInt32(reader["WishId"]), Convert.ToInt32(reader["Period"]), Convert.ToInt32(reader["Week"]), Convert.ToInt32(reader["Day"]), Convert.ToInt32(reader["StartHour"]), Convert.ToInt32(reader["StartMinute"]), Convert.ToInt32(reader["EndHour"]), Convert.ToInt32(reader["EndMinute"]));
+                    Models.BU.Wish tempWish = new Models.BU.Wish(Convert.ToInt32(reader["WishId"]), Convert.ToInt32(reader["Period"]), Convert.ToInt32(reader["Week"]), Convert.ToInt32(reader["Day"]), Convert.ToInt32(reader["StartHour"]), Convert.ToInt32(reader["StartMinute"]), Convert.ToInt32(reader["EndHour"]), Convert.ToInt32(reader["EndMinute"]), Convert.ToInt32(reader["UserId"]));
                     wishList.Add(tempWish);
                 }
                 Debug.WriteLine("GetTeacherWishes - Succes.");

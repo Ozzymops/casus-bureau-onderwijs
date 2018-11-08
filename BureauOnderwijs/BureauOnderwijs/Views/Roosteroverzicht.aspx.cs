@@ -153,6 +153,56 @@ namespace BureauOnderwijs.Views
         }
 
         /// <summary>
+        /// Genereer Columns en Rows voor WishGridView
+        /// </summary>
+        private void GenerateWishGridView()
+        {
+            // DataTable voor tijdelijke opslag Columns en Rows
+            DataTable dataTable = new DataTable();
+
+            // Maak Columns als deze er niet zijn
+            if (WishGridView.Columns.Count == 0)
+            {
+                dataTable.Columns.Add("WensId", typeof(int));
+                dataTable.Columns.Add("DocentId", typeof(int));
+                dataTable.Columns.Add("Blok", typeof(int));
+                dataTable.Columns.Add("Week", typeof(int));
+                dataTable.Columns.Add("Dag", typeof(string));
+                dataTable.Columns.Add("Start", typeof(string));
+                dataTable.Columns.Add("Eind", typeof(string));
+            }
+
+            // Maak Rows als deze er niet zijn
+            if (WishGridView.Rows.Count == 0)
+            {
+                List<Models.BU.Wish> wishList = (List<Models.BU.Wish>)Session["Database_Wishes_" + UserDropdownList.SelectedValue];
+                if (wishList != null || wishList.Count == 0)
+                {
+                    WishLabel.Text = "Wishes gevonden voor docent " + UserDropdownList.SelectedValue;
+                    foreach (Models.BU.Wish wish in (List<Models.BU.Wish>)Session["Database_Wishes_" + UserDropdownList.SelectedValue])
+                    {
+                        if (UserDropdownList.SelectedValue == wish.userId.ToString() && PeriodDropdownList.SelectedValue == wish.period.ToString() && WeekDropdownList.SelectedValue == wish.week.ToString())
+                        {
+                            DataRow dataRow = dataTable.NewRow();
+                            dataRow["WensId"] = wish.wishId;
+                            dataRow["DocentId"] = wish.userId;
+                            dataRow["Blok"] = wish.period;
+                            dataRow["Week"] = wish.week;
+                            dataRow["Dag"] = DayString(wish.day);
+                            dataRow["Start"] = TimeString(wish.startHour, wish.startMinute);
+                            dataRow["Eind"] = TimeString(wish.endHour, wish.endMinute);
+                            dataTable.Rows.Add(dataRow);
+                        }
+                    }
+                }
+            }
+
+            // Voeg Columns en Rows toe aan de MainGridView
+            WishGridView.DataSource = dataTable;
+            WishGridView.DataBind();
+        }
+
+        /// <summary>
         /// Vul de edit textboxes e.d. met data uit EditGridView.
         /// </summary>
         private void FillEditElements()
@@ -307,6 +357,11 @@ namespace BureauOnderwijs.Views
             EditGridView.DataBind();
             GenerateEditGridView();
             FillEditElements();
+
+            // Plaats DB data in WishGridView
+            WishGridView.DataSource = null;
+            WishGridView.DataBind();
+            GenerateWishGridView();
         }
 
         /// <summary>
