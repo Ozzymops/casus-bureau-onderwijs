@@ -743,12 +743,198 @@ namespace BureauOnderwijs.Views
 
         protected void AddButton_Click(object sender, EventArgs e)
         {
-            CreateLecture();
+            // Invoercontrole!
+            bool inputCheck = false;
+
+            if (DayDropdownList.SelectedIndex != -1 || DayDropdownList.SelectedValue != null)
+            {
+                if (ModuleDropdownList.SelectedIndex != -1 || ModuleDropdownList.SelectedValue != null)
+                {
+                    if (!string.IsNullOrWhiteSpace(ClassroomTextBox.Text))
+                    {
+                        if (!string.IsNullOrWhiteSpace(StudentGroupTextBox.Text))
+                        {
+                            if (!string.IsNullOrWhiteSpace(TimeStartHourTextBox.Text))
+                            {
+                                if (!string.IsNullOrWhiteSpace(TimeStartMinuteTextBox.Text))
+                                {
+                                    if (!string.IsNullOrWhiteSpace(TimeEndHourTextBox.Text))
+                                    {
+                                        if (!string.IsNullOrWhiteSpace(TimeEndMinuteTextBox.Text))
+                                        {
+                                            int number;
+                                            if (Int32.TryParse(TimeStartHourTextBox.Text, out number))
+                                            {
+                                                if (Int32.TryParse(TimeStartMinuteTextBox.Text, out number))
+                                                {
+                                                    if (Int32.TryParse(TimeEndHourTextBox.Text, out number))
+                                                    {
+                                                        if (Int32.TryParse(TimeEndMinuteTextBox.Text, out number))
+                                                        {
+                                                            inputCheck = true;
+                                                        }
+                                                        else
+                                                        {
+                                                            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een getal in bij eind minuut.');", true);
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een getal in bij eind uur.');", true);
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een getal in bij start minuut.');", true);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een getal in bij start uur.');", true);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een eind minuut in.');", true);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een eind uur in.');", true);
+                                    }
+                                }
+                                else
+                                {
+                                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een start minuut in.');", true);
+                                }
+                            }
+                            else
+                            {
+                                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een start uur in.');", true);
+                            }
+                        }
+                        else
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een klas in.');", true);
+                        }
+                    }
+                    else
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een klaslokaal in.');", true);
+                    }
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Kies a.u.b. een module.');", true);
+                }
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Kies a.u.b. een dag.');", true);
+            }
+
+            if (inputCheck)
+            {
+                CreateLecture();
+            }       
         }
 
         protected void EditButton_Click(object sender, EventArgs e)
         {
-            UpdateLecture();
+            // Invoercontrole!
+            bool inputCheck = false;
+
+            if (DayDropdownList_E.SelectedIndex != -1 || DayDropdownList_E.SelectedValue != null)
+            {
+                if (ModuleDropdownList_E.SelectedIndex != -1 || ModuleDropdownList_E.SelectedValue != null)
+                {
+                    if (!string.IsNullOrWhiteSpace(ClassroomTextBox_E.Text))
+                    {
+                        if (!string.IsNullOrWhiteSpace(StudentGroupTextBox_E.Text))
+                        {
+                            if (!string.IsNullOrWhiteSpace(TimeStartHourTextBox_E.Text))
+                            {
+                                if (!string.IsNullOrWhiteSpace(TimeStartMinuteTextBox_E.Text))
+                                {
+                                    if (!string.IsNullOrWhiteSpace(TimeEndHourTextBox_E.Text))
+                                    {
+                                        if (!string.IsNullOrWhiteSpace(TimeEndMinuteTextBox_E.Text))
+                                        {
+                                            int number;
+                                            if (Int32.TryParse(TimeStartHourTextBox_E.Text, out number))
+                                            {
+                                                if (Int32.TryParse(TimeStartMinuteTextBox_E.Text, out number))
+                                                {
+                                                    if (Int32.TryParse(TimeEndHourTextBox_E.Text, out number))
+                                                    {
+                                                        if (Int32.TryParse(TimeEndMinuteTextBox_E.Text, out number))
+                                                        {
+                                                            inputCheck = true;
+                                                        }
+                                                        else
+                                                        {
+                                                            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een getal in bij eind minuut.');", true);
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een getal in bij eind uur.');", true);
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een getal in bij start minuut.');", true);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een getal in bij start uur.');", true);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een eind minuut in.');", true);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een eind uur in.');", true);
+                                    }
+                                }
+                                else
+                                {
+                                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een start minuut in.');", true);
+                                }
+                            }
+                            else
+                            {
+                                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een start uur in.');", true);
+                            }
+                        }
+                        else
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een klas in.');", true);
+                        }
+                    }
+                    else
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een klaslokaal in.');", true);
+                    }
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Kies a.u.b. een module.');", true);
+                }
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Kies a.u.b. een dag.');", true);
+            }
+
+            if (inputCheck)
+            {
+                UpdateLecture();
+            }
         }
 
         protected void DeleteButton_Click(object sender, EventArgs e)
