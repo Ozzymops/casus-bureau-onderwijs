@@ -10,7 +10,8 @@ namespace BureauOnderwijs.Models.CC
     {
         public string UpdateModuleCC(string Name, string Code, int Period, int Year, string Faculty, string Profile, int Credits, bool GeneralModule, int ExaminerId, string Description, int LectureHours, int PracticalHours, int ModuleId, string ingelogd)
         {
-            Examiner ex = new Examiner();
+            //aanmaak van een nieuwe examinator met een return value van de informatie die de gebruiker ingevoerd heeft. deze wordt gebruikt in de BU laag.
+            Models.BU.Examiner ex = new Models.BU.Examiner();
             return ex.UpdateModule(Name, Code, Period, Year, Faculty, Profile, Credits, GeneralModule, ExaminerId, Description, LectureHours, PracticalHours, ModuleId, ingelogd);
         }
     }

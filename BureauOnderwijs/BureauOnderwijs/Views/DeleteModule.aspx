@@ -1,11 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/ModuleMaster.master" AutoEventWireup="true" CodeBehind="DeleteModule.aspx.cs" Inherits="BureauOnderwijs.Views.DeleteModule" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="NestedPlaceholder1" runat="server">
+    <%--Header van de pagina--%>
     <h1>Module Verwijderen</h1>
     <div>
+    <%--tekstboxen en labels voor de vraag naar een ModuleId--%>
     <p >
     Voer een Module ID in: 
     <asp:TextBox ID="TBDelete" runat="server"></asp:TextBox><asp:Button ID="DeleteModuleButton" runat="server" Text="Delete" OnClick="DeleteId_Click" OnClientClick="return confirm('Weet je het zeker?')" Width="116px" />
     </p>
+        <%--de opmaak van de gridview--%>
         </div>
     <asp:GridView Width="1500px" ID="GVDeleteModule" runat="server" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4">
         <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />

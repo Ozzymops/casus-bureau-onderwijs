@@ -1,14 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/ModuleMaster.master" AutoEventWireup="true" CodeBehind="AddModule.aspx.cs" Inherits="BureauOnderwijs.Views.AddModule" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="NestedPlaceholder1" runat="server">
+    <%--Header van de pagina--%>
     <h1>
         Modules Toevoegen
     </h1>
+    <%--De verschillende labels en tekstboxes op de pagina--%>
         <div>
         <asp:Label ID="LBName" runat="server" Text="Naam: " Width="95px"></asp:Label>
         <asp:TextBox ID="TBName" runat="server" style="margin-right:20px" ></asp:TextBox>
         <asp:Label ID="LBFaculty" runat="server" Text="Faculteit: " Width="95px"></asp:Label>
-            <asp:DropDownList ID="DDFaculty" runat="server" style="margin-right:20px" Width="128px">
-                <asp:ListItem>---------Select---------</asp:ListItem>
+            <asp:DropDownList ID="DDFaculty" runat="server" style="margin-right:20px" Width="174px">
+                <asp:ListItem>---------------Select---------------</asp:ListItem>
                 <asp:ListItem>ICT</asp:ListItem>
             </asp:DropDownList>
         <asp:Label ID="LBLectureHours" runat="server" Text="Uren Hoorcollege: " Width="120px"></asp:Label>
@@ -19,8 +21,8 @@
         <asp:Label ID="LBModuleCode" runat="server" Text="Module Code: " Width="95px"></asp:Label>
         <asp:TextBox ID="TBModuleCode" runat="server" style="margin-right:20px" ></asp:TextBox>
         <asp:Label ID="LBProfile" runat="server" Text="Profiel: " Width="95px"></asp:Label>
-        <asp:DropDownList ID="DDProfile" runat="server" style="margin-right:20px" Width="128px">
-            <asp:ListItem>---------Select---------</asp:ListItem>
+        <asp:DropDownList ID="DDProfile" runat="server" style="margin-right:20px" Width="174px">
+            <asp:ListItem>---------------Select---------------</asp:ListItem>
             <asp:ListItem>Bachelor</asp:ListItem>
             <asp:ListItem>Asociate-Degree</asp:ListItem>
         </asp:DropDownList>
@@ -48,11 +50,12 @@
         </div>
     <div>
         <asp:Label ID="LBExaminor" runat="server" Text="Examinator: " Width="95px"></asp:Label>
-        <asp:DropDownList ID="DDExaminer" runat="server" Width="128px">
-            <asp:ListItem>---------Select---------</asp:ListItem>
+        <asp:DropDownList ID="DDExaminer" runat="server" Width="174px">
+            <asp:ListItem>---------------Select---------------</asp:ListItem>
             <asp:ListItem Value="1">Dhr. test1</asp:ListItem>
             <asp:ListItem Value="2">Dhr. Test2</asp:ListItem>
         </asp:DropDownList>
         </div>
+    <%--Header gebruikt als footer voor een requirement weer te geven voor een update uitgevoerd kan worden--%>
     <h6>Alle velden moeten worden ingevuld</h6>
 </asp:Content>

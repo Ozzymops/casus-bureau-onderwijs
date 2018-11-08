@@ -10,6 +10,7 @@ namespace BureauOnderwijs.Models.CC
     {
         public DataTable DeleteModuleCC(int ModuleId, string ingelogd)
         {
+            //aanmaak van een nieuwe examinator met een return value van de informatie die de gebruiker ingevoerd heeft. deze wordt gebruikt in de BU laag.
             Models.BU.Examiner D = new Models.BU.Examiner();
             return D.DeleteModule(ModuleId, ingelogd);
         }
