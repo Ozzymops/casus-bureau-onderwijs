@@ -362,6 +362,9 @@ namespace BureauOnderwijs.Views
             WishGridView.DataSource = null;
             WishGridView.DataBind();
             GenerateWishGridView();
+
+            // Bereken ingezette uren van docent.
+            CalculateDeployedHours();
         }
 
         /// <summary>
@@ -562,6 +565,26 @@ namespace BureauOnderwijs.Views
             // Refresh
             Session["Database_Changed"] = true;
             ImportData();
+        }
+
+        /// <summary>
+        /// Bereken de ingezette uren van een docent.
+        /// </summary>
+        private void CalculateDeployedHours()
+        {
+            List<Models.BU.Lecture> sessionLectureList = (List<Models.BU.Lecture>)Session["Database_Lectures_" + UserDropdownList.SelectedValue];
+            double deployed = 0.0;
+            foreach (Models.BU.Lecture lecture in sessionLectureList)
+            {
+                if (UserDropdownList.SelectedValue == lecture.teacher.UserID.ToString() && PeriodDropdownList.SelectedValue == lecture.period.ToString() && WeekDropdownList.SelectedValue == lecture.week.ToString())
+                {
+                    // Bereken verschil
+                    int hours = lecture.endHour - lecture.startHour;
+                    int minutes = lecture.endMinute - lecture.endHour;
+                    deployed += hours + (minutes / 60);
+                }
+            }
+            DeployedLabel.Text = "Ingezette uren deze week: " + deployed;
         }
         #endregion
 

@@ -49,6 +49,15 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.DropDownList WeekDropdownList;
         
         /// <summary>
+        /// DeployedLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DeployedLabel;
+        
+        /// <summary>
         /// MainGridView control.
         /// </summary>
         /// <remarks>

@@ -9,6 +9,7 @@
         <p>Rooster van: <asp:DropDownList ID="UserDropdownList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="UserDropdownList_SelectedIndexChanged"></asp:DropDownList>
            Periode: <asp:DropDownList ID="PeriodDropdownList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="PeriodDropdownList_SelectedIndexChanged"></asp:DropDownList>
            Week: <asp:DropDownList ID="WeekDropdownList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="WeekDropdownList_SelectedIndexChanged"></asp:DropDownList>
+           <asp:Label ID="DeployedLabel" runat="server" Text="Ingezette uren deze week: x"></asp:Label>
         </p>
         <asp:GridView ID="MainGridView" runat="server" Width="1000px" CellPadding="4" ForeColor="#333333" GridLines="Both" CssClass="schedule">
             <AlternatingRowStyle BackColor="White" />
