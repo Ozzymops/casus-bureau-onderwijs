@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BureauOnderwijs.Models.BU;
 using BureauOnderwijs.Models.CC;
+using System.Diagnostics;
 
 namespace BureauOnderwijs.Views
 {
@@ -23,7 +24,7 @@ namespace BureauOnderwijs.Views
             }
             else
             {
-                welcomeLabel.Text = "Welkom";
+                welcomeLabel.Text = "Welkom. Log a.u.b. in.";
             }
             
 
@@ -44,6 +45,65 @@ namespace BureauOnderwijs.Views
                 AdminButton.Visible = false;
             }
 
+
+            // Pas navigatiebalk aan op basis van rol
+            if (Session["RoleId"] != null)
+            {
+                if ((int)Session["RoleId"] == 1)
+                {
+                    Debug.WriteLine("role 1");
+                    AdminButton.Visible = false;
+                    ScheduleButton.Visible = true;
+                    WishButton.Visible = false;
+                    ModuleButton.Visible = false;
+                    SettingsButton.Visible = true;
+                }
+                else if ((int)Session["RoleId"] == 2)
+                {
+                    Debug.WriteLine("role 2");
+                    AdminButton.Visible = false;
+                    ScheduleButton.Visible = true;
+                    WishButton.Visible = true;
+                    ModuleButton.Visible = true;
+                    SettingsButton.Visible = true;
+                }
+                else if ((int)Session["RoleId"] == 3)
+                {
+                    Debug.WriteLine("role 3");
+                    AdminButton.Visible = false;
+                    ScheduleButton.Visible = true;
+                    WishButton.Visible = true;
+                    ModuleButton.Visible = false;
+                    SettingsButton.Visible = true;
+                }
+                else if ((int)Session["RoleId"] == 4)
+                {
+                    Debug.WriteLine("role 4");
+                    AdminButton.Visible = true;
+                    ScheduleButton.Visible = false;
+                    WishButton.Visible = false;
+                    ModuleButton.Visible = false;
+                    SettingsButton.Visible = true;
+                }
+                else
+                {
+                    Debug.WriteLine("noppes");
+                    AdminButton.Visible = false;
+                    ScheduleButton.Visible = false;
+                    WishButton.Visible = false;
+                    ModuleButton.Visible = false;
+                    SettingsButton.Visible = false;
+                }
+            }
+            else
+            {
+                Debug.WriteLine("noppes");
+                AdminButton.Visible = false;
+                ScheduleButton.Visible = false;
+                WishButton.Visible = false;
+                ModuleButton.Visible = false;
+                SettingsButton.Visible = false;
+            }
         }
     }
 }

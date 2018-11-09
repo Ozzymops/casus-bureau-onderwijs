@@ -18,7 +18,7 @@ namespace BureauOnderwijs.Models.CC
             }
             if (u.LogIn(username, password))
             {
-                int[] tmp = { u.UserID, u.TwoFactorCode };
+                int[] tmp = { u.UserID, u.TwoFactorCode, u.RoleId };
                 return tmp;
             }
             return null;

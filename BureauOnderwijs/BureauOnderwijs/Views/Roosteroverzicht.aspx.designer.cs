@@ -67,6 +67,15 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.WebControls.GridView MainGridView;
         
         /// <summary>
+        /// controls control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl controls;
+        
+        /// <summary>
         /// PanelDropdownList control.
         /// </summary>
         /// <remarks>

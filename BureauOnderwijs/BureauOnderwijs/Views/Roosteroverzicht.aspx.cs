@@ -32,6 +32,26 @@ namespace BureauOnderwijs.Views
 
                 Session["Database_FirstTime"] = false;
             }
+
+            if (Session["RoleId"] != null)
+            {
+                if ((int)Session["RoleId"] == 1)
+                {
+                    controls.Visible = true;
+                    show_wishes.Visible = true;
+                }
+                else
+                {
+                    controls.Visible = false;
+                    show_wishes.Visible = false;
+                }
+            }
+            else
+            {
+                controls.Visible = false;
+                show_wishes.Visible = false;
+            }
+
         }
 
         #region Methods

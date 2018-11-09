@@ -20,12 +20,12 @@
                 <div class="nav">
                     <a runat="server" href="~/Views/Homepage.aspx">Homepage</a>
                     <a runat="server" href="~/Views/AdminRead.aspx" id="AdminButton">Administrator</a>
-                    <a runat="server" href="~/Views/Roosteroverzicht.aspx">Roosteroverzicht</a>
-                    <a runat="server" href="~/Views/WensToevoegen.aspx">Wensen</a>
-                    <a runat="server" href="~/Views/ReadModules.aspx">Modules</a>
-                    <a runat="server" href="~/Views/UserSettings.aspx">Gebruikersinstellingen</a>
+                    <a runat="server" id="ScheduleButton" href="~/Views/Roosteroverzicht.aspx">Roosteroverzicht</a>
+                    <a runat="server" id="WishButton" href="~/Views/WensToevoegen.aspx">Wensen</a>
+                    <a runat="server" id="ModuleButton" href="~/Views/ReadModules.aspx">Modules</a>
+                    <a runat="server" id="SettingsButton" href="~/Views/UserSettings.aspx">Gebruikersinstellingen</a>
                     <a runat="server" href="~/Views/LogIn.aspx" style="float:right;">Log out</a>
-                    <p runat="server" style="padding:0px 10px; text-align:right; font-size:16px; float:right;"><asp:Label runat="server" id="welcomeLabel" Text="Welkom bitchass"></asp:Label></p>
+                    <p runat="server" style="padding:0px 10px; text-align:right; font-size:16px; float:right;"><asp:Label runat="server" id="welcomeLabel" Text="Welkom x"></asp:Label></p>
                 </div>
                 <!-- Content! -->
                 <div id="main">

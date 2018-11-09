@@ -40,6 +40,42 @@ namespace BureauOnderwijs.Views {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor AdminButton;
         
         /// <summary>
+        /// ScheduleButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor ScheduleButton;
+        
+        /// <summary>
+        /// WishButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor WishButton;
+        
+        /// <summary>
+        /// ModuleButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor ModuleButton;
+        
+        /// <summary>
+        /// SettingsButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor SettingsButton;
+        
+        /// <summary>
         /// welcomeLabel control.
         /// </summary>
         /// <remarks>

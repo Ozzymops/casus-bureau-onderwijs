@@ -14,6 +14,7 @@ namespace BureauOnderwijs.Views
         protected void Page_Load(object sender, EventArgs e)
         {
             //Session["UserId"] = null;
+            Session["Database_FirstTime"] = true;
         }
 
         protected void ButtonLogin_Click(object sender, EventArgs e)
@@ -40,10 +41,11 @@ namespace BureauOnderwijs.Views
                     /// feedback: hoeft de code niet aangepast te worden.
                     /// feedback: else if statement in cc class verwerken zodat GUI-laag simpeler blijft.
                     //if (RoleUseridRandomNumber[0] > 0)
-                    if (RoleUseridRandomNumber.Length == 2)
+                    if (RoleUseridRandomNumber.Length == 3)
                     {
                         Session["UserId"] = RoleUseridRandomNumber[0];
                         Session["2FaCode"] = RoleUseridRandomNumber[1];
+                        Session["RoleId"] = RoleUseridRandomNumber[2];
                         Response.Redirect("~/Views/LogIn2FaCode.aspx");
                     }
                 }

@@ -24,7 +24,7 @@
             <SortedDescendingHeaderStyle BackColor="#820000" />
         </asp:GridView>
     </div>
-    <div id="controls" class="controls_div_main" style="float: left;">
+    <div runat="server" id="controls" class="controls_div_main" style="float: left;">
         <div id="controls_persistent">
             <asp:DropDownList ID="PanelDropdownList" CssStyle="controls_label" runat="server" AutoPostBack="True" OnSelectedIndexChanged="PanelDropdownList_SelectedIndexChanged">
                 <asp:ListItem Value="0">Toevoegen</asp:ListItem>

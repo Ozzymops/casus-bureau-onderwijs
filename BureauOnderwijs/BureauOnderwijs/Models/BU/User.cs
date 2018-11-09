@@ -39,6 +39,11 @@ namespace BureauOnderwijs.Models.BU
             //set { this.username = value; }
         }
 
+        public int RoleId
+        {
+            get { return this.role; }
+        }
+
         /// <summary>
         /// Maak een lege user, vooral als nog niet ingelogd is.
         /// </summary>
