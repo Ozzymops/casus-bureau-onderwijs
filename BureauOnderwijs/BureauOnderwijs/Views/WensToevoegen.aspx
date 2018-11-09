@@ -235,7 +235,7 @@
                         <asp:ImageButton ImageUrl="~/Resources/Delete logo.jpg" runat="server" CommandName="Delete" ToolTip="Verwijderen" Width="20px" Height="20px" OnClientClick="return confirm('Weet je zeker dat je de wens wilt verwijderen?')"/>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:ImageButton ImageUrl="~/Resources/Opslaan logo.jpg" runat="server" CommandName="Update" ToolTip="Opslaan" Width="20px" Height="20px"/>
+                        <asp:ImageButton ImageUrl="~/Resources/Opslaan logo.jpg" runat="server" CommandName="Update" ToolTip="Opslaan" Width="20px" Height="20px" OnClientClick="return confirm('Weet je zeker dat je de wens wilt wijzigen?')"/>
                         <asp:ImageButton ImageUrl="~/Resources/Annuleren logo.png" runat="server" CommandName="Cancel" ToolTip="Annuleren" Width="20px" Height="20px"/>
                     </EditItemTemplate>
                     <FooterTemplate>
