@@ -141,10 +141,14 @@ namespace BureauOnderwijs.Models.BU
 
                     RandomNumberGenerator r = new RandomNumberGenerator();
                     twoFactorCode = r.GenerateNumber(1000, 9999);
+
+                    /// Uitvoeren van de mailingfunctie om de 2FA code te versturen. 
+                    /// Deze functie is uitgecomment zodat dit tijdens het maken van het 
+                    /// programma niet constant uitgevoerd wordt. 
                     /*
                     try
                     {
-                        //send2facodeLogin();
+                        send2facodeLogin();
                     }
                     catch
                     {
@@ -391,7 +395,7 @@ namespace BureauOnderwijs.Models.BU
         public void send2facodeLogin()
         {
             /// Onderstaande stuur de gebruiker een email met daarin de authenticatiecode
-            /// De code werkt maar is uitgecomment zodat er niet iedere keer een email verstuurd wordt.
+            /// De code werkt maar de aanroep is uitgecomment zodat er niet iedere keer een email verstuurd wordt.
 
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQueryGetEmailAdress = "SELECT Emailadress FROM UserAccount WHERE Username = '" + username + "' and Password = '" + password + "'";
