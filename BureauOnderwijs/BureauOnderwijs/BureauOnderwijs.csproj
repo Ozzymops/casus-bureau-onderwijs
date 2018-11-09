@@ -247,7 +247,6 @@
     <Content Include="Views\ModuleLink.aspx" />
     <Content Include="Views\PasswordRecovery.aspx" />
     <Content Include="Views\ReadModules.aspx" />
-    <Content Include="Views\RoosteroverzichtTest.aspx" />
     <Content Include="Views\TestNest.aspx" />
     <Content Include="Views\UpdateModule.aspx" />
     <Content Include="Views\UserSettings.aspx" />
@@ -458,13 +457,6 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Views\RoosteroverzichtTest.aspx.cs">
-      <DependentUpon>RoosteroverzichtTest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\RoosteroverzichtTest.aspx.designer.cs">
-      <DependentUpon>RoosteroverzichtTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\TestNest.aspx.cs">
       <DependentUpon>TestNest.aspx</DependentUpon>
