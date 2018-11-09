@@ -70,6 +70,9 @@ namespace BureauOnderwijs.Models.BU
 
         public int CreateWish(string period, int week, int day, int startHour, int startMinute, int endHour, int endMinute, int ingelogd)
         {
+            /// Voegt een wens toe aan de datebase van de ingelogde gebruiker
+            /// de variablelen zijn door de gebruiker ingevoerd in de comboboxen op de webpagina.
+            
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQuery = "INSERT INTO Wish (Period, Week, Day, StartHour, StartMinute, EndHour, EndMinute, UserId) VALUES ('"+ period +"', '"+ week +"', '"+ day +"', '"+ startHour +"', '" + startMinute + "', '"+ endHour +"', '" + endMinute + "', '"+ ingelogd +"')";
 
@@ -91,6 +94,9 @@ namespace BureauOnderwijs.Models.BU
 
         public int UpdateWish(int period, int week, int day, int startTijdUur, int startTijdMinuut, int eindTijdUur, int EindTijdMinuut, int ingelogd, int wishId)
         {
+            /// Wijzigt een wens in de datebase van de ingelogde gebruiker
+            /// de variablelen zijn door de gebruiker ingevoerd in de comboboxen op de webpagina.
+
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQuery = "UPDATE Wish SET Period='"+ period +"', Week='" + week +"', Day='" + day +"', StartHour='" + startTijdUur +"', StartMinute='" + startTijdMinuut + "', EndHour='" + eindTijdUur + "', EndMinute='" + EindTijdMinuut + "' WHERE UserId='" + ingelogd + "' AND WishId='" + wishId + "'";
 
@@ -193,6 +199,8 @@ namespace BureauOnderwijs.Models.BU
 
         public int DeleteWish(int wishId)
         {
+            /// Verwijderd de geselecteerde wens van de ingelogd gebruiker. 
+
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQuery = "DELETE FROM Wish WHERE WishId = '" + wishId + "'";
 
@@ -214,7 +222,8 @@ namespace BureauOnderwijs.Models.BU
 
         public DataTable GetUserWishes(string ingelogd)
         {
-
+            /// Haalt alle wensen uit de database en laat deze zien aan de gebruiker. 
+            
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQuery = "SELECT WishId, Period, Week, Day, StartHour, StartMinute, EndHour, EndMinute FROM Wish Where UserId = '" + ingelogd + "'";
 

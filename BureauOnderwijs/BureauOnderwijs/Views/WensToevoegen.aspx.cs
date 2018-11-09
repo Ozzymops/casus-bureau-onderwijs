@@ -30,8 +30,6 @@ namespace BureauOnderwijs.Views
             if (e.CommandName == "AddNew")
             {
                 int ingelogd = Convert.ToInt32(Session["UserId"]);
-                //int ingelogd = 1;
-
                 string dropDownListPeriod = (gvUserWishes.FooterRow.FindControl("DropDownListPeriod") as DropDownList).SelectedValue;
                 int dropDownListWeek = Convert.ToInt32((gvUserWishes.FooterRow.FindControl("DropDownListWeek") as DropDownList).SelectedValue);
                 string dropDownListDag = (gvUserWishes.FooterRow.FindControl("DropDownListDag") as DropDownList).SelectedValue;
@@ -66,10 +64,7 @@ namespace BureauOnderwijs.Views
 
         protected void gvUserWishes_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            
             int ingelogd = Convert.ToInt32(Session["UserId"]);
-            //int ingelogd = 1;
-
             int dropDownListEditPeriod = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("DropDownListEditPeriod") as DropDownList).SelectedValue);
             int dropDownListEditWeek = Convert.ToInt32((gvUserWishes.Rows[e.RowIndex].FindControl("DropDownListEditWeek") as DropDownList).SelectedValue);
             string dropDownListEditDag = (gvUserWishes.Rows[e.RowIndex].FindControl("DropDownListEditDag") as DropDownList).SelectedValue;
@@ -120,7 +115,6 @@ namespace BureauOnderwijs.Views
 
         private void fillGvUserWishes()
         {
-            //string ingelogd = "1";
             string ingelogd = Session["UserId"].ToString();
 
             dt = new DataTable();

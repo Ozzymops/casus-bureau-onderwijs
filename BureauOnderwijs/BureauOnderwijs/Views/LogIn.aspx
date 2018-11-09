@@ -18,9 +18,7 @@
         </h4>           
         <div>
             <asp:Button ID="ButtonLogin" runat="server" Text="Inloggen" OnClick="ButtonLogin_Click" Width="237"/>
-                <asp:Button ID="ButtonRecovery" runat="server" Text="Wachtwoord vergeten?" OnClick="ButtonRecovery_Click" Width="237"/> 
-                    
-                
+                <asp:Button ID="ButtonRecovery" runat="server" Text="Wachtwoord vergeten?" OnClick="ButtonRecovery_Click" Width="237"/>                                    
         </div>
     </form>
 </body>
