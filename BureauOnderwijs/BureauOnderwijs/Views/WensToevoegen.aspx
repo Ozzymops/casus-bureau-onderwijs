@@ -2,9 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="NestedPlaceholder1" runat="server">
     <div>
         <div id="Wensenlijst" style="padding:10px; float:left;">
-            <h2>
-                Wens toevoegen
-            </h2>
+            <h1>
+                Wensen beheren
+            </h1>
             
             <asp:GridView ID="gvUserWishes" runat="server" AutoGenerateColumns="false" ShowFooter="true" DataKeyNames="WishId" 
                 ShowHeaderWhenEmpty="true" 
@@ -246,96 +246,5 @@
         </asp:GridView>
 
         </div>
-       
-        <div id ="WensWijzigen" class="controls_div_main" style="float:left;">
-            <h1>
-                Wens wijzigen
-            </h1>
-            <div>
-                <asp:Label ID="LabelWishId" runat="server" Text="Wish id: " Width="125px"></asp:Label>
-                <asp:Textbox ID="TextBoxWishIdEditBackup" runat="server">
-                </asp:Textbox>
-            </div>
-            <div>
-                <asp:Label ID="LabelPeriod" runat="server" Text="Blok: " Width="125px"></asp:Label>
-                <asp:DropDownList ID="DropDownListPeriodEditBackup" runat="server">
-                    <asp:ListItem>1</asp:ListItem>
-                    <asp:ListItem>2</asp:ListItem>
-                    <asp:ListItem>3</asp:ListItem>
-                    <asp:ListItem>4</asp:ListItem>
-                </asp:DropDownList>
-            </div>
-            <div>
-                <asp:Label ID="LabelWeek" runat="server" Text="Week: " Width="125px"></asp:Label>
-                <asp:DropDownList ID="DropDownListWeekBackup" runat="server">
-                    <asp:ListItem>1</asp:ListItem>
-                    <asp:ListItem>2</asp:ListItem>
-                    <asp:ListItem>3</asp:ListItem>
-                    <asp:ListItem>4</asp:ListItem>
-                    <asp:ListItem>5</asp:ListItem>
-                    <asp:ListItem>6</asp:ListItem>
-                    <asp:ListItem>7</asp:ListItem>
-                    <asp:ListItem>8</asp:ListItem>
-                    <asp:ListItem>9</asp:ListItem>
-                    <asp:ListItem>10</asp:ListItem>
-                </asp:DropDownList>
-            </div>
-            <div>
-                <asp:Label ID="LabelDag" runat="server" Text="Dag: " Width="125px"></asp:Label>
-                <asp:DropDownList ID="DropDownListDagBackup" runat="server">
-                    <asp:ListItem>Maandag</asp:ListItem>
-                    <asp:ListItem>Dinsdag</asp:ListItem>
-                    <asp:ListItem>Woensdag</asp:ListItem>
-                    <asp:ListItem>Donderdag</asp:ListItem>
-                    <asp:ListItem>Vrijdag</asp:ListItem>                
-                </asp:DropDownList>
-            </div>
-            <div>
-                <asp:Label ID="Labelstarttijd" runat="server" Text="Starttijd: " Width="125px"></asp:Label>
-                <asp:DropDownList ID="DropDownListStartTijdUurBackup" runat="server">
-                    <asp:ListItem>09</asp:ListItem>
-                    <asp:ListItem>10</asp:ListItem>
-                    <asp:ListItem>11</asp:ListItem>
-                    <asp:ListItem>12</asp:ListItem>
-                    <asp:ListItem>13</asp:ListItem>
-                    <asp:ListItem>14</asp:ListItem>
-                    <asp:ListItem>15</asp:ListItem>
-                    <asp:ListItem>16</asp:ListItem>
-                    <asp:ListItem>17</asp:ListItem>
-                    <asp:ListItem>18</asp:ListItem>
-                </asp:DropDownList>
-                <asp:Label ID="LabelDubbelepuntStartTijd" runat="server" Text=":"></asp:Label>
-                <asp:DropDownList ID="DropDownListStartTijdMinuutBackup" runat="server">
-                    <asp:ListItem>00</asp:ListItem>
-                    <asp:ListItem>30</asp:ListItem>
-                </asp:DropDownList>
-            </div>
-            <div>
-                <asp:Label ID="Labeleindtijd" runat="server" Text="Eindtijd: " Width="125px"></asp:Label>
-                <asp:DropDownList ID="DropDownListEindTijdUurBackup" runat="server">
-                    <asp:ListItem>09</asp:ListItem>
-                    <asp:ListItem>10</asp:ListItem>
-                    <asp:ListItem>11</asp:ListItem>
-                    <asp:ListItem>12</asp:ListItem>
-                    <asp:ListItem>13</asp:ListItem>
-                    <asp:ListItem>14</asp:ListItem>
-                    <asp:ListItem>15</asp:ListItem>
-                    <asp:ListItem>16</asp:ListItem>
-                    <asp:ListItem>17</asp:ListItem>
-                    <asp:ListItem>18</asp:ListItem>
-                </asp:DropDownList>
-                <asp:Label ID="LabelDubbelepuntEindtijd" runat="server" Text=":"></asp:Label>
-                <asp:DropDownList ID="DropDownListEindTijdMinuutBackup" runat="server">
-                    <asp:ListItem>00</asp:ListItem>
-                    <asp:ListItem>30</asp:ListItem>
-                </asp:DropDownList>
-            </div>
-            <div>
-
-            </div>
-            <asp:Button ID="ButtonWijigenWens" runat="server" Text="Wijzigen" OnClick="ButtonWijigenWens_Click" />
-        </div>
-        
-
     </div>
 </asp:Content>

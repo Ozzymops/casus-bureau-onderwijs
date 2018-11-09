@@ -261,35 +261,5 @@ namespace BureauOnderwijs.Models.BU
                 return null;
             }
         }
-
-        public bool checkWishId(int wishId, int ingelogd)
-        {
-            string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
-            string sqlQuery = "SELECT * FROM Wish WHERE WishId = '" + wishId + "' AND UserId ='" + ingelogd + "'";
-
-
-            SqlConnection con = new SqlConnection(conString);
-            SqlCommand cmd = new SqlCommand(sqlQuery, con);
-
-            try
-            {
-                con.Open();
-                object result = cmd.ExecuteScalar();
-                con.Close();
-                if (result != null)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-                
-            }
-            catch
-            {
-                return false;
-            }
-        }
     }
 }

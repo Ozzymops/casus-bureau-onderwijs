@@ -135,33 +135,5 @@ namespace BureauOnderwijs.Views
                 gvUserWishes.DataBind();
             }
         }
-
-        protected void ButtonWijigenWens_Click(object sender, EventArgs e)
-        {
-            int wishId = Convert.ToInt32(TextBoxWishIdEditBackup.Text.Trim());
-            int dropDownListEditPeriod = Convert.ToInt32(DropDownListPeriodEditBackup.SelectedValue);
-            int dropDownListEditWeek = Convert.ToInt32(DropDownListWeekBackup.SelectedValue);
-            string dropDownListEditDag = DropDownListDagBackup.SelectedValue;
-            int dropDownListEditStartTijdUur = Convert.ToInt32(DropDownListStartTijdUurBackup.SelectedValue);
-            int dropDownListEditStartTijdMinuut = Convert.ToInt32(DropDownListStartTijdMinuutBackup.SelectedValue);
-            int dropDownListEditEindTijdUur = Convert.ToInt32(DropDownListEindTijdUurBackup.SelectedValue);
-            int dropDownListEditEndTijdMinuut = Convert.ToInt32(DropDownListEindTijdMinuutBackup.SelectedValue);
-            int ingelogd = Convert.ToInt32(Session["UserId"]);
-
-
-            Models.CC.Teacher_UpdateWish c = new Models.CC.Teacher_UpdateWish();
-            int intdag = c.getIntFromDayInput(dropDownListEditDag);
-            bool resultCheckWishId = c.checkWishId(wishId, ingelogd);
-            if (resultCheckWishId)
-            {
-                int result = c.UpdateWish(dropDownListEditPeriod, dropDownListEditWeek, intdag, dropDownListEditStartTijdUur, dropDownListEditStartTijdMinuut, dropDownListEditEindTijdUur, dropDownListEditEndTijdMinuut, ingelogd, wishId);
-                ClientScript.RegisterStartupScript(this.GetType(), "myalert", c.GetMessage(result), true);
-                fillGvUserWishes();
-            }
-            else
-            {
-                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een juist wens ID in!');", true);
-            }
-        }
     }
 }
