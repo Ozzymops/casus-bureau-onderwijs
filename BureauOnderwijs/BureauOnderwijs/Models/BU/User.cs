@@ -105,10 +105,6 @@ namespace BureauOnderwijs.Models.BU
 
         public bool LogIn(string username, string password)
         {
-            // localhost/MSSQLSERVER indien het niet werkt (Justin)
-            // sayy wuuut? (Redmar)
-            // hoi, ik ben ook hier. redmar naar Redmar veranderd.. (Gijs)
-
             //int[] result = { 0, 0, 0 };
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             //string sqlQuery = "SELECT Role, UserId FROM UserAccount WHERE Username = '" + username + "' and Password = '" + password + "'";

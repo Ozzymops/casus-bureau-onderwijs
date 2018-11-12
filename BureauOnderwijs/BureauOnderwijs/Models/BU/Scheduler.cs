@@ -42,6 +42,8 @@ namespace BureauOnderwijs.Models.BU
 
         public string ConflictCheckClassroomEmpty()
         {
+            //FEEDBACK RB -> Vanjuit de klasse Scheduler haal je nu data op uit de klasse "Lecture"
+            //Deze link staat niet beschreven in het klassendiagram. De code is dus niet consistent met het model.
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
             string sqlQueryclassroom = "SELECT COUNT (*) FROM Lecture WHERE 'Classroom' = ''";
             string rv = "";

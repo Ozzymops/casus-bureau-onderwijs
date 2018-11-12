@@ -8,6 +8,9 @@ namespace BureauOnderwijs.Models.CC
 {
     public class Scheduler_ShowConflicts
     {
+        //FEEDBACK RB
+        //Het was netter (en logischer) geweest als de scheduler maar 1x aangemaakt zou worden.
+        //Zoals ook aangepast voor User
         public string ConflictsClassroomEmpty()
         {
             Models.BU.Scheduler s = new Scheduler();

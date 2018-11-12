@@ -11,15 +11,18 @@ namespace BureauOnderwijs.Models.BU
 {
     public class Wish
     {
-        public int wishId;
-        public int period;
-        public int week;
-        public int day;
-        public int startHour;
-        public int startMinute;
-        public int endHour;
-        public int endMinute;
-        public int userId;
+        //FEEDBACK RB
+        //Membervariablen altijd private maken!
+        //En (eventueel) aanroepen van buitenaf via properties
+        private int wishId;
+        private int period;
+        private int week;
+        private int day;
+        private int startHour;
+        private int startMinute;
+        private int endHour;
+        private int endMinute;
+        private int userId;
 
         public int WishId
         {
@@ -86,14 +89,21 @@ namespace BureauOnderwijs.Models.BU
                 con.Close();
                 return 0; 
             }
+            //Niet zomaar alle fouten afvangen en zonder melding retourneren!
             catch (Exception)
             {
                 return 1;
             }
         }
 
+        ///Netter zou zijn geweest als het Wish-object aangemaakt zou zijn met de huidige/oude waarden
+        ///Daarna de waarden aanpassen die verandert zijn
+        ///En alleen die waarden daadwerkelijk updaten in de database.
+        ///
+        ///ipv alle waarden meegeven en alles updaten zoals nu gebeurt
         public int UpdateWish(int period, int week, int day, int startTijdUur, int startTijdMinuut, int eindTijdUur, int EindTijdMinuut, int ingelogd, int wishId)
         {
+            
             /// Wijzigt een wens in de datebase van de ingelogde gebruiker
             /// de variablelen zijn door de gebruiker ingevoerd in de comboboxen op de webpagina.
 
@@ -119,6 +129,10 @@ namespace BureauOnderwijs.Models.BU
         public int ExportWishlist()
         {
             string conString = "Data Source = localhost; Initial Catalog = Bureauonderwijsdatabase; Integrated Security = True";
+
+            //FEEDBACK RB
+            //Dit kan inderdaad in 1 string. Maar ook hier zou het netter zijn geweest om 
+            //met de objecten te werken en niet alleen met de data direct uit de database van Wish en User.
             string sqlQuery = ("SELECT Wi.WishId, Wi.Period, Wi.Week, Wi.Day, Wi.StartHour, Wi.StartMinute, Wi.EndHour, Wi. EndMinute, UA.UserId, UA.Firstname, UA.Lastname, UA.Role FROM Wish Wi JOIN UserAccount UA ON UA.UserId = Wi.UserId");
             int i = 0;
             int j = 0;

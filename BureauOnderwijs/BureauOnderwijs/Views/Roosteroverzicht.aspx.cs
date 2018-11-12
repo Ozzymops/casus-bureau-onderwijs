@@ -135,6 +135,9 @@ namespace BureauOnderwijs.Views
             {
                 LectureIdDropdownList.Items.Clear();
                 int lectureId = 1;
+                //FEEDBACK RB-> Hier ga je direct van GUI naar BU, terwijl jullie in 5 lagen werken.
+                //Hiermee sla je dus een laag over!
+                //Daarnaast bevat de GUI op deze manier erg veel logica, wat niet gewenst is.
                 List<Models.BU.Lecture> lectureList = (List<Models.BU.Lecture>)Session["Database_Lectures_" + UserDropdownList.SelectedValue];
                 if (lectureList != null || lectureList.Count == 0)
                 {
@@ -198,13 +201,20 @@ namespace BureauOnderwijs.Views
                 List<Models.BU.Wish> wishList = (List<Models.BU.Wish>)Session["Database_Wishes_" + UserDropdownList.SelectedValue];
                 if (wishList != null || wishList.Count == 0)
                 {
+                    //FEEDBACK RB
+                    //Membervariabelen zouden niet public moeten zijn. Dus uit gecommentarieerd in Wish
+                    //Daardoor werkt dit nu niet meer.
+
+                    
                     WishLabel.Text = "Wishes gevonden voor docent " + UserDropdownList.SelectedValue;
                     foreach (Models.BU.Wish wish in (List<Models.BU.Wish>)Session["Database_Wishes_" + UserDropdownList.SelectedValue])
                     {
+                        /* //FEEDBACK RB -> Commentaar van gemaakt
                         if (UserDropdownList.SelectedValue == wish.userId.ToString() && PeriodDropdownList.SelectedValue == wish.period.ToString() && WeekDropdownList.SelectedValue == wish.week.ToString())
                         {
+
                             DataRow dataRow = dataTable.NewRow();
-                            dataRow["WensId"] = wish.wishId;
+                            dataRow["WensId"] = wish.WishId;
                             dataRow["DocentId"] = wish.userId;
                             dataRow["Blok"] = wish.period;
                             dataRow["Week"] = wish.week;
@@ -213,6 +223,7 @@ namespace BureauOnderwijs.Views
                             dataRow["Eind"] = TimeString(wish.endHour, wish.endMinute);
                             dataTable.Rows.Add(dataRow);
                         }
+                        */
                     }
                 }
             }
@@ -311,6 +322,7 @@ namespace BureauOnderwijs.Views
             {
                 foreach (Models.BU.Wish wish in wishList)
                 {
+                    /* //FEEDBACK RB -> Zelfde reden als hierboven -> Public fields
                     if (PeriodDropdownList.SelectedValue == wish.period.ToString() && WeekDropdownList.SelectedValue == wish.week.ToString())
                     {
                         if (DayDropdownList.Items.FindByText(DayString(wish.day)) == null)
@@ -319,6 +331,7 @@ namespace BureauOnderwijs.Views
                             DayDropdownList_E.Items.Add(DayString(wish.day));
                         }
                     }
+                    */
                 }
             }
 
@@ -764,9 +777,11 @@ namespace BureauOnderwijs.Views
         protected void AddButton_Click(object sender, EventArgs e)
         {
             // Invoercontrole!
-            bool inputCheck = false;
+            //bool inputCheck = false;
 
-            if (DayDropdownList.SelectedIndex != -1 || DayDropdownList.SelectedValue != null)
+            //FEEDBACK RB
+            //Dat zijn wel heel veel if's achter elkaar. Dat kan netter (bijv. if-else if-else structuur, zie beneden)
+            /*if (DayDropdownList.SelectedIndex != -1 || DayDropdownList.SelectedValue != null)
             {
                 if (ModuleDropdownList.SelectedIndex != -1 || ModuleDropdownList.SelectedValue != null)
                 {
@@ -856,11 +871,68 @@ namespace BureauOnderwijs.Views
             if (inputCheck)
             {
                 CreateLecture();
-            }       
+            }
+            */
+
+            if (DayDropdownList.SelectedIndex == -1 || DayDropdownList.SelectedValue == null)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Kies a.u.b. een dag.');", true);
+            }
+            else if (ModuleDropdownList.SelectedIndex == -1 || ModuleDropdownList.SelectedValue == null)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Kies a.u.b. een module.');", true);
+            }
+            else if (string.IsNullOrWhiteSpace(ClassroomTextBox.Text))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een klaslokaal in.');", true);
+            }
+            else if (string.IsNullOrWhiteSpace(StudentGroupTextBox.Text))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een klas in.');", true);
+            }
+            else if (string.IsNullOrWhiteSpace(TimeStartHourTextBox.Text))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een start uur in.');", true);
+            }
+            else if (string.IsNullOrWhiteSpace(TimeStartMinuteTextBox.Text))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een start minuut in.');", true);
+            }
+            else if (string.IsNullOrWhiteSpace(TimeEndHourTextBox.Text))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een eind uur in.');", true);
+            }
+            else if (string.IsNullOrWhiteSpace(TimeEndMinuteTextBox.Text))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een eind minuut in.');", true);
+            }
+            else if (!Int32.TryParse(TimeStartHourTextBox.Text, out int number))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een getal in bij start uur.');", true);
+            }
+            else if (!Int32.TryParse(TimeStartMinuteTextBox.Text, out number))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een getal in bij start minuut.');", true);
+            }
+            else if (!Int32.TryParse(TimeEndHourTextBox.Text, out number))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een getal in bij eind uur.');", true);
+            }
+            else if (!Int32.TryParse(TimeEndMinuteTextBox.Text, out number))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Vul a.u.b. een getal in bij eind minuut.');", true);
+            }
+            else //Geen problemen, dus kan de lecture gecreerd worden.
+            { 
+                CreateLecture();
+            }
         }
 
         protected void EditButton_Click(object sender, EventArgs e)
         {
+            //FEEDBACK RB
+            //Zelfde invoercontrole als hierboven -> Methode van maken en maar 1 keer schrijven!
+
             // Invoercontrole!
             bool inputCheck = false;
 

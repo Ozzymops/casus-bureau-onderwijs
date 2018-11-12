@@ -201,6 +201,10 @@ namespace BureauOnderwijs.Models
         /// </summary>
         public List<Models.BU.Wish> GetTeacherWishes(string query)
         {
+            //FEEDBACK RB
+            //De database zou volgens het lagenmodel niet bekend moeten zijn met de invulling van het Wish object
+            //Dus niet hier omzetten naar de klasse, maar als strings / ints teruggeven aan de klasse Wish
+            //In die klasse de data opslaan en dan terugsturen.
             Connect();
             try
             {
@@ -217,9 +221,12 @@ namespace BureauOnderwijs.Models
                 Debug.WriteLine("GetTeacherWishes - Succes.");
                 return wishList;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Debug.WriteLine("GetTeacherWishes - Exception!");
+                //FEEDBACK RB
+                //Netjes dat je met Debug werkt. Maar zet dan ook de volledige melding erbij!
+                //Debug.WriteLine("GetTeacherWishes - Exception!");
+                Debug.WriteLine("GetTeacherWishes - " + ex.Message);
                 return null;
             }
         }
